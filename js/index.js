@@ -75,7 +75,7 @@ $(document).ready(function (){
             $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
                 $("#divBarra").css("bottom","180px");
                 $("#divCircular").css("bottom","180px");
-                $("#divProyectoNoticia").css("bottom","250px");
+                $("#divProyectoNoticia").css("bottom","200px");
                 $("#noticiasDiv").hide();
                 $("#idTituloMapa").show();
                 $("#indicadoresDiv").show();
@@ -132,7 +132,7 @@ $(document).ready(function (){
             $description.html($(this).attr('title'));
         }, function() {
 
-
+            $description.removeClass('active');
         });
 
 
