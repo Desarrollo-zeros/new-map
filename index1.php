@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div style="position: relative;left: 81px;bottom: 45px;">
-                        Inversion en miles de millones
+                        Inversíon en miles de millones
                         <br>
                         <b>$ 264.954</b>
                     </div>

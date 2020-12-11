@@ -1,9 +1,10 @@
-
-
-p{
-  font-family: Avenir Book, monospace !important;
-
+*{
+  font-family: "Avenir Black", sans-serif!important;
 }
+body{
+  font-family: "Avenir Black", sans-serif!important;
+}
+
 
 
 @font-face {
@@ -53,13 +54,16 @@ p{
 
 
 *{
-    margin:0;
-    padding:0;
-    list-style: none;
-    text-decoration: none;
-    font-family: sans-serif;
+  margin:0;
+  padding:0;
+  list-style: none;
+  text-decoration: none;
+
 }
 
+.text-noticia{
+  font-family: "Avenir Light", sans-serif!important;
+}
 
 html, body {
   width: 100%;
@@ -339,18 +343,7 @@ svg {
 .table-tooltip.active {
   display: block;
 }
-.table-tooltip:after {
-  content: "";
-  position: absolute;
-  left: 100% !important;
-  top: 45% !important;
-  width: 35px!important;
-  height: 10px!important;
-  margin-left: -25px;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-top: 25px solid #f7f7f7;
-}
+
 
 
 .table-tooltip1 {
@@ -492,3 +485,48 @@ svg {width:100%;transform-origin:top left;}
 
 
 
+
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ol,
+ul {
+  list-style: none;
+  margin:0;
+  padding:0;
+  text-align:center;
+}
+li {
+  display: inline-table;
+}
+
+#chart {
+  position:relative;
+  height: 60vh;
+  width: 60vh;
+  top:15%;
+  margin:auto;
+}
+#chartjs-legend {
+  position:absolute;
+  width:100%;
+
+  right: 36%;
+}
+#chartjs-legend li {
+  cursor:pointer;
+  margin: 10px 4px;
+}
+#chartjs-legend li span {
+  position:relative;
+  padding: 6px 20px;
+  border-radius:13px;
+  color:white;
+  z-index:2;
+}

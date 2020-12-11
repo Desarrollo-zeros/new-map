@@ -5,57 +5,60 @@ $(document).ready(function (){
 
 
 
+    Chart.defaults.global.animation.duration = 3000;
+
+    Chart.plugins.register({
+        beforeUpdate: function(chart) {
+            if (chart.options.sort) {
+                let dataArray = chart.data.datasets[0].data.slice();
+                let dataIndexes = dataArray.map((d, i) => i);
+                dataIndexes.sort((a, b) => {
+                    return dataArray[a] - dataArray[b];
+                });
+
+                // sort data array as well
+                dataArray.sort((a, b) => a - b);
+
+                // At this point dataIndexes is sorted by value of the data, so we know how the indexes map to each other
+                let meta = chart.getDatasetMeta(0);
+                let newMeta = [];
+                let labels = chart.data.labels;
+                let newLabels = [];
+
+                meta.data.forEach((a, i) => {
+                    newMeta[dataIndexes[i]] = a;
+                    newLabels[dataIndexes[i]] = chart.data.labels[i];
+                });
+
+                meta.data = newMeta;
+                chart.data.datasets[0].data = dataArray;
+                chart.data.labels = newLabels;
+            }
+        }
+    });
+
+
 
 
     ChartApi["participacion-inversion-por-eje"] = new Chart(document.getElementById('participacion-inversion-por-eje'), {
         type: 'bar',
         data: {
-            labels:["Económico","Social","Ambiental","Gobernanza"],
+            //labels:["Económico","Social","Ambiental","Gobernanza"],
+            labels:["Gobernanza","Ambiental","Social","Económico"],
             datasets: [
                 {
 
-                    data: [55, 45, 20, 5],
+                    data: [5,15,35,45],
                     backgroundColor: [
-                        '#FFCE56',
-                        '#235270',
-                        '#2e8326',
-                        '#722323'
-                    ]
+                        '#0d1c45',
+                        '#259261',
+                        '#0c8ecf',
+                        '#960303'
+                    ],
+                    order: 1
                 }
             ],
-            /*datasets: [
-                {
-                    label:"Económico",
-                    data: [55],
-                    backgroundColor: [
-                        '#FFCE56',
-                    ]
-                },
-                {
-                    label:"Social",
-                    data: [45],
-                    backgroundColor: [
-                        '#235270',
-
-                    ]
-                },
-                {
-                    label:"Ambiental",
-                    data: [20],
-                    backgroundColor: [
-                        '#2e8326',
-
-                    ]
-                },
-                {
-                    label:"Gobernanza",
-                    data: [5],
-                    backgroundColor: [
-                        '#722323',
-
-                    ]
-                }
-            ]*/
+            order: 1
         },
         options: {
             responsive: true,
@@ -163,14 +166,14 @@ $(document).ready(function (){
         type: "doughnut",
         data: {
             labels: [
-                'Comunidad',
-                'Gobernaciones',
-                'Entidadad Internacional',
-                'Municipios',
-                'Organización Nacionales Privadas',
-                'Recursos Propios',
-                'FoNC',
-                'Organización Nacionales públicas'
+                'Comunidad 7%',
+                'Gobernaciones 7%',
+                'Entidadad Internacional 8%',
+                'Municipios 14%',
+                'Organización Nacionales Privadas 4%',
+                'Recursos Propios 2%',
+                'FoNC 22%',
+                'Organización Nacionales públicas 36%'
             ],
             datasets: [
                 {
@@ -178,7 +181,7 @@ $(document).ready(function (){
                     data: [7, 7, 8,14,4,2,22,36],
                     backgroundColor: [
                         '#FFCE56',
-                        '#cf1a1a',
+                        '#ff2929',
                         '#1d9221',
                         '#1c6020',
                         '#9ea99e',
@@ -190,24 +193,23 @@ $(document).ready(function (){
             ]
         },
         options:  {
-            responsive: true,
-            maintainAspectRatio: false,
+
             plugins: {
                 labels: {
-
-                    position: 'outside'
+                    render: function (args) {
+                        return '';
+                    },
                 }
             },
             legend: {
-                display: true,
+                display: false,
                 labels: {
                     fontColor: 'rgb(2,2,2)',
                     strokeStyle : 'rgb(2,2,2)',
-                    padding : 20,
-                    boxWidth : 60
+                    padding : 10,
                 },
                 position: 'left',
-                align : 'end'
+
             },
         },
     });

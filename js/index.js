@@ -1,5 +1,5 @@
 var dependencia;
-var title = "MAPA DE SOSTENIBILIDAD";
+var title = "Mapa Ejecución de Proyectos Sostenibles";
 $description = null;
 $menuTooltip = null;
 
@@ -24,13 +24,13 @@ $(document).on('mousemove', function(e){
         });
     }
 
-    if($menuTooltip){
+    /*if($menuTooltip){
         $menuTooltip.css({
             left:  e.pageX - 1100,
             top:   e.pageY - 450,
             height : "60px",
         });
-    }
+    }*/
 
 
 
@@ -39,7 +39,7 @@ $(document).on('mousemove', function(e){
 
 
 $(document).ready(function (){
-
+    $("#changeTitle").html(title);
 
     $("#selectAnoCargue").change(function (){
         $("#changeTitle").html(title+" "+dependencia.alias+" "+$("#selectAnoCargue").val());
@@ -74,7 +74,7 @@ $(document).ready(function (){
             $selectorDpto = this;
             $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
                 $("#divBarra").css("bottom","180px");
-                $("#divCircular").css("bottom","180px");
+                $("#divCircular").css("bottom","150px");
                 $("#divProyectoNoticia").css("bottom","200px");
                 $("#noticiasDiv").hide();
                 $("#idTituloMapa").show();
@@ -130,8 +130,16 @@ $(document).ready(function (){
             $(this).attr("class", "cls-1 heyo");
             $description.addClass('active');
             $description.html($(this).attr('title'));
-        }, function() {
 
+            if($(this).attr('title') == "Huila"){
+                $("#path6475").css("fill","#CC2929");
+                $("#path6442").css("fill","#CC2929");
+            }
+        }, function() {
+            if($(this).attr('title') == "Huila"){
+                $("#path6475").css("fill","#d2d2e6");
+                $("#path6442").css("fill","#d2d2e6");
+            }
             $description.removeClass('active');
         });
 
@@ -143,9 +151,15 @@ $(document).ready(function (){
         $('[data-id="inversion-hover"]').hover(function (){
             $(this).find("path").css("fill","#960303");
             $(this).find("div").css("color","#960303");
-
             $menuTooltip.addClass('active');
             getHtmlTable("inversion",$menuTooltip,"")
+
+            $menuTooltip.css({
+                right:  400,
+                top: -40,
+                height : 50,
+            });
+
         }, function (){
             $menuTooltip.removeClass('active');
             $(this).find("path").css("fill","#717171");
@@ -157,8 +171,15 @@ $(document).ready(function (){
         $('[data-id="dependencia-hover"]').hover(function (){
             $(this).find("path").css("fill","#960303");
             $(this).find("div").css("color","#960303");
-            $menuTooltip.addClass('active');
+            /*$menuTooltip.addClass('active');
             getHtmlTable("dependencia",$menuTooltip,"")
+
+            $menuTooltip.css({
+                right:  400,
+                top: 50,
+                height : 50,
+            });*/
+
         }, function (){
             $menuTooltip.removeClass('active');
             $(this).find("path").css("fill","#717171");
@@ -170,8 +191,16 @@ $(document).ready(function (){
         $('[data-id="apalancamiento-hover"]').hover(function (){
             $(this).find("path").css("fill","#960303");
             $(this).find("div").css("color","#960303");
-            $menuTooltip.addClass('active');
-            getHtmlTable("apalancamiento",$menuTooltip,"")
+            //$menuTooltip.addClass('active');
+            /*getHtmlTable("apalancamiento",$menuTooltip,"");
+
+            $menuTooltip.css({
+                right:  400,
+                top: 125,
+                height : 50,
+            });*/
+
+
         }, function (){
             $menuTooltip.removeClass('active');
             $(this).find("path").css("fill","#717171");
@@ -185,6 +214,17 @@ $(document).ready(function (){
             $(this).find("div").css("color","#960303");
             $menuTooltip.addClass('active');
             getHtmlTable("proyecto",$menuTooltip,"")
+
+
+            $menuTooltip.css({
+                right:  350,
+                top: 125,
+                height : 50,
+            });
+
+
+
+
         }, function (){
             $menuTooltip.removeClass('active');
             $(this).find("path").css("fill","#717171");
@@ -198,6 +238,14 @@ $(document).ready(function (){
             $(this).find("div").css("color","#960303");
             $menuTooltip.addClass('active');
             getHtmlTable("beneficio",$menuTooltip,"");
+
+            $menuTooltip.css({
+                right:  350,
+                top: 125,
+                height : 50,
+            });
+
+
         }, function (){
             $menuTooltip.removeClass('active');
             $(this).find("path").css("fill","#717171");

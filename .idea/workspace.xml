@@ -50,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607564792855</updated>
-      <workItem from="1607564793999" duration="34208000" />
+      <workItem from="1607564793999" duration="48754000" />
     </task>
     <servers />
   </component>
@@ -62,5 +62,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="453" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607568192632" />
+    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1607662745062">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607662745062" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607624937012">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607624937012" />
   </component>
 </project>
