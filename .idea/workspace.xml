@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -36,9 +36,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\new-map" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\css" />
       <recent name="C:\xampp\htdocs\new-map\js" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\js" />
+      <recent name="C:\xampp\htdocs\new-map\css" />
+      <recent name="C:\xampp\htdocs\new-map" />
       <recent name="C:\xampp\htdocs\new-map\img\desing" />
     </key>
   </component>
@@ -50,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607564792855</updated>
-      <workItem from="1607564793999" duration="48754000" />
+      <workItem from="1607564793999" duration="55003000" />
     </task>
     <servers />
   </component>
@@ -66,9 +71,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607662745062" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607624937012">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607666986137">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607624937012" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607666986137" />
   </component>
 </project>

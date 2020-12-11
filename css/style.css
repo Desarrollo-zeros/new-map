@@ -530,3 +530,35 @@ li {
   color:white;
   z-index:2;
 }
+
+
+
+
+
+#states {
+  fill: #aaa;
+}
+
+#states .active {
+  fill: orange;
+}
+
+#state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+path {
+  fill: grey;
+  transition: .6s fill;}
+path:hover {
+  fill: #abb4b9;
+  cursor: pointer;
+}
+#path173-8 {
+  fill: red;
+}

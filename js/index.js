@@ -92,6 +92,7 @@ $(document).ready(function (){
                     }
                     $description.addClass('active');
                     $description.html($(this).attr('name'));
+
                 }, function() {
                     $("path.cls-1").css("fill","#8a8a8a");
                     if($selectorDpto){
@@ -100,8 +101,11 @@ $(document).ready(function (){
                     $description.removeClass('active');
                 });
 
-                $("path.cls-1").click(function(){
+                $("path.cls-1").click(function(event){
                     $selectorDpto = this;
+                    //$("#colombia svg path").hide();
+                    $("#colombia path").hide();
+                    $(this).show();
                     $("path.cls-1").css("fill","#8a8a8a");
                     $(this).css("fill","#960303");
 
@@ -114,6 +118,26 @@ $(document).ready(function (){
                     $("#separadorCiudad").show();
                     var name = $(this).attr("name");
                     $("#nameCiudad").html(name);
+
+                    var root = document.getElementById($(this).parent()[0].id);
+                    var path = document.getElementById("path5120");
+                    var point = root.createSVGPoint();
+                    point.x = 0;  // replace this with the x co-ordinate of the path segment
+                    point.y = 0;  // replace this with the y co-ordinate of the path segment
+                    var matrix = path.getTransformToElement(root);
+                    var position = point.matrixTransform(matrix);
+
+                    console.log(position);
+
+                    var main1x = document.getElementById($(this).parent()[0].id);
+                    //TweenMax.to(main1x, .7, { attr: { transform: "scale(2.6107453265026797), translate(-843.9161399999997, -365.47)" } }, 0);
+                    TweenMax.to(main1x, 0.7, {
+                        scale: 2.6107453265026797,
+                        x:-131.7100067138672 + 300 ,
+                        y:-159.91000366210938 + 100,
+                        ease:Power1.easeInOut,
+                        transformOrigin:"50% 50%"
+                    })
 
 
 
@@ -264,3 +288,8 @@ function getHtmlTable(id, selector, type=""){
 
 
 }
+
+
+SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformToElement || function(toElement) {
+    return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
+};
