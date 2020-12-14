@@ -248,14 +248,14 @@ $(document).ready(function (){
             $description.addClass('active');
             $description.html($(this).attr('title'));
 
-            if($(this).attr('title') == "Huila"){
+            if($(this).attr('title') == "Cundinamarca"){
                 $("#path6475").css("fill","#CC2929");
-                $("#path6442").css("fill","#CC2929");
+                //$("#path6442").css("fill","#CC2929");
             }
         }, function() {
-            if($(this).attr('title') == "Huila"){
+            if($(this).attr('title') == "Cundinamarca"){
                 $("#path6475").css("fill","#d2d2e6");
-                $("#path6442").css("fill","#d2d2e6");
+                //$("#path6442").css("fill","#d2d2e6");
             }
             $description.removeClass('active');
         });
