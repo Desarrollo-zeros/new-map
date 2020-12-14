@@ -192,95 +192,6 @@ function getLoadMunicipios(){
 function getLoad(){
     //inversion
 
-    api.getInversion({}, function (data){
-        console.log(data);
-        if(data && data.ano_carge){
-
-
-            api.dataInversion = {
-                "total_ejecucion" : data.total_ejecucion,
-                "rp" : data.rp,
-                "fonc" : data.fonc,
-                "tercero" : data.tercero
-            };
-
-            $("#inversionTotal").html(formatCurrency("es-CO", "COP", data.total_ejecucion));
-            $("#rp").html(formatCurrency("es-CO", "COP", data.rp))
-            $("#fonc").html(formatCurrency("es-CO", "COP", data.fonc))
-            $("#tercero").html(formatCurrency("es-CO", "COP", data.tercero))
-        }
-    }, function (error){
-            console.log(error);
-    });
-
-
-    //beneficiarios
-    api.getBeneficiarios({}, function (data){
-        console.log(data);
-        if(data && data.ano_carge){
-            api.dataBeneficiarios = {
-                "total_beneficiario" : data.total,
-                "afroValue" : data.afros,
-                "joveValue" : data.jovenes,
-                "mujerValue" : data.mujeres,
-                "hombreValue" : data.hombres
-            };
-
-            $("#total_beneficiario").html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.total_beneficiario).replace("$",""));
-
-
-        }
-    }, function (error){
-
-    });
-
-
-    //proyectos
-
-    api.getVectores({}, function (data){
-        console.log(data);
-        if(data && data["vectores"] && data["vectores"][0].ano_carge){
-            console.log(data["vectores"]);
-            console.log(data["proyectos"]);
-
-
-            if(!data["proyectos"]){
-                data["proyectos"] = {total : 0}
-            }
-
-            if(!data["vectores"]){
-                data["vectores"] = {total : 0}
-            }
-
-            api.dataVectores = {
-                total_proyecto : data["proyectos"].total,
-                infraestructuraValue : data["vectores"].find(x => x.vector.toLowerCase() === ("INFRAESTRUCTURA").toLowerCase()),
-                productividadValue : data["vectores"].find(x => x.vector.toLowerCase() === ("PRODUCTIVIDAD").toLowerCase()),
-                cuidadoRecursosNaturales : data["vectores"].find(x => x.vector.toLowerCase() === ("CUIDADO DE RECURSOS NATURALES").toLowerCase()),
-                costosProduccion : data["vectores"].find(x => x.vector.toLowerCase() === ("COSTOS DE PRODUCCION").toLowerCase())
-            };
-
-            api.dataVectores = {
-                total_proyecto : api.dataVectores.total_proyecto ? api.dataVectores.total_proyecto.total : 0,
-                infraestructuraValue : api.dataVectores.infraestructuraValue ? api.dataVectores.infraestructuraValue.total : 0,
-                productividadValue : api.dataVectores.productividadValue ? api.dataVectores.productividadValue.total : 0,
-                cuidadoRecursosNaturales : api.dataVectores.cuidadoRecursosNaturales ? api.dataVectores.cuidadoRecursosNaturales.total : 0,
-                costosProduccion : api.dataVectores.costosProduccion ? api.dataVectores.costosProduccion.total : 0,
-            };
-
-            $("#total_proyecto").html(data["proyectos"].total);
-            $("#infraestructuraValue"). html(api.dataVectores.infraestructuraValue.total);
-            $("#productividadValue"). html(api.dataVectores.productividadValue.total);
-            $("#cuidadoRecursosNaturales"). html(api.dataVectores.cuidadoRecursosNaturales.total);
-            $("#costosProduccion"). html(api.dataVectores.costosProduccion.total);
-
-        }
-    }, function (error){
-
-    });
-
-
-
     api.getVieEjeIndicativo({}, function (data){
         console.log(data);
 
@@ -413,8 +324,56 @@ function getLoad(){
 
 
 
-function getPorcentaje(data, value = 1000000){
-    return Math.round(data/value)
+function getPorcentaje(data, total, value = 1000000, fixed= 2){
+    return (((data * value)/ total).toFixed(fixed));
 }
 
 
+
+(function() {
+    /**
+     * Ajuste decimal de un número.
+     *
+     * @param {String}  tipo  El tipo de ajuste.
+     * @param {Number}  valor El numero.
+     * @param {Integer} exp   El exponente (el logaritmo 10 del ajuste base).
+     * @returns {Number} El valor ajustado.
+     */
+    function decimalAdjust(type, value, exp) {
+        // Si el exp no está definido o es cero...
+        if (typeof exp === 'undefined' || +exp === 0) {
+            return Math[type](value);
+        }
+        value = +value;
+        exp = +exp;
+        // Si el valor no es un número o el exp no es un entero...
+        if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+            return NaN;
+        }
+        // Shift
+        value = value.toString().split('e');
+        value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+        // Shift back
+        value = value.toString().split('e');
+        return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+    }
+
+    // Decimal round
+    if (!Math.round10) {
+        Math.round10 = function(value, exp) {
+            return decimalAdjust('round', value, exp);
+        };
+    }
+    // Decimal floor
+    if (!Math.floor10) {
+        Math.floor10 = function(value, exp) {
+            return decimalAdjust('floor', value, exp);
+        };
+    }
+    // Decimal ceil
+    if (!Math.ceil10) {
+        Math.ceil10 = function(value, exp) {
+            return decimalAdjust('ceil', value, exp);
+        };
+    }
+})();

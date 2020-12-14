@@ -317,13 +317,13 @@ svg {
 }
 
 .table-tooltip {
-  pointer-events: none;
+
   position: absolute;
   font-size: 16px;
   text-align: left;
   background: #f7f7f7;
   padding: 20px 20px;
-  z-index: 5;
+  z-index: 99;
   height: auto!important;
   width: auto!important;
   line-height: 20px;
@@ -337,6 +337,7 @@ svg {
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   display: none;
+
 }
 .table-tooltip.active {
   display: block;
@@ -396,6 +397,33 @@ div.verticalLine {
 .scroller {
   overflow: auto;
   height: 100px;
+  z-index: 99;
+}
+
+@media only screen and (min-width: 600px) {
+  #divProyectoNoticia{
+     margin-top: -15%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #divProyectoNoticia{
+    margin-top: -25%;
+  }
+}
+
+
+@media only screen and (min-width: 1000px) {
+  #divProyectoNoticia{
+    margin-top: -25%;
+  }
+}
+
+
+@media only screen and (min-width: 1300px) {
+  #divProyectoNoticia{
+    margin-top: -36%;
+  }
 }
 
 
@@ -560,3 +588,6 @@ path:hover {
 #path173-8 {
   fill: red;
 }
+
+
+

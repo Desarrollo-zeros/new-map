@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="" />
+    <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/departamentos/prueba.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/iconos/Apalancamiento.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/iconos/Beneficiarios.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/iconos/Dependencia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/iconos/Inversion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/iconos/Proyectos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Antioquia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Antioquia.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Antioquia1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Antioquia1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Boyaca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Boyaca.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Boyaca1.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Boyaca1.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Caldas.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Caldas.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Caqueta.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Caqueta.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Casanare.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Casanare.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Cauca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cauca.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Cesar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cesar.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Guajira.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Guajira.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Huila.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Huila.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Magdalena.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Magdalena.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Meta.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Meta.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Nariño.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Nariño.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/NortedeSantander.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/NortedeSantander.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Putumayo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Putumayo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Risaralda.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Risaralda.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index1.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chartApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index1.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +68,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1lRfOWFCgXoSr9LBjnN1VMuRpw3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,7 +79,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img/departamentos" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -36,15 +90,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\new-map\css" />
-      <recent name="C:\xampp\htdocs\new-map\js" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\img\departamentos" />
+      <recent name="C:\xampp\htdocs\new-map\img\iconos" />
       <recent name="C:\xampp\htdocs\new-map\js" />
       <recent name="C:\xampp\htdocs\new-map\css" />
       <recent name="C:\xampp\htdocs\new-map" />
-      <recent name="C:\xampp\htdocs\new-map\img\desing" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\css" />
+      <recent name="C:\xampp\htdocs\new-map\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -56,24 +111,52 @@
       <option name="presentableId" value="Default" />
       <updated>1607564792855</updated>
       <workItem from="1607564793999" duration="55305000" />
+      <workItem from="1607824206731" duration="43695000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="453" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607568192632">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="453" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607568192632" />
-    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1607662745062">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1607890810096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607662745062" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607666986137">
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890810096" />
+    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1607901872449">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607666986137" />
+    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607901872449" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607890400003">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890400003" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/Api.js</url>
+          <line>234</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
