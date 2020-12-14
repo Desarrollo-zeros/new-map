@@ -404,18 +404,27 @@ div.verticalLine {
   #divProyectoNoticia{
      margin-top: -15%;
   }
+  .clsmargin{
+    position: absolute;right: -60%;margin-top: 2%
+  }
 }
 
 @media only screen and (min-width: 800px) {
   #divProyectoNoticia{
-    margin-top: -25%;
+    margin-top: -60%;
+  }
+  .clsmargin{
+      position: absolute;right: -59%;margin-top: 2%
   }
 }
 
 
 @media only screen and (min-width: 1000px) {
   #divProyectoNoticia{
-    margin-top: -25%;
+    margin-top: -58%;
+  }
+  .clsmargin{
+    position: absolute;right: -50%;margin-top: 2%
   }
 }
 
@@ -423,6 +432,9 @@ div.verticalLine {
 @media only screen and (min-width: 1300px) {
   #divProyectoNoticia{
     margin-top: -36%;
+  }
+  .clsmargin{
+    position: absolute;right: -54%;margin-top: 2%
   }
 }
 

@@ -250,12 +250,12 @@ $(document).ready(function (){
 
             if($(this).attr('title') == "Cundinamarca"){
                 $("#path6475").css("fill","#CC2929");
-                //$("#path6442").css("fill","#CC2929");
+                $("#path6415").css("fill","#CC2929");
             }
         }, function() {
             if($(this).attr('title') == "Cundinamarca"){
                 $("#path6475").css("fill","#d2d2e6");
-                //$("#path6442").css("fill","#d2d2e6");
+                $("#path6415").css("fill","#d2d2e6");
             }
             $description.removeClass('active');
         });
@@ -568,7 +568,7 @@ SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformTo
     return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
 };
 
-function formatCurrency (locales, currency, number, fractionDigits = 2) {
+function formatCurrency (locales, currency, number, fractionDigits = 0) {
     return new Intl.NumberFormat(locales, {
         style: 'currency',
         currency: currency,
@@ -618,7 +618,7 @@ function zoomState(state, nameParent) {
             transformOrigin: "50% 50%"
         })
         .to(zoomState, 0.7, {
-            scale: scale == null ? 3.3 : parseFloat(scale),
+            scale: scale == null ? 2 : parseFloat(scale),
             x: positionElementToCenter(zoomState,nameParent,move).x,
             y: positionElementToCenter(zoomState, nameParent,move).y,
             ease: Power2.easeInOut

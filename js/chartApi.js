@@ -92,10 +92,10 @@ function getParticipacionAportante(){
                         'Gobernaciones',
                         'Entidadad Internacional',
                         'Municipios',
-                        'Organización Nacionales Privadas',
+                        'Organizaciones Nacionales Privadas',
                         'Recursos Propios',
                         'FoNC',
-                        'Organización Nacionales públicas'
+                        'organizaciones Nacionales públicas'
                     ],
                     datasets: [
                         {
@@ -111,14 +111,14 @@ function getParticipacionAportante(){
                                 $dataAPortante.publica,
                             ],
                             backgroundColor: [
-                                '#FFCE56',
-                                '#ff2929',
-                                '#1d9221',
-                                '#1c6020',
-                                '#9ea99e',
-                                '#616961',
-                                '#5d7fc8',
-                                '#700e24',
+                                '#f36868',
+                                '#d74747',
+                                '#c43535',
+                                '#ae1e1e',
+                                '#ac1212',
+                                '#990a0a',
+                                '#8d0505',
+                                '#700000',
                             ]
                         }
                     ]
