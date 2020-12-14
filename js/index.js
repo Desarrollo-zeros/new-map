@@ -43,6 +43,275 @@ $(document).on('mousemove', function(e){
 
 $(document).ready(function (){
 
+    $("#btnAtras").click(function (){
+
+        if(nameMunicipio != null){
+            nameMunicipio = null;
+            $("#divCircular").show();
+            $("#divBarra").show();
+            $("#colombia").load("img/departamentos/"+nameDpto+".svg",function (selector){
+                $("#noticiasDiv").hide();
+                $("#idTituloMapa").show();
+                $("#indicadoresDiv").show();
+                $("#separadorCiudad").hide();
+                $("#divProyectoNoticia").hide();
+                $("#changeTitleDpto").html(nameDpto.toUpperCase());
+                $('[data-id="dependencia-hover"]').show();
+                $('[data-id="apalancamiento-hover"]').show();
+
+                $description = $(".description");
+
+                $('path.cls-1').hover(function() {
+                    var name = $(this).attr('name');
+                    $("path.cls-1").css("fill","#8a8a8a");
+                    $(this).css("fill","#6ef35e");
+                    if($selectorDpto){
+                        $($selectorDpto).css("fill","#960303");
+                    }
+                    if(!name.toLowerCase().includes("xxx")){
+                        $description.addClass('active');
+                        $description.html(name);
+                    }
+                }, function() {
+                    $("path.cls-1").css("fill","#8a8a8a");
+                    if($selectorDpto){
+                        $($selectorDpto).css("fill","#960303");
+                    }
+                    $description.removeClass('active');
+                });
+
+                $("path.cls-1").click(function(event){
+                    $description.removeClass('active');
+                    $selectorDpto = this;
+                    nameMunicipio = $(this).attr("name");
+
+                    if(nameMunicipio.toLowerCase().includes("xxx")){
+                        return;
+                    }
+
+                    loaderInversion();
+
+                    loaderProyecto();
+
+                    loaderBeneficio();
+
+                    //$("#colombia svg path").hide();
+                    $("#colombia path").hide();
+                    var selector = this;
+                    $(this).show();
+                    $("#indicadoresDiv").hide();
+                    $("#divCircular").hide();
+                    $("#divBarra").hide();
+                    $('[data-id="dependencia-hover"]').hide();
+                    $('[data-id="apalancamiento-hover"]').hide();
+
+
+                    $("#divProyectoNoticia").show();
+                    $("#separadorCiudad").show();
+
+                    $("#nameCiudad").html(nameMunicipio);
+                    $("path.cls-1").css("fill","#8a8a8a");
+                    $(this).css("fill","#960303");
+                    var selectorId = selector.id;
+
+
+
+
+                    let data = {};
+                    data.anio = $("#selectAnoCargue").val();
+                    data.type = 0;
+                    data.table = "view_proyecto";
+                    data.dpto = nameDpto;
+                    data.municipio = nameMunicipio;
+                    api.post("get_data_nfc",data, function (response){
+
+
+                        let str = "";
+
+                        for(var i in response){
+                            str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">"+response[i].nombre_proyecto+"</span></h3>";
+                        }
+
+                        $("#proyectosDiv").append(str);
+
+                    },function (){
+
+                    })
+
+
+                    $("#colombia").load("img/departamentos/prueba.svg",function (){
+                        $("#viewPrueba").append($(selector)[0])
+                        $("#colombia svg path").show()
+                        zoomState(selectorId, "viewPrueba")
+
+                    });
+
+                });
+            });
+        }
+        else{
+            if(nameDpto != null){
+                nameDpto = null;
+                $("#noticiasDiv").show();
+                $("#idTituloMapa").hide();
+                $("#atras").hide();
+                $("#colombia").load("img/Colombia.svg",function (selector){
+
+
+                    $(this).find("path").attr("filter","url(#dropShadow)");
+
+
+                    $("path.cls-1").click(function(){
+                        var url = $(this).attr("url");
+                        $selectorDpto = this;
+                        nameDpto = $(this).attr("url");
+
+                        loaderInversion();
+
+                        loaderDepedencia();
+
+                        loaderApalancamiento();
+
+                        loaderProyecto();
+
+                        loaderBeneficio();
+
+
+                        getParticipacionEje();
+
+                        getParticipacionAportante();
+
+                        loaderIndicativo();
+                        $("#divCircular").show();
+                        $("#divBarra").show();
+                        $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
+                            $("#atras").show();
+                            $("#noticiasDiv").hide();
+                            $("#idTituloMapa").show();
+                            $("#indicadoresDiv").show();
+                            $("#divProyectoNoticia").hide();
+                            $("#changeTitleDpto").html(url.toUpperCase());
+                            $('[data-id="dependencia-hover"]').show();
+                            $('[data-id="apalancamiento-hover"]').show();
+
+
+                            $description = $(".description");
+
+                            $('path.cls-1').hover(function() {
+                                var name = $(this).attr('name');
+                                $("path.cls-1").css("fill","#8a8a8a");
+                                $(this).css("fill","#6ef35e");
+                                if($selectorDpto){
+                                    $($selectorDpto).css("fill","#960303");
+                                }
+                                if(!name.toLowerCase().includes("xxx")){
+                                    $description.addClass('active');
+                                    $description.html(name);
+                                }
+                            }, function() {
+                                $("path.cls-1").css("fill","#8a8a8a");
+                                if($selectorDpto){
+                                    $($selectorDpto).css("fill","#960303");
+                                }
+                                $description.removeClass('active');
+                            });
+
+                            $("path.cls-1").click(function(event){
+                                $description.removeClass('active');
+                                $selectorDpto = this;
+                                nameMunicipio = $(this).attr("name");
+
+                                if(nameMunicipio.toLowerCase().includes("xxx")){
+                                    return;
+                                }
+
+                                loaderInversion();
+
+                                loaderProyecto();
+
+                                loaderBeneficio();
+
+                                //$("#colombia svg path").hide();
+                                $("#colombia path").hide();
+                                var selector = this;
+                                $(this).show();
+                                $("#indicadoresDiv").hide();
+                                $("#divCircular").hide();
+                                $("#divBarra").hide();
+                                $('[data-id="dependencia-hover"]').hide();
+                                $('[data-id="apalancamiento-hover"]').hide();
+                                $("#divProyectoNoticia").show();
+                                $("#separadorCiudad").show();
+
+                                $("#nameCiudad").html(nameMunicipio);
+                                $("path.cls-1").css("fill","#8a8a8a");
+                                $(this).css("fill","#960303");
+                                var selectorId = selector.id;
+
+
+
+
+                                let data = {};
+                                data.anio = $("#selectAnoCargue").val();
+                                data.type = 0;
+                                data.table = "view_proyecto";
+                                data.dpto = nameDpto;
+                                data.municipio = nameMunicipio;
+                                api.post("get_data_nfc",data, function (response){
+
+
+                                    let str = "";
+
+                                    for(var i in response){
+                                        str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">"+response[i].nombre_proyecto+"</span></h3>";
+                                    }
+
+                                    $("#proyectosDiv").append(str);
+
+                                },function (){
+
+                                })
+
+
+                                $("#colombia").load("img/departamentos/prueba.svg",function (){
+                                    $("#viewPrueba").append($(selector)[0])
+                                    $("#colombia svg path").show()
+                                    zoomState(selectorId, "viewPrueba")
+
+                                });
+
+                            });
+
+                        });
+
+
+                    });
+
+                    $description = $(".description");
+
+                    $('path.cls-1').hover(function() {
+                        $(this).attr("class", "cls-1 heyo");
+                        $description.addClass('active');
+                        $description.html($(this).attr('title'));
+
+                        if($(this).attr('title') == "Cundinamarca"){
+                            $("#path6475").css("fill","#CC2929");
+                            $("#path6415").css("fill","#CC2929");
+                        }
+                    }, function() {
+                        if($(this).attr('title') == "Cundinamarca"){
+                            $("#path6475").css("fill","#d2d2e6");
+                            $("#path6415").css("fill","#d2d2e6");
+                        }
+                        $description.removeClass('active');
+                    });
+
+
+                });
+            }
+        }
+    });
+
 
     $("#inversion").attr("src","img/iconos/Inversion.png");
 
@@ -60,8 +329,10 @@ $(document).ready(function (){
     $("#changeTitle").html(title);
 
     $("#selectAnoCargue").change(function (){
-        $("#changeTitle").html(title+" "+dependencia.alias+" "+$("#selectAnoCargue").val());
-
+        $description.removeClass('active');
+        if(dependencia && dependencia.alias != null){
+            $("#changeTitle").html(title+" "+dependencia.alias+" "+$("#selectAnoCargue").val());
+        }
 
         loaderInversion();
 
@@ -78,7 +349,14 @@ $(document).ready(function (){
 
         getParticipacionAportante();
 
+        loaderIndicativo();
 
+
+
+    });
+
+    $("#idTituloMapa").hover(function (){
+        $description.removeClass('active');
     });
 
 
@@ -172,6 +450,7 @@ $(document).ready(function (){
                 });
 
                 $("path.cls-1").click(function(event){
+                    $description.removeClass('active');
                     $selectorDpto = this;
                     nameMunicipio = $(this).attr("name");
 

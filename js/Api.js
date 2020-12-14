@@ -179,9 +179,6 @@ class Api{
 const  api = new Api();
 
 
-$("#selectAnoCargue").change(function (){
-    getLoad();
-});
 
 function getLoadMunicipios(){
     getLoad();
@@ -316,9 +313,7 @@ function getLoad(){
 
 
 
-   api.getVieEjeIndicativo3({},function (data){
-      console.log(data)
-   });
+
 
 }
 
