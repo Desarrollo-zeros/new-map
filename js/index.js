@@ -644,6 +644,11 @@ $(document).ready(function (){
             for(var i in data){
                 dependencia += "<div class='col-md-12'><span>"+data[i].dependencia+"</span></div>";
             }
+
+            if(data.length == 0){
+                $menuTooltip.removeClass('active');
+            }
+
             $("#dependenciasRow").html(dependencia);
         }, function (){
             $menuTooltip.removeClass('active');
@@ -818,6 +823,12 @@ $(document).ready(function (){
 
 
 function getHtmlTable(id, selector, type=""){
+    if(id=="dependencia"){
+        if($("#"+id+"-table-table-tooltip"+type).html().includes("<div id=\"dependenciasRow\" class=\"row\" style=\"overflow-y:scroll;height: 100px\"></div>")){
+            $menuTooltip.removeClass('active');
+            return;
+        }
+    }
     console.log(("#"+id+"-table-table-tooltip"+type));
     selector.html($("#"+id+"-table-table-tooltip"+type).html());
 
@@ -897,7 +908,7 @@ function zoomState(state, nameParent) {
             transformOrigin: "50% 50%"
         })
         .to(zoomState, 0.7, {
-            scale: scale == null ? 2 : parseFloat(scale),
+            scale: scale == null ? 1.5 : parseFloat(scale),
             x: positionElementToCenter(zoomState,nameParent,move).x,
             y: positionElementToCenter(zoomState, nameParent,move).y,
             ease: Power2.easeInOut
