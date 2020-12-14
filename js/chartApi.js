@@ -273,9 +273,17 @@ function getParticipacionEje(){
                             {
                                 ticks: {
                                     stepSize: 15
+                                },
+                                gridLines: {
+                                    color: "rgba(0, 0, 0, 0)",
                                 }
                             }
-                        ]
+                        ],
+                        xAxes: [{
+                            gridLines: {
+                                color: "rgba(0, 0, 0, 0)",
+                            }
+                        }]
                     },
                     tooltips: {
                         enabled: false,
