@@ -600,9 +600,9 @@ $(document).ready(function (){
                     "fonc" : data.fonc,
                     "tercero" : data.tercero
                 };
+                var inversionTotal = (api.dataInversion.total_ejecucion/1000000);
 
-
-                $("#inversionTotal").html(formatCurrency("es-CO", "COP", api.dataInversion.total_ejecucion));
+                $("#inversionTotal").html( formatCurrency("es-CO", "COP", Math.round(inversionTotal)) + " MM");
 
 
             }
@@ -691,15 +691,19 @@ $(document).ready(function (){
 
 
             let str = "";
-
             let total = 0;
             for(var i in data){
-                str += "<tr style='padding: 10px'>\n" +
-                    "<td>"+data[i].dependencia+"</td>\n" +
-                    "<td>"+formatCurrency("es-CO", "COP", data[i].total)+"</td>\n" +
-                    "</tr>";
-                total += parseFloat(data[i].total);
+                let sum = (parseInt(data[i].tercero)+parseInt(data[i].rp)) / (data[i].fonc);
+                if(sum != "Infinity"){
+                    str += "<tr style='padding: 10px'>\n" +
+                        "<td>"+data[i].dependencia+"</td>\n" +
+                        "<td>"+formatCurrency("es-CO", "COP", sum)+" MM</td>\n" +
+                        "</tr>";
+                    total += parseFloat(sum);
+                }
             }
+
+
             $("#apalancamiento-table tbody").html(str);
             $("#apalancamientoValue").html(formatCurrency("es-CO", "COP", total));
 
@@ -832,17 +836,18 @@ function getHtmlTable(id, selector, type=""){
     console.log(("#"+id+"-table-table-tooltip"+type));
     selector.html($("#"+id+"-table-table-tooltip"+type).html());
 
+   var inversionTotal = (api.dataInversion.total_ejecucion/1000000);
 
-    $("#inversionTotal"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.total_ejecucion));
+    $("#inversionTotal"+type).html( formatCurrency("es-CO", "COP", Math.round(inversionTotal)) + " MM");
     $("#rp"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.rp))
     $("#fonc"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.fonc))
     $("#terceros"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.tercero))
 
     $("#total_beneficiario"+type).html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.total_beneficiario).replace("$",""));
-    $("#afroValue"+type).html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.afroValue));
-    $("#joveValue"+type).html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.joveValue))
-    $("#mujerValue"+type).html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.mujerValue))
-    $("#hombreValue"+type).html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.hombreValue))
+    $("#afroValue"+type).html(api.dataBeneficiarios.afroValue);
+    $("#joveValue"+type).html(api.dataBeneficiarios.joveValue)
+    $("#mujerValue"+type).html(api.dataBeneficiarios.mujerValue)
+    $("#hombreValue"+type).html(api.dataBeneficiarios.hombreValue)
 
 
     $("#total_proyecto"+type).html(api.dataVectores.total_proyecto);
