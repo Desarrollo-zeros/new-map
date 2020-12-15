@@ -62,7 +62,7 @@ function getParticipacionAportante(){
                 "publica": getPorcentaje(data.org_nal_pub,$total, 100),
                 "mun": getPorcentaje(data.mun,$total, 100),
                 "fonc" : getPorcentaje(data.fonc,$total, 100),
-                "comunidad" : getPorcentaje(data.com,$total, 100,6),
+                "comunidad" : getPorcentaje(data.com,$total, 100,2),
                 "rp" : getPorcentaje(data.rp,$total, 100),
             };
 

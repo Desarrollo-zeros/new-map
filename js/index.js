@@ -17,6 +17,20 @@ var nameMunicipio;
 
 
 
+
+function cargarMunicipios(selector){
+    var arr = Array.prototype.slice.call( $("svg path") );
+    for(var i in arr){
+        let name = $(arr[i]).attr("name");
+        if(name != undefined){
+            let municipio = $municipios.find(x => x.municipio.toLowerCase().includes(name.toLowerCase()));
+            if(municipio != null){
+                $(arr[i]).css("fill","#d2d2e");
+            }
+        }
+    }
+}
+
 $(document).on('mousemove', function(e){
     if($description){
         $description.css({
@@ -40,8 +54,20 @@ $(document).on('mousemove', function(e){
 });
 
 
+$municipios = [];
 
 $(document).ready(function (){
+
+
+    api.post("get_data_nfc", {
+        "type" : 3,  "table" : "view_municipios_cateferos"
+    },function (data){
+        $municipios = data;
+    },function (error){
+
+    })
+
+
 
     $("#btnAtras").click(function (){
 
@@ -85,7 +111,7 @@ $(document).ready(function (){
 
                 $('path.cls-1').hover(function() {
                     var name = $(this).attr('name');
-                    $("path.cls-1").css("fill","#8a8a8a");
+                    $("path.cls-1").css("fill","#ebebef");
                     $(this).css("fill","#6ef35e");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
@@ -95,7 +121,7 @@ $(document).ready(function (){
                         $description.html(name);
                     }
                 }, function() {
-                    $("path.cls-1").css("fill","#8a8a8a");
+                    $("path.cls-1").css("fill","#ebebef");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
                     }
@@ -132,7 +158,7 @@ $(document).ready(function (){
                     $("#separadorCiudad").show();
 
                     $("#nameCiudad").html(nameMunicipio);
-                    $("path.cls-1").css("fill","#8a8a8a");
+                    $("path.cls-1").css("fill","#ebebef");
                     $(this).css("fill","#960303");
                     var selectorId = selector.id;
 
@@ -199,7 +225,7 @@ $(document).ready(function (){
                 $("#colombia").load("img/Colombia.svg",function (selector){
 
 
-                    $(this).find("path").attr("filter","url(#dropShadow)");
+                    //$(this).find("path").attr("filter","url(#dropShadow)");
 
 
                     $("path.cls-1").click(function(){
@@ -240,7 +266,7 @@ $(document).ready(function (){
 
                             $('path.cls-1').hover(function() {
                                 var name = $(this).attr('name');
-                                $("path.cls-1").css("fill","#8a8a8a");
+                                $("path.cls-1").css("fill","#ebebef");
                                 $(this).css("fill","#6ef35e");
                                 if($selectorDpto){
                                     $($selectorDpto).css("fill","#960303");
@@ -250,7 +276,7 @@ $(document).ready(function (){
                                     $description.html(name);
                                 }
                             }, function() {
-                                $("path.cls-1").css("fill","#8a8a8a");
+                                $("path.cls-1").css("fill","#ebebef");
                                 if($selectorDpto){
                                     $($selectorDpto).css("fill","#960303");
                                 }
@@ -285,7 +311,7 @@ $(document).ready(function (){
                                 $("#separadorCiudad").show();
 
                                 $("#nameCiudad").html(nameMunicipio);
-                                $("path.cls-1").css("fill","#8a8a8a");
+                                $("path.cls-1").css("fill","#ebebef");
                                 $(this).css("fill","#960303");
                                 var selectorId = selector.id;
 
@@ -436,7 +462,7 @@ $(document).ready(function (){
     $("#colombia").load("img/Colombia.svg",function (selector){
 
 
-        $(this).find("path").attr("filter","url(#dropShadow)");
+        //$(this).find("path").attr("filter","url(#dropShadow)");
 
 
         $("path.cls-1").click(function(){
@@ -475,7 +501,7 @@ $(document).ready(function (){
 
                 $('path.cls-1').hover(function() {
                     var name = $(this).attr('name');
-                    $("path.cls-1").css("fill","#8a8a8a");
+                    $("path.cls-1").css("fill","#ebebef");
                     $(this).css("fill","#6ef35e");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
@@ -485,7 +511,7 @@ $(document).ready(function (){
                         $description.html(name);
                     }
                 }, function() {
-                    $("path.cls-1").css("fill","#8a8a8a");
+                    $("path.cls-1").css("fill","#ebebef");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
                     }
@@ -520,7 +546,7 @@ $(document).ready(function (){
                     $("#separadorCiudad").show();
 
                     $("#nameCiudad").html(nameMunicipio);
-                    $("path.cls-1").css("fill","#8a8a8a");
+                    $("path.cls-1").css("fill","#ebebef");
                     $(this).css("fill","#960303");
                     var selectorId = selector.id;
 
@@ -780,9 +806,6 @@ $(document).ready(function (){
                 height : 50,
             });
 
-
-
-
         }, function (){
             $menuTooltip.removeClass('active');
             $(this).find("path").css("fill","#717171");
@@ -897,17 +920,17 @@ function getHtmlTable(id, selector, type=""){
     $("#terceros"+type).html(format(api.dataInversion.tercero , 1000000, "$") + " MM");
 
     $("#total_beneficiario"+type).html(format(api.dataBeneficiarios.total_beneficiario));
-    $("#afroValue"+type).html(format(api.dataBeneficiarios.afroValue));
-    $("#joveValue"+type).html(format(api.dataBeneficiarios.joveValue))
-    $("#mujerValue"+type).html(format(api.dataBeneficiarios.mujerValue))
-    $("#hombreValue"+type).html(format(api.dataBeneficiarios.hombreValue))
+    $("#afroValue"+type).html("<span style='color: #000000'>"+format(api.dataBeneficiarios.afroValue)+"</span>");
+    $("#joveValue"+type).html("<span style='color: #000000'>"+format(api.dataBeneficiarios.joveValue)+"</span>")
+    $("#mujerValue"+type).html("<span style='color: #000000'>"+format(api.dataBeneficiarios.mujerValue)+"</span>")
+    $("#hombreValue"+type).html("<span style='color: #000000'>"+format(api.dataBeneficiarios.hombreValue)+"</span>")
 
 
     $("#total_proyecto"+type).html(format(api.dataVectores.total_proyecto,1,""));
-    $("#infraestructuraValue"+type). html("Infraestructura "+format(api.dataVectores.infraestructuraValue.total,1,""));
-    $("#productividadValue"+type). html("Productividad "+ format(api.dataVectores.productividadValue.total,1,""));
-    $("#cuidadoRecursosNaturalesValue"+type). html("Cuidado de Recursos Naturales "+format(api.dataVectores.cuidadoRecursosNaturales.total,1,""));
-    $("#costosProduccionValue"+type). html("Costos de Producción"+format(api.dataVectores.costosProduccion.total,1,""));
+    $("#infraestructuraValue"+type). html("Infraestructura <br><span style='color: #000000'>"+format(api.dataVectores.infraestructuraValue.total,1,"") + "</span>");
+    $("#productividadValue"+type). html("Productividad <br><span style='color: #000000'>"+ format(api.dataVectores.productividadValue.total,1,"") + "</span>");
+    $("#cuidadoRecursosNaturalesValue"+type). html("Cuidado de Recursos Naturales <br><span style='color: #000000'>"+format(api.dataVectores.cuidadoRecursosNaturales.total,1,"") + "</span>");
+    $("#costosProduccionValue"+type). html("Costos de Producción <br><span style='color: #000000'>"+format(api.dataVectores.costosProduccion.total,1,"") + "</span>");
 
 }
 
