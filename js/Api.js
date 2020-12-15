@@ -1,7 +1,7 @@
 class Api{
 
     constructor() {
-        this.url = "http://localhost/sustain_map/app_modules/maps/API/maps/";
+        this.url = "http://13.59.69.169/sustain_map/app_modules/maps/API/maps/";
         this.response = null;
 
         this.dataVectores= {};
