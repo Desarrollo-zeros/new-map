@@ -976,6 +976,18 @@ function zoomState(state, nameParent) {
    console.log(scale);
    console.log(move);
 
+   var svg1 = zoomState;
+   var rect = svg1.getBoundingClientRect();
+
+   var nscale = 0; //Establecer nuevo scale automatico, ignora SVG
+   if(rect.width > rect.height){
+        nscale = 620 / (rect.width);
+   }else{
+        nscale = 620 / rect.height;
+   }
+   move = 0; //Anular el move asignado en el SVG
+   console.log("scale: " + nscale)
+
     tl
         .set(zoomState, {
             visibility: "visible"
@@ -984,12 +996,11 @@ function zoomState(state, nameParent) {
             transformOrigin: "50% 50%"
         })
         .to(zoomState, 0.7, {
-            scale: scale == null ? 1.5 : parseFloat(scale),
+            scale: nscale,
             x: positionElementToCenter(zoomState,nameParent,move).x,
             y: positionElementToCenter(zoomState, nameParent,move).y,
             ease: Power2.easeInOut
         });
-
     tl.pause;
 
     $('.state-details').on('click', function() {
