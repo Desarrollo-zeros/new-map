@@ -652,8 +652,12 @@ $(document).ready(function (){
 
             let str = "";
 
+
+
             for(var i in data){
-                str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-2'><span style=\"font-weight: bold;\">"+data[i].indicador_nu.replace('.00','')+"</span></div> <div class='col-md-10'><span>"+data[i].indicador+"</span> </div> </div></h3>";
+                if(data[i].indicador_nu.replace('.00','') != "0"){
+                    str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-2'><span style=\"font-weight: bold;\">"+data[i].indicador_nu.replace('.00','')+"</span></div> <div class='col-md-10'><span>"+data[i].indicador+"</span> </div> </div></h3>";
+                }
             }
 
             $("#scrollerIndicativo").append(str);
