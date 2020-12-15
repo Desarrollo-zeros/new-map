@@ -18,13 +18,15 @@ var nameMunicipio;
 
 
 
-function cargarMunicipios(selector){
+function cargarMunicipios(){
+    debugger
     var arr = Array.prototype.slice.call( $("svg path") );
     for(var i in arr){
-        let name = $(arr[i]).attr("name");
+        let name = $(arr[i]).attr("url");
         if(name != undefined){
             let municipio = $municipios.find(x => x.municipio.toLowerCase().includes(name.toLowerCase()));
             if(municipio != null){
+                console.log(municipio);
                 $(arr[i]).css("fill","#d2d2e");
             }
         }
@@ -75,6 +77,9 @@ $(document).ready(function (){
 
         if(nameMunicipio != null){
             nameMunicipio = null;
+
+            $("#dependenciasRow").removeClass("scrollerY");
+            $("#apalancamiento-table tbody").removeClass("scrollerY");
 
             loaderInversion();
 
@@ -199,6 +204,8 @@ $(document).ready(function (){
         else{
             if(nameDpto != null){
                 nameDpto = null;
+                $("#dependenciasRow").removeClass("scrollerY");
+                $("#apalancamiento-table tbody").removeClass("scrollerY");
                 $("#indicadoresDiv").hide();
                 loaderInversion();
 
@@ -486,6 +493,9 @@ $(document).ready(function (){
             getParticipacionAportante();
 
             loaderIndicativo();
+
+            $("#dependenciasRow").removeClass("scrollerY");
+            $("#apalancamiento-table tbody").removeClass("scrollerY");
 
             $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
 
@@ -1004,9 +1014,9 @@ function zoomState(state, nameParent) {
 
    var nscale = 0; //Establecer nuevo scale automatico, ignora SVG
    if(rect.width > rect.height){
-        nscale = 620 / (rect.width);
+        nscale = 400 / rect.width;
    }else{
-        nscale = 620 / rect.height;
+        nscale = 400 / rect.height;
    }
    move = 0; //Anular el move asignado en el SVG
    console.log("scale: " + nscale)

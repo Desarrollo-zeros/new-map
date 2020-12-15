@@ -27,7 +27,11 @@
                             <br>
                             <div class="">
                                 <div class="row">
-                                    <div class="col-md-2 text-noticia" style="z-index: 99">
+                                    <div class="col-md-12">
+                                        <h2><b><span class="text-noticia" id="changeTitle">MAPA DE SOSTENIBILIDAD </span></b></h2>
+                                    </div>
+                                    <div class="col-md-5 text-noticia" style="z-index: 99; display: inline">
+
                                         <label>Año de información</label>
                                         <select value="2019" class="form-control" id="selectAnoCargue">
                                             <option>2014</option>
@@ -39,10 +43,7 @@
                                             <option>2020</option>
                                             <option>2021</option>
                                         </select>
-                                    </div>
 
-                                    <div class="col-md-12">
-                                        <h2><b><span class="text-noticia" id="changeTitle">MAPA DE SOSTENIBILIDAD </span></b></h2>
                                     </div>
                                 </div>
                                 <br>
@@ -129,7 +130,7 @@
 
 
                         <div id="dependencia-table-table-tooltip" style="display: none" >
-                            <div id="dependenciasRow" class="row" style="overflow-y:scroll;height: 100px">
+                            <div id="dependenciasRow" class="row scrollerY" style="height: 100px">
 
                             </div>
                         </div>
@@ -151,14 +152,14 @@
 
                         <div id="apalancamiento-table-table-tooltip" style="display: none; color: #960303" >
                             <div class="row" >
-                                <table id="apalancamiento-table" class="table" style="color:#960303!important; ">
+                                <table id="apalancamiento-table" style="color:#960303!important; ">
                                     <thead>
                                         <tr style="display:table;width:100%;table-layout:fixed;">
                                             <th scope="col">DEPENDENCIA</th>
-                                            <th scope="col">TOTAL</th>
+                                            <th scope="col" style="position: absolute;left: 69%;}">TOTAL</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="display:block;max-height:160px;overflow-y:scroll;">
+                                    <tbody class="scrollerY" style="display:block;max-height:160px;">
                                     </tbody>
                                 </table>
                             </div>
