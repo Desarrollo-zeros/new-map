@@ -1,6 +1,6 @@
 <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100.3 114.11">
    <defs>
-      <style>.cls-1{fill: #8a8a8a;stroke:#fff;stroke-miterlimit:3.86;stroke-width:0.25px;}</style>
+      <style>.cls-1{fill: #ebebef;;stroke:#fff;stroke-miterlimit:3.86;stroke-width:0.25px;}</style>
    </defs>
    <path name="XXXX" id="path6694" class="cls-1" d="M188.11,233.9l-.05-.37.16-.3,0-.41.25-.18v-.5l.38-.3-.06-.28,0-.45-.14-.6-.38,0-.46.16.07.2-.2.09-.28.46-.52-.07,0,.19-.36.17h-.14l-.25.53-.32.59-.48.55-.86.87-.21.3.42-.06.59.5.61.14.07.39.87.18.36.3.39-.26v-.38l.32-.16.34-.42-.23-.39.07-.45Z" transform="translate(-140.01 -184.32)"/>
    <path name="Cachipay" id="path6696-9" class="cls-1" d="M166.53,241.58l-.29.39-.26,0-.25.24-.38.47H165l-.43-.05-.31.1-.12.45.13.3-.38.52-.44.16-.35-.2h-.35l-.38.34-.36-.18-.39.51-.53.44.35.32.12.39-.36.24-.07.41,0,.23-.15.31v.32l.15-.15h.25l.35-.19.29,0,.3-.19.21,0,.24-.12.4,0,.23-.24.07-.3h.25l.26-.47.26-.24.38-.1.43.1.13-.39.48-.21.15-.62.39-.49.2-.31.2-.79-.1-.3.18-.38-.18-.31Z" transform="translate(-140.01 -184.32)"/>
@@ -156,19 +156,5 @@
 
 
 
-   <filter id="dropShadow" height="130%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-      <!-- stdDeviation is how much to blur -->
-      <feOffset dx="0" dy="0.2" result="offsetblur"/>
-      result="offsetblur"/> <!-- how much to offset -->
-      <feComponentTransfer>
-         <feFuncA type="linear" slope="0.3"/>
-      </feComponentTransfer>
-      <feMerge>
-         <feMergeNode/>
-         <!-- this contains the offset blurred image -->
-         <feMergeNode in="SourceGraphic"/>
-         <!-- this contains the element that the filter is applied to -->
-      </feMerge>
-   </filter>
+
 </svg>

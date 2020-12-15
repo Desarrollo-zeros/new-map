@@ -94,7 +94,7 @@ $(document).ready(function (){
         document.getElementById("departamentoSpan").innerHTML=name;
 
         $("path.cls-1").on("mouseover",function(){
-            $("path.cls-1").css("fill", "#d2d2e6");
+            $("path.cls-1").css("fill", "#ebebef");
             var randomColor = Math.floor(Math.random()*16777215).toString(16);
             $(this).css("fill", "#"+randomColor);
             $("#"+idDpta).css("fill","#960303");
