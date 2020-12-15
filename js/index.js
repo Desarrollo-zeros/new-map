@@ -643,7 +643,7 @@ $(document).ready(function (){
                 };
 
 
-                $("#inversionTotal").html( format(api.dataInversion.total_ejecucion, 1000000) + " MM");
+                $("#inversionTotal").html( format(api.dataInversion.total_ejecucion, 1000000,"$") + " MM");
 
             }
         }, function (error){
@@ -744,7 +744,7 @@ $(document).ready(function (){
                 if(sum != "Infinity"){
                     str += "<tr style=''>\n" +
                         "<td>"+data[i].dependencia+"</td>\n" +
-                        "<td><div class='col-md-12'>"+format(sum,1)+" MM</div></td>\n" +
+                        "<td><div class='col-md-12'>"+format(sum,1,"$")+" MM</div></td>\n" +
                         "</tr>";
                     total += parseFloat(sum);
                 }
@@ -752,7 +752,7 @@ $(document).ready(function (){
 
 
             $("#apalancamiento-table tbody").html(str);
-            $("#apalancamientoValue").html(format(total) + " MM");
+            $("#apalancamientoValue").html(format(total,1,"$") + " MM");
 
         }, function (){
             $menuTooltip.removeClass('active');
@@ -812,7 +812,7 @@ $(document).ready(function (){
                     costosProduccion : api.dataVectores.costosProduccion ? api.dataVectores.costosProduccion : {},
                 };
 
-                $("#total_proyecto").html(api.dataVectores.total_proyecto);
+                $("#total_proyecto").html(format(api.dataVectores.total_proyecto,1,""));
             }
         }, function (error){
 
@@ -853,7 +853,7 @@ $(document).ready(function (){
                 };
 
 
-                $("#total_beneficiario").html(format(api.dataBeneficiarios.total_beneficiario));
+                $("#total_beneficiario").html(format(api.dataBeneficiarios.total_beneficiario,1,""));
 
 
             }
@@ -885,24 +885,24 @@ function getHtmlTable(id, selector, type=""){
 
 
 
-    $("#inversionTotal").html( format(api.dataInversion.total_ejecucion, 1000000) + " MM");
+    $("#inversionTotal").html( format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
 
-    $("#rp"+type).html(format(api.dataInversion.rp , 1000000) + " MM")
-    $("#fonc"+type).html(format( api.dataInversion.fonc , 1000000) + " MM")
-    $("#terceros"+type).html(format(api.dataInversion.tercero , 1000000) + " MM");
+    $("#rp"+type).html(format(api.dataInversion.rp , 1000000, "$") + " MM")
+    $("#fonc"+type).html(format( api.dataInversion.fonc , 1000000, "$") + " MM")
+    $("#terceros"+type).html(format(api.dataInversion.tercero , 1000000, "$") + " MM");
 
-    $("#total_beneficiario"+type).html(api.dataBeneficiarios.total_beneficiario);
-    $("#afroValue"+type).html(api.dataBeneficiarios.afroValue);
-    $("#joveValue"+type).html(api.dataBeneficiarios.joveValue)
-    $("#mujerValue"+type).html(api.dataBeneficiarios.mujerValue)
-    $("#hombreValue"+type).html(api.dataBeneficiarios.hombreValue)
+    $("#total_beneficiario"+type).html(format(api.dataBeneficiarios.total_beneficiario));
+    $("#afroValue"+type).html(format(api.dataBeneficiarios.afroValue));
+    $("#joveValue"+type).html(format(api.dataBeneficiarios.joveValue))
+    $("#mujerValue"+type).html(format(api.dataBeneficiarios.mujerValue))
+    $("#hombreValue"+type).html(format(api.dataBeneficiarios.hombreValue))
 
 
-    $("#total_proyecto"+type).html(api.dataVectores.total_proyecto);
-    $("#infraestructuraValue"+type). html("Infraestructura "+api.dataVectores.infraestructuraValue.total);
-    $("#productividadValue"+type). html("Productividad "+ api.dataVectores.productividadValue.total);
-    $("#cuidadoRecursosNaturalesValue"+type). html("Cuidado de Recursos Naturales "+api.dataVectores.cuidadoRecursosNaturales.total);
-    $("#costosProduccionValue"+type). html("Costos de Producción "+api.dataVectores.costosProduccion.total);
+    $("#total_proyecto"+type).html(format(api.dataVectores.total_proyecto,1,""));
+    $("#infraestructuraValue"+type). html("Infraestructura "+format(api.dataVectores.infraestructuraValue.total,1,""));
+    $("#productividadValue"+type). html("Productividad "+ format(api.dataVectores.productividadValue.total,1,""));
+    $("#cuidadoRecursosNaturalesValue"+type). html("Cuidado de Recursos Naturales "+format(api.dataVectores.cuidadoRecursosNaturales.total,1,""));
+    $("#costosProduccionValue"+type). html("Costos de Producción"+format(api.dataVectores.costosProduccion.total,1,""));
 
 }
 
@@ -926,7 +926,7 @@ function formatCurrency (locales, currency, number, fractionDigits = 0, mm= 0) {
 }
 
 
-function format(value, div = 1)
+function format(value, div = 1, signo = "")
 {
     if(div == 1){
         var v = value;
@@ -934,7 +934,7 @@ function format(value, div = 1)
         var v = Math.round(value / div);
     }
 
-    return "$ "+new Intl.NumberFormat(["ban", "id"]).format(v)
+    return signo+" "+new Intl.NumberFormat(["ban", "id"]).format(v)
 }
 
 
