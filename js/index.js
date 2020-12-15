@@ -679,15 +679,22 @@ $(document).ready(function (){
                 data = data.filter(x => x.dpta.toLowerCase().includes(nameDpto.toLowerCase()));
             }
 
-            $("#depedenciaTotal").html(data.length);
+
             let dependencia = "";
+            let dpto = [];
             for(var i in data){
-                dependencia += "<div class='col-md-12'><span>"+data[i].dependencia+"</span></div>";
+                if(dpto.find(x => x == data[i].dependencia) == undefined){
+                    dpto.push(data[i].dependencia);
+                    dependencia += "<div class='col-md-12'><span>"+data[i].dependencia+"</span></div>";
+                }
+
             }
 
             if(data.length == 0){
                 $menuTooltip.removeClass('active');
             }
+
+            $("#depedenciaTotal").html(dpto.length);
 
             $("#dependenciasRow").html(dependencia);
         }, function (){
