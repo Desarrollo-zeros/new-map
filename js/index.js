@@ -744,7 +744,7 @@ $(document).ready(function (){
                 if(sum != "Infinity"){
                     str += "<tr style=''>\n" +
                         "<td>"+data[i].dependencia+"</td>\n" +
-                        "<td><div class='col-md-12'>"+format(sum,1,"$")+" MM</div></td>\n" +
+                        "<td><div class='col-md-12'>"+format(sum,1,"")+"</div></td>\n" +
                         "</tr>";
                     total += parseFloat(sum);
                 }
@@ -752,7 +752,7 @@ $(document).ready(function (){
 
 
             $("#apalancamiento-table tbody").html(str);
-            $("#apalancamientoValue").html(format(total,1,"$") + " MM");
+            $("#apalancamientoValue").html(format(total,1,"") + "");
 
         }, function (){
             $menuTooltip.removeClass('active');
