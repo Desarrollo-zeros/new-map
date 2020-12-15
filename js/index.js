@@ -45,8 +45,30 @@ $(document).ready(function (){
 
     $("#btnAtras").click(function (){
 
+
+
         if(nameMunicipio != null){
             nameMunicipio = null;
+
+            loaderInversion();
+
+            loaderDepedencia();
+
+            loaderApalancamiento();
+
+            loaderProyecto();
+
+            loaderBeneficio();
+
+
+            getParticipacionEje();
+
+            getParticipacionAportante();
+
+            loaderIndicativo();
+
+            loaderApalancamiento();
+
             $("#divCircular").show();
             $("#divBarra").show();
             $("#colombia").load("img/departamentos/"+nameDpto+".svg",function (selector){
@@ -143,7 +165,6 @@ $(document).ready(function (){
                         $("#viewPrueba").append($(selector)[0])
                         $("#colombia svg path").show()
                         zoomState(selectorId, "viewPrueba")
-
                     });
 
                 });
@@ -152,6 +173,26 @@ $(document).ready(function (){
         else{
             if(nameDpto != null){
                 nameDpto = null;
+                $("#indicadoresDiv").hide();
+                loaderInversion();
+
+                loaderDepedencia();
+
+                loaderApalancamiento();
+
+                loaderProyecto();
+
+                loaderBeneficio();
+
+
+                getParticipacionEje();
+
+                getParticipacionAportante();
+
+                loaderIndicativo();
+
+                loaderApalancamiento();
+
                 $("#noticiasDiv").show();
                 $("#idTituloMapa").hide();
                 $("#atras").hide();
@@ -557,7 +598,7 @@ $(document).ready(function (){
             let str = "";
 
             for(var i in data){
-                str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">"+data[i].indicador_nu+"</span> <span>"+data[i].indicador+"</span> </h3>";
+                str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-2'><span style=\"font-weight: bold;\">"+data[i].indicador_nu.replace('.00','')+"</span></div> <div class='col-md-10'><span>"+data[i].indicador+"</span> </div> </div></h3>";
             }
 
             $("#scrollerIndicativo").append(str);
@@ -600,10 +641,9 @@ $(document).ready(function (){
                     "fonc" : data.fonc,
                     "tercero" : data.tercero
                 };
-                var inversionTotal = (api.dataInversion.total_ejecucion/1000000);
 
-                $("#inversionTotal").html( formatCurrency("es-CO", "COP", Math.round(inversionTotal)) + " MM");
 
+                $("#inversionTotal").html( format(api.dataInversion.total_ejecucion, 1000000) + " MM");
 
             }
         }, function (error){
@@ -695,9 +735,9 @@ $(document).ready(function (){
             for(var i in data){
                 let sum = (parseInt(data[i].tercero)+parseInt(data[i].rp)) / (data[i].fonc);
                 if(sum != "Infinity"){
-                    str += "<tr style='padding: 10px'>\n" +
+                    str += "<tr style=''>\n" +
                         "<td>"+data[i].dependencia+"</td>\n" +
-                        "<td>"+formatCurrency("es-CO", "COP", sum)+" MM</td>\n" +
+                        "<td><div class='col-md-12'>"+format(sum,1)+" MM</div></td>\n" +
                         "</tr>";
                     total += parseFloat(sum);
                 }
@@ -705,7 +745,7 @@ $(document).ready(function (){
 
 
             $("#apalancamiento-table tbody").html(str);
-            $("#apalancamientoValue").html(formatCurrency("es-CO", "COP", total));
+            $("#apalancamientoValue").html(format(total) + " MM");
 
         }, function (){
             $menuTooltip.removeClass('active');
@@ -806,7 +846,7 @@ $(document).ready(function (){
                 };
 
 
-                $("#total_beneficiario").html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.total_beneficiario).replace("$",""));
+                $("#total_beneficiario").html(format(api.dataBeneficiarios.total_beneficiario));
 
 
             }
@@ -836,14 +876,15 @@ function getHtmlTable(id, selector, type=""){
     console.log(("#"+id+"-table-table-tooltip"+type));
     selector.html($("#"+id+"-table-table-tooltip"+type).html());
 
-   var inversionTotal = (api.dataInversion.total_ejecucion/1000000);
 
-    $("#inversionTotal"+type).html( formatCurrency("es-CO", "COP", Math.round(inversionTotal)) + " MM");
-    $("#rp"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.rp))
-    $("#fonc"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.fonc))
-    $("#terceros"+type).html(formatCurrency("es-CO", "COP", api.dataInversion.tercero))
 
-    $("#total_beneficiario"+type).html(formatCurrency("es-CO", "COP", api.dataBeneficiarios.total_beneficiario).replace("$",""));
+    $("#inversionTotal").html( format(api.dataInversion.total_ejecucion, 1000000) + " MM");
+
+    $("#rp"+type).html(format(api.dataInversion.rp , 1000000) + " MM")
+    $("#fonc"+type).html(format( api.dataInversion.fonc , 1000000) + " MM")
+    $("#terceros"+type).html(format(api.dataInversion.tercero , 1000000) + " MM");
+
+    $("#total_beneficiario"+type).html(api.dataBeneficiarios.total_beneficiario);
     $("#afroValue"+type).html(api.dataBeneficiarios.afroValue);
     $("#joveValue"+type).html(api.dataBeneficiarios.joveValue)
     $("#mujerValue"+type).html(api.dataBeneficiarios.mujerValue)
@@ -863,12 +904,30 @@ SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformTo
     return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
 };
 
-function formatCurrency (locales, currency, number, fractionDigits = 0) {
-    return new Intl.NumberFormat(locales, {
+function formatCurrency (locales, currency, number, fractionDigits = 0, mm= 0) {
+
+    number =  mm == 0 ? number :  number / mm;
+
+    /*number =  (new Intl.NumberFormat(locales, {
         style: 'currency',
         currency: currency,
         minimumFractionDigits: fractionDigits
-    }).format(number);
+    }).format(number));*/
+
+    return format(number);
+
+}
+
+
+function format(value, div = 1)
+{
+    if(div == 1){
+        var v = value;
+    }else{
+        var v = Math.round(value / div);
+    }
+
+    return "$ "+new Intl.NumberFormat(["ban", "id"]).format(v)
 }
 
 
