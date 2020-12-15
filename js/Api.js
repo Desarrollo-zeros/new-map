@@ -106,7 +106,7 @@ class Api{
         $data.municipio = nameMunicipio;
 
         _self.post("get_data_nfc", $data,function (data){
-            console.log(data);
+
 
             var AMBIENTAL = data.find(x => x.eje === "AMBIENTAL");
             var GOBERNANZA =  data.find(x => x.eje === "GOBERNANZA");
@@ -140,7 +140,7 @@ class Api{
 
 
             if (data && data[0].ano_carge) {
-                console.log(data);
+
 
                 chDonutData1.datasets[0].data = [
                     getPorcentaje(api.dataEjeInidicativo1["AMBIENTAL"].total,100),
@@ -160,7 +160,7 @@ class Api{
                 }
             }
         }, function (error){
-            console.log(error);
+
         });
     }
     getVieEjeIndicativo3 = function ($data = {}, sucessCallBack, falloCallback){
@@ -190,7 +190,7 @@ function getLoad(){
     //inversion
 
     api.getVieEjeIndicativo({}, function (data){
-        console.log(data);
+
 
 
 
@@ -200,7 +200,7 @@ function getLoad(){
         circlemapChart.update();
 
         if(data && data.ano_carge){
-            console.log(data);
+
 
             circleMapData.datasets[0].data = [getPorcentaje(data.gob), getPorcentaje(data.inter),  getPorcentaje(data.org_nal_pri),  getPorcentaje(data.org_nal_pub),  getPorcentaje(data.mun)];
             switch (typeDefault){
@@ -230,7 +230,6 @@ function getLoad(){
 
 
     api.getVieEjeIndicativo1({}, function (data){
-        console.log(data);
 
         var AMBIENTAL = data.find(x => x.eje === "AMBIENTAL");
         var GOBERNANZA =  data.find(x => x.eje === "GOBERNANZA");
@@ -264,7 +263,7 @@ function getLoad(){
 
 
         if (data && data[0].ano_carge) {
-            console.log(data);
+
 
 
 

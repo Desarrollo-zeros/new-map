@@ -44,7 +44,7 @@ function getParticipacionAportante(){
     api.getVieEjeIndicativo({}, function (data){
 
         if(data && data.ano_carge) {
-            console.log(data);
+
 
             $total = parseInt(data.gob);
             $total += parseInt(data.inter);
@@ -76,7 +76,7 @@ function getParticipacionAportante(){
             $("#publica").html($dataAPortante.publica+"%");
 
 
-            console.log($dataAPortante);
+
 
 
             if(ChartApi["participacion-inversion-por-aportante"] != null){
@@ -184,7 +184,7 @@ function getParticipacionEje(){
         };
 
         if (data && data[0].ano_carge) {
-            console.log(data);
+
 
 
 
@@ -192,7 +192,7 @@ function getParticipacionEje(){
             $total += parseInt(api.dataEjeInidicativo1["GOBERNANZA"].total);
             $total += parseInt(api.dataEjeInidicativo1["ECONOMICO"].total);
             $total += parseInt(api.dataEjeInidicativo1["SOCIAL"].total);
-            console.log($total);
+
 
             $dataEje = [
                 {"AMBIENTAL" : getPorcentaje(api.dataEjeInidicativo1["AMBIENTAL"].total, $total,100)},
@@ -202,6 +202,12 @@ function getParticipacionEje(){
             ];
 
 
+            $dataColor = [
+                {"GOBERNANZA" : "#e39f3d" },
+                {"AMBIENTAL" : "#259261"},
+                {"ECONOMICO" : "#960303"},
+                {"SOCIAL" : "#960303"}
+            ];
 
             $dataEje = $dataEje.sort(function(a, b) {
                 if (a[Object.keys(a)] > b[Object.keys(b)]) return 1;
@@ -217,7 +223,7 @@ function getParticipacionEje(){
 
 
             $dataEje.forEach(x => {
-                $dataValue.push(x[Object.keys(x)]);
+                $dataValue.push( x[Object.keys(x)]);
 
             });
 
@@ -235,7 +241,7 @@ function getParticipacionEje(){
                         {
                             data: $dataValue,
                             backgroundColor: [
-                                '#0d1c45',
+                                '#e39f3d',
                                 '#259261',
                                 '#0c8ecf',
                                 '#960303'
@@ -301,11 +307,11 @@ function getParticipacionEje(){
                             if (tooltipModel.body) {
                                 var titleLines = tooltipModel.title || [];
                                 var bodyLines = tooltipModel.body.map(getBody);
-                                console.log(tooltipModel);
+
                                 var innerHtml = '<thead>';
                                 let url = "";
                                 titleLines.forEach(function(title) {
-                                    console.log(title);
+
                                     innerHtml += '<tr><th>' + title + '</th></tr>';
                                     if(title.toLowerCase().includes("económico")){
                                         url = "https://federaciondecafeteros.org/sostenibilidad/eje-economico/";
@@ -320,7 +326,7 @@ function getParticipacionEje(){
                                     }
                                 });
                                 innerHtml += '</thead><tbody>';
-                                console.log(bodyLines);
+
                                 let html = "<hr><span>Buscamos Contribuir a la rentabilidad del caficultor" +
                                     "<br>" +
                                     "<a style='font-size: 12px; text-decoration: none; color: #ffffff' href='"+url+"' target='_blank'>Enlace a la selección Sostenibilidad</a></span><hr>";

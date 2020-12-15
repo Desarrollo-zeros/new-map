@@ -19,15 +19,13 @@ var nameMunicipio;
 
 
 function cargarMunicipios(){
-    debugger
     var arr = Array.prototype.slice.call( $("svg path") );
     for(var i in arr){
-        let name = $(arr[i]).attr("url");
+        let name = $(arr[i]).attr("name");
         if(name != undefined){
             let municipio = $municipios.find(x => x.municipio.toLowerCase().includes(name.toLowerCase()));
             if(municipio != null){
-                console.log(municipio);
-                $(arr[i]).css("fill","#d2d2e");
+                $(arr[i]).css("fill","#d2d2e6");
             }
         }
     }
@@ -103,6 +101,7 @@ $(document).ready(function (){
             $("#divCircular").show();
             $("#divBarra").show();
             $("#colombia").load("img/departamentos/"+nameDpto+".svg",function (selector){
+                cargarMunicipios()
                 $("#noticiasDiv").hide();
                 $("#idTituloMapa").show();
                 $("#indicadoresDiv").show();
@@ -113,10 +112,16 @@ $(document).ready(function (){
                 $('[data-id="apalancamiento-hover"]').show();
 
                 $description = $(".description");
-
+                var style = null;
                 $('path.cls-1').hover(function() {
                     var name = $(this).attr('name');
+                    style = $(this).attr("style")
+
+                    if(style != "fill: rgb(210, 210, 230);"){
+                        return;
+                    }
                     $("path.cls-1").css("fill","#ebebef");
+
                     $(this).css("fill","#6ef35e");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
@@ -126,6 +131,10 @@ $(document).ready(function (){
                         $description.html(name);
                     }
                 }, function() {
+                    if(style != "fill: rgb(210, 210, 230);"){
+                        return;
+                    }
+                    $(this).attr("style", style);
                     $("path.cls-1").css("fill","#ebebef");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
@@ -259,6 +268,7 @@ $(document).ready(function (){
                         $("#divCircular").show();
                         $("#divBarra").show();
                         $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
+                            cargarMunicipios()
                             $("#atras").show();
                             $("#noticiasDiv").hide();
                             $("#idTituloMapa").show();
@@ -273,7 +283,7 @@ $(document).ready(function (){
 
                             $('path.cls-1').hover(function() {
                                 var name = $(this).attr('name');
-                                $("path.cls-1").css("fill","#ebebef");
+
                                 $(this).css("fill","#6ef35e");
                                 if($selectorDpto){
                                     $($selectorDpto).css("fill","#960303");
@@ -283,7 +293,7 @@ $(document).ready(function (){
                                     $description.html(name);
                                 }
                             }, function() {
-                                $("path.cls-1").css("fill","#ebebef");
+                                $(this).css("fill","#ebebef");
                                 if($selectorDpto){
                                     $($selectorDpto).css("fill","#960303");
                                 }
@@ -498,7 +508,7 @@ $(document).ready(function (){
             $("#apalancamiento-table tbody").removeClass("scrollerY");
 
             $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
-
+                cargarMunicipios()
                 $description.removeClass('active');
 
                 $("#noticiasDiv").hide();
@@ -508,10 +518,14 @@ $(document).ready(function (){
                 $("#changeTitleDpto").html(url.toUpperCase());
 
                 $description = $(".description");
-
+                var style = null;
                 $('path.cls-1').hover(function() {
                     var name = $(this).attr('name');
-                    $("path.cls-1").css("fill","#ebebef");
+                    style = $(this).attr("style")
+
+                    if(style != "fill: rgb(210, 210, 230);"){
+                        return;
+                    }
                     $(this).css("fill","#6ef35e");
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
@@ -521,7 +535,10 @@ $(document).ready(function (){
                         $description.html(name);
                     }
                 }, function() {
-                    $("path.cls-1").css("fill","#ebebef");
+                    if(style != "fill: rgb(210, 210, 230);"){
+                        return;
+                    }
+                    $(this).attr("style",style);
                     if($selectorDpto){
                         $($selectorDpto).css("fill","#960303");
                     }
@@ -631,7 +648,7 @@ $(document).ready(function (){
         data.dpto = nameDpto;
         data.municipio = nameMunicipio;
         api.post("get_data_nfc",data, function (data){
-            console.log(data);
+
 
             let str = "";
 
@@ -669,7 +686,7 @@ $(document).ready(function (){
 
 
         api.getInversion({}, function (data){
-            console.log(data);
+
             if(data && data.ano_carge){
 
 
@@ -685,7 +702,7 @@ $(document).ready(function (){
 
             }
         }, function (error){
-            console.log(error);
+
         });
     }
 
@@ -711,7 +728,7 @@ $(document).ready(function (){
 
         api.post("get_data_nfc", {"table" : "view_dependencias", "type" : 3}, function (data){
 
-            console.log(data);
+
 
             if(nameDpto!=null){
                 data = data.filter(x => x.dpta.toLowerCase().includes(nameDpto.toLowerCase()));
@@ -772,14 +789,14 @@ $(document).ready(function (){
 
         api.post("get_data_nfc",data , function (data){
 
-            console.log(data);
+
 
 
             let str = "";
             let total = 0;
             for(var i in data){
                 if(data[i].fonc  != parseInt(0) ){
-                    let sum = (parseInt(data[i].tercero)+parseInt(data[i].rp)) / (data[i].fonc);
+                    let sum = (parseFloat(data[i].tercero)+parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
                     if(sum != "Infinity" && parseFloat(sum) != 0){
                         str += "<tr style=''>\n" +
                             "<td>"+data[i].dependencia+"</td>\n" +
@@ -823,7 +840,7 @@ $(document).ready(function (){
         });
 
         api.getVectores({}, function (data){
-            console.log(data);
+
             if(data && data["vectores"] && data["vectores"][0].ano_carge){
                 if(!data["proyectos"]){
                     data["proyectos"] = {total : 0}
@@ -840,7 +857,7 @@ $(document).ready(function (){
                     cuidadoRecursosNaturales : data["vectores"].find(x => x.vector.toLowerCase() === ("CUIDADO DE RECURSOS NATURALES").toLowerCase()),
                     costosProduccion : data["vectores"].find(x => x.vector.toLowerCase() === ("COSTOS DE PRODUCCION").toLowerCase())
                 };
-                console.log(api.dataVectores);
+
 
                 api.dataVectores = {
                     total_proyecto : api.dataVectores.total_proyecto ? api.dataVectores.total_proyecto : 0,
@@ -880,7 +897,7 @@ $(document).ready(function (){
 
 
         api.getBeneficiarios({}, function (data){
-            console.log(data);
+
             if(data && data.ano_carge){
                 api.dataBeneficiarios = {
                     "total_beneficiario" : data.total,
@@ -918,7 +935,7 @@ function getHtmlTable(id, selector, type=""){
             return;
         }
     }
-    console.log(("#"+id+"-table-table-tooltip"+type));
+
     selector.html($("#"+id+"-table-table-tooltip"+type).html());
 
 
@@ -1006,8 +1023,7 @@ function zoomState(state, nameParent) {
 
    var scale =  $(zoomState).attr("scale");
    var move = $(zoomState).attr("move");
-   console.log(scale);
-   console.log(move);
+
 
    var svg1 = zoomState;
    var rect = svg1.getBoundingClientRect();
@@ -1019,7 +1035,7 @@ function zoomState(state, nameParent) {
         nscale = 400 / rect.height;
    }
    move = 0; //Anular el move asignado en el SVG
-   console.log("scale: " + nscale)
+
 
     tl
         .set(zoomState, {
