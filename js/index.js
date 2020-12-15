@@ -45,7 +45,7 @@ $(document).ready(function (){
 
     $("#btnAtras").click(function (){
 
-
+        $description.removeClass('active');
 
         if(nameMunicipio != null){
             nameMunicipio = null;
@@ -463,6 +463,8 @@ $(document).ready(function (){
 
             $("#colombia").load("img/departamentos/"+url+".svg",function (selector){
 
+                $description.removeClass('active');
+
                 $("#noticiasDiv").hide();
                 $("#idTituloMapa").show();
                 $("#indicadoresDiv").show();
@@ -740,14 +742,17 @@ $(document).ready(function (){
             let str = "";
             let total = 0;
             for(var i in data){
-                let sum = (parseInt(data[i].tercero)+parseInt(data[i].rp)) / (data[i].fonc);
-                if(sum != "Infinity"){
-                    str += "<tr style=''>\n" +
-                        "<td>"+data[i].dependencia+"</td>\n" +
-                        "<td><div class='col-md-12'>"+format(sum,1,"")+"</div></td>\n" +
-                        "</tr>";
-                    total += parseFloat(sum);
+                if(data[i].fonc  != parseInt(0) ){
+                    let sum = (parseInt(data[i].tercero)+parseInt(data[i].rp)) / (data[i].fonc);
+                    if(sum != "Infinity" && parseFloat(sum) != 0){
+                        str += "<tr style=''>\n" +
+                            "<td>"+data[i].dependencia+"</td>\n" +
+                            "<td><div class='col-md-12'>"+format(sum,1,"")+"</div></td>\n" +
+                            "</tr>";
+                        total += parseFloat(sum);
+                    }
                 }
+
             }
 
 
@@ -805,11 +810,11 @@ $(document).ready(function (){
                 console.log(api.dataVectores);
 
                 api.dataVectores = {
-                    total_proyecto : api.dataVectores.total_proyecto ? api.dataVectores.total_proyecto : {},
-                    infraestructuraValue : api.dataVectores.infraestructuraValue ? api.dataVectores.infraestructuraValue : {},
-                    productividadValue : api.dataVectores.productividadValue ? api.dataVectores.productividadValue : {},
-                    cuidadoRecursosNaturales : api.dataVectores.cuidadoRecursosNaturales ? api.dataVectores.cuidadoRecursosNaturales : {},
-                    costosProduccion : api.dataVectores.costosProduccion ? api.dataVectores.costosProduccion : {},
+                    total_proyecto : api.dataVectores.total_proyecto ? api.dataVectores.total_proyecto : 0,
+                    infraestructuraValue : api.dataVectores.infraestructuraValue ? api.dataVectores.infraestructuraValue : {total : 0},
+                    productividadValue : api.dataVectores.productividadValue ? api.dataVectores.productividadValue : {total : 0},
+                    cuidadoRecursosNaturales : api.dataVectores.cuidadoRecursosNaturales ? api.dataVectores.cuidadoRecursosNaturales :{total : 0},
+                    costosProduccion : api.dataVectores.costosProduccion ? api.dataVectores.costosProduccion : {total : 0},
                 };
 
                 $("#total_proyecto").html(format(api.dataVectores.total_proyecto,1,""));
