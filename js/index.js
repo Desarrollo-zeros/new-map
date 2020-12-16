@@ -18,7 +18,7 @@ var $selectorDpto = null;
 var nameDpto;
 var nameMunicipio;
 
-
+var clickDpto;
 
 
 function cargarMunicipios() {
@@ -117,6 +117,7 @@ $(document).ready(function () {
                 $description = $(".description");
                 var style = null;
                 $('path.cls-1').hover(function () {
+
                     var name = $(this).attr('name');
                     style = $(this).attr("style")
 
@@ -147,7 +148,6 @@ $(document).ready(function () {
                     $description.removeClass('active');
                     $selectorDpto = this;
                     nameMunicipio = $(this).attr("name");
-
                     if (nameMunicipio.toLowerCase().includes("xxx")) {
                         return;
                     }
@@ -201,6 +201,7 @@ $(document).ready(function () {
                         $("#viewPrueba").append($(selector)[0])
                         $("#colombia svg path").show()
                         zoomState(selectorId, "viewPrueba")
+                        clickDpto = false;
                     });
 
                 });
@@ -229,7 +230,7 @@ $(document).ready(function () {
 
                 loaderIndicativo();
 
-                loaderApalancamiento();
+
 
                 $("#noticiasDiv").show();
                 $("#idTituloMapa").hide();
@@ -241,6 +242,7 @@ $(document).ready(function () {
 
 
                     $("path.cls-1").click(function () {
+                        clickDpto = true;
                         var url = $(this).attr("url");
                         $selectorDpto = this;
                         nameDpto = $(this).attr("url");
@@ -263,6 +265,7 @@ $(document).ready(function () {
                         loaderIndicativo();
                         $("#divCircular").show();
                         $("#divBarra").show();
+                        $("#col-th-apalancamiento").css("left","60%");
                         $("#colombia").load("img/departamentos/" + url + ".svg", function (selector) {
                             cargarMunicipios()
                             $("#atras").show();
@@ -305,6 +308,7 @@ $(document).ready(function () {
                             });
 
                             $("path.cls-1").click(function (event) {
+                                clickDpto = true;
                                 $description.removeClass('active');
                                 $selectorDpto = this;
                                 nameMunicipio = $(this).attr("name");
@@ -365,6 +369,7 @@ $(document).ready(function () {
                                     $("#viewPrueba").append($(selector)[0])
                                     $("#colombia svg path").show()
                                     zoomState(selectorId, "viewPrueba")
+                                    clickDpto = false;
 
                                 });
 
@@ -496,6 +501,7 @@ $(document).ready(function () {
 
 
         $("path.cls-1").click(function () {
+            clickDpto = true;
             var url = $(this).attr("url");
             $selectorDpto = this;
             nameDpto = $(this).attr("url");
@@ -559,6 +565,8 @@ $(document).ready(function () {
                 });
 
                 $("path.cls-1").click(function (event) {
+                    clickDpto = false;
+                    $("#col-th-apalancamiento").css("left","60%");
                     $description.removeClass('active');
                     $selectorDpto = this;
                     nameMunicipio = $(this).attr("name");
@@ -619,7 +627,7 @@ $(document).ready(function () {
                         $("#viewPrueba").append($(selector)[0])
                         $("#colombia svg path").show()
                         zoomState(selectorId, "viewPrueba")
-
+                        clickDpto = false;
                     });
 
                 });
@@ -669,7 +677,7 @@ $(document).ready(function () {
 
             for (var i in data) {
                 if (data[i].indicador_nu.replace('.00', '') != "0") {
-                    str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-2'><span style=\"font-weight: bold;\">" + data[i].indicador_nu.replace('.00', '') + "</span></div> <div class='col-md-10'><span>" + data[i].indicador + "</span> </div> </div></h3>";
+                    str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-3'><span style=\"font-weight: bold;\">" + data[i].indicador_nu.replace('.00', '') + "</span></div> <div class='col-md-9'><span>" + data[i].indicador + "</span> </div> </div></h3>";
                 }
             }
 
@@ -738,7 +746,7 @@ $(document).ready(function () {
             });
 
         }, function () {
-            //$menuTooltip.removeClass('active');
+            $menuTooltip.removeClass('active');
             $(this).find("path").css("fill", "#717171");
             $(this).find("div").css("color", "#717171");
         });
@@ -770,10 +778,12 @@ $(document).ready(function () {
 
             $("#dependenciasRow").html(dependencia);
         }, function () {
-            $menuTooltip.removeClass('active');
+            //$menuTooltip.removeClass('active');
         })
 
     }
+
+
 
     function loaderApalancamiento() {
         $('[data-id="apalancamiento-hover"]').hover(function () {
@@ -790,8 +800,14 @@ $(document).ready(function () {
                 height: 50,
             });
 
+            if(clickDpto){
+                $("#col-th-apalancamiento").css("left","60%");
+            }
+
+
+
         }, function () {
-            // $menuTooltip.removeClass('active');
+            //$menuTooltip.removeClass('active');
             $(this).find("path").css("fill", "#717171");
             $(this).find("div").css("color", "#717171");
         });
@@ -817,9 +833,9 @@ $(document).ready(function () {
                     if (sum != "Infinity" && parseFloat(sum) != 0) {
                         str += "<tr style=''>\n" +
                             "<td><div class='col-12'>"+ data[i].dependencia +" </div></td>\n" +
-                            "<td><div class='col-12'>" + format(sum, 1, "") + "</div></td>\n" +
+                            "<td><div class='col-12'>" + format(sum.toFixed(2), 1, "") + "</div></td>\n" +
                             "</tr>";
-                        total += parseFloat(sum);
+                        total += parseFloat(sum.toFixed(2));
                     }
                 }
 
@@ -851,7 +867,7 @@ $(document).ready(function () {
             });
 
         }, function () {
-            //$menuTooltip.removeClass('active');
+           // $menuTooltip.removeClass('active');
             $(this).find("path").css("fill", "#717171");
             $(this).find("div").css("color", "#717171");
         });
@@ -868,12 +884,16 @@ $(document).ready(function () {
                 }
 
                 api.dataVectores = {
-                    total_proyecto: data["proyectos"].total,
+                    //total_proyecto: data["proyectos"].total,
                     vectores : data["vectores"]
                 }
+                let total = 0;
+                data["vectores"].forEach(x=> {
+                   total += parseFloat(x.total);
+                });
 
+                $("#total_proyecto").html(format(total, 1, ""));
 
-                $("#total_proyecto").html(format(api.dataVectores.total_proyecto, 1, ""));
             }
         }, function (error) {
 
@@ -1010,9 +1030,9 @@ function formatCurrency(locales, currency, number, fractionDigits = 0, mm = 0) {
 
 function format(value, div = 1, signo = "") {
     if (div == 1) {
-        var v = value;
+        var v = value
     } else {
-        var v = Math.round(value / div);
+        var v = Math.round(value / div)
     }
 
     return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v)
