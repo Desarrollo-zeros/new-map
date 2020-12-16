@@ -721,6 +721,8 @@ $(document).ready(function () {
                     "tercero": data.tercero
                 };
 
+                api.dataInversion.total_ejecucion = parseFloat(api.dataInversion.rp) +
+                    parseFloat(api.dataInversion.fonc) +  parseFloat(api.dataInversion.tercero)
 
                 if(parseInt(api.dataInversion.rp) == 0){
                     $("#rp").parent().hide();
@@ -742,7 +744,6 @@ $(document).ready(function () {
                 }
 
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
-                console.log("entre a caaaa")
             }
         }, function (error) {
 
@@ -773,9 +774,10 @@ $(document).ready(function () {
             api.dataDependencia = data;
 
 
+
             var data  = api.dataDependencia;
             if (nameDpto != null) {
-                data = data.filter(x => x.dpta.toLowerCase().includes(nameDpto.toLowerCase()));
+                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto.replaceAll(" ","").toLowerCase()));
             }
 
 
@@ -1075,7 +1077,7 @@ function getHtmlTable(id, selector, type = "") {
         case "dependencia":{
             var data  = api.dataDependencia;
             if (nameDpto != null) {
-                data = data.filter(x => x.dpta.toLowerCase().includes(nameDpto.toLowerCase()));
+                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto.replaceAll(" ","").toLowerCase()));
             }
 
 
