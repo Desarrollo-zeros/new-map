@@ -79,7 +79,6 @@ $(document).ready(function () {
 
         if (nameMunicipio != null) {
             nameMunicipio = null;
-
             $("#dependenciasRow").removeClass("scrollerY");
             $("#apalancamiento-table tbody").removeClass("scrollerY");
 
@@ -209,6 +208,7 @@ $(document).ready(function () {
             });
         }
         else {
+            window.location.href = "";
             if (nameDpto != null) {
                 nameDpto = null;
                 $("#dependenciasRow").removeClass("scrollerY");
@@ -703,14 +703,19 @@ $(document).ready(function () {
         $('[data-id="inversion-hover"]').hover(function () {
             $(this).find("path").css("fill", "#960303");
             $(this).find("div").css("color", "#960303");
-            $menuTooltip.addClass('active');
-            getHtmlTable("inversion", $menuTooltip, "")
 
-            $menuTooltip.css({
-                right: 200,
-                top: -40,
-                height: 50,
-            });
+            if(nameMunicipio == null){
+                $menuTooltip.addClass('active');
+
+                getHtmlTable("inversion", $menuTooltip, "")
+
+                $menuTooltip.css({
+                    right: 200,
+                    top: -40,
+                    height: 50,
+                });
+            }
+
 
         }, function () {
             $menuTooltip.removeClass('active');
@@ -855,26 +860,98 @@ $(document).ready(function () {
 
 
 
+            var str ="";
+            var total = 0;
+            if(data[0].dpto != undefined){
+                for(var i in data){
 
-            let str = "";
-            let total = 0;
-            for (var i in data) {
-                if (data[i].fonc != parseInt(0)) {
-                    let sum = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
-                    if (sum != "Infinity" && parseFloat(sum) != 0) {
-                        str += "<tr style=''>\n" +
-                            "<td><div class='col-12'>"+ data[i].dependencia +" </div></td>\n" +
-                            "<td><div class='col-12'>" + format(sum.toFixed(2), 1, "") + "</div></td>\n" +
-                            "</tr>";
-                        total += parseFloat(sum.toFixed(2));
+                    let t = format(parseFloat(data[i].total_total).toFixed(2));
+
+                    if (t != "Infinity" && parseFloat(t) != 0 && t != " NaN") {
+                        if(t == null){
+                            t = 0;
+                        }
+                        total += parseFloat(t);
+                    }
+                }
+                if(total == null){
+                    total = 0;
+                }
+                let totalSplit = total.toString().split(",");
+                if (totalSplit.length > 1 &&  totalSplit[1].split("").length < 2) {
+                    total = total + "0";
+                }
+                var sum = 0;
+
+                for (var i in data) {
+                    if (data[i].fonc != parseInt(0)) {
+                         let s = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
+                        if (s != "Infinity" && parseFloat(s) != 0 && s != "NAN") {
+
+                            s = format(parseFloat(s).toFixed(2));
+                            let sumSplit = s.toString().split(",");
+                            if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
+                                s = s + "0";
+                            }
+                            sum += parseFloat(s);
+                        }
+                    }
+                }
+
+
+                if(sum.toString().split(",").length == 1){
+                    sum = sum + ",0";
+                }
+
+                str += "<tr style=''>\n" +
+                    "<td><div class='col-12'>" + data[0].dependencia + " </div></td>\n" +
+                    "<td><div class='col-12' style='position: position: relative;\n" +
+                    "left: 90px;text-align: right;'>" + sum + "</div></td>\n" +
+                    "</tr>";
+
+
+            }else{
+                total = format(parseFloat(data[0].total_total).toFixed(2));
+                if(total == null){
+                    total = 0;
+                }
+                let totalSplit = total.toString().split(",");
+                if (totalSplit.length > 1 && totalSplit[1].split("").length < 2) {
+                    total = total + "0";
+                }
+
+                for (var i in data) {
+                    if (data[i].fonc != parseInt(0)) {
+                        let sum = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
+                        if (sum != "Infinity" && parseFloat(sum) != 0) {
+
+                             sum = format(parseFloat(sum).toFixed(2));
+                             let sumSplit = sum.toString().split(",");
+
+                            if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
+                                sum = sum + "0";
+                            }else{
+                                if(sum.split(",").length == 1){
+                                    sum = sum + ",0";
+                                }
+                            }
+                            str += "<tr style=''>\n" +
+                                "<td><div class='col-12'>" + data[i].dependencia + " </div></td>\n" +
+                                "<td><div class='col-12' style='text-align: right;'>" + sum + "</div></td>\n" +
+                                "</tr>";
+                        }
                     }
                 }
 
             }
 
-
             $("#apalancamiento-table tbody").html(str);
-            $("#apalancamientoValue").html(format(total, 1, "") + "");
+
+            if(total.toString().split(",").length == 1){
+                total = total + ",0";
+            }
+
+            $("#apalancamientoValue").html(total);
 
         }, function () {
             $menuTooltip.removeClass('active');
@@ -1153,7 +1230,6 @@ function format(value, div = 1, signo = "") {
     } else {
         var v = Math.round(value / div)
     }
-
     return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v)
 }
 

@@ -54,6 +54,7 @@ function getParticipacionAportante(){
             $total += parseInt(data.com);
             $total += parseInt(data.rp);
             $total += parseInt(data.fonc);
+            $total += parseInt(data.especiales)
 
             var $dataAPortante = {
                 "gob": getPorcentaje(data.gob,$total, 100),
@@ -64,6 +65,7 @@ function getParticipacionAportante(){
                 "fonc" : getPorcentaje(data.fonc,$total, 100),
                 "comunidad" : getPorcentaje(data.com,$total, 100,2),
                 "rp" : getPorcentaje(data.rp,$total, 100),
+                "especiales" : getPorcentaje(data.especiales,$total, 100),
             };
 
             $("#comunidad").html($dataAPortante.comunidad+"%");
@@ -74,8 +76,7 @@ function getParticipacionAportante(){
             $("#rpp").html($dataAPortante.rp+"%");
             $("#foncc").html($dataAPortante.fonc+"%");
             $("#publica").html($dataAPortante.publica+"%");
-
-
+            $("#especiales").html($dataAPortante.especiales+"%");
 
 
 
@@ -95,7 +96,8 @@ function getParticipacionAportante(){
                         'Organizaciones Nacionales Privadas',
                         'Recursos Propios',
                         'FoNC',
-                        'organizaciones Nacionales públicas'
+                        'organizaciones Nacionales públicas',
+                        'Especial Real'
                     ],
                     datasets: [
                         {
@@ -109,6 +111,7 @@ function getParticipacionAportante(){
                                 $dataAPortante.tercero,
                                 $dataAPortante.fonc,
                                 $dataAPortante.publica,
+                                $dataAPortante.especiales,
                             ],
                             backgroundColor: [
                                 '#f36868',
@@ -119,6 +122,7 @@ function getParticipacionAportante(){
                                 '#990a0a',
                                 '#8d0505',
                                 '#700000',
+                                '#9d1111',
                             ]
                         }
                     ]
