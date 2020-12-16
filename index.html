@@ -1,495 +1,525 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/zoom-svg.css">
     <title>FNC</title>
     <script src="js/jquery.js"></script>
 
 </head>
+
 <body>
 
-<div class="loader"></div>
+    <div class="loader"></div>
 
-<article class="map">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row" >
-                    <div >
-                        <div class="card-body" style="position: relative;top: -30px;">
-                            <br>
-                            <div class="">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h2><b><span class="text-noticia" id="changeTitle">MAPA DE SOSTENIBILIDAD </span></b></h2>
-                                    </div>
-                                    <div class="col-md-5 text-noticia" style="z-index: 99; display: inline">
-
-                                        <label>Año de información</label>
-                                        <select value="2019" class="form-control" id="selectAnoCargue">
-                                            <option>2014</option>
-                                            <option>2015</option>
-                                            <option>2016</option>
-                                            <option>2017</option>
-                                            <option>2018</option>
-                                            <option value="2019">2019</option>
-                                            <option>2020</option>
-                                            <option>2021</option>
-                                        </select>
-
-                                    </div>
-                                </div>
+    <article class="map">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div>
+                            <div class="card-body" style="position: relative;top: -30px;">
                                 <br>
-                                <span>_____________________________________________________________________________________________________________________________</span>
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2><b><span class="text-noticia" id="changeTitle">MAPA DE SOSTENIBILIDAD
+                                                    </span></b></h2>
+                                        </div>
+                                        <div class="col-md-5 text-noticia" style="z-index: 99; display: inline">
 
+                                            <label>Año de información</label>
+                                            <select value="2019" class="form-control" id="selectAnoCargue">
+                                                <option>2014</option>
+                                                <option>2015</option>
+                                                <option>2016</option>
+                                                <option>2017</option>
+                                                <option>2018</option>
+                                                <option value="2019">2019</option>
+                                                <option>2020</option>
+                                                <option>2021</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <span>_____________________________________________________________________________________________________________________________</span>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div  id="idTituloMapa" class="col-md-12 verticalLine" style="font-size: 15px!important; position: relative; left: 20px; bottom: 30px; display: none">
-                <div id="atras" style="position: absolute;left: -7%;">
-                   <a href="#" title="Al presionar el icono atrás, se devolverá al mapa anterior" id="btnAtras"> <img width="50" src="img/atras.png"/></a>
-                </div>
-                <h6><b><span class="text-noticia" id="changeTitleDpto"></span><span id="separadorCiudad" style="display: none;color: #960303;font-size: 50px; ">&nbsp;&nbsp;{&nbsp;&nbsp;<span style="font-size: 35px;" id="nameCiudad"></span></span></b></h6>
-                <br><br>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-7">
-                <div class="row">
+                <div id="idTituloMapa" class="col-md-12 verticalLine"
+                    style="font-size: 15px!important; position: relative; left: 20px; bottom: 30px;">
+                    <div id="atras" style="position: absolute;left: -7%;">
+                        <a href="#" title="Al presionar el icono atrás, se devolverá al mapa anterior" id="btnAtras">
+                            <img width="50" src="img/atras.png" />
+                        </a>
+                    </div>
+                    <h6><b><span class="text-noticia" id="changeTitleDpto"></span><span id="separadorCiudad"
+                                style="display: none;color: #960303;font-size: 50px; ">&nbsp;&nbsp;{&nbsp;&nbsp;<span
+                                    style="font-size: 35px;" id="nameCiudad"></span></span></b></h6>
                     <br><br>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-7">
                     <div id="colombia" class="svg-container"></div>
+                    <div id="departamentos" class="svg-container" style="display: none;"></div>
+                    <div id="municipio" class="svg-container" style="display: none;">
+                        <svg id="viewPrueba" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
                     <div class="description"></div>
                 </div>
-            </div>
-            <div class="col-5">
-                <div class="row">
-                    <div class="table-tooltip" style="right: 350px; top: 125px; height: 50px;z-index: 999"></div>
-                </div>
-
-
-                <div style="margin-left: 40%;">
+                <div class="col-12 col-sm-5">
                     <div class="row">
-                        <div data-id="inversion-hover" class="row iconos-iconos">
-                            <div class="col-4">
-                                <img width="70"  id="inversion"/>
-                            </div>
-                            <div class="col-8">
-                                Inversión
-                                <br>
-                                <b><span id="inversionTotal"></span></b>
-                            </div>
-
-
-                            <div id="inversion-table-table-tooltip" style="display: none" >
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="col-md-12">
-                                            <span>FoNC</span><br>
-                                            <span id="fonc"></span>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <br>
-                                            <span>Terceros</span><br>
-                                            <span id="terceros"></span><br>
-
-                                        </div>
-                                        <div class="col-md-12">
-                                            <br>
-                                            <span>Recursos Propios</span><br>
-                                            <span id="rp"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="table-tooltip" style="right: 350px; top: 125px; height: 50px;z-index: 999"></div>
                     </div>
 
-                    <div class="row">
-                        <div data-id="dependencia-hover" class="row iconos-iconos">
-                            <div class="col-4" style="margin-top: 2%;">
-                                <img width="70"  id="dependencia"/>
-                            </div>
 
-                            <div class="col-8">
-                                Dependencia
-                                <br>
-                                <b><span id="depedenciaTotal"></span></b>
-                            </div>
-                        </div>
-
-
-                        <div id="dependencia-table-table-tooltip" style="display: none" >
-                            <div id="dependenciasRow" class="row scrollerY" style="height: 100px">
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div data-id="apalancamiento-hover" class="row iconos-iconos">
-                            <div class="col-4">
-                                <img width="50"  id="apalancamiento"/>
-                            </div>
-                            <div class="col-8">
-                                Apalancamiento
-                                <br>
-                                <b><span id="apalancamientoValue"></span></b>
-                            </div>
-                        </div>
-
-
-                        <div id="apalancamiento-table-table-tooltip" style="display: none; color: #960303" >
-                            <div class="row" >
-                                <table id="apalancamiento-table" style="color:#960303!important; ">
-                                    <thead>
-                                        <tr style="display:table;width:100%;table-layout:fixed;">
-                                            <th scope="col">DEPENDENCIA</th>
-                                            <th scope="col" style="position: absolute;left: 69%;}">TOTAL</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="scrollerY" style="display:block;max-height:160px;">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
-
-                    <div class="row">
-                        <div data-id="proyecto-hover" class="row iconos-iconos">
-                            <div class="col-4">
-                                <img width="70"  id="proyecto"/>
-                            </div>
-                            <div class="col-12 clsmargin">
-                                <span># Proyectos Ejecutados</span>
-                                <br>
-                                <b><span id="total_proyecto"></span></b>
-                            </div>
-
-                            <div id="proyecto-table-table-tooltip" style="display: none">
-                                <div class="col-md-8">
-                                    <div class="row">
-                                        <div class="col-md-12" style="padding-top: 5px">
-                                            <br><span id="infraestructuraValue"></span>
-                                        </div>
-
-                                        <div class="col-md-12" style="padding-top: 5px">
-                                            <br><span id="productividadValue"></span>
-                                        </div>
-
-                                        <div class="col-md-12" style="padding-top: 5px">
-                                            <br><span id="cuidadoRecursosNaturalesValue"></span>
-                                        </div>
-
-                                        <div class="col-md-12" style="padding-top: 5px">
-                                            <br><span id="costosProduccionValue"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div data-id="beneficio-hover" class="row iconos-iconos">
-                            <div class="col-4">
-                                <img width="70"  id="beneficio"/>
-                            </div>
-                            <div class="col-8">
-                                # Beneficiarios
-                                <br>
-                                <b><span id="total_beneficiario"></span></b>
-                            </div>
-                            <div id="beneficio-table-table-tooltip" style="display: none" >
-                                <div class="col-md-6" style="width: 250px!important;">
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="afroDiv" src="img/Iconos_Beneficiarios/Etnia.svg"  style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="afroValue"></span><br>
-                                                <span style="font-weight: bold;">Afro</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="hombresDiv" src="img/Iconos_Beneficiarios/hombre.svg" style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="hombresValue"></span><br>
-                                                <span style="font-weight: bold;">Hombres</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="indigenasDiv" src="img/Iconos_Beneficiarios/indigena.svg" style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="indigenasValue"></span><br>
-                                                <span style="font-weight: bold;">Indigenas</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="jovenDiv" src="img/Iconos_Beneficiarios/chico.svg" style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="jovenValue"></span><br>
-                                                <span style="font-weight: bold;">Jóvenes</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="mujerDiv" src="img/Iconos_Beneficiarios/mujer.svg" style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="mujerValue"></span><br>
-                                                <span style="font-weight: bold;">Mujeres</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="ninosDiv" src="img/Iconos_Beneficiarios/ninos.svg" style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="ninosValue"></span><br>
-                                                <span style="font-weight: bold;">Ni&ntilde;os</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-4" style="padding-top: 10px">
-                                                <div id="otroDiv" src="img/Iconos_Beneficiarios/hombre.svg" style="width: 50px;height: 50px;"></div>
-                                            </div>
-                                            <div class="col-md-8" style="padding-top: 10px; position: relative; left: 10px">
-                                                <span id="otroValue"></span><br>
-                                                <span style="font-weight: bold;">Otros</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div id="divBarra" class="col-12">
-                        <br><br>
-                        <p><b>Participación de la inversión por eje estratégico</b></p>
-                        <div>
-                            <div id="participacion-inversion-por-eje-tooltip" class="table-tooltip1" >
-                                <div>
-                                    <button onclick="$('#participacion-inversion-por-eje-tooltip').removeClass('active')" style="color: #ffffff" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <table></table>
-                                </div>
-                            </div>
-                            <canvas height="200" width="600" style="width: 600px!important;" id="participacion-inversion-por-eje"></canvas>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-5">
-                <div class="row">
-                    <div id="indicadoresDiv" class="card shadow noticia col-md-12" style="display: none">
-                        <div class="card-body">
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2><b><span id="text-noticia" class="text-noticia">Indicadores</span></b></h2>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-12 verticalLine">
-                                    <div class="sectionUno">
-                                        <div id="scrollerIndicativo" class="scroller" style="display:block;">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-7">
-                <br><br>
-                <div id="divCircular">
-                    <div class="row offset-2">
-                        <p><b>Participación de la inversión por tipo de aportante</b></p>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="chartjs-legend" class="col-7 noselect" style="font-size: 12px">
-                                <ul class="1-legend">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #f36868;">
-                                                        <span style="color: #717171">Comunidad</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="comunidad"></span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #d74747;">
-                                                        <span style="color: #717171">Gobernaciones</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="gob"></span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #c43535;">
-                                                        <span style="color: #717171">Entidades</span>
-                                                        <br>
-                                                        <span style="color: #717171">Internacionales</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="inter"></span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #ae1e1e;">
-                                                        <span style="color: #717171">Municipios</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="mun"></span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="row">
-                                                <div class="col-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #ac1212;">
-                                                        <span style="color: #717171">Organizaciones</span>
-                                                        <br>
-                                                        <span style="color: #717171">Nacionales Privada</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="privado">Privada</span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #990a0a;">
-                                                        <span style="color: #717171">Recursos </span>
-                                                        <br>
-                                                        <span style="color: #717171">Propios</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="rpp"></span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #8d0505;">
-                                                        <span style="color: #717171">FoNC</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="foncc"></span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #700000;">
-                                                        <span style="color: #717171">Organizaciones</span>
-                                                        <br>
-                                                        <span style="color: #717171">Nacionales Pubilica</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="publica">Públicas</span>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-6 offset-7">
-                            <canvas  id="participacion-inversion-por-aportante"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div id="divNoticia" class="col-12" >
-                <br> <br>
-                <div id="noticiasDiv" style="display: block">
-                    <div class="row">
-                        <div class="col-4 d-inline ">
-                            <hr style="z-index: 99; border: 1px groove #ffffff;width:10vw; margin-left: 40%;">
-                        </div>
-                        <div class="col-2 d-inline  justify-content-center" style="z-index: 99; font-size: 25px;">
-                            <button style="font-size: 20px" class="btn-noticias" onclick="window.open('https://federaciondecafeteros.org/wp/noticias/','_blank')">Ver Noticias</button>
-                        </div>
-                        <div class="col-4 d-inline ">
-                            <hr style="z-index: 99; border: 1px groove #ffffff;width:10vw;  margin-left: 40%;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-8">
-            </div>
-            <div id="divProyectoNoticia" class="col-4" style="display: none;">
-                <br><br>
-                <div class="card shadow noticia" >
-                    <div class="card-body">
+                    <div style="margin-left: 40%;">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h2>
-                                    <b>
-                                        <span class="linea-card" >|</span>
-                                        <span>Proyectos</span>
-                                    </b>
-                                </h2>
-                                <br>
-                                <br>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="sectionUno">
-                                    <div id="proyectosDiv" class="scroller" style="font-size: 12px;">
+                            <div data-id="inversion-hover" class="row iconos-iconos">
+                                <div class="col-4">
+                                    <img width="70" id="inversion" />
+                                </div>
+                                <div class="col-8">
+                                    Inversión
+                                    <br>
+                                    <b><span id="inversionTotal"></span></b>
+                                </div>
 
+
+                                <div id="inversion-table-table-tooltip" style="display: none">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-12">
+                                                <span>FoNC</span><br>
+                                                <span id="fonc"></span>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <br>
+                                                <span>Terceros</span><br>
+                                                <span id="terceros"></span><br>
+
+                                            </div>
+                                            <div class="col-md-12">
+                                                <br>
+                                                <span>Recursos Propios</span><br>
+                                                <span id="rp"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div data-id="dependencia-hover" class="row iconos-iconos">
+                                <div class="col-4" style="margin-top: 2%;">
+                                    <img width="70" id="dependencia" />
+                                </div>
+
+                                <div class="col-8">
+                                    Dependencia
+                                    <br>
+                                    <b><span id="depedenciaTotal"></span></b>
+                                </div>
+                            </div>
+
+
+                            <div id="dependencia-table-table-tooltip" style="display: none">
+                                <div id="dependenciasRow" class="row scrollerY" style="height: 100px">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div data-id="apalancamiento-hover" class="row iconos-iconos">
+                                <div class="col-4">
+                                    <img width="50" id="apalancamiento" />
+                                </div>
+                                <div class="col-8">
+                                    Apalancamiento
+                                    <br>
+                                    <b><span id="apalancamientoValue"></span></b>
+                                </div>
+                            </div>
+
+
+                            <div id="apalancamiento-table-table-tooltip" style="display: none; color: #960303">
+                                <div class="row">
+                                    <table id="apalancamiento-table" style="color:#960303!important; ">
+                                        <thead>
+                                            <tr style="display:table;width:100%;table-layout:fixed;">
+                                                <th scope="col">DEPENDENCIA</th>
+                                                <th scope="col" style="position: absolute;left: 69%;}">TOTAL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="scrollerY" style="display:block;max-height:160px;">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div data-id="proyecto-hover" class="row iconos-iconos">
+                                <div class="col-4">
+                                    <img width="70" id="proyecto" />
+                                </div>
+                                <div class="col-12 clsmargin">
+                                    <span># Proyectos Ejecutados</span>
+                                    <br>
+                                    <b><span id="total_proyecto"></span></b>
+                                </div>
+
+                                <div id="proyecto-table-table-tooltip" style="display: none">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-12" style="padding-top: 5px">
+                                                <br><span id="infraestructuraValue"></span>
+                                            </div>
+
+                                            <div class="col-md-12" style="padding-top: 5px">
+                                                <br><span id="productividadValue"></span>
+                                            </div>
+
+                                            <div class="col-md-12" style="padding-top: 5px">
+                                                <br><span id="cuidadoRecursosNaturalesValue"></span>
+                                            </div>
+
+                                            <div class="col-md-12" style="padding-top: 5px">
+                                                <br><span id="costosProduccionValue"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div data-id="beneficio-hover" class="row iconos-iconos">
+                                <div class="col-4">
+                                    <img width="70" id="beneficio" />
+                                </div>
+                                <div class="col-8">
+                                    # Beneficiarios
+                                    <br>
+                                    <b><span id="total_beneficiario"></span></b>
+                                </div>
+                                <div id="beneficio-table-table-tooltip" style="display: none">
+                                    <div class="col-md-6" style="width: 250px!important;">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="afroDiv" src="img/Iconos_Beneficiarios/Etnia.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="afroValue"></span><br>
+                                                    <span style="font-weight: bold;">Afro</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="hombresDiv" src="img/Iconos_Beneficiarios/hombre.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="hombresValue"></span><br>
+                                                    <span style="font-weight: bold;">Hombres</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="indigenasDiv" src="img/Iconos_Beneficiarios/indigena.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="indigenasValue"></span><br>
+                                                    <span style="font-weight: bold;">Indigenas</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="jovenDiv" src="img/Iconos_Beneficiarios/chico.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="jovenValue"></span><br>
+                                                    <span style="font-weight: bold;">Jóvenes</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="mujerDiv" src="img/Iconos_Beneficiarios/mujer.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="mujerValue"></span><br>
+                                                    <span style="font-weight: bold;">Mujeres</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="ninosDiv" src="img/Iconos_Beneficiarios/ninos.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="ninosValue"></span><br>
+                                                    <span style="font-weight: bold;">Ni&ntilde;os</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="padding-top: 10px">
+                                                    <div id="otroDiv" src="img/Iconos_Beneficiarios/hombre.svg"
+                                                        style="width: 50px;height: 50px;"></div>
+                                                </div>
+                                                <div class="col-md-8"
+                                                    style="padding-top: 10px; position: relative; left: 10px">
+                                                    <span id="otroValue"></span><br>
+                                                    <span style="font-weight: bold;">Otros</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div id="divBarra" class="col-12">
+                            <br><br>
+                            <p><b>Participación de la inversión por eje estratégico</b></p>
+                            <div>
+                                <div id="participacion-inversion-por-eje-tooltip" class="table-tooltip1">
+                                    <div>
+                                        <button
+                                            onclick="$('#participacion-inversion-por-eje-tooltip').removeClass('active')"
+                                            style="color: #ffffff" type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <table></table>
+                                    </div>
+                                </div>
+                                <canvas height="200" width="600" style="width: 600px!important;"
+                                    id="participacion-inversion-por-eje"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-5">
+                    <div class="row">
+                        <div id="indicadoresDiv" class="card shadow noticia col-md-12" style="display: none">
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2><b><span id="text-noticia" class="text-noticia">Indicadores</span></b></h2>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12 verticalLine">
+                                        <div class="sectionUno">
+                                            <div id="scrollerIndicativo" class="scroller" style="display:block;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <br><br>
+                    <div id="divCircular">
+                        <div class="row offset-2">
+                            <p><b>Participación de la inversión por tipo de aportante</b></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="chartjs-legend" class="col-7 noselect" style="font-size: 12px">
+                                    <ul class="1-legend">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #f36868;">
+                                                            <span style="color: #717171">Comunidad</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="comunidad"></span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #d74747;">
+                                                            <span style="color: #717171">Gobernaciones</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="gob"></span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #c43535;">
+                                                            <span style="color: #717171">Entidades</span>
+                                                            <br>
+                                                            <span style="color: #717171">Internacionales</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="inter"></span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #ae1e1e;">
+                                                            <span style="color: #717171">Municipios</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="mun"></span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #ac1212;">
+                                                            <span style="color: #717171">Organizaciones</span>
+                                                            <br>
+                                                            <span style="color: #717171">Nacionales Privada</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="privado">Privada</span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #990a0a;">
+                                                            <span style="color: #717171">Recursos </span>
+                                                            <br>
+                                                            <span style="color: #717171">Propios</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="rpp"></span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #8d0505;">
+                                                            <span style="color: #717171">FoNC</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="foncc"></span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="text-align: left;font-weight: bold;">
+                                                        <li style="border-left: thick solid  #700000;">
+                                                            <span style="color: #717171">Organizaciones</span>
+                                                            <br>
+                                                            <span style="color: #717171">Nacionales Pubilica</span>
+                                                            <br>
+                                                            <span style="color: #717171" id="publica">Públicas</span>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-6 offset-7">
+                                <canvas id="participacion-inversion-por-aportante"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id="divNoticia" class="col-12">
+                    <br> <br>
+                    <div id="noticiasDiv" style="display: block">
+                        <div class="row">
+                            <div class="col-4 d-inline ">
+                                <hr style="z-index: 99; border: 1px groove #ffffff;width:10vw; margin-left: 40%;">
+                            </div>
+                            <div class="col-2 d-inline  justify-content-center" style="z-index: 99; font-size: 25px;">
+                                <button style="font-size: 20px" class="btn-noticias"
+                                    onclick="window.open('https://federaciondecafeteros.org/wp/noticias/','_blank')">Ver
+                                    Noticias</button>
+                            </div>
+                            <div class="col-4 d-inline ">
+                                <hr style="z-index: 99; border: 1px groove #ffffff;width:10vw;  margin-left: 40%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div id="divProyectoNoticia" class="col-4" style="display: none;">
+                    <br><br>
+                    <div class="card shadow noticia">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>
+                                        <b>
+                                            <span class="linea-card">|</span>
+                                            <span>Proyectos</span>
+                                        </b>
+                                    </h2>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="sectionUno">
+                                        <div id="proyectosDiv" class="scroller" style="font-size: 12px;">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -497,32 +527,36 @@
                     </div>
                 </div>
             </div>
+
+            <!--div id="separatorBarra" style="display: none" class="col-sm-7"></div-->
         </div>
-
-        <!--div id="separatorBarra" style="display: none" class="col-sm-7"></div-->
-    </div>
-</article>
+    </article>
 
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
-<!-- DevExtreme themes -->
-<link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/20.2.4/css/dx.common.css">
-<link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/20.2.4/css/dx.light.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-<script src="https://emn178.github.io/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-<script src="js/Api.js"></script>
-<script src="js/index.js"></script>
-<script src="js/chartApi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha256-t9UJPrESBeG2ojKTIcFLPGF7nHi2vEc7f5A2KpH/UBU=" crossorigin="anonymous"></script>
+    <!-- DevExtreme themes -->
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/20.2.4/css/dx.common.css">
+    <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/20.2.4/css/dx.light.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <script src="https://emn178.github.io/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.css"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+    <script src="js/Api.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/chartApi.js"></script>
 
 </body>
+
 </html>
