@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
@@ -88,7 +89,7 @@
       <workItem from="1607986562524" duration="9168000" />
       <workItem from="1607998179101" duration="9997000" />
       <workItem from="1608034846835" duration="5333000" />
-      <workItem from="1608069483356" duration="12717000" />
+      <workItem from="1608069483356" duration="15167000" />
     </task>
     <servers />
   </component>
@@ -132,10 +133,10 @@
     </state>
     <state x="337" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1608089758448" />
     <state x="1702" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1607999718212" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1608090877228">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1608097063643">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1608090877228" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1608097063643" />
     <state x="1710" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608039877187" />
   </component>
   <component name="XDebuggerManager">

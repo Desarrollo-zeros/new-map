@@ -173,7 +173,7 @@ $(document).ready(function () {
                     $("#separadorCiudad").show();
 
                     $("#nameCiudad").html(nameMunicipio);
-                    $("path.cls-1").css("fill", "#ebebef");
+                    //$("path.cls-1").css("fill", "#ebebef");
                     $(this).css("fill", "#960303");
                     var selectorId = selector.id;
 
@@ -247,7 +247,7 @@ $(document).ready(function () {
                         $selectorDpto = this;
                         nameDpto = $(this).attr("url");
 
-                        loaderInversion();
+                        loaderInversion
 
                         loaderDepedencia();
 
@@ -300,7 +300,8 @@ $(document).ready(function () {
                                 if (style != "fill: rgb(210, 210, 230);") {
                                     return;
                                 }
-                                $(this).css("fill", "#ebebef");
+                                $(this).attr("style", style);
+                                //$(this).css("fill", "#ebebef");
                                 if ($selectorDpto) {
                                     $($selectorDpto).css("fill", "#960303");
                                 }
@@ -336,7 +337,7 @@ $(document).ready(function () {
                                 $("#separadorCiudad").show();
 
                                 $("#nameCiudad").html(nameMunicipio);
-                                $("path.cls-1").css("fill", "#ebebef");
+                                //$("path.cls-1").css("fill", "#ebebef");
                                 $(this).css("fill", "#960303");
                                 var selectorId = selector.id;
 
@@ -713,8 +714,6 @@ $(document).ready(function () {
         api.getInversion({}, function (data) {
 
             if (data && data.ano_carge) {
-
-
                 api.dataInversion = {
                     "total_ejecucion": data.total_ejecucion,
                     "rp": data.rp,
@@ -723,8 +722,27 @@ $(document).ready(function () {
                 };
 
 
-                $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+                if(parseInt(api.dataInversion.rp) == 0){
+                    $("#rp").parent().hide();
+                }else{
+                    $("#rp").parent().show();
+                }
 
+                if(parseInt(api.dataInversion.fonc) == 0){
+                    $("#fonc").parent().hide();
+                }else{
+                    $("#fonc").parent().show();
+                }
+
+
+                if(parseInt(api.dataInversion.tercero) == 0){
+                    $("#terceros").parent().hide();
+                }else{
+                    $("#terceros").parent().show();
+                }
+
+                $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+                console.log("entre a caaaa")
             }
         }, function (error) {
 
@@ -752,9 +770,10 @@ $(document).ready(function () {
         });
 
         api.post("get_data_nfc", { "table": "view_dependencias", "type": 3 }, function (data) {
+            api.dataDependencia = data;
 
 
-
+            var data  = api.dataDependencia;
             if (nameDpto != null) {
                 data = data.filter(x => x.dpta.toLowerCase().includes(nameDpto.toLowerCase()));
             }
@@ -777,6 +796,8 @@ $(document).ready(function () {
             $("#depedenciaTotal").html(dpto.length);
 
             $("#dependenciasRow").html(dependencia);
+
+
         }, function () {
             //$menuTooltip.removeClass('active');
         })
@@ -959,15 +980,76 @@ function getHtmlTable(id, selector, type = "") {
 
     switch (id){
         case "inversion":{
+
+            if(parseInt(api.dataInversion.rp) == 0){
+                $("#rp").parent().hide();
+            }else{
+                $("#rp").parent().show();
+            }
+
+            if(parseInt(api.dataInversion.fonc) == 0){
+                $("#fonc").parent().hide();
+            }else{
+                $("#fonc").parent().show();
+            }
+
+
+            if(parseInt(api.dataInversion.tercero) == 0){
+                $("#terceros").parent().hide();
+            }else{
+                $("#terceros").parent().show();
+            }
+
+
             $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
             $("#rp" + type).html(format(api.dataInversion.rp, 1000000, "$") + " MM")
             $("#fonc" + type).html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
             $("#terceros" + type).html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
+
+
+
             break;
         }
         case "beneficio":{
             $("#total_beneficiario" + type).html(format(api.dataBeneficiarios.total_beneficiario));
             var vconf = { style: "color: #000000"};
+
+            if(parseInt(api.dataBeneficiarios.afroValue) == 0){
+                $("#afroDiv").parent().parent().hide();
+            }else{
+                $("#afroDiv").parent().parent().show();
+            }
+            if(parseInt(api.dataBeneficiarios.hombresValue) == 0){
+                $("#hombresDiv").parent().parent().hide();
+            }else{
+                $("#hombresDiv").parent().parent().show();
+            }
+            if(parseInt(api.dataBeneficiarios.indigenasValue) == 0){
+                $("#indigenasDiv").parent().parent().hide();
+            }else{
+                $("#indigenasDiv").parent().parent().show();
+            }
+            if(parseInt(api.dataBeneficiarios.jovenValue) == 0){
+                $("#jovenDiv").parent().parent().hide();
+            }else{
+                $("#jovenDiv").parent().parent().show();
+            }
+            if(parseInt(api.dataBeneficiarios.mujerValue) == 0){
+                $("#mujerDiv").parent().parent().hide();
+            }else{
+                $("#mujerDiv").parent().parent().show();
+            }
+            if(parseInt(api.dataBeneficiarios.ninosValue) == 0){
+                $("#ninosDiv").parent().parent().hide();
+            }else{
+                $("#ninosDiv").parent().parent().show();
+            }
+            if(parseInt(api.dataBeneficiarios.otroValue) == 0){
+                $("#otroDiv").parent().parent().hide();
+            }else{
+                $("#otroDiv").parent().parent().show();
+            }
+
             $("#afroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.afroValue)));
             $("#hombresValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.hombresValue)));
             $("#indigenasValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.indigenasValue)));
@@ -979,6 +1061,7 @@ function getHtmlTable(id, selector, type = "") {
         }
         case "proyecto":{
             let proyectosRows = $("#proyectosRows tbody");
+            proyectosRows.html("");
             api.dataVectores.vectores.forEach(x => {
                 proyectosRows.append(
                     $("<tr>").append(
@@ -987,6 +1070,32 @@ function getHtmlTable(id, selector, type = "") {
                     )
                 )
             });
+            break;
+        }
+        case "dependencia":{
+            var data  = api.dataDependencia;
+            if (nameDpto != null) {
+                data = data.filter(x => x.dpta.toLowerCase().includes(nameDpto.toLowerCase()));
+            }
+
+
+            let dependencia = "";
+            let dpto = [];
+            for (var i in data) {
+                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                    dpto.push(data[i].dependencia);
+                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                }
+
+            }
+
+            if (data.length == 0) {
+                $menuTooltip.removeClass('active');
+            }
+
+            $("#depedenciaTotal").html(dpto.length);
+
+            $("#dependenciasRow").html(dependencia);
             break;
         }
 
