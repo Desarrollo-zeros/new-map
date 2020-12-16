@@ -665,7 +665,7 @@ $(document).ready(function () {
 
         let data = {};
         data.anio = $("#selectAnoCargue").val();
-        data.type = 3;
+        data.type = 6;
         data.table = "view_indicadores_dpta";
         data.dpto = nameDpto;
         data.municipio = nameMunicipio;
