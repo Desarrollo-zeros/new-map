@@ -6,6 +6,14 @@ body{
 }
 
 
+tbody.scrollerY td{
+  padding-top: 7px;
+}
+
+
+.colorbtnHover {
+  color: #960303
+}
 
 @font-face {
   font-family: "Avenir Black";

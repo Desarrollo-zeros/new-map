@@ -123,8 +123,6 @@ $(document).ready(function () {
                     if (style != "fill: rgb(210, 210, 230);") {
                         return;
                     }
-                    $("path.cls-1").css("fill", "#ebebef");
-
                     $(this).css("fill", "#6ef35e");
                     if ($selectorDpto) {
                         $($selectorDpto).css("fill", "#960303");
@@ -138,7 +136,7 @@ $(document).ready(function () {
                         return;
                     }
                     $(this).attr("style", style);
-                    $("path.cls-1").css("fill", "#ebebef");
+
                     if ($selectorDpto) {
                         $($selectorDpto).css("fill", "#960303");
                     }
@@ -189,21 +187,16 @@ $(document).ready(function () {
                     data.dpto = nameDpto;
                     data.municipio = nameMunicipio;
                     api.post("get_data_nfc", data, function (response) {
-
-
+                        console.log(response);
+                        debugger
                         let str = "";
-
                         for (var i in response) {
                             str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">" + response[i].nombre_proyecto + "</span></h3>";
                         }
-
                         $("#proyectosDiv").append(str);
-
                     }, function () {
 
                     })
-
-
                     $("#colombia").load("img/departamentos/prueba.svg", function () {
                         $("#viewPrueba").append($(selector)[0])
                         $("#colombia svg path").show()
@@ -283,9 +276,14 @@ $(document).ready(function () {
 
 
                             $description = $(".description");
-
+                            var style = null;
                             $('path.cls-1').hover(function () {
                                 var name = $(this).attr('name');
+                                style = $(this).attr("style")
+
+                                if (style != "fill: rgb(210, 210, 230);") {
+                                    return;
+                                }
 
                                 $(this).css("fill", "#6ef35e");
                                 if ($selectorDpto) {
@@ -296,6 +294,9 @@ $(document).ready(function () {
                                     $description.html(name);
                                 }
                             }, function () {
+                                if (style != "fill: rgb(210, 210, 230);") {
+                                    return;
+                                }
                                 $(this).css("fill", "#ebebef");
                                 if ($selectorDpto) {
                                     $($selectorDpto).css("fill", "#960303");
@@ -345,7 +346,7 @@ $(document).ready(function () {
                                 data.dpto = nameDpto;
                                 data.municipio = nameMunicipio;
                                 api.post("get_data_nfc", data, function (response) {
-
+                                    console.log(response)
 
                                     let str = "";
 
@@ -599,7 +600,7 @@ $(document).ready(function () {
                     data.dpto = nameDpto;
                     data.municipio = nameMunicipio;
                     api.post("get_data_nfc", data, function (response) {
-
+                        console.log(response);
 
                         let str = "";
 
@@ -815,8 +816,8 @@ $(document).ready(function () {
                     let sum = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
                     if (sum != "Infinity" && parseFloat(sum) != 0) {
                         str += "<tr style=''>\n" +
-                            "<td>" + data[i].dependencia + "</td>\n" +
-                            "<td><div class='col-md-12'>" + format(sum, 1, "") + "</div></td>\n" +
+                            "<td><div class='col-12'>"+ data[i].dependencia +" </div></td>\n" +
+                            "<td><div class='col-12'>" + format(sum, 1, "") + "</div></td>\n" +
                             "</tr>";
                         total += parseFloat(sum);
                     }
@@ -850,7 +851,7 @@ $(document).ready(function () {
             });
 
         }, function () {
-            $menuTooltip.removeClass('active');
+            //$menuTooltip.removeClass('active');
             $(this).find("path").css("fill", "#717171");
             $(this).find("div").css("color", "#717171");
         });
@@ -868,20 +869,9 @@ $(document).ready(function () {
 
                 api.dataVectores = {
                     total_proyecto: data["proyectos"].total,
-                    infraestructuraValue: data["vectores"].find(x => x.vector.toLowerCase() === ("INFRAESTRUCTURA").toLowerCase()),
-                    productividadValue: data["vectores"].find(x => x.vector.toLowerCase() === ("PRODUCTIVIDAD").toLowerCase()),
-                    cuidadoRecursosNaturales: data["vectores"].find(x => x.vector.toLowerCase() === ("CUIDADO DE RECURSOS NATURALES").toLowerCase()),
-                    costosProduccion: data["vectores"].find(x => x.vector.toLowerCase() === ("COSTOS DE PRODUCCION").toLowerCase())
-                };
+                    vectores : data["vectores"]
+                }
 
-
-                api.dataVectores = {
-                    total_proyecto: api.dataVectores.total_proyecto ? api.dataVectores.total_proyecto : 0,
-                    infraestructuraValue: api.dataVectores.infraestructuraValue ? api.dataVectores.infraestructuraValue : { total: 0 },
-                    productividadValue: api.dataVectores.productividadValue ? api.dataVectores.productividadValue : { total: 0 },
-                    cuidadoRecursosNaturales: api.dataVectores.cuidadoRecursosNaturales ? api.dataVectores.cuidadoRecursosNaturales : { total: 0 },
-                    costosProduccion: api.dataVectores.costosProduccion ? api.dataVectores.costosProduccion : { total: 0 },
-                };
 
                 $("#total_proyecto").html(format(api.dataVectores.total_proyecto, 1, ""));
             }
@@ -925,18 +915,6 @@ $(document).ready(function () {
                     "ninosValue": data.ninos,
                     "otroValue": data.otro
                 };
-/*
-afros: "0"
-ano_carge: "2019"
-dpto: "Antioquia"
-hombres: "107964"
-indigenas: "268"
-jovenes: "1207"
-mujeres: "16738"
-ninos: "8163"
-otro: "0"
-total: "134340"
-*/
                 $("#total_beneficiario").html(format(api.dataBeneficiarios.total_beneficiario, 1, ""));
 
 
@@ -958,39 +936,56 @@ total: "134340"
 
 
 function getHtmlTable(id, selector, type = "") {
-    if (id == "dependencia") {
-        if ($("#" + id + "-table-table-tooltip" + type).html().includes("<div id=\"dependenciasRow\" class=\"row\" style=\"overflow-y:scroll;height: 100px\"></div>")) {
-            $menuTooltip.removeClass('active');
-            return;
+
+    switch (id){
+        case "inversion":{
+            $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+            $("#rp" + type).html(format(api.dataInversion.rp, 1000000, "$") + " MM")
+            $("#fonc" + type).html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
+            $("#terceros" + type).html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
+            break;
         }
+        case "beneficio":{
+            $("#total_beneficiario" + type).html(format(api.dataBeneficiarios.total_beneficiario));
+            var vconf = { style: "color: #000000"};
+            $("#afroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.afroValue)));
+            $("#hombresValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.hombresValue)));
+            $("#indigenasValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.indigenasValue)));
+            $("#jovenValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.jovenValue)));
+            $("#mujerValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.mujerValue)));
+            $("#ninosValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.ninosValue)));
+            $("#otroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.otroValue)));
+            break;
+        }
+        case "proyecto":{
+            let proyectosRows = $("#proyectosRows tbody");
+            api.dataVectores.vectores.forEach(x => {
+                proyectosRows.append(
+                    $("<tr>").append(
+                        $("<td>", {"class":"col-12"}).html(x.vector),
+                        $("<td>", {"class":"col-12"}).html(x.total),
+                    )
+                )
+            });
+            break;
+        }
+
     }
+
 
     selector.html($("#" + id + "-table-table-tooltip" + type).html());
 
-
-
-    $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+    /*$("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
 
     $("#rp" + type).html(format(api.dataInversion.rp, 1000000, "$") + " MM")
     $("#fonc" + type).html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
     $("#terceros" + type).html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
 
-    $("#total_beneficiario" + type).html(format(api.dataBeneficiarios.total_beneficiario));
-    var vconf = { style: "color: #000000"};
-    $("#afroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.afroValue)));
-    $("#hombresValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.hombresValue)));
-    $("#indigenasValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.indigenasValue)));
-    $("#jovenValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.jovenValue)));
-    $("#mujerValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.mujerValue)));
-    $("#ninosValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.ninosValue)));
-    $("#otroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.otroValue)));
 
     $("#total_proyecto" + type).html(format(api.dataVectores.total_proyecto, 1, ""));
     $("#infraestructuraValue" + type).html("Infraestructura <br><span style='color: #000000'>" + format(api.dataVectores.infraestructuraValue.total, 1, "") + "</span>");
-    $("#productividadValue" + type).html("Productividad <br><span style='color: #000000'>" + format(api.dataVectores.productividadValue.total, 1, "") + "</span>");
-    $("#cuidadoRecursosNaturalesValue" + type).html("Cuidado de Recursos Naturales <br><span style='color: #000000'>" + format(api.dataVectores.cuidadoRecursosNaturales.total, 1, "") + "</span>");
-    $("#costosProduccionValue" + type).html("Costos de Producción <br><span style='color: #000000'>" + format(api.dataVectores.costosProduccion.total, 1, "") + "</span>");
 
+    */
 }
 
 
@@ -1020,7 +1015,7 @@ function format(value, div = 1, signo = "") {
         var v = Math.round(value / div);
     }
 
-    return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v.toFixed(2))
+    return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v)
 }
 
 
