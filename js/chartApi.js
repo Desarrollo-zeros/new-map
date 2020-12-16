@@ -81,7 +81,7 @@ function getParticipacionAportante(){
 
             if(ChartApi["participacion-inversion-por-aportante"] != null){
                 ChartApi["participacion-inversion-por-aportante"].data.datasets =[];
-                ChartApi["participacion-inversion-por-aportante"].update();
+                ChartApi["participacion-inversion-por-aportante"].clear();
             }
 
             ChartApi["participacion-inversion-por-aportante"]  = new Chart(document.getElementById("participacion-inversion-por-aportante"), {
@@ -230,7 +230,7 @@ function getParticipacionEje(){
 
             if(ChartApi["participacion-inversion-por-eje"] != null){
                 ChartApi["participacion-inversion-por-eje"].data.datasets = [];
-                ChartApi["participacion-inversion-por-eje"].update();
+                ChartApi["participacion-inversion-por-eje"].clear();
             }
 
             ChartApi["participacion-inversion-por-eje"] = new Chart(document.getElementById('participacion-inversion-por-eje'), {
