@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +50,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sustain_map" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -86,7 +87,8 @@
       <workItem from="1607981171708" duration="1816000" />
       <workItem from="1607986562524" duration="9168000" />
       <workItem from="1607998179101" duration="9997000" />
-      <workItem from="1608034846835" duration="3510000" />
+      <workItem from="1608034846835" duration="5333000" />
+      <workItem from="1608069483356" duration="2582000" />
     </task>
     <servers />
   </component>
@@ -110,10 +112,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="453" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607568192632" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1607890810096">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="1827" y="119" key="FileChooserDialogImpl" timestamp="1608085166109">
+      <screen x="1366" y="0" width="1360" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890810096" />
+    <state x="1827" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608085166109" />
     <state x="554" y="98" width="988" height="488" key="dock-window-1" timestamp="1607966939345">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

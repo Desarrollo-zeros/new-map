@@ -903,6 +903,8 @@ $(document).ready(function (){
         api.getBeneficiarios({}, function (data){
 
             if(data && data.ano_carge){
+
+
                 api.dataBeneficiarios = {
                     "total_beneficiario" : data.total,
                     "afroValue" : data.afros,
