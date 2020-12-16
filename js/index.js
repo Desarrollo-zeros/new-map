@@ -1020,7 +1020,7 @@ function format(value, div = 1, signo = "") {
         var v = Math.round(value / div);
     }
 
-    return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v)
+    return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v.toFixed(2))
 }
 
 
