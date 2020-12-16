@@ -50,7 +50,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 1;
         $data.table = "monto_inversion";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
@@ -60,7 +60,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 1;
         $data.table = "monto_beneficiarios";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
@@ -71,7 +71,7 @@ class Api{
         const  _self = this;
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 2;
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
@@ -81,7 +81,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 1;
         $data.table = "view_eje_indicativo";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
@@ -92,7 +92,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 0;
         $data.table = "view_eje_eje";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
@@ -102,7 +102,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 4;
         $data.table = "view_eje_eje_dpta_municipio";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
         _self.post("get_data_nfc", $data,function (data){
@@ -168,7 +168,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 0;
         $data.table = "view_indicadores";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }

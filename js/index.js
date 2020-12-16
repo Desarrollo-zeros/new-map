@@ -16,6 +16,7 @@ var otrosId = $("#otroDiv");
 var $selectorDpto = null;
 
 var nameDpto;
+var nameDpto1;
 var nameMunicipio;
 
 var clickDpto;
@@ -110,7 +111,7 @@ $(document).ready(function () {
                 $("#indicadoresDiv").show();
                 $("#separadorCiudad").hide();
                 $("#divProyectoNoticia").hide();
-                $("#changeTitleDpto").html(nameDpto.toUpperCase());
+                $("#changeTitleDpto").html(nameDpto1.toUpperCase());
                 $('[data-id="dependencia-hover"]').show();
                 $('[data-id="apalancamiento-hover"]').show();
 
@@ -184,7 +185,7 @@ $(document).ready(function () {
                     data.anio = $("#selectAnoCargue").val();
                     data.type = 0;
                     data.table = "view_proyecto";
-                    data.dpto = nameDpto;
+                    data.dpto = nameDpto1;
                     data.municipio = nameMunicipio;
                     api.post("get_data_nfc", data, function (response) {
                         console.log(response);
@@ -246,6 +247,10 @@ $(document).ready(function () {
                         var url = $(this).attr("url");
                         $selectorDpto = this;
                         nameDpto = $(this).attr("url");
+                        nameDpto1 = $(this).attr("title");
+                        if(nameDpto1 == null){
+                            nameDpto1 = nameDpto;
+                        }
 
                         loaderInversion
 
@@ -348,7 +353,7 @@ $(document).ready(function () {
                                 data.anio = $("#selectAnoCargue").val();
                                 data.type = 0;
                                 data.table = "view_proyecto";
-                                data.dpto = nameDpto;
+                                data.dpto = nameDpto1;
                                 data.municipio = nameMunicipio;
                                 api.post("get_data_nfc", data, function (response) {
                                     console.log(response)
@@ -506,7 +511,10 @@ $(document).ready(function () {
             var url = $(this).attr("url");
             $selectorDpto = this;
             nameDpto = $(this).attr("url");
-
+            nameDpto1 = $(this).attr("title");
+            if(nameDpto1 == null){
+                nameDpto1 = nameDpto;
+            }
             loaderInversion();
 
             loaderDepedencia();
@@ -606,7 +614,7 @@ $(document).ready(function () {
                     data.anio = $("#selectAnoCargue").val();
                     data.type = 0;
                     data.table = "view_proyecto";
-                    data.dpto = nameDpto;
+                    data.dpto = nameDpto1;
                     data.municipio = nameMunicipio;
                     api.post("get_data_nfc", data, function (response) {
                         console.log(response);
@@ -667,7 +675,7 @@ $(document).ready(function () {
         data.anio = $("#selectAnoCargue").val();
         data.type = 6;
         data.table = "view_indicadores_dpta";
-        data.dpto = nameDpto;
+        data.dpto = nameDpto1;
         data.municipio = nameMunicipio;
         api.post("get_data_nfc", data, function (data) {
 
@@ -776,8 +784,8 @@ $(document).ready(function () {
 
 
             var data  = api.dataDependencia;
-            if (nameDpto != null) {
-                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto.replaceAll(" ","").toLowerCase()));
+            if (nameDpto1 != null) {
+                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto1.replaceAll(" ","").toLowerCase()));
             }
 
 
@@ -840,7 +848,7 @@ $(document).ready(function () {
         data.anio = $("#selectAnoCargue").val();
         data.type = 0;
         data.table = "view_apalancamiento";
-        data.dpto = nameDpto;
+        data.dpto = nameDpto1;
         data.municipio = nameMunicipio;
 
         api.post("get_data_nfc", data, function (data) {
@@ -1076,8 +1084,8 @@ function getHtmlTable(id, selector, type = "") {
         }
         case "dependencia":{
             var data  = api.dataDependencia;
-            if (nameDpto != null) {
-                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto.replaceAll(" ","").toLowerCase()));
+            if (nameDpto1 != null) {
+                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto1.replaceAll(" ","").toLowerCase()));
             }
 
 
