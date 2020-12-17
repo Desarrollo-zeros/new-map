@@ -63,6 +63,8 @@ $municipios = [];
 
 
 $(document).ready(function (){
+
+
     api.post("get_data_nfc", {
         "type": 3, "table": "view_ano_cargue"
     }, function (data) {
@@ -791,7 +793,7 @@ $(document).ready(function (){
                 });
 
             }, function () {
-                $menuTooltip.removeClass('active');
+                //$menuTooltip.removeClass('active');
                 $(this).find("path").css("fill", "#717171");
                 $(this).find("div").css("color", "#717171");
             });
@@ -810,6 +812,7 @@ $(document).ready(function (){
                 let dependencia = "";
                 let dpto = [];
                 for (var i in data) {
+
                     if (dpto.find(x => x == data[i].dependencia) == undefined) {
                         dpto.push(data[i].dependencia);
                         dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
@@ -845,7 +848,7 @@ $(document).ready(function (){
 
                 $menuTooltip.css({
                     right: 150,
-                    top: 80,
+                    top: 180,
                     height: 50,
                 });
 
@@ -871,7 +874,7 @@ $(document).ready(function (){
 
             api.post("get_data_nfc", data, function (data) {
 
-
+                data =  data.filter(x => x.dependencia != "OFICINA CENTRAL");
 
                 var str ="";
                 var total = 0;
@@ -916,12 +919,17 @@ $(document).ready(function (){
                         sum = sum + ",0";
                     }
 
-                    str += "<tr style=''>\n" +
-                        "<td><div class='col-12'>" + data[0].dependencia + " </div></td>\n" +
-                        "<td><div class='col-12' style='position: position: relative;\n" +
-                        "left: 90px;text-align: right;'>" + sum + "</div></td>\n" +
-                        "</tr>";
+                    let proyectosRows = $("#apalancamiento-table tbody");
+                    proyectosRows.html("");
+                    let dependencia = data[0].dependencia;
 
+
+                    proyectosRows.append(
+                        $("<tr>").append(
+                            $("<td>", {"class":"col-12",style:"position: absolute;padding-right: 10%;"}).html(dependencia ),
+                            $("<td>", {"class":"col-12", style: "position: absolute;padding-left: 80%;"}).html(sum),
+                        )
+                    )
 
                 }else{
                     total = format(parseFloat(data[0].total_total).toFixed(2));
@@ -932,7 +940,8 @@ $(document).ready(function (){
                     if (totalSplit.length > 1 && totalSplit[1].split("").length < 2) {
                         total = total + "0";
                     }
-
+                    let proyectosRows = $("#apalancamiento-table tbody");
+                    proyectosRows.html("");
                     for (var i in data) {
                         if (data[i].fonc != parseInt(0)) {
                             let sum = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
@@ -948,23 +957,35 @@ $(document).ready(function (){
                                         sum = sum + ",0";
                                     }
                                 }
-                                str += "<tr style=''>\n" +
-                                    "<td><div class='col-12'>" + data[i].dependencia + " </div></td>\n" +
-                                    "<td><div class='col-12' style='text-align: right;'>" + sum + "</div></td>\n" +
-                                    "</tr>";
+
+
+                                let dependencia = data[i].dependencia;
+
+
+
+                                proyectosRows.append(
+                                    $("<tr>").append(
+                                        $("<td>", {"class":"col-12"}).html(dependencia ),
+                                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html(sum),
+                                    )
+                                )
+
+
                             }
                         }
                     }
 
+
                 }
 
-                $("#apalancamiento-table tbody").html(str);
+
 
                 if(total.toString().split(",").length == 1){
                     total = total + ",0";
                 }
 
                 $("#apalancamientoValue").html(total);
+
 
             }, function () {
                 $menuTooltip.removeClass('active');
@@ -1162,11 +1183,11 @@ function getHtmlTable(id, selector, type = "") {
         case "proyecto":{
             let proyectosRows = $("#proyectosRows tbody");
             proyectosRows.html("");
-            api.dataVectores.vectores.forEach(x => {
+            api.dataVectores.vectores.sort(function(a,b){return b.total - a.total;}).forEach(x => {
                 proyectosRows.append(
                     $("<tr>").append(
                         $("<td>", {"class":"col-12"}).html(x.vector),
-                        $("<td>", {"class":"col-12"}).html(x.total),
+                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html(x.total),
                     )
                 )
             });
