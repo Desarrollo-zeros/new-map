@@ -13,8 +13,8 @@ $(document).on("mouseleave", "div#colombia path, div#departamentos path", functi
 });
 
 function tooltip_map(e, ele) {
-    var name = $(ele).attr('url') != undefined ? $(ele).attr('url') : ($(ele).attr('name') != undefined ? $(ele).attr('name') : undefined);
-    if (name != undefined) {
+    var name = $(ele).attr('title') != undefined ? $(ele).attr('title') : ($(ele).attr('name') != undefined ? $(ele).attr('name') : undefined);
+    if (name != undefined || !$(ele).hasClass("disabled")) {
         $('#tooltipWindow div').html(name);
         $('#tooltipWindow').css('left', e.clientX + 10).css('top', e.clientY + 10).addClass($(ele).attr('class'));
         $('#tooltipWindow').show();

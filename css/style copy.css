@@ -4,16 +4,7 @@
 body{
   font-family: "Avenir Black", sans-serif!important;
 }
-.ulVertical{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.ulVertical li{
-  display: inline-block;
-  width: 100%;
-  text-align: left;
-}
+
 .tooltipContainer {
   position: fixed;
   height: auto;
@@ -23,101 +14,6 @@ body{
   z-index: 1000;
   background: ghostwhite;
   padding: 10px;
-}
-#ttdetalles{
-  color:rgb(113, 113, 113);
-}
-#ttdetalles_info .mostrar{
-  display: block!important;
-}
-#ttdetalles_info .detalles_info{
-  display: none;
-  z-index: 1;
-  padding: 10px;
-  position: absolute;
-  border: 1px solid red;
-  background: white;
-  border-radius: 5px 0px 0px 5px;
-}
-#ttdetalles_info div.inversion{
-  top: 0;
-  width: 200px;
-  left: -9px;
-}
-#ttdetalles_info div.dependencia{
-  top: 0;
-  min-height: 200px;
-  width: 300px;
-  left: -109px;
-}
-#ttdetalles_info div.apalancamiento{
-  top: 0;
-  width: 300px;
-  left: -109px;
-}
-#ttdetalles_info div.proyectos{
-  top: 0;
-  width: 300px;
-  left: -109px;
-}
-#ttdetalles_info div.beneficiarios{
-  top: 0;
-  width: 200px;
-  left: -9px;
-}
-#ttdetalles_menu{
-  display: flex;
-  justify-content: flex-end;
-}
-#ttdetalles_menu ul{
-  border-radius: 5px;
-}
-#ttdetalles_menu li{
-  position:relative;
-  display: block;
-  height:80px;
-  border: 1px solid red;
-  text-align:left;
-}
-#ttdetalles_menu li:first-child{
-  border-radius: 0px 5px 0px 0px;
-}
-#ttdetalles_menu li:last-child{
-  border-radius: 0px 0px 5px 0px;
-}
-#ttdetalles_menu li:hover, #ttdetalles_menu li.active{
-  background-color: rgb(255, 136, 136);
-  color: rgb(150, 3, 3);
-}
-#ttdetalles_menu .img {
-  position:absolute;
-  top:0;
-  left:0;
-  height:100%;
-  width:85px;
-  padding:5px;
-  box-sizing:border-box;
-  text-align:center;
-}
-#ttdetalles_menu .img img{
-  height: 70px;
-}
-#ttdetalles_menu .txt{
-  height: 60px;
-  margin: 10px 10px 10px 85px;
-}
-.ulVertical .img{
-  float: left;
-}
-.ulVertical .img img{
-  height: 50px;
-}
-.ulVertical .txt{
-  margin: 10px 10px 10px 70px;
-  text-align: left;
-}
-.ulVertical .txt span:first-child{
-  font-weight: bold;
 }
 
 path.disabled{
