@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="col-md-5 text-noticia" style="z-index: 99; display: inline">
 
-                                            <label>Año de información</label>
+                                            <label>Año de información</label><div id="prueba" style="color: red;">---</div>
                                             <select value="2019" class="form-control" id="selectAnoCargue">
                                                 <option>2014</option>
                                                 <option>2015</option>
@@ -73,6 +73,9 @@
             </div>
 
             <div class="row">
+                <div id="tooltipWindow" class="tooltipContainer">
+                    <div></div>
+                </div>
                 <div class="col-12 col-sm-7">
                     <div id="colombia" class="svg-container"></div>
                     <div id="departamentos" class="svg-container" style="display: none;"></div>
@@ -554,8 +557,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script src="js/Api.js"></script>
-    <script src="js/index.js"></script>
     <script src="js/chartApi.js"></script>
+    
+    <script src="js/index.js"></script>
+    <script src="js/tooltip.js"></script>
 
 </body>
 

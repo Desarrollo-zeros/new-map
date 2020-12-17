@@ -5,7 +5,15 @@ body{
   font-family: "Avenir Black", sans-serif!important;
 }
 
-
+.tooltipContainer {
+  position: fixed;
+  height: auto;
+  width: auto;
+  border-radius: 5px;
+  z-index: 1000;
+  background: ghostwhite;
+  padding: 10px;
+}
 
 @font-face {
   font-family: "Avenir Black";
