@@ -697,7 +697,7 @@ $(document).ready(function (){
                 let str = "";
 
 
-                data = data.sort(function(a,b){return parseFloat(a.indicador_nu.replaceAll(".","")) - parseFloat(b.indicador_nu.replaceAll(".",""))});
+                data = data.sort(function(a,b){return parseFloat(b.indicador_nu.replaceAll(".","")) - parseFloat(a.indicador_nu.replaceAll(".",""))});
 
                 for (var i in data) {
                     if (data[i].indicador_nu.replace('.00', '') != "0" && data[i].indicador_nu.replace(',00', '') != "0") {
