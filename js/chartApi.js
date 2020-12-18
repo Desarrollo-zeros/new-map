@@ -228,7 +228,7 @@ function getParticipacionEje(){
 
         var AMBIENTAL = data.find(x => removeAccents(x.eje) === "AMBIENTAL");
         var GOBERNANZA =  data.find(x => removeAccents(x.eje) === "GOBERNANZA");
-        var ECONOMICO =  data.find(x => removeAccents(x.eje) === "ECONÓMICO");
+        var ECONOMICO =  data.find(x => removeAccents(x.eje) === "ECONOMICO");
         var SOCIAL = data.find(x => removeAccents(x.eje) === "SOCIAL");
 
         if(!AMBIENTAL){
@@ -275,7 +275,7 @@ function getParticipacionEje(){
             let d = [
                 amb+";AMBIENTAL;#259261",
                 gob+";GOBERNANZA;#ff7600",
-                eco+";ECONOMICO;#960303",
+                eco+";ECONÓMICO;#960303",
                 soc+";SOCIAL;#0c8ecf"
             ]
 
