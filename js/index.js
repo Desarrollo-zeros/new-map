@@ -697,6 +697,7 @@ $(document).ready(function (){
                 let str = "";
 
 
+                data = data.sort(function(a,b){return a.indicador.toLowerCase() > b.indicador.toLowerCase()});
 
                 for (var i in data) {
                     if (data[i].indicador_nu.replace('.00', '') != "0" && data[i].indicador_nu.replace(',00', '') != "0") {
