@@ -367,7 +367,7 @@ function btn_atras() {
             $("#colombia").show();
             break;
         case "municipios":
-            actual = "departamento";
+            actual = "departamentos";
             $("#municipio").hide();
             $("#departamentos").show();
             break;
@@ -399,6 +399,7 @@ function Cargar_Colombia() {
 function Cargar_Departamento() {
     clickDpto = true;
     $selectorDpto = this;
+    if($(this).hasClass("disabled")) return;
     var departamento = $(this).attr("url");
     nameDpto = $(this).attr("url");
     nameDpto1 = $(this).attr("title");
@@ -435,18 +436,26 @@ function Cargar_Departamento() {
 }
 
 function Cargar_Municipios() {
+    if($(this).hasClass("disabled")) return;
     var div = $(this).closest("svg")
     var svgid = $(div).attr("id");
     actual = "municipios";
     var selector = this;
     var selectorId = selector.id;
-
-    var muni = $(selector).clone();
-    console.log(muni);
-    $("#viewPrueba").html(muni);
+    var muni = $(selector); 
+    $("#viewPrueba").html(muni.clone());
     $("#departamentos").hide();
     $("#municipio").show();
     zoomState(selectorId, svgid);
+
+    loaderInversion();
+    loaderDepedencia();
+    loaderApalancamiento();
+    loaderProyecto();
+    loaderBeneficio();
+    getParticipacionEje();
+    getParticipacionAportante();
+    loaderIndicativo();
 }
 
 function zoomState(state, nameParent) {
@@ -456,12 +465,13 @@ function zoomState(state, nameParent) {
     var rect = svg1.getBoundingClientRect();
 
     var scale = 0; //Establecer nuevo scale automatico, ignora SVG
+    console.log(rect);
     if (rect.width > rect.height) {
         scale = 450 / rect.width;
     } else {
         scale = 450 / rect.height;
     }
-
+    var position = positionElementToCenter(zoomState, nameParent, 0);
     tl
         .set(zoomState, {
             visibility: "visible"
@@ -470,9 +480,9 @@ function zoomState(state, nameParent) {
             transformOrigin: "50% 50%"
         })
         .to(zoomState, 0.7, {
-            scale,
-            x: positionElementToCenter(zoomState, nameParent, 0).x,
-            y: positionElementToCenter(zoomState, nameParent, 0).y,
+            scale: 10,
+            x: position.x,
+            y: position.y,
             ease: Power2.easeInOut
         });
     tl.pause;
@@ -500,20 +510,6 @@ function positionElementToCenter(element, nameParent, move) {
         var y = cy - bbox.y - ((bbox.height / 2) + parseInt(move)); // 20 is offset
     }
     return { x: x, y: y };
-}
-
-// No usada
-function cargarMunicipios() {
-    var arr = Array.prototype.slice.call($("svg path"));
-    for (var i in arr) {
-        let name = $(arr[i]).attr("name");
-        if (name != undefined) {
-            let municipio = $municipios.find(x => x.municipio.toLowerCase().includes(name.toLowerCase()));
-            if (municipio != null) {
-                $(arr[i]).css("fill", "#d2d2e6");
-            }
-        }
-    }
 }
 
 // Funciones Varias

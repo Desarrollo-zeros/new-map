@@ -217,12 +217,14 @@ svg {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-
+#viewPrueba .cls-1{
+  cursor:default;
+}
 .cls-1 {
   fill: #21669E!important;
   cursor: pointer;
 }
-.cls-1:hover{
+.cls-1:hover:not(.disabled){
   fill: #000000!important;
 }
 .cls-2{
@@ -713,7 +715,9 @@ li {
 }
 
 path {
-  fill: grey;
+  /*fill: grey;*/
+  fill: green;
+  border: #21669E 1px solid;
   transition: .6s fill;}
 path:hover {
   fill: #abb4b9;
