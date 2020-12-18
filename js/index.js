@@ -1203,10 +1203,20 @@ function getHtmlTable(id, selector, type = "") {
             let dependencia = "";
             let dpto = [];
             for (var i in data) {
-                if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                    dpto.push(data[i].dependencia);
-                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                if(nameDpto == "Santander"){
+                    if(data[i].dependencia == "COMITÉ SANTANDER"){
+                        if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                            dpto.push(data[i].dependencia);
+                            dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                        }
+                    }
+                }else{
+                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                        dpto.push(data[i].dependencia);
+                        dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                    }
                 }
+
 
             }
 
