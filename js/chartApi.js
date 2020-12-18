@@ -160,11 +160,12 @@ function getParticipacionAportante(){
                         'Gobernaciones',
                         'Entidadad Internacional',
                         'Municipios',
-                        'Organizaciones Nacionales Privadas',
                         'Recursos Propios',
                         'FoNC',
+                        'Especie',
                         'organizaciones Nacionales públicas',
-                        'Especie'
+                        'Organizaciones Nacionales Privadas'
+                        
                     ],
                     datasets: [
                         {
@@ -174,11 +175,11 @@ function getParticipacionAportante(){
                                 $dataAPortante.gob,
                                 $dataAPortante.inter,
                                 $dataAPortante.mun,
-                                $dataAPortante.privado,
                                 $dataAPortante.tercero,
                                 $dataAPortante.fonc,
-                                $dataAPortante.publica,
                                 $dataAPortante.especiales,
+                                $dataAPortante.publica,
+                                $dataAPortante.privado,
                             ],
                             backgroundColor: [
                                 '#f36868',
