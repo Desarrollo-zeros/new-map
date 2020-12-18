@@ -1213,12 +1213,34 @@ function getHtmlTable(id, selector, type = "") {
 
             api.dataVectores.vectores.sort(function(a,b){return b.total - a.total;}).forEach(x => {
 
-                 proyectosRows.append(
-                    $("<tr>").append(
-                        $("<td>", {"class":"col-12"}).html(x.vector),
-                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
-                    )
-                )
+
+               if(nameDpto != undefined){
+                   if(api.dataVectores.vectores.length == 1){
+                       proyectosRows.append(
+                           $("<tr>").append(
+                               $("<td>", {"class":"col-12",style:"position: absolute;padding-right: 10%;"}).html(x.vector ),
+                               $("<td>", {"class":"col-12", style: "position: absolute;padding-left: 80%;"}).html( $("<span>",vconf).html(x.total)),
+                           )
+                       )
+                   }else{
+                       proyectosRows.append(
+                           $("<tr>").append(
+                               $("<td>", {"class":"col-12"}).html(x.vector),
+                               $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
+                           )
+                       )
+                   }
+
+               }else{
+                   proyectosRows.append(
+                       $("<tr>").append(
+                           $("<td>", {"class":"col-12"}).html(x.vector),
+                           $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
+                       )
+                   )
+               }
+
+
             });
             break;
         }
