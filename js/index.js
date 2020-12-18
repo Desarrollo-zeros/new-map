@@ -701,7 +701,7 @@ $(document).ready(function (){
 
                 for (var i in data) {
                     if (data[i].indicador_nu.replace('.00', '') != "0" && data[i].indicador_nu.replace(',00', '') != "0") {
-                        str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-4'><span style=\"font-weight: bold;\">" + data[i].indicador_nu.replace('.00', '') + "</span></div> <div class='col-md-8'><span>" + data[i].indicador + "</span> </div> </div></h3>";
+                        str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-4'><span style=\"font-weight: bold;\">" + data[i].indicador_nu + "</span></div> <div class='col-md-8'><span>" + data[i].indicador + "</span> </div> </div></h3>";
                     }
                 }
 
@@ -1212,9 +1212,7 @@ function getHtmlTable(id, selector, type = "") {
 
 
             api.dataVectores.vectores.sort(function(a,b){return b.total - a.total;}).forEach(x => {
-
-
-               if(nameDpto != undefined){
+                if(nameDpto != undefined){
                    if(api.dataVectores.vectores.length == 1){
                        proyectosRows.append(
                            $("<tr>").append(
@@ -1230,7 +1228,6 @@ function getHtmlTable(id, selector, type = "") {
                            )
                        )
                    }
-
                }else{
                    proyectosRows.append(
                        $("<tr>").append(
