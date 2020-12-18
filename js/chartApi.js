@@ -226,10 +226,10 @@ function getParticipacionEje(){
     api.getVieEjeIndicativo1({}, function (data){
 
 
-        var AMBIENTAL = data.find(x => x.eje === "AMBIENTAL");
-        var GOBERNANZA =  data.find(x => x.eje === "GOBERNANZA");
-        var ECONOMICO =  data.find(x => x.eje === "ECONOMICO");
-        var SOCIAL = data.find(x => x.eje === "SOCIAL");
+        var AMBIENTAL = data.find(x => removeAccents(x.eje) === "AMBIENTAL");
+        var GOBERNANZA =  data.find(x => removeAccents(x.eje) === "GOBERNANZA");
+        var ECONOMICO =  data.find(x => removeAccents(x.eje) === "ECONOMICO");
+        var SOCIAL = data.find(x => removeAccents(x.eje) === "SOCIAL");
 
         if(!AMBIENTAL){
             AMBIENTAL = {total : 0};
@@ -274,9 +274,9 @@ function getParticipacionEje(){
 
             let d = [
                 amb+";AMBIENTAL;#259261",
-                gob+";GOBERNANZA;#e39f3d",
+                gob+";GOBERNANZA;#ff7600",
                 eco+";ECONOMICO;#960303",
-                soc+";SOCIAL;#960303"
+                soc+";SOCIAL;#0c8ecf"
             ]
 
 
@@ -303,11 +303,12 @@ function getParticipacionEje(){
             let dataColor = [];
             $dataEje.split(",").forEach(x => {
                 let d = x.split(":");
-                if(d[0] != "" && d[1] != 0){
+                if(d[0] != ""){
                     dataValue.push(parseFloat(d[1]));
                     dataLabel.push(d[0]);
                     dataColor.push(d[2]);
                 }
+
 
             });
 

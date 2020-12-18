@@ -3,7 +3,7 @@ var title = "Mapa Ejecución de Proyectos Sostenibles";
 $description = null;
 $menuTooltip = null;
 
-
+var vconf = { style: "color: #000000"};
 
 var afroId = $("#afroDiv");
 var hombresId = $("#hombresDiv");
@@ -927,7 +927,7 @@ $(document).ready(function (){
                     proyectosRows.append(
                         $("<tr>").append(
                             $("<td>", {"class":"col-12",style:"position: absolute;padding-right: 10%;"}).html(dependencia ),
-                            $("<td>", {"class":"col-12", style: "position: absolute;padding-left: 80%;"}).html(sum),
+                            $("<td>", {"class":"col-12", style: "position: absolute;padding-left: 80%;"}).html( $("<span>",vconf).html(sum)),
                         )
                     )
 
@@ -966,7 +966,7 @@ $(document).ready(function (){
                                 proyectosRows.append(
                                     $("<tr>").append(
                                         $("<td>", {"class":"col-12"}).html(dependencia ),
-                                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html(sum),
+                                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(sum)),
                                     )
                                 )
 
@@ -1123,9 +1123,9 @@ function getHtmlTable(id, selector, type = "") {
 
 
             $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
-            $("#rp" + type).html(format(api.dataInversion.rp, 1000000, "$") + " MM")
-            $("#fonc" + type).html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
-            $("#terceros" + type).html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
+            $("#rp" + type).html($("<span>",vconf).html(format(api.dataInversion.rp, 1000000, "$") + " MM"));
+            $("#fonc" + type).html($("<span>",vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " MM"));
+            $("#terceros" + type).html($("<span>",vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " MM"));
 
 
 
@@ -1133,7 +1133,7 @@ function getHtmlTable(id, selector, type = "") {
         }
         case "beneficio":{
             $("#total_beneficiario" + type).html(format(api.dataBeneficiarios.total_beneficiario));
-            var vconf = { style: "color: #000000"};
+
 
             if(parseInt(api.dataBeneficiarios.afroValue) == 0){
                 $("#afroDiv").parent().parent().hide();
@@ -1187,7 +1187,7 @@ function getHtmlTable(id, selector, type = "") {
                 proyectosRows.append(
                     $("<tr>").append(
                         $("<td>", {"class":"col-12"}).html(x.vector),
-                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html(x.total),
+                        $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
                     )
                 )
             });
@@ -1331,4 +1331,9 @@ function zoomState(state, nameParent) {
         tl.reverse();
     });
 
+}
+
+
+const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
