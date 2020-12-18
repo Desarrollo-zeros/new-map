@@ -203,7 +203,6 @@ $(document).ready(function (){
                         data.municipio = nameMunicipio;
                         api.post("get_data_nfc", data, function (response) {
                             console.log(response);
-                            debugger
                             let str = "";
                             for (var i in response) {
                                 str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">" + response[i].nombre_proyecto + "</span></h3>";
@@ -700,8 +699,8 @@ $(document).ready(function (){
 
 
                 for (var i in data) {
-                    if (data[i].indicador_nu.replace('.00', '') != "0") {
-                        str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-3'><span style=\"font-weight: bold;\">" + data[i].indicador_nu.replace('.00', '') + "</span></div> <div class='col-md-9'><span>" + data[i].indicador + "</span> </div> </div></h3>";
+                    if (data[i].indicador_nu.replace('.00', '') != "0" && data[i].indicador_nu.replace(',00', '') != "0") {
+                        str += "<h3 style=\"font-size: 12px\"><div class='row'><div class='col-md-4'><span style=\"font-weight: bold;\">" + data[i].indicador_nu.replace('.00', '') + "</span></div> <div class='col-md-8'><span>" + data[i].indicador + "</span> </div> </div></h3>";
                     }
                 }
 
@@ -792,6 +791,10 @@ $(document).ready(function (){
                     zIndex: 99
                 });
 
+                if(nameDpto != null){
+                    $("#dependenciasRow").css("height","auto");
+                }
+
             }, function () {
                 //$menuTooltip.removeClass('active');
                 $(this).find("path").css("fill", "#717171");
@@ -827,6 +830,8 @@ $(document).ready(function (){
                 $("#depedenciaTotal").html(dpto.length);
 
                 $("#dependenciasRow").html(dependencia);
+
+
 
 
             }, function () {
@@ -881,9 +886,9 @@ $(document).ready(function (){
                 if(data[0].dpto != undefined){
                     for(var i in data){
 
-                        let t = format(parseFloat(data[i].total_total).toFixed(2));
+                        let t = parseFloat(data[i].total_total).toFixed(2);
 
-                        if (t != "Infinity" && parseFloat(t) != 0 && t != " NaN") {
+                        if (t != "Infinity"  && t != " NaN") {
                             if(t == null){
                                 t = 0;
                             }
@@ -893,6 +898,8 @@ $(document).ready(function (){
                     if(total == null){
                         total = 0;
                     }
+                    total = format(total);
+
                     let totalSplit = total.toString().split(",");
                     if (totalSplit.length > 1 &&  totalSplit[1].split("").length < 2) {
                         total = total + "0";
@@ -904,7 +911,7 @@ $(document).ready(function (){
                             let s = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
                             if (s != "Infinity" && parseFloat(s) != 0 && s != "NAN") {
 
-                                s = format(parseFloat(s).toFixed(2));
+                                s = parseFloat(s).toFixed(2);
                                 let sumSplit = s.toString().split(",");
                                 if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
                                     s = s + "0";
@@ -914,6 +921,8 @@ $(document).ready(function (){
                         }
                     }
 
+
+                    sum = format(sum);
 
                     if(sum.toString().split(",").length == 1){
                         sum = sum + ",0";
@@ -1203,21 +1212,10 @@ function getHtmlTable(id, selector, type = "") {
             let dependencia = "";
             let dpto = [];
             for (var i in data) {
-                if(nameDpto == "Santander"){
-                    if(data[i].dependencia == "COMITÉ SANTANDER"){
-                        if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                            dpto.push(data[i].dependencia);
-                            dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
-                        }
-                    }
-                }else{
-                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                        dpto.push(data[i].dependencia);
-                        dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
-                    }
+                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                    dpto.push(data[i].dependencia);
+                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
                 }
-
-
             }
 
             if (data.length == 0) {
