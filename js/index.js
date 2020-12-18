@@ -697,7 +697,7 @@ $(document).ready(function (){
                 let str = "";
 
 
-                data = data.sort(function(a,b){return a.indicador.toLowerCase() > b.indicador.toLowerCase()});
+                data = data.sort(function(a,b){return parseFloat(a.indicador_nu.replaceAll(".","")) - parseFloat(b.indicador_nu.replaceAll(".",""))});
 
                 for (var i in data) {
                     if (data[i].indicador_nu.replace('.00', '') != "0" && data[i].indicador_nu.replace(',00', '') != "0") {
@@ -816,12 +816,20 @@ $(document).ready(function (){
                 let dependencia = "";
                 let dpto = [];
                 for (var i in data) {
-
-                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                        dpto.push(data[i].dependencia);
-                        dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                    if(nameDpto != null){
+                        if(data[i].dependencia == "COMITÉ SANTANDER"){
+                            if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                dpto.push(data[i].dependencia);
+                                dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                return ;
+                            }
+                        }
+                    }else{
+                        if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                            dpto.push(data[i].dependencia);
+                            dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                        }
                     }
-
                 }
 
                 if (data.length == 0) {
@@ -1213,10 +1221,21 @@ function getHtmlTable(id, selector, type = "") {
             let dependencia = "";
             let dpto = [];
             for (var i in data) {
-                if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                    dpto.push(data[i].dependencia);
-                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                if(nameDpto != null){
+                    if(data[i].dependencia == "COMITÉ SANTANDER"){
+                        if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                            dpto.push(data[i].dependencia);
+                            dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                        }
+                        break;
+                    }
+                }else{
+                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                        dpto.push(data[i].dependencia);
+                        dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                    }
                 }
+
             }
 
             if (data.length == 0) {
