@@ -303,7 +303,7 @@ function getParticipacionEje(){
             let dataColor = [];
             $dataEje.split(",").forEach(x => {
                 let d = x.split(":");
-                if(d[0] != ""){
+                if(d[0] != "" && d[1] != 0){
                     dataValue.push(parseFloat(d[1]));
                     dataLabel.push(d[0]);
                     dataColor.push(d[2]);
