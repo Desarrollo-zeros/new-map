@@ -1207,8 +1207,13 @@ function getHtmlTable(id, selector, type = "") {
         case "proyecto":{
             let proyectosRows = $("#proyectosRows tbody");
             proyectosRows.html("");
+
+
+
+
             api.dataVectores.vectores.sort(function(a,b){return b.total - a.total;}).forEach(x => {
-                proyectosRows.append(
+
+                 proyectosRows.append(
                     $("<tr>").append(
                         $("<td>", {"class":"col-12"}).html(x.vector),
                         $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
@@ -1270,7 +1275,8 @@ function getHtmlTable(id, selector, type = "") {
 
 
     $("#total_proyecto" + type).html(format(api.dataVectores.total_proyecto, 1, ""));
-    $("#infraestructuraValue" + type).html("Infraestructura <br><span style='color: #000000'>" + format(api.dataVectores.infraestructuraValue.total, 1, "") + "</span>");
+    $("#infraestructuraValue" + type).html("
+     <br><span style='color: #000000'>" + format(api.dataVectores.infraestructuraValue.total, 1, "") + "</span>");
 
     */
 }
