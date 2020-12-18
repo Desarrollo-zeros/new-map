@@ -823,6 +823,12 @@ $(document).ready(function (){
                                 dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
                                 return ;
                             }
+                        }else{
+                            if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                dpto.push(data[i].dependencia);
+                                dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                return ;
+                            }
                         }
                     }else{
                         if (dpto.find(x => x == data[i].dependencia) == undefined) {
@@ -1216,8 +1222,6 @@ function getHtmlTable(id, selector, type = "") {
             if (nameDpto1 != null) {
                 data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto1.replaceAll(" ","").toLowerCase()));
             }
-
-
             let dependencia = "";
             let dpto = [];
             for (var i in data) {
@@ -1228,6 +1232,11 @@ function getHtmlTable(id, selector, type = "") {
                             dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
                         }
                         break;
+                    }else{
+                        if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                            dpto.push(data[i].dependencia);
+                            dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                        }
                     }
                 }else{
                     if (dpto.find(x => x == data[i].dependencia) == undefined) {
