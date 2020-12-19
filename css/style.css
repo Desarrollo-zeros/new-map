@@ -46,7 +46,7 @@ body{
 }
 #ttdetalles_info div.dependencia{
   top: 0;
-  min-height: 200px;
+  min-height: 161px;
   width: 300px;
   left: -109px;
 }
@@ -54,16 +54,22 @@ body{
   top: 0;
   width: 300px;
   left: -109px;
+  min-height: 241px;
+  max-height: 400px;
 }
 #ttdetalles_info div.proyectos{
   top: 0;
   width: 300px;
   left: -109px;
+  min-height: 321px;
 }
 #ttdetalles_info div.beneficiarios{
   top: 0;
   width: 200px;
   left: -9px;
+}
+#ttdetalles_info .scrollerY{
+  max-height: 354px;
 }
 #ttdetalles_menu{
   display: flex;
@@ -230,7 +236,10 @@ svg {
 .cls-2{
   fill: #717171!important;
 }
-
+#scrollerIndicativo{
+  height: auto;
+  max-height: 280px;
+}
 .description {
   pointer-events: none;
   position: absolute;
