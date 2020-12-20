@@ -223,7 +223,9 @@ svg {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-#viewPrueba .cls-1{
+#viewPrueba{
+  height: 450px;
+  width: 450px;
   cursor:default;
 }
 .cls-1 {

@@ -346,6 +346,8 @@ function municipios_load() {
     });
 }
 function btn_atras() {
+    $('#ttdetalles_menu li.active').removeClass('active');
+    $('#ttdetalles_info .mostrar').removeClass('mostrar');
     switch (actual) {
         case "departamentos":
             actual = "pais";
@@ -392,7 +394,7 @@ function Cargar_Colombia() {
     getParticipacionAportante();
     loaderIndicativo();
 }
-function Colombia_a_Departamento(){
+function Colombia_a_Departamento() {
     actual_departamento = $(this).attr("url");
     Cargar_Departamento(this);
 }
@@ -400,6 +402,8 @@ function Cargar_Departamento(ele) {
     clickDpto = true;
     $selectorDpto = ele;
     if ($(ele).hasClass("disabled")) return;
+    $('#ttdetalles_info .mostrar').removeClass('mostrar');
+    $('#ttdetalles_menu li.active').removeClass('active');
     var departamento = actual_departamento;
     nameDpto = $(ele).attr("url");
     nameDpto1 = $(ele).attr("title");
@@ -437,17 +441,30 @@ function Cargar_Departamento(ele) {
     $("#indicadoresDiv").show();
 }
 
-function Departamento_a_municipio(){
+function Departamento_a_municipio() {
     actual_municipio = $(this).attr("name");
     nameMunicipio = $(this).attr("name");
     Cargar_Municipio(this);
 }
 function Cargar_Municipio(ele) {
     if ($(ele).hasClass("disabled")) return;
+    $('#ttdetalles_info .mostrar').removeClass('mostrar');
+    $('#ttdetalles_menu li.active').removeClass('active');
     var div = $(ele).closest("svg")
-    var svgid = $(div).attr("id");
-    actual = "municipios";
     
+    $("#viewPrueba").html($(ele).clone().attr('id', 'vistaMunicipio'));
+    $("#departamentos, #indicadoresDiv").hide();
+    $("#municipio").show();
+    
+    ZoomMunicipio();
+    
+
+    actual = "municipios";
+    $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
+    loaderInversion();
+    loaderProyecto();
+    loaderBeneficio();
+
     /*var new_ele = $(ele).find("path").eq(0);
     
     console.log("-------------------------");
@@ -457,17 +474,43 @@ function Cargar_Municipio(ele) {
     
     $("#departamentos, #indicadoresDiv").hide();
     $("#municipio").show();
-    //zoomState("municipio_activo", "viewPrueba");*/
+    //zoomState("municipio_activo", "viewPrueba");
 
 
-    $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
     loaderInversion();
     loaderProyecto();
     loaderBeneficio();
     getParticipacionEje();
-    getParticipacionAportante();
+    getParticipacionAportante();*/
 }
 
+function ZoomMunicipio(){
+    var new_ele = document.getElementById('vistaMunicipio');
+    var rect = new_ele.getBoundingClientRect(), tl = new TimelineMax();
+    var scale = 0; //Establecer nuevo scale automatico, ignora SVG
+    console.log(rect);
+    if (rect.width > rect.height) {
+        scale = 450 / rect.width;
+    } else {
+        scale = 450 / rect.height;
+    }
+
+    //var position = positionElementToCenter(svg1, $(div).attr('id'), 0);
+    var position = {x: -117.31997680664062, y: -151.4949951171875}; 
+    
+    //console.log(position);
+    tl.set(new_ele, {
+        visibility: "visible"
+    }).set(new_ele, {
+        transformOrigin: "50% 50%"
+    }).to(new_ele, 0.7, {
+        scale: 10,
+        x: position.x,
+        y: position.y,
+        ease: Power2.easeInOut
+    });
+    tl.pause;
+}
 function zoomState(state, nameParent) {
     console.log(state);
     var zoomState = document.getElementById(state), tl = new TimelineMax();
@@ -506,8 +549,7 @@ function positionElementToCenter(element, nameParent, move) {
 
     var bbox = element.getBBox(),
         svg = document.getElementById(nameParent),
-        viewBox = svg.getAttribute('viewBox');
-    console.log(viewBox);
+        viewBox = $(svg).attr('viewBox');
     viewBox = viewBox.split(' ');
 
     var cx = parseFloat(viewBox[0]) + (parseFloat(viewBox[2]) / 2);
