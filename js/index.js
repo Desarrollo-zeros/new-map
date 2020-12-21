@@ -359,10 +359,6 @@ $(document).ready(function (){
                                     tipypePath = "#path6769";
                                     setTimeout(function (){
                                         $(tipypePath).click();
-
-
-
-
                                     },50);
                                 }
 
@@ -580,6 +576,7 @@ $(document).ready(function (){
 
 
             $("path.cls-1").click(function () {
+
                 clickDpto = true;
                 var url = $(this).attr("url");
                 $selectorDpto = this;
@@ -624,6 +621,11 @@ $(document).ready(function (){
 
                     $description = $(".description");
                     var style = null;
+
+
+
+
+
                     $('path.cls-1').hover(function () {
 
                         var name = $(this).attr('name');
@@ -651,21 +653,8 @@ $(document).ready(function (){
                         $description.removeClass('active');
                     });
                     let tipypePath = "path.cls-1";
+
                     if($($selectorDpto).attr("office") == 1 || $($selectorDpto).attr("office") ==2){
-                        tipypePath = "#path6769";
-                        setTimeout(function (){
-                            $(tipypePath).click();
-                            $typeOffice = 1;
-                            $("#changeTitleDpto").html("Bogotá");
-                            $("#separadorCiudad").show();
-                            $("#nameCiudad").html("OFICINA CENTRAL");
-                            loaderInversion();
-                            loaderProyecto();
-                            loaderProyectos();
-
-
-                        },50);
-                    }else if($($selectorDpto).attr("office") == 3){
                         tipypePath = "#path3340";
                         setTimeout(function (){
                             $(tipypePath).click();
@@ -676,6 +665,23 @@ $(document).ready(function (){
                             loaderInversion();
                             loaderProyecto();
                             loaderProyectos();
+
+
+                        },50);
+                    }else if($($selectorDpto).attr("office") == 3){
+                        tipypePath = "#path6769";
+                        setTimeout(function (){
+
+                            $(tipypePath).click();
+                            $typeOffice = 1;
+                            $("#changeTitleDpto").html("Bogotá");
+                            $("#separadorCiudad").show();
+                            $("#nameCiudad").html("OFICINA CENTRAL");
+                            loaderInversion();
+                            loaderProyecto();
+                            loaderProyectos();
+
+
 
 
                         },50);
@@ -754,12 +760,16 @@ $(document).ready(function (){
             });
 
             $(".path7297-2").click(function (){
-                if(this.id == "path72955"){
-                    $selectorDpto = $("#path7280")[0];
-                    $("#path7280").click();
-                }else{
+
+                if(this.id == "path72956"){
                     $selectorDpto = $("#path6475")[0];
+                    $("#path6475").attr("office",3);
                     $("#path6475").click();
+                }else{
+                    $selectorDpto = $("#path7280")[0];
+                    $("#path7280").attr("office",2);
+                    $("#path7280").click();
+
                 }
             });
 
