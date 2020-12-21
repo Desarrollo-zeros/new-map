@@ -27,7 +27,7 @@ function cargarMunicipios() {
     for (var i in arr) {
         let name = $(arr[i]).attr("name");
         if (name != undefined) {
-            let municipio = $municipios.find(x => x.municipio.toLowerCase().includes(name.toLowerCase()));
+            let municipio = $municipios.find(x => removeAccents(x.municipio.toLowerCase()).includes(removeAccents(name.toLowerCase())));
             if (municipio != null) {
                 $(arr[i]).css("fill", "#d2d2e6");
             }
@@ -61,6 +61,8 @@ $(document).on('mousemove', function (e) {
 $municipios = [];
 
 
+$typeOffice = 0;
+
 
 $(document).ready(function (){
 
@@ -89,6 +91,10 @@ $(document).ready(function (){
 
 
         $("#btnAtras").click(function () {
+
+           if("OFICINA CENTRAL" == $(nameCiudad).text() || $(nameCiudad).text() == "CENICAFÉ"){
+               window.location.href = "";
+           }
 
             $description.removeClass('active');
 
@@ -158,8 +164,16 @@ $(document).ready(function (){
                         }
                         $description.removeClass('active');
                     });
+                    let tipypePath = "path.cls-1";
+                    if($($selectorDpto).attr("office") == 1){
+                        tipypePath = "#path6769";
+                        setTimeout(function (){
+                            $(tipypePath).click();
 
-                    $("path.cls-1").click(function (event) {
+                        },50);
+                    }
+
+                    $(tipypePath).click(function (event) {
                         $description.removeClass('active');
                         $selectorDpto = this;
                         nameMunicipio = $(this).attr("name");
@@ -327,7 +341,19 @@ $(document).ready(function (){
                                     $description.removeClass('active');
                                 });
 
-                                $("path.cls-1").click(function (event) {
+                                let tipypePath = "path.cls-1";
+                                if($($selectorDpto).attr("office") == 1){
+                                    tipypePath = "#path6769";
+                                    setTimeout(function (){
+                                        $(tipypePath).click();
+
+
+
+
+                                    },50);
+                                }
+
+                                $(tipypePath).click(function (event) {
                                     clickDpto = true;
                                     $description.removeClass('active');
                                     $selectorDpto = this;
@@ -408,14 +434,16 @@ $(document).ready(function (){
                             $description.html($(this).attr('title'));
 
                             if ($(this).attr('title') == "Cundinamarca") {
-                                $("#path6475").css("fill", "#CC2929");
-                                $("#path6415").css("fill", "#CC2929");
+                                //$("#path6475").css("fill", "#CC2929");
+
                             }
+                            //$("#path6415").css("fill", "#CC2929");
                         }, function () {
                             if ($(this).attr('title') == "Cundinamarca") {
-                                $("#path6475").css("fill", "#d2d2e6");
-                                $("#path6415").css("fill", "#d2d2e6");
+                                //$("#path6475").css("fill", "#d2d2e6");
+
                             }
+                            //$("#path6415").css("fill", "#d2d2e6");
                             $description.removeClass('active');
                         });
 
@@ -520,10 +548,17 @@ $(document).ready(function (){
             //$(this).find("path").attr("filter","url(#dropShadow)");
 
 
+
+
+
             $("path.cls-1").click(function () {
                 clickDpto = true;
                 var url = $(this).attr("url");
                 $selectorDpto = this;
+
+
+
+
                 nameDpto = $(this).attr("url");
                 nameDpto1 = $(this).attr("title");
                 if(nameDpto1 == null){
@@ -562,13 +597,14 @@ $(document).ready(function (){
                     $description = $(".description");
                     var style = null;
                     $('path.cls-1').hover(function () {
+
                         var name = $(this).attr('name');
                         style = $(this).attr("style")
 
                         if (style != "fill: rgb(210, 210, 230);") {
                             return;
                         }
-                        //$(this).css("fill","#6ef35e");
+                        $(this).css("fill","#6ef35e");
                         if ($selectorDpto) {
                             $($selectorDpto).css("fill", "#960303");
                         }
@@ -586,9 +622,34 @@ $(document).ready(function (){
                         }
                         $description.removeClass('active');
                     });
+                    let tipypePath = "path.cls-1";
+                    if($($selectorDpto).attr("office") == 1 || $($selectorDpto).attr("office") ==2){
+                        tipypePath = "#path6769";
+                        setTimeout(function (){
+                            $(tipypePath).click();
+                            $typeOffice = 1;
+                            $("#changeTitleDpto").html("Bogotá");
+                            $("#separadorCiudad").show();
+                            $("#nameCiudad").html("OFICINA CENTRAL");
+                        },50);
+                    }else if($($selectorDpto).attr("office") == 3){
+                        tipypePath = "#path3340";
+                        setTimeout(function (){
+                            $(tipypePath).click();
+                            $typeOffice = 2;
+                            $("#changeTitleDpto").html("Chinchiná");
+                            $("#separadorCiudad").show();
+                            $("#nameCiudad").html("CENICAFÉ");
+                        },50);
+                    }else{
 
-                    $("path.cls-1").click(function (event) {
+                    }
+
+
+
+                    $(tipypePath).click(function (event) {
                         clickDpto = false;
+
                         $("#col-th-apalancamiento").css("left","60%");
                         $description.removeClass('active');
                         $selectorDpto = this;
@@ -646,6 +707,9 @@ $(document).ready(function (){
                         })
 
 
+
+
+
                         $("#colombia").load("img/departamentos/prueba.svg", function () {
                             $("#viewPrueba").append($(selector)[0])
                             $("#colombia svg path").show()
@@ -662,20 +726,44 @@ $(document).ready(function (){
 
             $description = $(".description");
 
+            $(".path7297-2").hover(function (){
+                $description.addClass('active');
+                $description.html($(this).attr('title'));
+
+            }, function () {
+                $description.removeClass('active');
+            });
+
+            $(".path7297-2").click(function (){
+                if(this.id == "path72955"){
+                    $selectorDpto = $("#path7280")[0];
+                    $("#path7280").click();
+                }else{
+                    $selectorDpto = $("#path6475")[0];
+                    $("#path6475").click();
+                }
+            });
+
+
+
+
+
             $('path.cls-1').hover(function () {
                 $(this).attr("class", "cls-1 heyo");
                 $description.addClass('active');
                 $description.html($(this).attr('title'));
 
                 if ($(this).attr('title') == "Cundinamarca") {
-                    $("#path6475").css("fill", "#CC2929");
-                    $("#path6415").css("fill", "#CC2929");
+                    //$("#path6475").css("fill", "#CC2929");
+                    //$("#path6415").css("fill", "#CC2929");
                 }
+                //$("#path6415").css("fill", "#CC2929");
             }, function () {
                 if ($(this).attr('title') == "Cundinamarca") {
-                    $("#path6475").css("fill", "#d2d2e6");
-                    $("#path6415").css("fill", "#d2d2e6");
+                    //$("#path6475").css("fill", "#d2d2e6");
+                    //$("#path6415").css("fill", "#d2d2e6");
                 }
+               // $("#path6415").css("fill", "#d2d2e6");
                 $description.removeClass('active');
             });
 
@@ -898,12 +986,13 @@ $(document).ready(function (){
 
                 var str ="";
                 var total = 0;
+
                 if(data[0].dpto != undefined){
                     for(var i in data){
 
                         let t = parseFloat(data[i].total_total).toFixed(2);
 
-                        if (t != "Infinity"  && t != " NaN") {
+                        if (t != "Infinity"  && t.replaceAll(" ","") != "NaN") {
                             if(t == null){
                                 t = 0;
                             }

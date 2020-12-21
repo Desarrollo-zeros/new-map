@@ -108,10 +108,6 @@ svg {
   transition: 0.3s;
 }
 
-.cls-1 {
-  fill: #21669E;
-  cursor: pointer;
-}
 
 .description {
   pointer-events: none;
@@ -595,11 +591,9 @@ li {
 
 path {
   fill: grey;
-  transition: .6s fill;}
-path:hover {
-  fill: #abb4b9;
-  cursor: pointer;
+  transition: .6s fill;
 }
+
 #path173-8 {
   fill: red;
 }
@@ -627,9 +621,18 @@ loader {
 }
 
 .scrollerY{
-  overflow-y:scroll
+  overflow-y:scroll;
+  scrollbar-color: #b30000 #fffefe;
+
 }
 
+div{
+  scrollbar-color: #b30000 #fffefe;
+}
+
+html {
+  scrollbar-color: #b30000 #fffefe!important;
+}
 
 /* width */
 .scrollerY::-webkit-scrollbar {
@@ -679,4 +682,8 @@ div::-webkit-scrollbar-thumb {
 /* Handle on hover */
 div::-webkit-scrollbar-thumb:hover {
   background: #b30000;
+}
+
+div::-webkit-scrollbar-track {
+  background: #fffefe;
 }

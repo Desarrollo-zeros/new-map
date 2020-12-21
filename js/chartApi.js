@@ -196,7 +196,18 @@ function getParticipacionAportante(){
                     ]
                 },
                 options:  {
+                    tooltips:{
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                if(tooltipItem['index'] == 7){
+                                    return "Org. N. Públicas" +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%"
 
+                                }else{
+                                    return (data["labels"][tooltipItem['index']] +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%")
+                                }
+                            },
+                        },
+                    },
                     plugins: {
                         labels: {
                             render: function (args) {
@@ -210,8 +221,9 @@ function getParticipacionAportante(){
                             fontColor: 'rgb(2,2,2)',
                             strokeStyle : 'rgb(2,2,2)',
                             padding : 10,
+                            Align : 'left'
                         },
-                        position: 'left',
+                        //position: 'right',
 
                     },
                 },
@@ -294,6 +306,13 @@ function getParticipacionEje(){
                 let total = x.split(";")[0];
                 let title = x.split(";")[1];
                 let color = x.split(";")[2];
+
+                let totalSplit = total.split(".")[1];
+
+                if(totalSplit && totalSplit.split("").length == 1){
+                    total = total.toString()+"0";
+                }
+
                 $dataEje += ""+title+":"+total+":"+color+",";
             });
 
@@ -305,7 +324,14 @@ function getParticipacionEje(){
             $dataEje.split(",").forEach(x => {
                 let d = x.split(":");
                 if(d[0] != "" && d[1] != 0){
-                    dataValue.push(parseFloat(d[1]));
+
+                    let totalSplit = d[1].split(".")[1];
+                    let total = d[1];
+                    if(totalSplit && totalSplit.split("").length == 1){
+                        total = total.toString()+"0";
+                    }
+
+                    dataValue.push(total);
                     dataLabel.push(d[0]);
                     dataColor.push(d[2]);
                 }

@@ -52,6 +52,13 @@ class Api{
         $data.table = "monto_inversion";
         $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
+
+        if($typeOffice == 1){
+
+        }else if($typeOffice == 2){
+
+        }
+
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
 
