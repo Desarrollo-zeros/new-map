@@ -48,15 +48,21 @@ class Api{
     getInversion = function ($data = {}, sucessCallBack, falloCallback){
         const  _self = this;
         $data.anio = $("#selectAnoCargue").val();
-        $data.type = 1;
-        $data.table = "monto_inversion";
+
         $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
         if($typeOffice == 1){
-
+            $data.table = "view_oficina_inversion";
+            $data.type = 7;
+            $data.dependencia_id = 18;
         }else if($typeOffice == 2){
-
+            $data.table = "view_oficina_inversion";
+            $data.type = 7;
+            $data.dependencia_id = 1;
+        }else{
+            $data.table = "monto_inversion";
+            $data.type = 1;
         }
 
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
@@ -80,6 +86,21 @@ class Api{
         $data.type = 2;
         $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
+
+
+        if($typeOffice == 1){
+            $data.table = "vectores_dependencia";
+            $data.type = 7;
+            $data.dependencia_id = 18;
+        }else if($typeOffice == 2){
+            $data.table = "vectores_dependencia";
+            $data.type = 7;
+            $data.dependencia_id = 1;
+        }else{
+            $data.type = 2;
+        }
+
+
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
 

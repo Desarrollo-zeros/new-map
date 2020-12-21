@@ -20,6 +20,7 @@ var nameDpto1;
 var nameMunicipio;
 
 var clickDpto;
+$proyectosOficinas = [];
 
 
 function cargarMunicipios() {
@@ -211,10 +212,22 @@ $(document).ready(function (){
 
                         let data = {};
                         data.anio = $("#selectAnoCargue").val();
-                        data.type = 0;
+
                         data.table = "view_proyecto";
                         data.dpto = nameDpto1;
                         data.municipio = nameMunicipio;
+                        if($typeOffice == 1){
+                            $data.table = "view_proyecto_dependencia";
+                            $data.type = 7;
+                            $data.dependencia_id = 18;
+                        }else if($typeOffice == 2){
+                            $data.table = "view_proyecto_dependencia";
+                            $data.type = 7;
+                            $data.dependencia_id = 1;
+                        }else{
+                            data.type = 0;
+                        }
+
                         api.post("get_data_nfc", data, function (response) {
                             console.log(response);
                             let str = "";
@@ -390,11 +403,26 @@ $(document).ready(function (){
 
 
                                     let data = {};
+
+
+
+
                                     data.anio = $("#selectAnoCargue").val();
                                     data.type = 0;
                                     data.table = "view_proyecto";
                                     data.dpto = nameDpto1;
                                     data.municipio = nameMunicipio;
+                                    if($typeOffice == 1){
+                                        $data.table = "view_proyecto_dependencia";
+                                        $data.type = 7;
+                                        $data.dependencia_id = 18;
+                                    }else if($typeOffice == 2){
+                                        $data.table = "view_proyecto_dependencia";
+                                        $data.type = 7;
+                                        $data.dependencia_id = 1;
+                                    }else{
+                                        data.type = 0;
+                                    }
                                     api.post("get_data_nfc", data, function (response) {
                                         console.log(response)
 
@@ -631,6 +659,11 @@ $(document).ready(function (){
                             $("#changeTitleDpto").html("Bogotá");
                             $("#separadorCiudad").show();
                             $("#nameCiudad").html("OFICINA CENTRAL");
+                            loaderInversion();
+                            loaderProyecto();
+                            loaderProyectos();
+
+
                         },50);
                     }else if($($selectorDpto).attr("office") == 3){
                         tipypePath = "#path3340";
@@ -640,6 +673,11 @@ $(document).ready(function (){
                             $("#changeTitleDpto").html("Chinchiná");
                             $("#separadorCiudad").show();
                             $("#nameCiudad").html("CENICAFÉ");
+                            loaderInversion();
+                            loaderProyecto();
+                            loaderProyectos();
+
+
                         },50);
                     }else{
 
@@ -685,26 +723,7 @@ $(document).ready(function (){
 
 
 
-                        let data = {};
-                        data.anio = $("#selectAnoCargue").val();
-                        data.type = 0;
-                        data.table = "view_proyecto";
-                        data.dpto = nameDpto1;
-                        data.municipio = nameMunicipio;
-                        api.post("get_data_nfc", data, function (response) {
-                            console.log(response);
-
-                            let str = "";
-
-                            for (var i in response) {
-                                str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">" + response[i].nombre_proyecto + "</span></h3>";
-                            }
-
-                            $("#proyectosDiv").append(str);
-
-                        }, function () {
-
-                        })
+                        loaderProyectos();
 
 
 
@@ -771,6 +790,41 @@ $(document).ready(function (){
         });
 
 
+
+
+        function loaderProyectos(){
+            let data = {};
+            data.anio = $("#selectAnoCargue").val();
+            data.type = 0;
+            data.table = "view_proyecto";
+            data.dpto = nameDpto1;
+            data.municipio = nameMunicipio;
+            if($typeOffice == 1){
+                data.table = "view_proyecto_dependencia";
+                data.type = 7;
+                data.dependencia_id = 18;
+            }else if($typeOffice == 2){
+                data.table = "view_proyecto_dependencia";
+                data.type = 7;
+                data.dependencia_id = 1;
+            }else{
+                data.type = 0;
+            }
+            api.post("get_data_nfc", data, function (response) {
+                console.log(response);
+
+                let str = "";
+
+                for (var i in response) {
+                    str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">" + response[i].nombre_proyecto + "</span></h3>";
+                }
+
+                $("#proyectosDiv").append(str);
+
+            }, function () {
+
+            })
+        }
         function loaderIndicativo() {
 
             let data = {};
@@ -807,7 +861,7 @@ $(document).ready(function (){
                 $(this).find("path").css("fill", "#960303");
                 $(this).find("div").css("color", "#960303");
 
-                if(nameMunicipio == null){
+                if(nameMunicipio == null || $typeOffice != 0){
                     $menuTooltip.addClass('active');
 
                     getHtmlTable("inversion", $menuTooltip, "")
@@ -828,8 +882,12 @@ $(document).ready(function (){
 
 
             api.getInversion({}, function (data) {
-
+                if(data[0] != undefined){
+                    data = data[0];
+                    $('[data-id="beneficio-hover"]').hide();
+                }
                 if (data && data.ano_carge) {
+
                     api.dataInversion = {
                         "total_ejecucion": data.total_ejecucion,
                         "rp": data.rp,
@@ -905,17 +963,18 @@ $(document).ready(function (){
                 let dpto = [];
                 for (var i in data) {
                     if(nameDpto != null){
-                        if(data[i].dependencia == "COMITÉ SANTANDER"){
-                            if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                                dpto.push(data[i].dependencia);
-                                dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
-                                return ;
+                        if(nameDpto.toLowerCase() == "SANTANDER".toLowerCase()){
+                            if(data[i].dependencia == "COMITÉ SANTANDER"){
+                                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                    dpto.push(data[i].dependencia);
+                                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                }
+                                break;
                             }
                         }else{
                             if (dpto.find(x => x == data[i].dependencia) == undefined) {
                                 dpto.push(data[i].dependencia);
                                 dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
-                                return ;
                             }
                         }
                     }else{
@@ -1129,6 +1188,8 @@ $(document).ready(function (){
 
             api.getVectores({}, function (data) {
 
+
+
                 if (data && data["vectores"] && data["vectores"][0].ano_carge) {
                     if (!data["proyectos"]) {
                         data["proyectos"] = { total: 0 }
@@ -1149,6 +1210,14 @@ $(document).ready(function (){
 
                     $("#total_proyecto").html(format(total, 1, ""));
 
+                }else{
+
+                    api.dataVectores = {
+                        //total_proyecto: data["proyectos"].total,
+                        vectores1 : data
+                    }
+                    $proyectosOficinas = data;
+                    $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
                 }
             }, function (error) {
 
@@ -1297,37 +1366,41 @@ function getHtmlTable(id, selector, type = "") {
             let proyectosRows = $("#proyectosRows tbody");
             proyectosRows.html("");
 
+            var data = api.dataVectores.vectores;
 
-
-
-            api.dataVectores.vectores.sort(function(a,b){return b.total - a.total;}).forEach(x => {
+            if($proyectosOficinas.length>0){
+                data = $proyectosOficinas;
+            }
+            data.sort(function(a,b){return b.total - a.total;}).forEach(x => {
                 if(nameDpto != undefined){
-                   if(api.dataVectores.vectores.length == 1){
-                       proyectosRows.append(
-                           $("<tr>").append(
-                               $("<td>", {"class":"col-12",style:"position: absolute;padding-right: 10%;"}).html(x.vector ),
-                               $("<td>", {"class":"col-12", style: "position: absolute;padding-left: 80%;"}).html( $("<span>",vconf).html(x.total)),
-                           )
-                       )
-                   }else{
-                       proyectosRows.append(
-                           $("<tr>").append(
-                               $("<td>", {"class":"col-12"}).html(x.vector),
-                               $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
-                           )
-                       )
-                   }
-               }else{
-                   proyectosRows.append(
-                       $("<tr>").append(
-                           $("<td>", {"class":"col-12"}).html(x.vector),
-                           $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
-                       )
-                   )
-               }
+                    if(data.length == 1){
+                        proyectosRows.append(
+                            $("<tr>").append(
+                                $("<td>", {"class":"col-12",style:"position: absolute;padding-right: 10%;"}).html(x.vector ),
+                                $("<td>", {"class":"col-12", style: "position: absolute;padding-left: 80%;"}).html( $("<span>",vconf).html(x.total)),
+                            )
+                        )
+                    }else{
+                        proyectosRows.append(
+                            $("<tr>").append(
+                                $("<td>", {"class":"col-12"}).html(x.vector),
+                                $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
+                            )
+                        )
+                    }
+                }else{
+                    proyectosRows.append(
+                        $("<tr>").append(
+                            $("<td>", {"class":"col-12"}).html(x.vector),
+                            $("<td>", {"class":"col-12", style: "text-align: right;"}).html($("<span>",vconf).html(x.total)),
+                        )
+                    )
+                }
 
 
             });
+
+
             break;
         }
         case "dependencia":{
@@ -1339,18 +1412,22 @@ function getHtmlTable(id, selector, type = "") {
             let dpto = [];
             for (var i in data) {
                 if(nameDpto != null){
-                    if(data[i].dependencia == "COMITÉ SANTANDER"){
-                        if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                            dpto.push(data[i].dependencia);
-                            dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+
+                    if(nameDpto.toLowerCase() == "SANTANDER".toLowerCase()){
+                        if(data[i].dependencia == "COMITÉ SANTANDER"){
+                            if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                dpto.push(data[i].dependencia);
+                                dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                            }
+                            break;
                         }
-                        break;
                     }else{
                         if (dpto.find(x => x == data[i].dependencia) == undefined) {
                             dpto.push(data[i].dependencia);
                             dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
                         }
                     }
+
                 }else{
                     if (dpto.find(x => x == data[i].dependencia) == undefined) {
                         dpto.push(data[i].dependencia);
