@@ -379,7 +379,7 @@ function btn_atras() {
 function Cargar_Colombia() {
     actual = "pais";
     $("div#colombia").load("img/Colombia.svg", function () {
-        $("div#colombia").on("click", "path.cls-1", Colombia_a_Departamento)
+        $("div#colombia").on("click", "path", Colombia_a_Departamento)
         $("div#colombia svg > path").each(function () {
             if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled"))
                 $(this).addClass("disabled");
@@ -395,13 +395,13 @@ function Cargar_Colombia() {
     loaderIndicativo();
 }
 function Colombia_a_Departamento() {
+    if ($(this).hasClass("disabled")) return;
     actual_departamento = $(this).attr("url");
     Cargar_Departamento(this);
 }
 function Cargar_Departamento(ele) {
     clickDpto = true;
     $selectorDpto = ele;
-    if ($(ele).hasClass("disabled")) return;
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
     $('#ttdetalles_menu li.active').removeClass('active');
     var departamento = actual_departamento;
@@ -414,7 +414,7 @@ function Cargar_Departamento(ele) {
     var div_id = `dep_${departamento}`;
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${departamento}.svg`, function (data) {
-            $(`#${div_id}`).on("click", "path.cls-1", Departamento_a_municipio);
+            $(`#${div_id}`).on("click", "path", Departamento_a_municipio);
             $(`#${div_id} svg > path`).each(function () {
                 var name = $(ele).attr("name") == undefined ? "" : $(ele).attr("name");
                 if (name.toLowerCase().includes("xxx")) {
@@ -442,69 +442,57 @@ function Cargar_Departamento(ele) {
 }
 
 function Departamento_a_municipio() {
+    if ($(this).hasClass("disabled")) return;
     actual_municipio = $(this).attr("name");
     nameMunicipio = $(this).attr("name");
     Cargar_Municipio(this);
 }
 function Cargar_Municipio(ele) {
-    if ($(ele).hasClass("disabled")) return;
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
     $('#ttdetalles_menu li.active').removeClass('active');
     var div = $(ele).closest("svg")
-    
+
     $("#viewPrueba").html($(ele).clone().attr('id', 'vistaMunicipio'));
     $("#departamentos, #indicadoresDiv").hide();
     $("#municipio").show();
-    
+
     ZoomMunicipio();
-    
+
 
     actual = "municipios";
     $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
     loaderInversion();
     loaderProyecto();
     loaderBeneficio();
-
-    /*var new_ele = $(ele).find("path").eq(0);
-    
-    console.log("-------------------------");
-    console.log(new_ele);
-    //new_ele.attr("transform", "translate(0,0)");
-    $("#viewPrueba").html(new_ele);
-    
-    $("#departamentos, #indicadoresDiv").hide();
-    $("#municipio").show();
-    //zoomState("municipio_activo", "viewPrueba");
-
-
-    loaderInversion();
-    loaderProyecto();
-    loaderBeneficio();
-    getParticipacionEje();
-    getParticipacionAportante();*/
 }
 
-function ZoomMunicipio(){
+function ZoomMunicipio() {
     var new_ele = document.getElementById('vistaMunicipio');
     var rect = new_ele.getBoundingClientRect(), tl = new TimelineMax();
-    var scale = 0; //Establecer nuevo scale automatico, ignora SVG
+    var nscale = 0; //Establecer nuevo scale automatico, ignora SVG
     console.log(rect);
     if (rect.width > rect.height) {
-        scale = 450 / rect.width;
+        nscale = 200 / rect.width;
     } else {
-        scale = 450 / rect.height;
+        nscale = 200 / rect.height;
     }
+    var bbox = new_ele.getBBox(),
+        svg = document.getElementById('viewPrueba'),
+        viewBox = $(svg).attr('viewBox');
+    viewBox = viewBox.split(' ');
 
-    //var position = positionElementToCenter(svg1, $(div).attr('id'), 0);
-    var position = {x: -117.31997680664062, y: -151.4949951171875}; 
-    
-    //console.log(position);
+    var cx = parseFloat(viewBox[0]) + (parseFloat(viewBox[2]) / 2);
+    var cy = parseFloat(viewBox[1]) + (parseFloat(viewBox[3]) / 2);
+    var x = cx - bbox.x - ((bbox.width / 2));
+    var y = cy - bbox.y - ((bbox.height / 2));
+    var position = { x: x, y: y };
+
     tl.set(new_ele, {
         visibility: "visible"
     }).set(new_ele, {
         transformOrigin: "50% 50%"
     }).to(new_ele, 0.7, {
-        scale: 10,
+        scale: nscale,
         x: position.x,
         y: position.y,
         ease: Power2.easeInOut
@@ -570,114 +558,3 @@ function format(value, div = 1, signo = "") {
     if (div == 1) var v = value; else var v = Math.round(value / div);
     return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v)
 }
-
-
-
-/*function getHtmlTable(id, selector, type = "") {
-    switch (id) {
-        case "inversion": {
-            if (parseInt(api.dataInversion.rp) == 0) {
-                $("#rp").parent().hide();
-            } else {
-                $("#rp").parent().show();
-            }
-            if (parseInt(api.dataInversion.fonc) == 0) {
-                $("#fonc").parent().hide();
-            } else {
-                $("#fonc").parent().show();
-            }
-            if (parseInt(api.dataInversion.tercero) == 0) {
-                $("#terceros").parent().hide();
-            } else {
-                $("#terceros").parent().show();
-            }
-            $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
-            $("#rp" + type).html(format(api.dataInversion.rp, 1000000, "$") + " MM")
-            $("#fonc" + type).html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
-            $("#terceros" + type).html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
-            break;
-        }
-        case "beneficio": {
-            $("#total_beneficiario" + type).html(format(api.dataBeneficiarios.total_beneficiario));
-            var vconf = { style: "color: #000000" };
-            if (parseInt(api.dataBeneficiarios.afroValue) == 0) {
-                $("#afroDiv").parent().parent().hide();
-            } else {
-                $("#afroDiv").parent().parent().show();
-            }
-            if (parseInt(api.dataBeneficiarios.hombresValue) == 0) {
-                $("#hombresDiv").parent().parent().hide();
-            } else {
-                $("#hombresDiv").parent().parent().show();
-            }
-            if (parseInt(api.dataBeneficiarios.indigenasValue) == 0) {
-                $("#indigenasDiv").parent().parent().hide();
-            } else {
-                $("#indigenasDiv").parent().parent().show();
-            }
-            if (parseInt(api.dataBeneficiarios.jovenValue) == 0) {
-                $("#jovenDiv").parent().parent().hide();
-            } else {
-                $("#jovenDiv").parent().parent().show();
-            }
-            if (parseInt(api.dataBeneficiarios.mujerValue) == 0) {
-                $("#mujerDiv").parent().parent().hide();
-            } else {
-                $("#mujerDiv").parent().parent().show();
-            }
-            if (parseInt(api.dataBeneficiarios.ninosValue) == 0) {
-                $("#ninosDiv").parent().parent().hide();
-            } else {
-                $("#ninosDiv").parent().parent().show();
-            }
-            if (parseInt(api.dataBeneficiarios.otroValue) == 0) {
-                $("#otroDiv").parent().parent().hide();
-            } else {
-                $("#otroDiv").parent().parent().show();
-            }
-
-            $("#afroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.afroValue)));
-            $("#hombresValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.hombresValue)));
-            $("#indigenasValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.indigenasValue)));
-            $("#jovenValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.jovenValue)));
-            $("#mujerValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.mujerValue)));
-            $("#ninosValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.ninosValue)));
-            $("#otroValue" + type).html($("<span>", vconf).html(format(api.dataBeneficiarios.otroValue)));
-            break;
-        }
-        case "proyecto": {
-            let proyectosRows = $("#proyectosRows tbody");
-            proyectosRows.html("");
-            api.dataVectores.vectores.forEach(x => {
-                proyectosRows.append(
-                    $("<tr>").append(
-                        $("<td>", { "class": "col-12" }).html(x.vector),
-                        $("<td>", { "class": "col-12" }).html(x.total),
-                    )
-                )
-            });
-            break;
-        }
-        case "dependencia": {
-            var data = api.dataDependencia;
-            if (nameDpto1 != null) {
-                data = data.filter(x => x.dpta.replaceAll(" ", "").toLowerCase().includes(nameDpto1.replaceAll(" ", "").toLowerCase()));
-            }
-            let dependencia = "";
-            let dpto = [];
-            for (var i in data) {
-                if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                    dpto.push(data[i].dependencia);
-                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
-                }
-            }
-            if (data.length == 0) {
-                $menuTooltip.removeClass('active');
-            }
-            $("#depedenciaTotal").html(dpto.length);
-            $("#dependenciasRow").html(dependencia);
-            break;
-        }
-    }
-    selector.html($("#" + id + "-table-table-tooltip" + type).html());
-}*/

@@ -228,6 +228,10 @@ svg {
   width: 450px;
   cursor:default;
 }
+#viewPrueba path:hover{
+  fill: #21669E!important;
+  cursor: default;
+}
 .cls-1 {
   fill: #21669E!important;
   cursor: pointer;
