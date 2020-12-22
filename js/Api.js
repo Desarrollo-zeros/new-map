@@ -83,10 +83,10 @@ class Api{
     getVectores = function ($data = {}, sucessCallBack, falloCallback){
         const  _self = this;
         $data.anio = $("#selectAnoCargue").val();
-        $data.type = 2;
+
         $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
-
+        $data.table = "vectores";
 
         if($typeOffice == 1){
             $data.table = "vectores_dependencia";

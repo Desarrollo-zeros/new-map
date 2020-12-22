@@ -740,6 +740,7 @@ $(document).ready(function (){
 
                         loaderInversion();
 
+
                         loaderProyecto();
 
                         loaderBeneficio();
@@ -930,7 +931,7 @@ $(document).ready(function (){
 
 
             api.getInversion({}, function (data) {
-                if(data[0] != undefined){
+                if(data && data[0] != undefined){
                     data = data[0];
                     $('[data-id="beneficio-hover"]').hide();
 
@@ -947,8 +948,8 @@ $(document).ready(function (){
                         "tercero": data.tercero
                     };
 
-                    api.dataInversion.total_ejecucion = parseFloat(api.dataInversion.rp) +
-                        parseFloat(api.dataInversion.fonc) +  parseFloat(api.dataInversion.tercero)
+                    /*api.dataInversion.total_ejecucion = parseFloat(api.dataInversion.rp) +
+                        parseFloat(api.dataInversion.fonc) +  parseFloat(api.dataInversion.tercero)*/
 
                     if(parseInt(api.dataInversion.rp) == 0){
                         $("#rp").parent().hide();
@@ -968,15 +969,18 @@ $(document).ready(function (){
                     }else{
                         $("#terceros").parent().show();
                     }
-                    if(nameMunicipio != null){
-                        $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
-                    }else{
+                    if(api.dataInversion.total_ejecucion.toString().length > 9 ){
                         $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
                     }
+                    else{
+                        $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
+                    }
 
+                }else{
+                    $('[data-id="inversion-hover"]').hide();
                 }
             }, function (error) {
-
+                $('[data-id="inversion-hover"]').hide();
             });
         }
 
@@ -1042,6 +1046,15 @@ $(document).ready(function (){
                         }
                         else if(nameDpto.toLowerCase() == "CAUCA".toLowerCase()){
                             if(data[i].dependencia == "COMITÉ CAUCA"){
+                                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                    dpto.push(data[i].dependencia);
+                                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                }
+                                break;
+                            }
+                        }
+                        else if(nameDpto.toLowerCase() == "CALDAS".toLowerCase()){
+                            if(data[i].dependencia == "COMITÉ CALDAS"){
                                 if (dpto.find(x => x == data[i].dependencia) == undefined) {
                                     dpto.push(data[i].dependencia);
                                     dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
@@ -1124,7 +1137,7 @@ $(document).ready(function (){
                 var str ="";
                 var total = 0;
 
-                if(data[0].dpto != undefined){
+                if(data[0] && data[0].dpto != undefined){
                     for(var i in data){
 
                         let t = parseFloat(data[i].total_total).toFixed(2);
@@ -1182,6 +1195,9 @@ $(document).ready(function (){
                     )
 
                 }else{
+                    if(data !=undefined  && data.length == 0){
+                        return ;
+                    }
                     total = format(parseFloat(data[0].total_total).toFixed(2));
                     if(total == null){
                         total = 0;
@@ -1255,7 +1271,6 @@ $(document).ready(function (){
                 $menuTooltip.css({
                     right: 150,
                     top: 125,
-                    height: "80px!important",
                 });
 
             }, function () {
@@ -1266,9 +1281,7 @@ $(document).ready(function (){
 
             api.getVectores({}, function (data) {
 
-
-
-                if (data && data["vectores"] && data["vectores"][0].ano_carge) {
+                if (data && data["vectores"] && data["vectores"][0] && data["vectores"][0].ano_carge) {
                     if (!data["proyectos"]) {
                         data["proyectos"] = { total: 0 }
                     }
@@ -1289,13 +1302,16 @@ $(document).ready(function (){
                     $("#total_proyecto").html(format(total, 1, ""));
 
                 }else{
+                    if(data.length>0){
+                        api.dataVectores = {
+                            //total_proyecto: data["proyectos"].total,
+                            vectores1 : data
+                        }
+                        $proyectosOficinas = data;
 
-                    api.dataVectores = {
-                        //total_proyecto: data["proyectos"].total,
-                        vectores1 : data
+                        $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
+
                     }
-                    $proyectosOficinas = data;
-                    $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
                 }
             }, function (error) {
 
@@ -1383,16 +1399,34 @@ function getHtmlTable(id, selector, type = "") {
 
 
 
-            if(nameMunicipio != null){
-                $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
-            }else{
+            if(api.dataInversion.total_ejecucion.toString().length > 9 ){
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+            }
+            else{
+                $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
+            }
+
+            if(api.dataInversion.rp.replaceAll(".00","").length > 9){
+                $("#rp" + type).html($("<span>",vconf).html(format(api.dataInversion.rp, 1000000, "$") + " MM"));
+            }else{
+                $("#rp" + type).html($("<span>",vconf).html(format(api.dataInversion.rp, 1000000, "$") + " M"));
+            }
+
+            if(api.dataInversion.fonc.replaceAll(".00","").length > 9){
+                $("#fonc" + type).html($("<span>",vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " MM"));
+
+            }else{
+                $("#fonc" + type).html($("<span>",vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " M"));
+
             }
 
 
-            $("#rp" + type).html($("<span>",vconf).html(format(api.dataInversion.rp, 1000000, "$") + " MM"));
-            $("#fonc" + type).html($("<span>",vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " MM"));
-            $("#terceros" + type).html($("<span>",vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " MM"));
+            if(api.dataInversion.tercero.replaceAll(".00","").length > 9){
+                $("#terceros" + type).html($("<span>",vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " MM"));
+            }else{
+                $("#terceros" + type).html($("<span>",vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " M"));
+            }
+
 
 
 
@@ -1459,6 +1493,7 @@ function getHtmlTable(id, selector, type = "") {
                 data = $proyectosOficinas;
             }
             data.sort(function(a,b){return b.total - a.total;}).forEach(x => {
+
                 if(nameDpto != undefined){
                     if(data.length == 1){
                         proyectosRows.append(
@@ -1488,9 +1523,13 @@ function getHtmlTable(id, selector, type = "") {
             });
 
 
-            if(data.length = 1){
+            if(data.length == 1){
                 $(".table-tooltip").css("height","80px!important");
+            }else{
+                $(".table-tooltip").css("height","auto!important");
             }
+
+           // $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
 
             break;
         }
@@ -1528,6 +1567,15 @@ function getHtmlTable(id, selector, type = "") {
                             }
                         }else if(nameDpto.toLowerCase() == "CAUCA".toLowerCase()){
                             if(data[i].dependencia == "COMITÉ CAUCA"){
+                                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                    dpto.push(data[i].dependencia);
+                                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                }
+                                break;
+                            }
+                        }
+                        else if(nameDpto.toLowerCase() == "CALDAS".toLowerCase()){
+                            if(data[i].dependencia == "COMITÉ CALDAS"){
                                 if (dpto.find(x => x == data[i].dependencia) == undefined) {
                                     dpto.push(data[i].dependencia);
                                     dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";

@@ -42,7 +42,7 @@ Chart.plugins.register({
 function getParticipacionAportante(){
     api.getVieEjeIndicativo({}, function (data){
 
-        if(data[0] != undefined){
+        if(data && data[0] != undefined){
             data = data[0];
         }
         if(data && data.ano_carge) {
@@ -266,7 +266,7 @@ function getParticipacionEje(){
             SOCIAL
         };
 
-        if (data && data[0].ano_carge) {
+        if (data && data[0] && data[0].ano_carge) {
 
 
 
@@ -397,7 +397,7 @@ function getParticipacionEje(){
                         yAxes: [
                             {
                                 ticks: {
-                                    stepSize: 25
+                                    stepSize: 17
                                 },
                                 gridLines: {
                                     color: "rgba(0, 0, 0, 0)",
