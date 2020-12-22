@@ -931,6 +931,7 @@ $(document).ready(function (){
 
 
             api.getInversion({}, function (data) {
+                $('[data-id="inversion-hover"]').show();
                 if(data && data[0] != undefined){
                     data = data[0];
                     $('[data-id="beneficio-hover"]').hide();
