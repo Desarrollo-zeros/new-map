@@ -664,8 +664,9 @@ $(document).ready(function (){
                             $("#separadorCiudad").show();
                             $("#nameCiudad").html("CENICAFÉ");
                             $("#divProyectoNoticia").css({
-                                "position" : "absolute",
-                                "bottom" : "-121%",
+                                "position": "relative",
+                                "bottom": "-95px",
+                                "right": "700px",
                             });
                             $("#proyectosDiv").css("height","180px");
                             $("#divCircular").show();
@@ -688,8 +689,9 @@ $(document).ready(function (){
                             $("#separadorCiudad").show();
                             $("#nameCiudad").html("OFICINA CENTRAL");
                             $("#divProyectoNoticia").css({
-                                "position" : "absolute",
-                                "bottom" : "-121%",
+                                "position": "relative",
+                                "bottom": "-95px",
+                                "right": "700px",
                             });
 
                             $("#proyectosDiv").css("height","180px");
