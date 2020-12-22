@@ -329,6 +329,7 @@ svg {
   margin: 0 auto;
   color: #960303;
   top: 20px;
+  //height : 80px!important;
   border-radius: 5px;
   box-shadow: 0 0 0 1px #f7f7f7;
   -moz-transform: translateX(-50%);

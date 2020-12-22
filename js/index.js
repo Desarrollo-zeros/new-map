@@ -31,7 +31,14 @@ function cargarMunicipios() {
             let municipio = $municipios.find(x => removeAccents(x.municipio.toLowerCase()).includes(removeAccents(name.toLowerCase())));
             if (municipio != null) {
                 $(arr[i]).css("fill", "#d2d2e6");
+            }else{
+                $(arr[i]).attr("disabled", "disabled");
+                $(arr[i]).css("pointer-events", "none");
             }
+        }else{
+            $(arr[i]).attr("disabled", "disabled");
+            $(arr[i]).css("pointer-events", "none");
+
         }
     }
 }
@@ -240,10 +247,13 @@ $(document).ready(function (){
                         })
                         $("#colombia").load("img/departamentos/prueba.svg", function () {
                             $("#viewPrueba").append($(selector)[0])
-                            $("#colombia svg path").show()
+                            //$("#colombia svg path").show()
                             zoomState(selectorId, "viewPrueba")
                             clickDpto = false;
                             $('[data-id="beneficio-hover"]').hide();
+                            $("#viewPrueba path").css("fill","rgb(150, 3, 3)");
+
+
                         });
 
                     });
@@ -438,10 +448,12 @@ $(document).ready(function (){
 
                                     $("#colombia").load("img/departamentos/prueba.svg", function () {
                                         $("#viewPrueba").append($(selector)[0])
-                                        $("#colombia svg path").show()
+                                        //$("#colombia svg path").show()
                                         zoomState(selectorId, "viewPrueba")
                                         clickDpto = false;
                                         $('[data-id="beneficio-hover"]').hide();
+                                        $("#viewPrueba path").css("fill","rgb(150, 3, 3)");
+
                                     });
 
                                 });
@@ -760,10 +772,12 @@ $(document).ready(function (){
 
                         $("#colombia").load("img/departamentos/prueba.svg", function () {
                             $("#viewPrueba").append($(selector)[0])
-                            $("#colombia svg path").show()
+                            //$("#colombia svg path").show()
                             zoomState(selectorId, "viewPrueba")
                             clickDpto = false;
                             $('[data-id="beneficio-hover"]').hide();
+                            $("#viewPrueba path").css("fill","rgb(150, 3, 3)");
+
                         });
 
                     });
@@ -954,8 +968,12 @@ $(document).ready(function (){
                     }else{
                         $("#terceros").parent().show();
                     }
+                    if(nameMunicipio != null){
+                        $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
+                    }else{
+                        $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+                    }
 
-                    $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
                 }
             }, function (error) {
 
@@ -1237,7 +1255,7 @@ $(document).ready(function (){
                 $menuTooltip.css({
                     right: 150,
                     top: 125,
-                    height: 50,
+                    height: "80px!important",
                 });
 
             }, function () {
@@ -1364,10 +1382,19 @@ function getHtmlTable(id, selector, type = "") {
             }
 
 
-            $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+
+            if(nameMunicipio != null){
+                $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
+            }else{
+                $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
+            }
+
+
             $("#rp" + type).html($("<span>",vconf).html(format(api.dataInversion.rp, 1000000, "$") + " MM"));
             $("#fonc" + type).html($("<span>",vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " MM"));
             $("#terceros" + type).html($("<span>",vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " MM"));
+
+
 
 
 
@@ -1460,6 +1487,10 @@ function getHtmlTable(id, selector, type = "") {
 
             });
 
+
+            if(data.length = 1){
+                $(".table-tooltip").css("height","80px!important");
+            }
 
             break;
         }
