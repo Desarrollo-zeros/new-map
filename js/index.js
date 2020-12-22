@@ -969,7 +969,7 @@ $(document).ready(function (){
                     }else{
                         $("#terceros").parent().show();
                     }
-                    if(api.dataInversion.total_ejecucion.toString().length > 9 ){
+                    if(api.dataInversion.total_ejecucion.replaceAll(".00","").toString().length > 9 ){
                         $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
                     }
                     else{
@@ -1399,7 +1399,7 @@ function getHtmlTable(id, selector, type = "") {
 
 
 
-            if(api.dataInversion.total_ejecucion.toString().length > 9 ){
+            if(api.dataInversion.total_ejecucion.replaceAll(".00","").toString().length > 9 ){
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
             }
             else{
