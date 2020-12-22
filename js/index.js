@@ -243,6 +243,7 @@ $(document).ready(function (){
                             $("#colombia svg path").show()
                             zoomState(selectorId, "viewPrueba")
                             clickDpto = false;
+                            $('[data-id="beneficio-hover"]').hide();
                         });
 
                     });
@@ -440,7 +441,7 @@ $(document).ready(function (){
                                         $("#colombia svg path").show()
                                         zoomState(selectorId, "viewPrueba")
                                         clickDpto = false;
-
+                                        $('[data-id="beneficio-hover"]').hide();
                                     });
 
                                 });
@@ -662,9 +663,18 @@ $(document).ready(function (){
                             $("#changeTitleDpto").html("Chinchiná");
                             $("#separadorCiudad").show();
                             $("#nameCiudad").html("CENICAFÉ");
+                            $("#divProyectoNoticia").css({
+                                "position" : "absolute",
+                                "bottom" : "-121%",
+                            });
+                            $("#proyectosDiv").css("height","180px");
+                            $("#divCircular").show();
+                            $("#divBarra").show();
                             loaderInversion();
                             loaderProyecto();
                             loaderProyectos();
+                            getParticipacionEje();
+                            getParticipacionAportante();
 
 
                         },50);
@@ -677,9 +687,20 @@ $(document).ready(function (){
                             $("#changeTitleDpto").html("Bogotá");
                             $("#separadorCiudad").show();
                             $("#nameCiudad").html("OFICINA CENTRAL");
+                            $("#divProyectoNoticia").css({
+                                "position" : "absolute",
+                                "bottom" : "-121%",
+                            });
+
+                            $("#proyectosDiv").css("height","180px");
+
+                            $("#divCircular").show();
+                            $("#divBarra").show();
                             loaderInversion();
                             loaderProyecto();
                             loaderProyectos();
+                            getParticipacionEje();
+                            getParticipacionAportante();
 
 
 
@@ -740,6 +761,7 @@ $(document).ready(function (){
                             $("#colombia svg path").show()
                             zoomState(selectorId, "viewPrueba")
                             clickDpto = false;
+                            $('[data-id="beneficio-hover"]').hide();
                         });
 
                     });
@@ -895,6 +917,10 @@ $(document).ready(function (){
                 if(data[0] != undefined){
                     data = data[0];
                     $('[data-id="beneficio-hover"]').hide();
+
+                    $('[data-id="dependencia-hover"]').show();
+
+                    $("#depedenciaTotal").html(1);
                 }
                 if (data && data.ano_carge) {
 
@@ -941,12 +967,24 @@ $(document).ready(function (){
                 $menuTooltip.addClass('active');
                 getHtmlTable("dependencia", $menuTooltip, "")
 
+
                 $menuTooltip.css({
                     right: 200,
                     top: 80,
                     height: 50,
                     zIndex: 99
                 });
+
+                if($typeOffice == 2){
+                    $menuTooltip.css({
+                        right: 220,
+                        top: 80,
+                        height: 50,
+                        zIndex: 99
+                    });
+                }
+
+
 
                 if(nameDpto != null){
                     $("#dependenciasRow").css("height","auto");
@@ -981,7 +1019,17 @@ $(document).ready(function (){
                                 }
                                 break;
                             }
-                        }else{
+                        }
+                        else if(nameDpto.toLowerCase() == "CAUCA".toLowerCase()){
+                            if(data[i].dependencia == "COMITÉ CAUCA"){
+                                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                    dpto.push(data[i].dependencia);
+                                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                }
+                                break;
+                            }
+                        }
+                        else{
                             if (dpto.find(x => x == data[i].dependencia) == undefined) {
                                 dpto.push(data[i].dependencia);
                                 dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
@@ -1414,23 +1462,53 @@ function getHtmlTable(id, selector, type = "") {
             break;
         }
         case "dependencia":{
-            var data  = api.dataDependencia;
-            if (nameDpto1 != null) {
-                data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto1.replaceAll(" ","").toLowerCase()));
-            }
             let dependencia = "";
             let dpto = [];
-            for (var i in data) {
-                if(nameDpto != null){
+            if($typeOffice == 1){
+                //centrar
+                dpto.push("OFICINA CENTRAL");
+                dependencia += "<div class='col-md-12'><span>OFICINA CENTRAL</span></div>";
 
-                    if(nameDpto.toLowerCase() == "SANTANDER".toLowerCase()){
-                        if(data[i].dependencia == "COMITÉ SANTANDER"){
+            }else if($typeOffice == 2){
+                //cenicafe
+                dpto.push("CENICAFÉ");
+                dependencia += "<div class='col-md-12'><span>CENICAFÉ</span></div>";
+
+
+            }else{
+                var data  = api.dataDependencia;
+                if (nameDpto1 != null) {
+                    data = data.filter(x => x.dpta.replaceAll(" ","").toLowerCase().includes(nameDpto1.replaceAll(" ","").toLowerCase()));
+                }
+
+
+                for (var i in data) {
+                    if(nameDpto != null){
+
+                        if(nameDpto.toLowerCase() == "SANTANDER".toLowerCase()){
+                            if(data[i].dependencia == "COMITÉ SANTANDER"){
+                                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                    dpto.push(data[i].dependencia);
+                                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                }
+                                break;
+                            }
+                        }else if(nameDpto.toLowerCase() == "CAUCA".toLowerCase()){
+                            if(data[i].dependencia == "COMITÉ CAUCA"){
+                                if (dpto.find(x => x == data[i].dependencia) == undefined) {
+                                    dpto.push(data[i].dependencia);
+                                    dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
+                                }
+                                break;
+                            }
+                        }
+                        else{
                             if (dpto.find(x => x == data[i].dependencia) == undefined) {
                                 dpto.push(data[i].dependencia);
                                 dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
                             }
-                            break;
                         }
+
                     }else{
                         if (dpto.find(x => x == data[i].dependencia) == undefined) {
                             dpto.push(data[i].dependencia);
@@ -1438,17 +1516,14 @@ function getHtmlTable(id, selector, type = "") {
                         }
                     }
 
-                }else{
-                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                        dpto.push(data[i].dependencia);
-                        dependencia += "<div class='col-md-12'><span>" + data[i].dependencia + "</span></div>";
-                    }
                 }
 
-            }
+                if (data.length == 0) {
+                    $menuTooltip.removeClass('active');
+                }
 
-            if (data.length == 0) {
-                $menuTooltip.removeClass('active');
+
+
             }
 
             $("#depedenciaTotal").html(dpto.length);

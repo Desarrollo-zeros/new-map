@@ -40,12 +40,11 @@ Chart.plugins.register({
 
 
 function getParticipacionAportante(){
-
-
-
-
     api.getVieEjeIndicativo({}, function (data){
 
+        if(data[0] != undefined){
+            data = data[0];
+        }
         if(data && data.ano_carge) {
 
 

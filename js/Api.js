@@ -109,6 +109,17 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 1;
         $data.table = "view_eje_indicativo";
+
+        if($typeOffice == 1){
+            $data.table = "view_oficina_indicativo";
+            $data.type = 7;
+            $data.dependencia_id = 18;
+        }else if($typeOffice == 2){
+            $data.table = "view_oficina_indicativo";
+            $data.type = 7;
+            $data.dependencia_id = 1;
+        }
+
         $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
@@ -120,6 +131,18 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 0;
         $data.table = "view_eje_eje";
+
+        if($typeOffice == 1){
+            $data.table = "view_oficina_eje";
+            $data.type = 7;
+            $data.dependencia_id = 18;
+        }else if($typeOffice == 2){
+            $data.table = "view_oficina_eje";
+            $data.type = 7;
+            $data.dependencia_id = 1;
+        }
+
+
         $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
