@@ -380,6 +380,8 @@ function Cargar_Colombia() {
     actual = "pais";
     $("div#colombia").load("img/Colombia.svg", function () {
         $("div#colombia").on("click", "path", Colombia_a_Departamento)
+        $("div#colombia").on("click", "circle", Colombia_a_departamento_circle)
+
         $("div#colombia svg > path").each(function () {
             if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled"))
                 $(this).addClass("disabled");
@@ -466,6 +468,61 @@ function Cargar_Municipio(ele) {
     loaderProyecto();
     loaderBeneficio();
 }
+
+
+
+function Colombia_a_departamento_circle(){
+    let ele = this;
+    nameDpto = $(ele).data("dpto");
+    nameDpto1 = $(ele).data("dpto");
+    actual_departamento = nameDpto;
+    var div_id = `dep_${actual_departamento}`;
+
+
+    if ($(`#${div_id}`).length == 0) {
+        var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${actual_departamento}.svg`, function (data) {
+            $(`#${div_id}`).on("click", "path", Departamento_a_municipio);
+            $(`#${div_id} svg > path`).each(function () {
+                var ele = this;
+                var name = $(ele).attr("name") == undefined ? "" : $(ele).attr("name");
+                if (name.toLowerCase().includes("xxx")) {
+                    $(ele).addClass("disabled");
+                }
+            });
+            departamento_a_municipio_circle(ele);
+        });
+
+        $(`#departamentos`).append(div);
+        $(`#colombia`).hide();
+        $(`#departamentos`).show();
+    } else {
+        $(`#colombia`).hide();
+        $(`#departamentos, #dep_${actual_departamento}`).show();
+        departamento_a_municipio_circle(ele);
+    }
+}
+
+function departamento_a_municipio_circle(ele){
+    nameMunicipio = $(ele).data("municipio");
+    actual_municipio = nameMunicipio;
+
+    $('#ttdetalles_info .mostrar').removeClass('mostrar');
+    $('#ttdetalles_menu li.active').removeClass('active');
+    var div = $(ele).closest("svg")
+
+    $("#viewPrueba").html($(ele).clone().attr('id', 'vistaMunicipio'));
+    $("#departamentos, #indicadoresDiv").hide();
+    $("#municipio").show();
+
+    ZoomMunicipio();
+
+    actual = "municipios";
+    $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
+
+}
+
+
+
 
 function ZoomMunicipio() {
     var new_ele = document.getElementById('vistaMunicipio');

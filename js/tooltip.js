@@ -5,10 +5,10 @@ $(document).mousemove(function (e) {
     mouseY = e.pageY;
 });
 
-$(document).on("mouseover, mousemove", "div#colombia path, div#departamentos path", function (e) {
+$(document).on("mouseover, mousemove", "div#colombia path, div#colombia circle, div#departamentos path", function (e) {
     tooltip_map(e, this);
 });
-$(document).on("mouseleave", "div#colombia path, div#departamentos path", function (e) {
+$(document).on("mouseleave", "div#colombia path, div#colombia circle, div#departamentos path", function (e) {
     $('#tooltipWindow').hide();
 });
 

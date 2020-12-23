@@ -37,7 +37,7 @@ body{
   padding: 10px;
   position: absolute;
   border: 1px solid transparent;
-  background: white;
+  background: #f7f7f7;
   border-radius: 5px 0px 0px 5px;
 }
 #ttdetalles_info div.inversion{
