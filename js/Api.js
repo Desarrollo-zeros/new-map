@@ -1,12 +1,10 @@
 class Api{
 
     constructor() {
-        this.url = "https://mapas.comprocafedecolombia.com/sustain_map/app_modules/maps/API/maps/";
+        this.url = "sustain_map/app_modules/maps/API/maps/";
         this.response = null;
 
         this.dataVectores= {};
-
-
 
         this.dataInversion = {
             "total_ejecucion" : 0,
