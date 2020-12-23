@@ -3,9 +3,12 @@ var helpers = Chart.helpers;
 
 Chart.defaults.global.animation.duration = 3000;
 
+
+
 Chart.plugins.register({
     beforeUpdate: function(chart) {
-        if (chart.options.sort) {
+
+        if (chart.options.sort1) {
             let dataArray = chart.data.datasets[0].data.slice();
             let dataIndexes = dataArray.map((d, i) => i);
             dataIndexes.sort((a, b) => {
@@ -21,12 +24,12 @@ Chart.plugins.register({
             let labels = chart.data.labels;
             let newLabels = [];
 
-            meta.data.forEach((a, i) => {
+            chart.data.datasets[0].data.forEach((a, i) => {
                 newMeta[dataIndexes[i]] = a;
                 newLabels[dataIndexes[i]] = chart.data.labels[i];
             });
 
-            meta.data = newMeta;
+            //meta.data = newMeta;
             chart.data.datasets[0].data = dataArray;
             chart.data.labels = newLabels;
         }
@@ -37,12 +40,11 @@ Chart.plugins.register({
 
 
 function getParticipacionAportante(){
-
-
-
-
     api.getVieEjeIndicativo({}, function (data){
 
+        if(data && data[0] != undefined){
+            data = data[0];
+        }
         if(data && data.ano_carge) {
 
 
@@ -54,6 +56,12 @@ function getParticipacionAportante(){
             $total += parseInt(data.com);
             $total += parseInt(data.rp);
             $total += parseInt(data.fonc);
+            $total += parseInt(data.especiales)
+
+
+
+
+
 
             var $dataAPortante = {
                 "gob": getPorcentaje(data.gob,$total, 100),
@@ -64,6 +72,7 @@ function getParticipacionAportante(){
                 "fonc" : getPorcentaje(data.fonc,$total, 100),
                 "comunidad" : getPorcentaje(data.com,$total, 100,2),
                 "rp" : getPorcentaje(data.rp,$total, 100),
+                "especiales" : getPorcentaje(data.especiales,$total, 100),
             };
 
             $("#comunidad").html($dataAPortante.comunidad+"%");
@@ -74,14 +83,72 @@ function getParticipacionAportante(){
             $("#rpp").html($dataAPortante.rp+"%");
             $("#foncc").html($dataAPortante.fonc+"%");
             $("#publica").html($dataAPortante.publica+"%");
+            $("#especiales").html($dataAPortante.especiales+"%");
+
+            if($dataAPortante.comunidad == 0 || $dataAPortante.comunidad =="NaN"){
+                $("#comunidad").parent().parent().hide();
+            }else{
+                $("#comunidad").parent().parent().show();
+            }
+
+            if($dataAPortante.gob == 0 || $dataAPortante.gob =="NaN"){
+                $("#gob").parent().parent().hide();
+            }else{
+                $("#gob").parent().parent().show();
+            }
+
+            if($dataAPortante.inter == 0 || $dataAPortante.inter =="NaN"){
+                $("#inter").parent().parent().hide();
+            }else{
+                $("#inter").parent().parent().show();
+            }
 
 
+            if($dataAPortante.mun == 0 || $dataAPortante.mun =="NaN"){
+                $("#mun").parent().parent().hide();
+            }else{
+                $("#mun").parent().parent().show();
+            }
 
+            if($dataAPortante.privado == 0 || $dataAPortante.privado =="NaN" ){
+                $("#privado").parent().parent().hide();
+            }else{
+                $("#privado").parent().parent().show();
+            }
 
+            if($dataAPortante.rp == 0 || $dataAPortante.rp =="NaN"){
+                $("#rpp").parent().parent().hide();
+            }else{
+                $("#rpp").parent().parent().show();
+            }
+
+            if($dataAPortante.fonc == 0 || $dataAPortante.fonc =="NaN"){
+                $("#foncc").parent().parent().hide();
+            }else{
+                $("#foncc").parent().parent().show();
+            }
+
+            if($dataAPortante.publica == 0 || $dataAPortante.publica =="NaN"){
+                $("#publica").parent().parent().hide();
+            }else{
+                $("#publica").parent().parent().show();
+            }
+
+            if($dataAPortante.comunidad == 0|| $dataAPortante.comunidad =="NaN" ){
+                $("#especiales").parent().parent().hide();
+            }else{
+                $("#especiales").parent().parent().show();
+            }
+
+            if($dataAPortante.especiales == 0 || $dataAPortante.especiales =="NaN"){
+                $("#especiales").parent().parent().hide();
+            }else{
+                $("#especiales").parent().parent().show();
+            }
 
             if(ChartApi["participacion-inversion-por-aportante"] != null){
                 ChartApi["participacion-inversion-por-aportante"].data.datasets =[];
-                ChartApi["participacion-inversion-por-aportante"].update();
+                ChartApi["participacion-inversion-por-aportante"].clear();
             }
 
             ChartApi["participacion-inversion-por-aportante"]  = new Chart(document.getElementById("participacion-inversion-por-aportante"), {
@@ -92,10 +159,12 @@ function getParticipacionAportante(){
                         'Gobernaciones',
                         'Entidadad Internacional',
                         'Municipios',
-                        'Organizaciones Nacionales Privadas',
                         'Recursos Propios',
                         'FoNC',
-                        'organizaciones Nacionales públicas'
+                        'Especie',
+                        'organizaciones Nacionales públicas',
+                        'Organizaciones Nacionales Privadas'
+
                     ],
                     datasets: [
                         {
@@ -105,10 +174,11 @@ function getParticipacionAportante(){
                                 $dataAPortante.gob,
                                 $dataAPortante.inter,
                                 $dataAPortante.mun,
-                                $dataAPortante.privado,
                                 $dataAPortante.tercero,
                                 $dataAPortante.fonc,
+                                $dataAPortante.especiales,
                                 $dataAPortante.publica,
+                                $dataAPortante.privado,
                             ],
                             backgroundColor: [
                                 '#f36868',
@@ -119,12 +189,24 @@ function getParticipacionAportante(){
                                 '#990a0a',
                                 '#8d0505',
                                 '#700000',
+                                '#9d1111',
                             ]
                         }
                     ]
                 },
                 options:  {
+                    tooltips:{
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                if(tooltipItem['index'] == 7){
+                                    return "Org. N. Públicas" +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%"
 
+                                }else{
+                                    return (data["labels"][tooltipItem['index']] +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%")
+                                }
+                            },
+                        },
+                    },
                     plugins: {
                         labels: {
                             render: function (args) {
@@ -138,8 +220,9 @@ function getParticipacionAportante(){
                             fontColor: 'rgb(2,2,2)',
                             strokeStyle : 'rgb(2,2,2)',
                             padding : 10,
+                            Align : 'left'
                         },
-                        position: 'left',
+                        //position: 'right',
 
                     },
                 },
@@ -155,10 +238,10 @@ function getParticipacionEje(){
     api.getVieEjeIndicativo1({}, function (data){
 
 
-        var AMBIENTAL = data.find(x => x.eje === "AMBIENTAL");
-        var GOBERNANZA =  data.find(x => x.eje === "GOBERNANZA");
-        var ECONOMICO =  data.find(x => x.eje === "ECONOMICO");
-        var SOCIAL = data.find(x => x.eje === "SOCIAL");
+        var AMBIENTAL = data.find(x => removeAccents(x.eje) === "AMBIENTAL");
+        var GOBERNANZA =  data.find(x => removeAccents(x.eje) === "GOBERNANZA");
+        var ECONOMICO =  data.find(x => removeAccents(x.eje) === "ECONOMICO");
+        var SOCIAL = data.find(x => removeAccents(x.eje) === "SOCIAL");
 
         if(!AMBIENTAL){
             AMBIENTAL = {total : 0};
@@ -183,7 +266,7 @@ function getParticipacionEje(){
             SOCIAL
         };
 
-        if (data && data[0].ano_carge) {
+        if (data && data[0] && data[0].ano_carge) {
 
 
 
@@ -194,6 +277,73 @@ function getParticipacionEje(){
             $total += parseInt(api.dataEjeInidicativo1["SOCIAL"].total);
 
 
+
+            let amb = getPorcentaje(api.dataEjeInidicativo1["AMBIENTAL"].total, $total,100);
+            let gob = getPorcentaje(api.dataEjeInidicativo1["GOBERNANZA"].total, $total,100);
+            let eco = getPorcentaje(api.dataEjeInidicativo1["ECONOMICO"].total, $total,100);
+            let soc = getPorcentaje(api.dataEjeInidicativo1["SOCIAL"].total, $total,100);
+
+
+            let d = [
+                amb+";AMBIENTAL;#259261",
+                gob+";GOBERNANZA;#ff7600",
+                eco+";ECONÓMICO;#960303",
+                soc+";SOCIAL;#0c8ecf"
+            ]
+
+
+
+
+
+            d.sort(function(a, b) {
+                return  parseFloat(a.split(";")[0])  - parseFloat(b.split(";")[0]);
+            });
+
+            $dataEje =[];
+
+            d.forEach(x => {
+                let total = x.split(";")[0];
+                let title = x.split(";")[1];
+                let color = x.split(";")[2];
+
+                let totalSplit = total.split(".")[1];
+
+                if(totalSplit && totalSplit.split("").length == 1){
+                    total = total.toString()+"0";
+                }
+
+                $dataEje += ""+title+":"+total+":"+color+",";
+            });
+
+
+
+
+            //var data = "{GOBERNANZA:0.36},{AMBIENTAL:3.86},{SOCIAL:44.86},{ECONOMICO:50.92}".split(",");
+            let dataValue = [];
+            let dataLabel = [];
+            let dataColor = [];
+            $dataEje.split(",").forEach(x => {
+                let d = x.split(":");
+                if(d[0] != "" && d[1] != 0){
+
+                    let totalSplit = d[1].split(".")[1];
+                    let total = d[1];
+                    if(totalSplit && totalSplit.split("").length == 1){
+                        total = total.toString()+"0";
+                    }
+
+                    dataValue.push(total);
+                    dataLabel.push(d[0]);
+                    dataColor.push(d[2]);
+                }
+
+
+            });
+
+            console.log(dataValue);
+            console.log(dataLabel);
+            console.log(dataColor);
+
             $dataEje = [
                 {"AMBIENTAL" : getPorcentaje(api.dataEjeInidicativo1["AMBIENTAL"].total, $total,100)},
                 {"GOBERNANZA" :getPorcentaje(api.dataEjeInidicativo1["GOBERNANZA"].total, $total, 100)},
@@ -202,56 +352,36 @@ function getParticipacionEje(){
             ];
 
 
-            $dataColor = [
-                {"GOBERNANZA" : "#e39f3d" },
-                {"AMBIENTAL" : "#259261"},
-                {"ECONOMICO" : "#960303"},
-                {"SOCIAL" : "#960303"}
-            ];
 
-            $dataEje = $dataEje.sort(function(a, b) {
-                if (a[Object.keys(a)] > b[Object.keys(b)]) return 1;
-                return -1;
+            let indexValue = 0;
+            dataValue.forEach(x => {
+               if(x > 0){
+                   indexValue++;
+               }
             });
-
-            $labelEje = [];
-            $dataValue = [];
-
-            $dataEje.forEach(x => {
-                $labelEje.push(Object.keys(x)[0]);
-            });
-
-
-            $dataEje.forEach(x => {
-                $dataValue.push( x[Object.keys(x)]);
-
-            });
-
-
+            if(indexValue == 0){
+                $("#participacion-inversion-por-eje").hide();
+            }
             if(ChartApi["participacion-inversion-por-eje"] != null){
                 ChartApi["participacion-inversion-por-eje"].data.datasets = [];
-                ChartApi["participacion-inversion-por-eje"].update();
+                ChartApi["participacion-inversion-por-eje"].clear();
             }
 
             ChartApi["participacion-inversion-por-eje"] = new Chart(document.getElementById('participacion-inversion-por-eje'), {
                 type: 'bar',
                 data: {
-                    labels:$labelEje,
+                    labels:dataLabel,
                     datasets: [
                         {
-                            data: $dataValue,
-                            backgroundColor: [
-                                '#e39f3d',
-                                '#259261',
-                                '#0c8ecf',
-                                '#960303'
-                            ],
+                            data: dataValue,
+                            backgroundColor: dataColor,
                             order: 1
                         }
                     ],
                     order: 1
                 },
                 options: {
+                    sort : true,
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {

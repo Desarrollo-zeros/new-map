@@ -23,6 +23,7 @@ var actual_municipio;
 
 var vconf = { style: "color: #000000" };
 var clickDpto;
+$typeOffice = 0;
 
 $municipios = [];
 
@@ -86,14 +87,17 @@ function loaderInversion() {
             if (parseInt(api.dataInversion.fonc) == 0) $("#fonc").parent().hide(); else $("#fonc").parent().show();
             if (parseInt(api.dataInversion.tercero) == 0) $("#terceros").parent().hide(); else $("#terceros").parent().show();
             if (parseInt(api.dataInversion.rp) == 0) $("#rp").parent().hide(); else $("#rp").parent().show();
+        }else{
+            $("[data-name='inversion']").hide();
         }
     });
 }
 function loaderDepedencia() {
     api.post("get_data_nfc", { "table": "view_dependencias", "type": 3 }, function (data) {
+        $("#ttdetalles_info .dependencia ul").html("");
         api.dataDependencia = data;
         var data = api.dataDependencia;
-        if (nameDpto1 != null) data = data.filter(x => x.dpta.replaceAll(" ", "").toLowerCase().includes(nameDpto1.replaceAll(" ", "").toLowerCase()));
+        if (nameDpto1 != null) data = data.filter(x => removeAccents(x.dpta.replaceAll(" ", "").toLowerCase()) ===  removeAccents(nameDpto1.replaceAll(" ", "").toLowerCase()));
         let dpto = [];
         for (var i in data) {
             if (dpto.find(x => x == data[i].dependencia) == undefined) {
@@ -101,33 +105,6 @@ function loaderDepedencia() {
                 $("#ttdetalles_info .dependencia ul").append(
                     $("<li>").html(data[i].dependencia)
                 );
-            }
-        }
-        for (var i in data) {
-            if (nameDpto != null) {
-                if (data[i].dependencia == "COMITÉ SANTANDER") {
-                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                        dpto.push(data[i].dependencia);
-                        $("#ttdetalles_info .dependencia ul").append(
-                            $("<li>").html(data[i].dependencia)
-                        );
-                    }
-                    break;
-                } else {
-                    if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                        dpto.push(data[i].dependencia);
-                        $("#ttdetalles_info .dependencia ul").append(
-                            $("<li>").html(data[i].dependencia)
-                        );
-                    }
-                }
-            } else {
-                if (dpto.find(x => x == data[i].dependencia) == undefined) {
-                    dpto.push(data[i].dependencia);
-                    $("#ttdetalles_info .dependencia ul").append(
-                        $("<li>").html(data[i].dependencia)
-                    );
-                }
             }
         }
         $("#depedenciaTotal").html(dpto.length);
@@ -146,98 +123,105 @@ function loaderApalancamiento() {
         data = data.filter(x => x.dependencia != "OFICINA CENTRAL");
         var str = "";
         var total = 0;
-        if (data[0].dpto != undefined) {
-            for (var i in data) {
-                let t = parseFloat(data[i].total_total).toFixed(2);
 
-                if (t != "Infinity" && t != " NaN") {
-                    if (t == null) {
-                        t = 0;
-                    }
-                    total += parseFloat(t);
-                }
-            }
-            if (total == null) {
-                total = 0;
-            }
-            total = format(total);
+        if(data && data[0] && data.length>0){
+            if (data[0].dpto != undefined) {
+                for (var i in data) {
+                    let t = parseFloat(data[i].total_total).toFixed(2);
 
-            let totalSplit = total.toString().split(",");
-            if (totalSplit.length > 1 && totalSplit[1].split("").length < 2) {
-                total = total + "0";
-            }
-            var sum = 0;
-            for (var i in data) {
-                if (data[i].fonc != parseInt(0)) {
-                    let s = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
-                    if (s != "Infinity" && parseFloat(s) != 0 && s != "NAN") {
-
-                        s = parseFloat(s).toFixed(2);
-                        let sumSplit = s.toString().split(",");
-                        if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
-                            s = s + "0";
+                    if (t != "Infinity" && t != " NaN") {
+                        if (t == null) {
+                            t = 0;
                         }
-                        sum += parseFloat(s);
+                        total += parseFloat(t);
                     }
                 }
-            }
-            sum = format(sum);
-            if (sum.toString().split(",").length == 1) {
-                sum = sum + ",0";
-            }
-            let proyectosRows = $("#apalancamiento-table tbody");
-            proyectosRows.html("");
-            let dependencia = data[0].dependencia;
-            proyectosRows.append(
-                $("<tr>").append(
-                    $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(dependencia),
-                    $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(sum)),
-                )
-            )
-        } else {
-            total = format(parseFloat(data[0].total_total).toFixed(2));
-            if (total == null) {
-                total = 0;
-            }
-            let totalSplit = total.toString().split(",");
-            if (totalSplit.length > 1 && totalSplit[1].split("").length < 2) {
-                total = total + "0";
-            }
-            let proyectosRows = $("#apalancamiento-table tbody");
-            proyectosRows.html("");
-            for (var i in data) {
-                if (data[i].fonc != parseInt(0)) {
-                    let sum = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
-                    if (sum != "Infinity" && parseFloat(sum) != 0) {
-                        sum = format(parseFloat(sum).toFixed(2));
-                        let sumSplit = sum.toString().split(",");
-                        if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
-                            sum = sum + "0";
-                        } else {
-                            if (sum.split(",").length == 1) {
-                                sum = sum + ",0";
+                if (total == null) {
+                    total = 0;
+                }
+                total = format(total);
+
+                let totalSplit = total.toString().split(",");
+                if (totalSplit.length > 1 && totalSplit[1].split("").length < 2) {
+                    total = total + "0";
+                }
+                var sum = 0;
+                for (var i in data) {
+                    if (data[i].fonc != parseInt(0)) {
+                        let s = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
+                        if (s != "Infinity" && parseFloat(s) != 0 && s != "NAN") {
+
+                            s = parseFloat(s).toFixed(2);
+                            let sumSplit = s.toString().split(",");
+                            if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
+                                s = s + "0";
                             }
+                            sum += parseFloat(s);
                         }
-                        let dependencia = data[i].dependencia;
-                        proyectosRows.append(
-                            $("<tr>").append(
-                                $("<td>").html(dependencia),
-                                $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(sum)),
+                    }
+                }
+                sum = format(sum);
+                if (sum.toString().split(",").length == 1) {
+                    sum = sum + ",0";
+                }
+                let proyectosRows = $("#apalancamiento-table tbody");
+                proyectosRows.html("");
+                let dependencia = data[0].dependencia;
+                proyectosRows.append(
+                    $("<tr>").append(
+                        $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(dependencia),
+                        $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(sum)),
+                    )
+                )
+            } else {
+                total = format(parseFloat(data[0].total_total).toFixed(2));
+                if (total == null) {
+                    total = 0;
+                }
+                let totalSplit = total.toString().split(",");
+                if (totalSplit.length > 1 && totalSplit[1].split("").length < 2) {
+                    total = total + "0";
+                }
+                let proyectosRows = $("#apalancamiento-table tbody");
+                proyectosRows.html("");
+                for (var i in data) {
+                    if (data[i].fonc != parseInt(0)) {
+                        let sum = (parseFloat(data[i].tercero) + parseFloat(data[i].rp)) / parseFloat(data[i].fonc);
+                        if (sum != "Infinity" && parseFloat(sum) != 0) {
+                            sum = format(parseFloat(sum).toFixed(2));
+                            let sumSplit = sum.toString().split(",");
+                            if (sumSplit.length > 1 && sumSplit[1].split("").length < 2) {
+                                sum = sum + "0";
+                            } else {
+                                if (sum.split(",").length == 1) {
+                                    sum = sum + ",0";
+                                }
+                            }
+                            let dependencia = data[i].dependencia;
+                            proyectosRows.append(
+                                $("<tr>").append(
+                                    $("<td>").html(dependencia),
+                                    $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(sum)),
+                                )
                             )
-                        )
+                        }
                     }
                 }
             }
+            if (total.toString().split(",").length == 1) {
+                total = total + ",0";
+            }
+            $("#apalancamientoValue").html(total);
+        }else{
+            $("[data-name='apalancamiento']").hide();
         }
-        if (total.toString().split(",").length == 1) {
-            total = total + ",0";
-        }
-        $("#apalancamientoValue").html(total);
+
     });
 }
 function loaderProyecto() {
     api.getVectores({}, function (data) {
-        if (data && data["vectores"] && data["vectores"][0].ano_carge) {
+
+        if (data && data["vectores"] && data["vectores"][0] && data["vectores"][0].ano_carge && data["proyectos"]) {
             if (!data["proyectos"]) {
                 data["proyectos"] = { total: 0 }
             }
@@ -257,6 +241,7 @@ function loaderProyecto() {
             $("#total_proyecto").html(format(total, 1, ""));
 
             var proyectosRows = $("#proyectosRows tbody");
+            proyectosRows.html("");
             proyectosRows.find("tr").remove();
             api.dataVectores.vectores.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
                 if (nameDpto != undefined) {
@@ -284,6 +269,8 @@ function loaderProyecto() {
                     )
                 }
             })
+        }else{
+            $("[data-name='proyectos']").hide();
         }
     });
 }
@@ -315,6 +302,8 @@ function loaderBeneficio() {
             $("#mujerValue").html($("<span>", vconf).html(format(api.dataBeneficiarios.mujerValue)));
             $("#ninosValue").html($("<span>", vconf).html(format(api.dataBeneficiarios.ninosValue)));
             $("#otroValue").html($("<span>", vconf).html(format(api.dataBeneficiarios.otroValue)));
+        }else{
+            $("[data-name='beneficiarios']").hide();
         }
     });
 }
@@ -537,6 +526,7 @@ function Colombia_a_departamento_circle() {
 function departamento_a_municipio_circle(ele) {
 
     nameMunicipio = $(ele).data("municipio");
+    $typeOffice = $(ele).attr('office');
     actual_municipio = nameMunicipio;
     var r_municipio = null;
     console.log(actual_departamento);
