@@ -368,6 +368,10 @@ function getParticipacionEje(){
             }
 
             ChartApi["participacion-inversion-por-eje"] = new Chart(document.getElementById('participacion-inversion-por-eje'), {
+                scaleOverride : true,
+                scaleSteps : 10,
+                scaleStepWidth : 50,
+                scaleStartValue : 0,
                 type: 'bar',
                 data: {
                     labels:dataLabel,
@@ -375,7 +379,11 @@ function getParticipacionEje(){
                         {
                             data: dataValue,
                             backgroundColor: dataColor,
-                            order: 1
+                            order: 1,
+                            barPercentage: 0.5,
+                            barThickness: 6,
+                            maxBarThickness: 8,
+                            minBarLength: 2,
                         }
                     ],
                     order: 1
@@ -408,7 +416,9 @@ function getParticipacionEje(){
                         yAxes: [
                             {
                                 ticks: {
-                                    stepSize: 25
+                                    stepSize: 35,
+                                    beginAtZero: true
+
                                 },
                                 gridLines: {
                                     color: "rgba(0, 0, 0, 0)",
