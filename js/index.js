@@ -553,8 +553,27 @@ function positionElementToCenter(element, nameParent, move) {
     return { x: x, y: y };
 }
 
-// Funciones Varias
+SVGElement.prototype.getTransformToElement = SVGElement.prototype.getTransformToElement || function (toElement) {
+    return toElement.getScreenCTM().inverse().multiply(this.getScreenCTM());
+};
+
+function formatCurrency(locales, currency, number, fractionDigits = 0, mm = 0) {
+    number = mm === 0 ? number : number / mm;
+    return format(number);
+}
+
+
 function format(value, div = 1, signo = "") {
-    if (div == 1) var v = value; else var v = Math.round(value / div);
+    if (div === 1) {
+        var v = value
+    } else {
+        var v = Math.round(value / div)
+    }
     return signo + " " + new Intl.NumberFormat(["ban", "id"]).format(v)
 }
+
+const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+
