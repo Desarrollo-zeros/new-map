@@ -21,7 +21,22 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/Conexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/Conexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/ConfigDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/ConfigDB.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Core/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Core/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/app_modules/maps/API/maps/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/app_modules/maps/API/maps/maps.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/app_modules/maps/API/maps/maps.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prueba.html" beforeDir="false" afterPath="$PROJECT_DIR$/prueba.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +105,7 @@
       <workItem from="1607998179101" duration="9997000" />
       <workItem from="1608034846835" duration="3510000" />
       <workItem from="1608734862018" duration="8389000" />
+      <workItem from="1608752193926" duration="1645000" />
     </task>
     <servers />
   </component>
@@ -152,7 +168,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/Api.js</url>
-          <line>280</line>
+          <line>328</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
