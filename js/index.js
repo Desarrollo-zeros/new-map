@@ -457,6 +457,7 @@ function btn_atras() {
             nameDpto1 = null;
             $("#departamentos, .div_departamentos, #indicadoresDiv, #departamentos > .div_departamentos, #idTituloMapa").hide();
             $("#colombia").show();
+
             break;
         case "municipios":
             actual = "departamentos";
@@ -493,6 +494,7 @@ function btn_atras() {
 }
 
 function Cargar_Colombia() {
+    $("#btnAtras").hide();
     actual = "pais";
     $("div#colombia").load("img/Colombia.svg", function () {
         $("div#colombia").on("click", "path", Colombia_a_Departamento)
@@ -530,6 +532,7 @@ function Cargar_Colombia() {
     loaderIndicativo();
 }
 function Colombia_a_Departamento() {
+
     if ($(this).hasClass("disabled")) return;
     actual_departamento = $(this).attr("url");
 
@@ -587,9 +590,11 @@ function Cargar_Departamento(ele) {
     getParticipacionAportante();
     loaderIndicativo();
     $("#indicadoresDiv").show();
+    $("#btnAtras").show();
 }
 
 function Departamento_a_municipio() {
+
     if ($(this).hasClass("disabled")) return;
     actual_municipio = $(this).attr("name");
     nameMunicipio = $(this).attr("name");
@@ -606,7 +611,7 @@ function Cargar_Municipio(ele) {
     $("#municipio, #divProyectoNoticia").show();
 
     ZoomMunicipio();
-
+    $("#btnAtras").show();
 
     actual = "municipios";
     $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
@@ -624,6 +629,7 @@ function Cargar_Municipio(ele) {
 
 
 function Colombia_a_departamento_circle() {
+
     let ele = this;
     nameDpto = $(ele).data("dpto");
     nameDpto1 = $(ele).data("dpto");
@@ -690,7 +696,7 @@ function departamento_a_municipio_circle(ele) {
     getParticipacionAportante();
     getParticipacionEje();
     loaderProyectos();
-
+    $("#btnAtras").show();
 
 
 
