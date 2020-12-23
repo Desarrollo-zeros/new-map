@@ -229,8 +229,10 @@ svg {
   width: 450px;
   cursor:default;
 }
+#viewPrueba path{
+  fill: #CC2929!important;
+}
 #viewPrueba path:hover{
-  fill: #21669E!important;
   cursor: default;
 }
 .cls-1 {
@@ -340,10 +342,6 @@ article.map{
 .card.noticia{
   background-color: #efefef;
   background-clip: border-box;
-}
-
-.text-noticia {
- 
 }
 
 .linea-card {
