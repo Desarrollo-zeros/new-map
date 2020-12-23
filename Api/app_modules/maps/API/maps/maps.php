@@ -8,9 +8,11 @@
 	  header('Access-Control-Allow-Origin: *');
 	   header("Access-Control-Allow-Headers: *");
 	  header('Content-Type: application/json');
+
 	  include '../../ModelEntities/Maps.class.php';
 	  include '../../../../Core/Config.php';
-	  	
+
+
 	  $obj = new Maps();
 	  $utils = new Utils();
 	  # si enbl_sql -> habilita debug de sql

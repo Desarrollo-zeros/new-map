@@ -15,7 +15,7 @@
 
 	  public function __construct()
 	  {
-	  	$cnf_db = new ConfDB();
+	  	$cnf_db = new ConfigDB();
 		  switch($this->tp_db)
 		    {
 		     case "PGSQL":

@@ -1,6 +1,6 @@
 <?php
 
-class ConfDB{
+class ConfigDB{
     public $CONF_DB = array(
         'usr_db'=>'root',
         'name_db'=>'maps',

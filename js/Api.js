@@ -1,7 +1,7 @@
 class Api{
 
     constructor() {
-        this.url = "/Api/app_modules/maps/API/maps/";
+        this.url = "Api/app_modules/maps/API/maps/";
         this.response = null;
 
         this.dataVectores= {};
