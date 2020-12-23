@@ -361,13 +361,13 @@ function btn_atras() {
             actual = "pais";
             nameDpto = null;
             nameDpto1 = null;
-            $("#departamentos, .div_departamentos, #indicadoresDiv, #departamentos > .div_departamentos").hide();
+            $("#departamentos, .div_departamentos, #indicadoresDiv, #departamentos > .div_departamentos, #idTituloMapa").hide();
             $("#colombia").show();
             break;
         case "municipios":
             actual = "departamentos";
             nameMunicipio = null;
-            $("#municipio").hide();
+            $("#municipio, #separadorCiudad").hide();
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#departamentos, #indicadoresDiv").show();
             break;
@@ -379,7 +379,7 @@ function btn_atras() {
             nameMunicipio = null;
             $("#colombia").show();
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
-            $("#municipio").hide();
+            $("#municipio, #separadorCiudad, #idTituloMapa").hide();
             break;
         default:
 
@@ -432,6 +432,8 @@ function Cargar_Departamento(ele) {
         nameDpto1 = nameDpto;
     }
     actual = "departamentos";
+    $('#idTituloMapa').show();
+    $('#changeTitleDpto').html(nameDpto);
     var div_id = `dep_${departamento}`;
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${departamento}.svg`, function (data) {
@@ -474,7 +476,8 @@ function Cargar_Municipio(ele) {
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
     $('#ttdetalles_menu li.active').removeClass('active');
     var div = $(ele).closest("svg")
-
+    $("#separadorCiudad").show();
+    $("#nameCiudad").html(actual_municipio);
     $("#viewPrueba").html($(ele).clone().attr('id', 'vistaMunicipio'));
     $("#departamentos, #indicadoresDiv").hide();
     $("#municipio").show();
@@ -497,7 +500,8 @@ function Colombia_a_departamento_circle() {
     nameDpto1 = $(ele).data("dpto");
     actual_departamento = nameDpto;
     var div_id = `dep_${actual_departamento}`;
-
+    $('#idTituloMapa').show();
+    $('#changeTitleDpto').html($(ele).data('municipio'));
 
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${actual_departamento}.svg`, function (data) {
@@ -529,16 +533,17 @@ function departamento_a_municipio_circle(ele) {
     $typeOffice = $(ele).attr('office');
     actual_municipio = nameMunicipio;
     var r_municipio = null;
-    console.log(actual_departamento);
+    $("#separadorCiudad").show();
+    var titulo = $(ele).attr('title'); 
     $(`#dep_${actual_departamento} svg > path`).each(function () {
         var name = $(this).attr('name');
-        console.log(name)
         if (name == actual_municipio)
-            r_municipio = this;
+        r_municipio = this;
     });
     if (r_municipio == null)
-        return alert('No se encontro el municipio.');
+    return alert('No se encontro el municipio.');
     $(r_municipio).click();
+    $("#nameCiudad").html(titulo);
     actual = 'Municipio 2';
 }
 
@@ -549,7 +554,6 @@ function ZoomMunicipio() {
     var new_ele = document.getElementById('vistaMunicipio');
     var rect = new_ele.getBoundingClientRect(), tl = new TimelineMax();
     var nscale = 0; //Establecer nuevo scale automatico, ignora SVG
-    console.log(rect);
     if (rect.width > rect.height) {
         nscale = 400 / rect.width;
     } else {
