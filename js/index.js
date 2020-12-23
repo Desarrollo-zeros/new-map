@@ -26,6 +26,7 @@ var clickDpto;
 $typeOffice = 0;
 
 $municipios = [];
+var fload = false;
 
 $(document).ready(function () {
     init_load();
@@ -120,26 +121,26 @@ function loaderInversion() {
             };
             api.dataInversion.total_ejecucion = parseFloat(api.dataInversion.rp) + parseFloat(api.dataInversion.fonc) + parseFloat(api.dataInversion.tercero);
 
-            if(api.dataInversion.total_ejecucion.toString().replaceAll(".00","").length>8){
+            if(api.dataInversion.total_ejecucion.toString().replaceAll(".00","").length>9){
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
             }else{
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
             }
 
-            if(api.dataInversion.fonc.toString().replaceAll(".00","").length>8){
+            if(api.dataInversion.fonc.toString().replaceAll(".00","").length>9){
                 $("#fonc").html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
             }else{
                 $("#fonc").html(format(api.dataInversion.fonc, 1000000, "$") + " M")
             }
 
-            if(api.dataInversion.tercero.toString().replaceAll(".00","").length>8){
+            if(api.dataInversion.tercero.toString().replaceAll(".00","").length>9){
                 $("#terceros").html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
             }else{
                 $("#terceros").html(format(api.dataInversion.tercero, 1000000, "$") + " M");
 
             }
 
-            if(api.dataInversion.rp.toString().replaceAll(".00","").length>8){
+            if(api.dataInversion.rp.toString().replaceAll(".00","").length>9){
                 $("#rp").html(format(api.dataInversion.rp, 1000000, "$") + " MM");
             }else{
                 $("#rp").html(format(api.dataInversion.rp, 1000000, "$") + " M");
@@ -148,7 +149,7 @@ function loaderInversion() {
             if (parseInt(api.dataInversion.fonc) == 0) $("#fonc").parent().hide(); else $("#fonc").parent().show();
             if (parseInt(api.dataInversion.tercero) == 0) $("#terceros").parent().hide(); else $("#terceros").parent().show();
             if (parseInt(api.dataInversion.rp) == 0) $("#rp").parent().hide(); else $("#rp").parent().show();
-        }else{
+        } else {
             $("[data-name='inversion']").hide();
         }
     });
@@ -189,7 +190,7 @@ function loaderApalancamiento() {
         var str = "";
         var total = 0;
 
-        if(data && data[0] && data.length>0){
+        if (data && data[0] && data.length > 0) {
             if (data[0].dpto != undefined) {
                 for (var i in data) {
                     let t = parseFloat(data[i].total_total).toFixed(2);
@@ -277,7 +278,7 @@ function loaderApalancamiento() {
                 total = total + ",0";
             }
             $("#apalancamientoValue").html(total);
-        }else{
+        } else {
             $("[data-name='apalancamiento']").hide();
         }
 
@@ -335,24 +336,15 @@ function loaderProyecto() {
                 }
             })
         }else{
-            if(data.length>0){
-                data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
-                    if (nameDpto != undefined) {
-                        if (api.dataVectores.vectores.length == 1) {
-                            proyectosRows.append(
-                                $("<tr>").append(
-                                    $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(x.vector),
-                                    $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(x.total)),
-                                )
+            data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
+                if (nameDpto != undefined) {
+                    if (api.dataVectores.vectores.length == 1) {
+                        proyectosRows.append(
+                            $("<tr>").append(
+                                $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(x.vector),
+                                $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(x.total)),
                             )
-                        } else {
-                            proyectosRows.append(
-                                $("<tr>").append(
-                                    $("<td>").html(x.vector),
-                                    $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
-                                )
-                            )
-                        }
+                        )
                     } else {
                         proyectosRows.append(
                             $("<tr>").append(
@@ -361,9 +353,16 @@ function loaderProyecto() {
                             )
                         )
                     }
-                })
-                $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
-            }
+                } else {
+                    proyectosRows.append(
+                        $("<tr>").append(
+                            $("<td>").html(x.vector),
+                            $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
+                        )
+                    )
+                }
+            });
+            $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
         }
     });
 }
@@ -395,7 +394,7 @@ function loaderBeneficio() {
             $("#mujerValue").html($("<span>", vconf).html(format(api.dataBeneficiarios.mujerValue)));
             $("#ninosValue").html($("<span>", vconf).html(format(api.dataBeneficiarios.ninosValue)));
             $("#otroValue").html($("<span>", vconf).html(format(api.dataBeneficiarios.otroValue)));
-        }else{
+        } else {
             $("[data-name='beneficiarios']").hide();
         }
     });
@@ -419,7 +418,6 @@ function detalles_menu() {
         }
     })
     $("#ttdetalles_menu li").mouseleave(function () {
-        console.log($(this).data('name') + ' ' + (!$(this).hasClass('m')))
         if (!$(this).hasClass('m')) {
             switch ($(this).data("name")) {
                 case "inversion": $("#ttdetalles_info .inversion").removeClass("mostrar");
@@ -448,7 +446,6 @@ function municipios_load() {
 function btn_atras() {
     $('#ttdetalles_menu li.active').removeClass('active');
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
-    console.log(actual);
     switch (actual) {
         case "departamentos":
             actual = "pais";
@@ -497,10 +494,27 @@ function Cargar_Colombia() {
         $("div#colombia").on("click", "path", Colombia_a_Departamento)
         $("div#colombia").on("click", "circle", Colombia_a_departamento_circle)
 
+        var dpto = undefined;
+        var fclick = undefined;
+        if (!fload) {
+            fload = true;
+            var p = getUrlParams()
+            dpto = p['dpto'];
+            console.log(dpto)
+
+        }
         $("div#colombia svg > path").each(function () {
-            if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled"))
+            if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled")) {
                 $(this).addClass("disabled");
+            }
+            if (dpto != undefined) {
+                if(dpto.toLowerCase() == $(this).attr('url')?.toLowerCase()){
+                    fclick = $(this);
+                }
+            }
         });
+        if(fclick != undefined)
+        fclick.click();
     });
     loaderInversion();
     loaderDepedencia();
@@ -514,6 +528,15 @@ function Cargar_Colombia() {
 function Colombia_a_Departamento() {
     if ($(this).hasClass("disabled")) return;
     actual_departamento = $(this).attr("url");
+
+    var p = getUrlParams()
+    let d = p['dpto'];
+
+    if(d == null && $(this).data("url") != null){
+        //aca hay un ejemplo
+        window.open('http://localhost/new-map/?dpto='+actual_departamento, '_blank');
+        return;
+    }
     Cargar_Departamento(this);
 }
 function Cargar_Departamento(ele) {
@@ -636,14 +659,14 @@ function departamento_a_municipio_circle(ele) {
     actual_municipio = nameMunicipio;
     var r_municipio = null;
     $("#separadorCiudad").show();
-    var titulo = $(ele).attr('title'); 
+    var titulo = $(ele).attr('title');
     $(`#dep_${actual_departamento} svg > path`).each(function () {
         var name = $(this).attr('name');
         if (name == actual_municipio)
-        r_municipio = this;
+            r_municipio = this;
     });
     if (r_municipio == null)
-    return alert('No se encontro el municipio.');
+        return alert('No se encontro el municipio.');
     $(r_municipio).click();
     $("#nameCiudad").html(titulo);
     titleOffice = titulo;
@@ -705,14 +728,12 @@ function ZoomMunicipio() {
     tl.pause;
 }
 function zoomState(state, nameParent) {
-    console.log(state);
     var zoomState = document.getElementById(state), tl = new TimelineMax();
 
     var svg1 = zoomState;
     var rect = svg1.getBoundingClientRect();
 
     var scale = 0; //Establecer nuevo scale automatico, ignora SVG
-    console.log(rect);
     if (rect.width > rect.height) {
         scale = 450 / rect.width;
     } else {
@@ -782,3 +803,21 @@ const removeAccents = (str) => {
 }
 
 
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    else {
+        return results[1] || 0;
+    }
+}
+function getUrlParams() {
+    var url = window.location.href;
+    var params = {};
+    url.substring(1).replace(/[?&]+([^=&]+)=([^&]*)/gi,
+        function (str, key, value) {
+            params[key] = value;
+        });
+    return params;
+}

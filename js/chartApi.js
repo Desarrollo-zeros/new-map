@@ -408,7 +408,7 @@ function getParticipacionEje(){
                         yAxes: [
                             {
                                 ticks: {
-                                    stepSize: 15
+                                    stepSize: 25
                                 },
                                 gridLines: {
                                     color: "rgba(0, 0, 0, 0)",
