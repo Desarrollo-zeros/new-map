@@ -416,6 +416,7 @@ function Cargar_Departamento(ele) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${departamento}.svg`, function (data) {
             $(`#${div_id}`).on("click", "path", Departamento_a_municipio);
             $(`#${div_id} svg > path`).each(function () {
+                var ele = this;
                 var name = $(ele).attr("name") == undefined ? "" : $(ele).attr("name");
                 if (name.toLowerCase().includes("xxx")) {
                     $(ele).addClass("disabled");
