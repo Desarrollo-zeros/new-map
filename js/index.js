@@ -26,6 +26,25 @@ var clickDpto;
 
 $municipios = [];
 
+function cargarMunicipios() {
+    var arr = Array.prototype.slice.call($("svg path"));
+    for (var i in arr) {
+        let name = $(arr[i]).attr("name");
+        if (name != undefined) {
+            let municipio = $municipios.find(x => removeAccents(x.municipio.toLowerCase()).includes(removeAccents(name.toLowerCase())));
+            if (municipio != null) {
+                $(arr[i]).css("fill", "#d2d2e6");
+            }else{
+                $(arr[i]).addClass("disabled");
+            }
+        }else{
+            $(arr[i]).addClass("disabled");
+
+        }
+    }
+}
+
+
 $(document).ready(function () {
     init_load();
     municipios_load();
@@ -423,6 +442,7 @@ function Cargar_Departamento(ele) {
                 if (name.toLowerCase().includes("xxx")) {
                     $(ele).addClass("disabled");
                 }
+
             });
         });
 

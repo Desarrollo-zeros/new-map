@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/tooltip.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/tooltip.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,11 +118,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="554" y="98" width="988" height="488" key="dock-window-1/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607966939345" />
-    <state x="1754" y="97" width="584" height="535" key="find.popup" timestamp="1608040490371">
+    <state x="1754" y="97" width="584" height="535" key="find.popup" timestamp="1608692969656">
       <screen x="1366" y="0" width="1360" height="728" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607974407686" />
-    <state x="1754" y="97" width="584" height="535" key="find.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608040490371" />
+    <state x="1754" y="97" width="584" height="535" key="find.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608692969656" />
     <state x="457" y="115" width="686" height="631" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1607982211159" />
     <state x="1702" y="162" key="run.anything.popup" timestamp="1608692056522">
       <screen x="1366" y="0" width="1360" height="728" />
