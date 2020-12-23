@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,16 +62,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\css" />
+      <recent name="C:\xampp\htdocs\new-map\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\new-map\img" />
       <recent name="C:\xampp\htdocs\new-map\img\departamentos" />
       <recent name="C:\xampp\htdocs\new-map\img\iconos" />
       <recent name="C:\xampp\htdocs\new-map\js" />
       <recent name="C:\xampp\htdocs\new-map\css" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\new-map\css" />
-      <recent name="C:\xampp\htdocs\new-map\js" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,7 +89,8 @@
       <workItem from="1607986562524" duration="9168000" />
       <workItem from="1607998179101" duration="9997000" />
       <workItem from="1608034846835" duration="3510000" />
-      <workItem from="1608734862018" duration="9403000" />
+      <workItem from="1608734862018" duration="8389000" />
+      <workItem from="1608752193926" duration="2641000" />
     </task>
     <servers />
   </component>
@@ -152,7 +153,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/Api.js</url>
-          <line>280</line>
+          <line>328</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

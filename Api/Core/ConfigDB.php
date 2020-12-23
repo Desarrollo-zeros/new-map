@@ -2,10 +2,10 @@
 
 class ConfigDB{
     public $CONF_DB = array(
-        'usr_db'=>'root',
-        'name_db'=>'maps',
-        'passwd_db'=>'6s9B2kasU5Dk5Shmw0d!',
-        'host_db'=>'localhost',
+        'usr_db'=>'APP_MAPA_SOTENIBILIDAD',
+        'name_db'=>'WPMAPA_SOTENIBILIDAD',
+        'passwd_db'=>'kdjgo123x*DKAOEKLFfda',
+        'host_db'=>'192.168.112.53',
         'env'=>'DEV'
     );
 }

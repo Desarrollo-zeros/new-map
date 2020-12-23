@@ -22,7 +22,7 @@
 			  $this->ConfigDB = array('dbhost'=>'192.168.4.57','dbname'=>'bestelltdb','dbuser'=>'postgres','dbpass'=>'xx');
 			 break;
 			 case "MYSQL":
-			   $this->ConfigDB = array('dbhost'=> $cnf_db->CONF_DB['host_db'],'dbname'=>$cnf_db->CONF_DB['name_db'],'dbuser'=>$cnf_db->CONF_DB['usr_db'],'dbpass'=>$cnf_db->CONF_DB['passwd_db'], 'dbport'=>'3306');
+			   $this->ConfigDB = array('dbhost'=> $cnf_db->CONF_DB['host_db'],'dbname'=>$cnf_db->CONF_DB['name_db'],'dbuser'=>$cnf_db->CONF_DB['usr_db'],'dbpass'=>$cnf_db->CONF_DB['passwd_db'], 'dbport'=>'33062');
 			 break;
 			}
 	  }

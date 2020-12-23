@@ -72,12 +72,24 @@
     # Load data
 	function GetDataNfc(){
         global $obj, $RSP_REST, $CONFIG;
-
+        $dpto ="";
+        $municipio ="";
+        $dependencia_id = 0;
         $type = $_POST["type"];
-        $dpto = $_POST["dpto"];
+        if(isset($_POST["dpto"])){
+            $dpto = $_POST["dpto"];
+        }
+
+        if(isset($_POST["municipio"])){
+            $municipio = $_POST["municipio"];
+        }
+
+        if(isset($_POST["dependencia_id"])){
+            $dependencia_id = $_POST["dependencia_id"];
+        }
+
         $table = $_POST["table"];
-        $municipio = $_POST["municipio"];
-        $dependencia_id = $_POST["dependencia_id"];
+
 
 
         $result = [];
