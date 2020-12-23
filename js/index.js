@@ -536,7 +536,7 @@ function Colombia_a_Departamento() {
 
     if(d == null && $(this).data("url") != null){
         //aca hay un ejemplo
-        window.open('http://localhost/new-map/?dpto='+actual_departamento, '_blank');
+        window.open('/new-map/?dpto='+actual_departamento, '_blank');
         return;
     }
     Cargar_Departamento(this);
