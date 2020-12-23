@@ -26,25 +26,6 @@ var clickDpto;
 
 $municipios = [];
 
-function cargarMunicipios() {
-    var arr = Array.prototype.slice.call($("svg path"));
-    for (var i in arr) {
-        let name = $(arr[i]).attr("name");
-        if (name != undefined) {
-            let municipio = $municipios.find(x => removeAccents(x.municipio.toLowerCase()).includes(removeAccents(name.toLowerCase())));
-            if (municipio != null) {
-                $(arr[i]).css("fill", "#d2d2e6");
-            }else{
-                $(arr[i]).addClass("disabled");
-            }
-        }else{
-            $(arr[i]).addClass("disabled");
-
-        }
-    }
-}
-
-
 $(document).ready(function () {
     init_load();
     municipios_load();
@@ -60,7 +41,7 @@ function init_load() {
 
     detalles_menu()
 }
-// ???
+
 function loaderIndicativo() {
     let data = {};
     data.anio = $("#selectAnoCargue").val();
@@ -355,6 +336,24 @@ function detalles_menu() {
                 break;
         }
     })
+    $("#ttdetalles_menu li").mouseleave(function () {
+        console.log($(this).data('name') + ' ' + (!$(this).hasClass('m')))
+        if (!$(this).hasClass('m')) {
+            switch ($(this).data("name")) {
+                case "inversion": $("#ttdetalles_info .inversion").removeClass("mostrar");
+                    break;
+                case "dependencia": $("#ttdetalles_info .dependencia").removeClass("mostrar");
+                    break;
+                case "apalancamiento": $("#ttdetalles_info .apalancamiento").removeClass("mostrar");
+                    break;
+                case "proyectos": $("#ttdetalles_info .proyectos").removeClass("mostrar");
+                    break;
+                case "beneficiarios": $("#ttdetalles_info .beneficiarios").removeClass("mostrar");
+                    break;
+            }
+        }
+    })
+
 }
 function municipios_load() {
     var data = { "type": 3, "table": "view_municipios_cateferos" };
@@ -367,12 +366,13 @@ function municipios_load() {
 function btn_atras() {
     $('#ttdetalles_menu li.active').removeClass('active');
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
+    console.log(actual);
     switch (actual) {
         case "departamentos":
             actual = "pais";
             nameDpto = null;
             nameDpto1 = null;
-            $("#departamentos, .div_departamentos, #indicadoresDiv").hide();
+            $("#departamentos, .div_departamentos, #indicadoresDiv, #departamentos > .div_departamentos").hide();
             $("#colombia").show();
             break;
         case "municipios":
@@ -382,7 +382,18 @@ function btn_atras() {
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#departamentos, #indicadoresDiv").show();
             break;
+
+        case 'Municipio 2':
+            actual = 'pais';
+            nameDpto = null;
+            nameDpto1 = null;
+            nameMunicipio = null;
+            $("#colombia").show();
+            $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
+            $("#municipio").hide();
+            break;
         default:
+
             break;
     }
     loaderInversion();
@@ -435,14 +446,14 @@ function Cargar_Departamento(ele) {
     var div_id = `dep_${departamento}`;
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${departamento}.svg`, function (data) {
-            $(`#${div_id}`).on("click", "path", Departamento_a_municipio);
+            $(`#${div_id}`).on("click", "path", Departamento_a_municipio); // Declara funcion del click en mapa colombia en los departamentos
             $(`#${div_id} svg > path`).each(function () {
                 var ele = this;
                 var name = $(ele).attr("name") == undefined ? "" : $(ele).attr("name");
-                if (name.toLowerCase().includes("xxx")) {
+                var dis = $(ele).attr('disabled');
+                if (name.toLowerCase().includes("xxx") || dis != undefined) {
                     $(ele).addClass("disabled");
                 }
-
             });
         });
 
@@ -491,7 +502,7 @@ function Cargar_Municipio(ele) {
 
 
 
-function Colombia_a_departamento_circle(){
+function Colombia_a_departamento_circle() {
     let ele = this;
     nameDpto = $(ele).data("dpto");
     nameDpto1 = $(ele).data("dpto");
@@ -514,7 +525,8 @@ function Colombia_a_departamento_circle(){
 
         $(`#departamentos`).append(div);
         $(`#colombia`).hide();
-        $(`#departamentos`).show();
+        //$(`#departamentos`).hide();
+        div.hide();
     } else {
         $(`#colombia`).hide();
         $(`#departamentos, #dep_${actual_departamento}`).show();
@@ -522,23 +534,22 @@ function Colombia_a_departamento_circle(){
     }
 }
 
-function departamento_a_municipio_circle(ele){
+function departamento_a_municipio_circle(ele) {
+
     nameMunicipio = $(ele).data("municipio");
     actual_municipio = nameMunicipio;
-
-    $('#ttdetalles_info .mostrar').removeClass('mostrar');
-    $('#ttdetalles_menu li.active').removeClass('active');
-    var div = $(ele).closest("svg")
-
-    $("#viewPrueba").html($(ele).clone().attr('id', 'vistaMunicipio'));
-    $("#departamentos, #indicadoresDiv").hide();
-    $("#municipio").show();
-
-    ZoomMunicipio();
-
-    actual = "municipios";
-    $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
-
+    var r_municipio = null;
+    console.log(actual_departamento);
+    $(`#dep_${actual_departamento} svg > path`).each(function () {
+        var name = $(this).attr('name');
+        console.log(name)
+        if (name == actual_municipio)
+            r_municipio = this;
+    });
+    if (r_municipio == null)
+        return alert('No se encontro el municipio.');
+    $(r_municipio).click();
+    actual = 'Municipio 2';
 }
 
 
@@ -550,9 +561,9 @@ function ZoomMunicipio() {
     var nscale = 0; //Establecer nuevo scale automatico, ignora SVG
     console.log(rect);
     if (rect.width > rect.height) {
-        nscale = 200 / rect.width;
+        nscale = 400 / rect.width;
     } else {
-        nscale = 200 / rect.height;
+        nscale = 400 / rect.height;
     }
     var bbox = new_ele.getBBox(),
         svg = document.getElementById('viewPrueba'),
