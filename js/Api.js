@@ -1,7 +1,7 @@
 class Api{
 
     constructor() {
-        this.url = "http://13.59.69.169/sustain_map/app_modules/maps/API/maps/";
+        this.url = "https://mapas.comprocafedecolombia.com/sustain_map/app_modules/maps/API/maps/";
         this.response = null;
 
         this.dataVectores= {};
@@ -48,10 +48,23 @@ class Api{
     getInversion = function ($data = {}, sucessCallBack, falloCallback){
         const  _self = this;
         $data.anio = $("#selectAnoCargue").val();
-        $data.type = 1;
-        $data.table = "monto_inversion";
-        $data.dpto = nameDpto;
+
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
+
+        if($typeOffice == 1){
+            $data.table = "view_oficina_inversion";
+            $data.type = 7;
+            $data.dependencia_id = 18;
+        }else if($typeOffice == 2){
+            $data.table = "view_oficina_inversion";
+            $data.type = 7;
+            $data.dependencia_id = 1;
+        }else{
+            $data.table = "monto_inversion";
+            $data.type = 1;
+        }
+
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
 
@@ -60,7 +73,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 1;
         $data.table = "monto_beneficiarios";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
@@ -70,9 +83,24 @@ class Api{
     getVectores = function ($data = {}, sucessCallBack, falloCallback){
         const  _self = this;
         $data.anio = $("#selectAnoCargue").val();
-        $data.type = 2;
-        $data.dpto = nameDpto;
+
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
+        $data.table = "vectores";
+
+        if($typeOffice == 1){
+            $data.table = "vectores_dependencia";
+            $data.type = 7;
+            $data.dependencia_id = 18;
+        }else if($typeOffice == 2){
+            $data.table = "vectores_dependencia";
+            $data.type = 7;
+            $data.dependencia_id = 1;
+        }else{
+            $data.type = 2;
+        }
+
+
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
 
@@ -120,13 +148,12 @@ class Api{
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }
 
-
     getVieEjeIndicativo2 = function ($data = {}, sucessCallBack, falloCallback){
         const  _self = this;
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 4;
         $data.table = "view_eje_eje_dpta_municipio";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
 
         _self.post("get_data_nfc", $data,function (data){
@@ -192,7 +219,7 @@ class Api{
         $data.anio = $("#selectAnoCargue").val();
         $data.type = 0;
         $data.table = "view_indicadores";
-        $data.dpto = nameDpto;
+        $data.dpto = nameDpto1;
         $data.municipio = nameMunicipio;
         _self.post("get_data_nfc", $data,sucessCallBack, falloCallback);
     }

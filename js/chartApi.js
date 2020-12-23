@@ -440,24 +440,29 @@ function getParticipacionEje(){
 
                                 var innerHtml = '<thead>';
                                 let url = "";
+                                let textUrl = "";
                                 titleLines.forEach(function(title) {
 
                                     innerHtml += '<tr><th>' + title + '</th></tr>';
                                     if(title.toLowerCase().includes("económico")){
+                                        textUrl = "Contribuimos a la rentabilidad del caficultor";
                                         url = "https://federaciondecafeteros.org/sostenibilidad/eje-economico/";
                                     }else if(title.toLowerCase().includes("social")){
+                                        textUrl =" Procuramos el desarrollo y la inclusión social y productiva de las familias y comunidades cafeteras";
                                         url = "https://federaciondecafeteros.org/sostenibilidad/eje-social/";
                                     }
                                     else if(title.toLowerCase().includes("gobernanza")){
+                                        textUrl ="Trabajamos por fortalecer la unión gremial cafetera";
                                         url = "https://federaciondecafeteros.org/sostenibilidad/eje-gobernaza/";
                                     }
                                     else if(title.toLowerCase().includes("ambiental")){
+                                        textUrl ="Promovemos la sostenibilidad ambiental en la cadena de producción de café";
                                         url = "https://federaciondecafeteros.org/sostenibilidad/eje-ambiental/";
                                     }
                                 });
                                 innerHtml += '</thead><tbody>';
 
-                                let html = "<hr><span>Buscamos Contribuir a la rentabilidad del caficultor" +
+                                let html = "<hr><span>" +textUrl+
                                     "<br>" +
                                     "<a style='font-size: 12px; text-decoration: none; color: #ffffff' href='"+url+"' target='_blank'>Enlace a la selección Sostenibilidad</a></span><hr>";
                                 bodyLines.forEach(function(body, i) {

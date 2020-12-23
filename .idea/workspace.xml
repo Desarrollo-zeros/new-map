@@ -21,10 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Nariño.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Nariño.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chartApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +145,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/Api.js</url>
-          <line>255</line>
+          <line>282</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
