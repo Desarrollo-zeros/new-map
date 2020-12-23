@@ -223,8 +223,14 @@ svg {
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
-#viewPrueba .cls-1{
+#viewPrueba{
+  height: 450px;
+  width: 450px;
   cursor:default;
+}
+#viewPrueba path:hover{
+  fill: #21669E!important;
+  cursor: default;
 }
 .cls-1 {
   fill: #21669E!important;
