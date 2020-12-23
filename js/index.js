@@ -512,7 +512,7 @@ function Colombia_a_departamento_circle() {
     actual_departamento = nameDpto;
     var div_id = `dep_${actual_departamento}`;
     $('#idTituloMapa').show();
-    $('#changeTitleDpto').html(nameDpto);
+    $('#changeTitleDpto').html($(ele).data('municipio'));
 
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${actual_departamento}.svg`, function (data) {
@@ -544,17 +544,16 @@ function departamento_a_municipio_circle(ele) {
     actual_municipio = nameMunicipio;
     var r_municipio = null;
     $("#separadorCiudad").show();
-    $("#nameCiudad").html(actual_municipio);
-    
+    var titulo = $(ele).attr('title'); 
     $(`#dep_${actual_departamento} svg > path`).each(function () {
         var name = $(this).attr('name');
-        console.log(name)
         if (name == actual_municipio)
-            r_municipio = this;
+        r_municipio = this;
     });
     if (r_municipio == null)
-        return alert('No se encontro el municipio.');
+    return alert('No se encontro el municipio.');
     $(r_municipio).click();
+    $("#nameCiudad").html(titulo);
     actual = 'Municipio 2';
 }
 
@@ -565,7 +564,6 @@ function ZoomMunicipio() {
     var new_ele = document.getElementById('vistaMunicipio');
     var rect = new_ele.getBoundingClientRect(), tl = new TimelineMax();
     var nscale = 0; //Establecer nuevo scale automatico, ignora SVG
-    console.log(rect);
     if (rect.width > rect.height) {
         nscale = 400 / rect.width;
     } else {
