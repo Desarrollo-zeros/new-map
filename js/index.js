@@ -163,6 +163,8 @@ function loaderDepedencia() {
         let dpto = [];
         if(titleOffice != null){
             data = data.filter(x => removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) ===  removeAccents(titleOffice.replaceAll(" ", "").toLowerCase()));
+        }else{
+            data = data.filter(x => removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) !==  removeAccents("OFICINA CENTRAL".replaceAll(" ", "").toLowerCase()) && removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) !==  removeAccents("CENICAFÉ".replaceAll(" ", "").toLowerCase()));
         }
 
         for (var i in data) {

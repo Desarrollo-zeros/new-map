@@ -46,25 +46,25 @@ body{
   left: -9px;
 }
 #ttdetalles_info div.dependencia{
-  top: 0;
+  top: 100px;
   width: 300px;
   left: -109px;
 }
 #ttdetalles_info div.apalancamiento{
-  top: 0;
+  top: 170px;
   width: 300px;
   left: -109px;
   max-height: 400px;
   min-height: 100px;
 }
 #ttdetalles_info div.proyectos{
-  top: 0;
+  top: 220px;
   width: 300px;
   left: -109px;
 
 }
 #ttdetalles_info div.beneficiarios{
-  top: 0;
+  top: 50px;
   width: 200px;
   left: -9px;
 

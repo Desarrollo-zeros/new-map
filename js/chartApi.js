@@ -161,7 +161,7 @@ function getParticipacionAportante(){
                         'Municipios',
                         'Recursos Propios',
                         'FoNC',
-                        'Especie',
+                        'Especiales',
                         'organizaciones Nacionales públicas',
                         'Organizaciones Nacionales Privadas'
 
