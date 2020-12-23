@@ -521,8 +521,6 @@ function Cargar_Colombia() {
             fload = true;
             var p = getUrlParams()
             dpto = p['dpto'];
-            console.log(dpto)
-
         }
         $("div#colombia svg > path").each(function () {
             if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled")) {
@@ -556,7 +554,7 @@ function Colombia_a_Departamento() {
 
     if(d == null && $(this).data("url") != null){
         //aca hay un ejemplo
-        window.open('/new-map/?dpto='+actual_departamento, '_blank');
+        window.open($(this).data("url"), '_blank');
         return;
     }
     Cargar_Departamento(this);
