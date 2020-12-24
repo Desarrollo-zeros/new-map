@@ -323,6 +323,8 @@ function loaderProyecto() {
                 total += parseFloat(x.total);
             });
 
+
+
             $("#total_proyecto").html(format(total, 1, ""));
 
 
@@ -614,15 +616,18 @@ function Cargar_Departamento(ele) {
         //loaderApalancamiento();
 
     }
-    loaderApalancamiento();
+
     loaderInversion();
     loaderDepedencia();
-    loaderProyecto();
+
     loaderBeneficio();
     getParticipacionEje();
     getParticipacionAportante();
     loaderIndicativo();
-
+    setTimeout(function (){
+        loaderApalancamiento();
+        loaderProyecto();
+    },500);
     $("#indicadoresDiv").show();
     $("#btnAtras").show();
 }
