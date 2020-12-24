@@ -28,6 +28,16 @@ body{
 #ttdetalles{
   color:rgb(113, 113, 113);
 }
+.detalles_info .close{
+  position: absolute;
+  top: 11px;
+  right: 0;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 2px;
+}
 #ttdetalles_info .mostrar{
   display: block!important;
 }

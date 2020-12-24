@@ -31,8 +31,6 @@ var fload = false;
 $(document).ready(function () {
     $("#selectAnoCargue").val("2019");
 
-
-
     init_load();
     municipios_load();
     Cargar_Colombia();
@@ -42,7 +40,7 @@ function init_load() {
     $("#selectAnoCargue").val("2019");
     $("#changeTitle").html(title);
     $('#btnAtras').click(btn_atras);
-
+    $('.detalles_info .close').click(detalles_info_Close);
     $menuTooltip = $(".table-tooltip");
 
     detalles_menu()
@@ -59,6 +57,9 @@ function init_load() {
 
 }
 
+function detalles_info_Close(){
+    $(this).closest('div').removeClass('mostrar');
+}
 
 function loaderProyectos(){
     let data = {};
