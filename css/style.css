@@ -1,3 +1,18 @@
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: 120%!important;
+  width: 115%!important;
+}
+.elementor-container.elementor-column-gap-default{
+  max-width: 120%!important;
+  width: 115%!important;
+}
+.elementor-container, .elementor-section-boxed{
+  max-width: 120%!important;
+  width: 115%!important;
+}
+
+
+
 *{
   font-family: "Avenir Black", sans-serif!important;
 }
