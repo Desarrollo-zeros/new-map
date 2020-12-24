@@ -56,11 +56,9 @@ function init_load() {
     });
 
 }
-
 function detalles_info_Close(){
     $(this).closest('div').removeClass('mostrar');
 }
-
 function loaderProyectos(){
     let data = {};
     data.anio = $("#selectAnoCargue").val();
@@ -94,7 +92,6 @@ function loaderProyectos(){
 
     })
 }
-
 function loaderIndicativo() {
     let data = {};
     data.anio = $("#selectAnoCargue").val();
@@ -466,8 +463,16 @@ function municipios_load() {
 function btn_atras() {
     $('#ttdetalles_menu li.active').removeClass('active');
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
+
+
+
     switch (actual) {
-        case "departamentos":
+        case "departamentos":{
+            var p = getUrlParams()
+            let d = p['dpto'];
+            if(d != null){
+               window.location.href = "https://federaciondecafeteros.org/mapa-de-proyectos/";
+            }
             actual = "pais";
             nameDpto = null;
             nameDpto1 = null;
@@ -475,6 +480,8 @@ function btn_atras() {
             $("#colombia").show();
 
             break;
+        }
+
         case "municipios":
             actual = "departamentos";
             nameMunicipio = null;
@@ -508,7 +515,6 @@ function btn_atras() {
     getParticipacionAportante();
     loaderIndicativo();
 }
-
 function Cargar_Colombia() {
     $("#btnAtras").hide();
     actual = "pais";
@@ -538,7 +544,7 @@ function Cargar_Colombia() {
     });
     loaderInversion();
     loaderDepedencia();
-    loaderApalancamiento();
+    //loaderApalancamiento();
     loaderProyecto();
     loaderBeneficio();
     getParticipacionEje();
@@ -548,14 +554,14 @@ function Cargar_Colombia() {
 function Colombia_a_Departamento() {
 
     if ($(this).hasClass("disabled")) return;
-    actual_departamento = $(this).attr("url");
+    actual_departamento =  $(this).attr("url").toString().toLowerCase();
 
     var p = getUrlParams()
     let d = p['dpto'];
 
     if(d == null && $(this).data("url") != null){
         //aca hay un ejemplo
-        window.open($(this).data("url"), '_blank');
+        window.open($(this).data("url").toString().toLowerCase(), '_blank');
         return;
     }
     Cargar_Departamento(this);
@@ -566,7 +572,7 @@ function Cargar_Departamento(ele) {
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
     $('#ttdetalles_menu li.active').removeClass('active');
     var departamento = actual_departamento;
-    nameDpto = $(ele).attr("url");
+    nameDpto = $(ele).attr("url").toString().toLowerCase();
     nameDpto1 = $(ele).attr("title");
     if (nameDpto1 == null) {
         nameDpto1 = nameDpto;
@@ -595,18 +601,25 @@ function Cargar_Departamento(ele) {
         $(`#colombia`).hide();
         $(`#departamentos, #dep_${departamento}`).show();
     }
+
+    var p = getUrlParams()
+    let d = p['dpto'];
+    if(d != null){
+        //loaderApalancamiento();
+
+    }
+    loaderApalancamiento();
     loaderInversion();
     loaderDepedencia();
-    loaderApalancamiento();
     loaderProyecto();
     loaderBeneficio();
     getParticipacionEje();
     getParticipacionAportante();
     loaderIndicativo();
+
     $("#indicadoresDiv").show();
     $("#btnAtras").show();
 }
-
 function Departamento_a_municipio() {
 
     if ($(this).hasClass("disabled")) return;
@@ -634,6 +647,8 @@ function Cargar_Municipio(ele) {
         loaderProyecto();
         loaderBeneficio();
         loaderProyectos();
+        loaderApalancamiento();
+        loaderIndicativo();
     }else{
         clickcircle = false;
     }
