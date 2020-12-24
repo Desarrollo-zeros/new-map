@@ -65,15 +65,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\css" />
+      <recent name="C:\xampp\htdocs\new-map\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\new-map" />
       <recent name="C:\xampp\htdocs\new-map\img" />
       <recent name="C:\xampp\htdocs\new-map\img\departamentos" />
       <recent name="C:\xampp\htdocs\new-map\img\iconos" />
-      <recent name="C:\xampp\htdocs\new-map\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\new-map\css" />
       <recent name="C:\xampp\htdocs\new-map\js" />
     </key>
   </component>
