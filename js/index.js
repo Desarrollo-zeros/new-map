@@ -56,25 +56,25 @@ function init_load() {
     });
 
 }
-function detalles_info_Close(){
+function detalles_info_Close() {
     $(this).closest('div').removeClass('mostrar');
 }
-function loaderProyectos(){
+function loaderProyectos() {
     let data = {};
     data.anio = $("#selectAnoCargue").val();
     data.type = 0;
     data.table = "view_proyecto";
     data.dpto = nameDpto1;
     data.municipio = nameMunicipio;
-    if($typeOffice == 1){
+    if ($typeOffice == 1) {
         data.table = "view_proyecto_dependencia";
         data.type = 7;
         data.dependencia_id = 18;
-    }else if($typeOffice == 2){
+    } else if ($typeOffice == 2) {
         data.table = "view_proyecto_dependencia";
         data.type = 7;
         data.dependencia_id = 1;
-    }else{
+    } else {
         data.type = 0;
     }
     api.post("get_data_nfc", data, function (response) {
@@ -122,7 +122,7 @@ function loaderIndicativo() {
 function loaderInversion() {
     api.getInversion({}, function (data) {
 
-        if(data && data[0] != undefined){
+        if (data && data[0] != undefined) {
             data = data[0];
         }
         if (data && data.ano_carge) {
@@ -134,28 +134,28 @@ function loaderInversion() {
             };
             api.dataInversion.total_ejecucion = parseFloat(api.dataInversion.rp) + parseFloat(api.dataInversion.fonc) + parseFloat(api.dataInversion.tercero);
 
-            if(api.dataInversion.total_ejecucion.toString().replaceAll(".00","").length>9){
+            if (api.dataInversion.total_ejecucion.toString().replaceAll(".00", "").length > 9) {
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " MM");
-            }else{
+            } else {
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
             }
 
-            if(api.dataInversion.fonc.toString().replaceAll(".00","").length>9){
+            if (api.dataInversion.fonc.toString().replaceAll(".00", "").length > 9) {
                 $("#fonc").html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
-            }else{
+            } else {
                 $("#fonc").html(format(api.dataInversion.fonc, 1000000, "$") + " M")
             }
 
-            if(api.dataInversion.tercero.toString().replaceAll(".00","").length>9){
+            if (api.dataInversion.tercero.toString().replaceAll(".00", "").length > 9) {
                 $("#terceros").html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
-            }else{
+            } else {
                 $("#terceros").html(format(api.dataInversion.tercero, 1000000, "$") + " M");
 
             }
 
-            if(api.dataInversion.rp.toString().replaceAll(".00","").length>9){
+            if (api.dataInversion.rp.toString().replaceAll(".00", "").length > 9) {
                 $("#rp").html(format(api.dataInversion.rp, 1000000, "$") + " MM");
-            }else{
+            } else {
                 $("#rp").html(format(api.dataInversion.rp, 1000000, "$") + " M");
             }
 
@@ -172,13 +172,13 @@ function loaderDepedencia() {
         $("#ttdetalles_info .dependencia ul").html("");
         api.dataDependencia = data;
         var data = api.dataDependencia;
-        if (nameDpto1 != null && $typeOffice == 0) data = data.filter(x => removeAccents(x.dpta.replaceAll(" ", "").toLowerCase()) ===  removeAccents(nameDpto1.replaceAll(" ", "").toLowerCase()));
+        if (nameDpto1 != null && $typeOffice == 0) data = data.filter(x => removeAccents(x.dpta.replaceAll(" ", "").toLowerCase()) === removeAccents(nameDpto1.replaceAll(" ", "").toLowerCase()));
         let dpto = [];
-        if(titleOffice != null){
-            data = data.filter(x => removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) ===  removeAccents(titleOffice.replaceAll(" ", "").toLowerCase()));
-        }else{
-            if(nameDpto1 != null){
-                data = data.filter(x => removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) !==  removeAccents("OFICINA CENTRAL".replaceAll(" ", "").toLowerCase()) && removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) !==  removeAccents("CENICAFÉ".replaceAll(" ", "").toLowerCase()));
+        if (titleOffice != null) {
+            data = data.filter(x => removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) === removeAccents(titleOffice.replaceAll(" ", "").toLowerCase()));
+        } else {
+            if (nameDpto1 != null) {
+                data = data.filter(x => removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) !== removeAccents("OFICINA CENTRAL".replaceAll(" ", "").toLowerCase()) && removeAccents(x.dependencia.replaceAll(" ", "").toLowerCase()) !== removeAccents("CENICAFÉ".replaceAll(" ", "").toLowerCase()));
             }
         }
 
@@ -352,7 +352,7 @@ function loaderProyecto() {
                     )
                 }
             })
-        }else{
+        } else {
             data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
                 if (nameDpto != undefined) {
                     if (api.dataVectores.vectores.length == 1) {
@@ -418,19 +418,25 @@ function loaderBeneficio() {
 }
 function detalles_menu() {
     $("#ttdetalles_menu li").hover(function () {
+        var p = $(this).position();
         $("#ttdetalles_menu li.active").removeClass("active");
         $(this).addClass("active");
         $("#ttdetalles_info .mostrar").removeClass("mostrar");
         switch ($(this).data("name")) {
-            case "inversion": $("#ttdetalles_info .inversion").addClass("mostrar");
+            case "inversion":
+                $("#ttdetalles_info .inversion").addClass("mostrar").css({ top: p.top });
                 break;
-            case "dependencia": $("#ttdetalles_info .dependencia").addClass("mostrar");
+            case "dependencia":
+                $("#ttdetalles_info .dependencia").addClass("mostrar").css({ top: p.top });
                 break;
-            case "apalancamiento": $("#ttdetalles_info .apalancamiento").addClass("mostrar");
+            case "apalancamiento":
+                $("#ttdetalles_info .apalancamiento").addClass("mostrar").css({ top: p.top });
                 break;
-            case "proyectos": $("#ttdetalles_info .proyectos").addClass("mostrar");
+            case "proyectos":
+                $("#ttdetalles_info .proyectos").addClass("mostrar").css({ top: p.top });
                 break;
-            case "beneficiarios": $("#ttdetalles_info .beneficiarios").addClass("mostrar");
+            case "beneficiarios":
+                $("#ttdetalles_info .beneficiarios").addClass("mostrar").css({ top: p.top });
                 break;
         }
     })
@@ -467,11 +473,11 @@ function btn_atras() {
 
 
     switch (actual) {
-        case "departamentos":{
+        case "departamentos": {
             var p = getUrlParams()
             let d = p['dpto'];
-            if(d != null){
-               window.location.href = "https://federaciondecafeteros.org/mapa-de-proyectos/";
+            if (d != null) {
+                window.location.href = "https://federaciondecafeteros.org/mapa-de-proyectos/";
             }
             actual = "pais";
             nameDpto = null;
@@ -534,13 +540,13 @@ function Cargar_Colombia() {
                 $(this).addClass("disabled");
             }
             if (dpto != undefined) {
-                if(dpto.toLowerCase() == $(this).attr('url')?.toLowerCase()){
+                if (dpto.toLowerCase() == $(this).attr('url')?.toLowerCase()) {
                     fclick = $(this);
                 }
             }
         });
-        if(fclick != undefined)
-        fclick.click();
+        if (fclick != undefined)
+            fclick.click();
     });
     loaderInversion();
     loaderDepedencia();
@@ -554,12 +560,12 @@ function Cargar_Colombia() {
 function Colombia_a_Departamento() {
 
     if ($(this).hasClass("disabled")) return;
-    actual_departamento =  $(this).attr("url").toString().toLowerCase();
+    actual_departamento = $(this).attr("url").toString().toLowerCase();
 
     var p = getUrlParams()
     let d = p['dpto'];
 
-    if(d == null && $(this).data("url") != null){
+    if (d == null && $(this).data("url") != null) {
         //aca hay un ejemplo
         window.open($(this).data("url").toString().toLowerCase(), '_blank');
         return;
@@ -604,7 +610,7 @@ function Cargar_Departamento(ele) {
 
     var p = getUrlParams()
     let d = p['dpto'];
-    if(d != null){
+    if (d != null) {
         //loaderApalancamiento();
 
     }
@@ -642,14 +648,14 @@ function Cargar_Municipio(ele) {
 
     actual = "municipios";
     $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
-    if(!clickcircle){
+    if (!clickcircle) {
         loaderInversion();
         loaderProyecto();
         loaderBeneficio();
         loaderProyectos();
         loaderApalancamiento();
         loaderIndicativo();
-    }else{
+    } else {
         clickcircle = false;
     }
 
