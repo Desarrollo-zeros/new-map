@@ -543,8 +543,8 @@ div.verticalLine {
 }
 .scroller {
   overflow: hidden auto;
-  min-height: 100px;
   z-index: 99;
+  height: 100px;
 }
 
 

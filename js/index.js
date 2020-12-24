@@ -121,7 +121,6 @@ function loaderIndicativo() {
 }
 function loaderInversion() {
     api.getInversion({}, function (data) {
-
         if (data && data[0] != undefined) {
             data = data[0];
         }
@@ -165,6 +164,8 @@ function loaderInversion() {
         } else {
             $("[data-name='inversion']").hide();
         }
+    },function (){
+        $("[data-name='inversion']").hide();
     });
 }
 function loaderDepedencia() {
@@ -191,6 +192,8 @@ function loaderDepedencia() {
             }
         }
         $("#depedenciaTotal").html(dpto.length);
+    },function (){
+        $("[data-name='dependencia']").hide();
     });
 
 }
@@ -299,14 +302,20 @@ function loaderApalancamiento() {
             $("[data-name='apalancamiento']").hide();
         }
 
-    });
+    },
+        function (){
+            $("[data-name='apalancamiento']").hide();
+        });
 }
+
+
 function loaderProyecto() {
     api.getVectores({}, function (data) {
+
         var proyectosRows = $("#proyectosRows tbody");
         proyectosRows.html("");
         proyectosRows.find("tr").remove();
-        if (data && data["vectores"] && data["vectores"][0] && data["vectores"][0].ano_carge && data["proyectos"]) {
+        if (data && data["vectores"] && data["vectores"][0] && data["vectores"][0].ano_carge) {
             if (!data["proyectos"]) {
                 data["proyectos"] = { total: 0 }
             }
@@ -325,7 +334,7 @@ function loaderProyecto() {
 
 
 
-            $("#total_proyecto").html(format(total, 1, ""));
+            $("#total_proyecto").html(format(data["proyectos"].length, 1, ""));
 
 
             api.dataVectores.vectores.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
@@ -355,15 +364,29 @@ function loaderProyecto() {
                 }
             })
         } else {
-            data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
-                if (nameDpto != undefined) {
-                    if (api.dataVectores.vectores.length == 1) {
-                        proyectosRows.append(
-                            $("<tr>").append(
-                                $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(x.vector),
-                                $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(x.total)),
+            if(data["proyectos"] && data["proyectos"].length>0){
+                $("#total_proyecto").html(format(data["proyectos"].length, 1, ""));
+
+
+
+            }else{
+                data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
+                    if (nameDpto != undefined) {
+                        if (api.dataVectores.vectores.length == 1) {
+                            proyectosRows.append(
+                                $("<tr>").append(
+                                    $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(x.vector),
+                                    $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(x.total)),
+                                )
                             )
-                        )
+                        } else {
+                            proyectosRows.append(
+                                $("<tr>").append(
+                                    $("<td>").html(x.vector),
+                                    $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
+                                )
+                            )
+                        }
                     } else {
                         proyectosRows.append(
                             $("<tr>").append(
@@ -372,18 +395,16 @@ function loaderProyecto() {
                             )
                         )
                     }
-                } else {
-                    proyectosRows.append(
-                        $("<tr>").append(
-                            $("<td>").html(x.vector),
-                            $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
-                        )
-                    )
-                }
-            });
-            $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
+                });
+                $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
+            }
+
+
         }
-    });
+    },
+        function (){
+            $("[data-name='proyectos']").hide();
+        });
 }
 function loaderBeneficio() {
     api.getBeneficiarios({}, function (data) {
@@ -416,7 +437,10 @@ function loaderBeneficio() {
         } else {
             $("[data-name='beneficiarios']").hide();
         }
-    });
+    },
+        function (){
+            $("[data-name='beneficiarios']").hide();
+        });
 }
 function detalles_menu() {
     $("#ttdetalles_menu li").hover(function () {
@@ -435,6 +459,10 @@ function detalles_menu() {
                 $("#ttdetalles_info .apalancamiento").addClass("mostrar").css({ top: p.top });
                 break;
             case "proyectos":
+
+                if($("#proyectosRows tbody tr").length == 0){
+                    return;
+                }
                 $("#ttdetalles_info .proyectos").addClass("mostrar").css({ top: p.top });
                 break;
             case "beneficiarios":
@@ -525,16 +553,15 @@ var urlDpto = undefined;
 function Cargar_Colombia() {
     $("#btnAtras").hide();
     actual = "pais";
+    if (!fload) {
+        fload = true;
+        var p = getUrlParams()
+        urlDpto = p['dpto'];
+    }
     $("div#colombia").load("img/Colombia.svg", function () {
         $("div#colombia").on("click", "path", Colombia_a_Departamento)
         $("div#colombia").on("click", "circle", Colombia_a_departamento_circle)
-
         var fclick = undefined;
-        if (!fload) {
-            fload = true;
-            var p = getUrlParams()
-            urlDpto = p['dpto'];
-        }
         $("div#colombia svg > path").each(function () {
             if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled")) {
                 $(this).addClass("disabled");
@@ -548,6 +575,7 @@ function Cargar_Colombia() {
         if (fclick != undefined)
             fclick.click();
     });
+
     if(urlDpto == undefined){
         loaderInversion();
         loaderDepedencia();
@@ -617,17 +645,16 @@ function Cargar_Departamento(ele) {
 
     }
 
+
     loaderInversion();
     loaderDepedencia();
-
     loaderBeneficio();
     getParticipacionEje();
     getParticipacionAportante();
     loaderIndicativo();
-    setTimeout(function (){
-        loaderApalancamiento();
-        loaderProyecto();
-    },500);
+    loaderApalancamiento();
+    loaderProyecto();
+
     $("#indicadoresDiv").show();
     $("#btnAtras").show();
 }
