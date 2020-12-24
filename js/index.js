@@ -472,8 +472,6 @@ function btn_atras() {
     $('#ttdetalles_menu li.active').removeClass('active');
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
 
-
-
     switch (actual) {
         case "departamentos": {
             var p = getUrlParams()
@@ -523,6 +521,7 @@ function btn_atras() {
     getParticipacionAportante();
     loaderIndicativo();
 }
+var urlDpto = undefined;
 function Cargar_Colombia() {
     $("#btnAtras").hide();
     actual = "pais";
@@ -530,19 +529,18 @@ function Cargar_Colombia() {
         $("div#colombia").on("click", "path", Colombia_a_Departamento)
         $("div#colombia").on("click", "circle", Colombia_a_departamento_circle)
 
-        var dpto = undefined;
         var fclick = undefined;
         if (!fload) {
             fload = true;
             var p = getUrlParams()
-            dpto = p['dpto'];
+            urlDpto = p['dpto'];
         }
         $("div#colombia svg > path").each(function () {
             if (($(this).hasClass("cls-2") || $(this).attr("title") == undefined) && !$(this).hasClass("disabled")) {
                 $(this).addClass("disabled");
             }
-            if (dpto != undefined) {
-                if (dpto.toLowerCase() == $(this).attr('url')?.toLowerCase()) {
+            if (urlDpto != undefined) {
+                if (urlDpto.toLowerCase() == $(this).attr('url')?.toLowerCase()) {
                     fclick = $(this);
                 }
             }
@@ -550,14 +548,16 @@ function Cargar_Colombia() {
         if (fclick != undefined)
             fclick.click();
     });
-    loaderInversion();
-    loaderDepedencia();
-    loaderApalancamiento();
-    loaderProyecto();
-    loaderBeneficio();
-    getParticipacionEje();
-    getParticipacionAportante();
-    loaderIndicativo();
+    if(urlDpto == undefined){
+        loaderInversion();
+        loaderDepedencia();
+        loaderApalancamiento();
+        loaderProyecto();
+        loaderBeneficio();
+        getParticipacionEje();
+        getParticipacionAportante();
+        loaderIndicativo();
+    }
 }
 function Colombia_a_Departamento() {
 

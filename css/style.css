@@ -530,25 +530,21 @@ div.verticalLine {
 }
 
 .uno {
-
   height: 200px!important;
   overflow: auto!important;
   direction: rtl!important;
 }
 
 .uno div {
-
   width: auto !important;
   height: 300% !important;
   direction: ltr !important;
-
   padding: .5rem !important;
 }
 .scroller {
-  overflow: auto;
-  height: 100px;
+  overflow: hidden auto;
+  min-height: 100px;
   z-index: 99;
-  overflow-x: hidden;
 }
 
 
