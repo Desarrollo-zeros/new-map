@@ -477,7 +477,7 @@ function btn_atras() {
             var p = getUrlParams()
             let d = p['dpto'];
             if (d != null) {
-                window.location.href = "https://federaciondecafeteros.org/mapa-de-proyectos/";
+                window.open("https://federaciondecafeteros.org/mapa-de-proyectos/");
             }
             actual = "pais";
             nameDpto = null;
@@ -550,7 +550,7 @@ function Cargar_Colombia() {
     });
     loaderInversion();
     loaderDepedencia();
-    //loaderApalancamiento();
+    loaderApalancamiento();
     loaderProyecto();
     loaderBeneficio();
     getParticipacionEje();
@@ -658,6 +658,7 @@ function Cargar_Municipio(ele) {
     } else {
         clickcircle = false;
     }
+    $("[data-name='beneficiarios']").hide();
 
 }
 
