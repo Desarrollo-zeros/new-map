@@ -206,7 +206,8 @@ function loaderApalancamiento() {
     data.municipio = nameMunicipio;
 
     api.post("get_data_nfc", data, function (data) {
-        data = data.filter(x => x.dependencia != "OFICINA CENTRAL");
+
+
         var str = "";
         var total = 0;
 
@@ -215,7 +216,7 @@ function loaderApalancamiento() {
                 for (var i in data) {
                     let t = parseFloat(data[i].total_total).toFixed(2);
 
-                    if (t != "Infinity" && t != " NaN") {
+                    if (t != "Infinity" && t != "NaN".replaceAll(" ","")) {
                         if (t == null) {
                             t = 0;
                         }
@@ -334,7 +335,7 @@ function loaderProyecto() {
 
 
 
-            $("#total_proyecto").html(format(data["proyectos"].length, 1, ""));
+            $("#total_proyecto").html(format(data["proyectos"][0].total, 1, ""));
 
 
             api.dataVectores.vectores.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
@@ -349,8 +350,8 @@ function loaderProyecto() {
                     } else {
                         proyectosRows.append(
                             $("<tr>").append(
-                                $("<td>").html(x.vector),
-                                $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
+                                $("<td>", {style : "padding-right:20px;"}).html(x.vector),
+                                $("<td>", { style: "text-align: right;position: relative;right:20px;padding-left:20px;" }).html($("<span>", vconf).html(x.total)),
                             )
                         )
                     }
@@ -358,7 +359,7 @@ function loaderProyecto() {
                     proyectosRows.append(
                         $("<tr>").append(
                             $("<td>").html(x.vector),
-                            $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
+                            $("<td>", { style: "text-align: right;position: relative;right:20px" }).html($("<span>", vconf).html(x.total)),
                         )
                     )
                 }
@@ -370,15 +371,24 @@ function loaderProyecto() {
 
 
             }else{
-                data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
-                    if (nameDpto != undefined) {
-                        if (api.dataVectores.vectores.length == 1) {
-                            proyectosRows.append(
-                                $("<tr>").append(
-                                    $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(x.vector),
-                                    $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(x.total)),
+                if(data){
+                    data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
+                        if (nameDpto != undefined) {
+                            if (api.dataVectores.vectores.length == 1) {
+                                proyectosRows.append(
+                                    $("<tr>").append(
+                                        $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(x.vector),
+                                        $("<td>", { style: "position: absolute;padding-left: 80%;" }).html($("<span>", vconf).html(x.total)),
+                                    )
                                 )
-                            )
+                            } else {
+                                proyectosRows.append(
+                                    $("<tr>").append(
+                                        $("<td>").html(x.vector),
+                                        $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
+                                    )
+                                )
+                            }
                         } else {
                             proyectosRows.append(
                                 $("<tr>").append(
@@ -387,16 +397,9 @@ function loaderProyecto() {
                                 )
                             )
                         }
-                    } else {
-                        proyectosRows.append(
-                            $("<tr>").append(
-                                $("<td>").html(x.vector),
-                                $("<td>", { style: "text-align: right;" }).html($("<span>", vconf).html(x.total)),
-                            )
-                        )
-                    }
-                });
-                $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
+                    });
+                    $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
+                }
             }
 
 
@@ -522,6 +525,7 @@ function btn_atras() {
             $("#municipio, #separadorCiudad").hide();
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#departamentos, #indicadoresDiv").show();
+            $("#divProyectoNoticia").hide();
             break;
 
         case 'Municipio 2':
@@ -552,6 +556,7 @@ function btn_atras() {
 var urlDpto = undefined;
 function Cargar_Colombia() {
     $("#btnAtras").hide();
+
     actual = "pais";
     if (!fload) {
         fload = true;
@@ -567,7 +572,7 @@ function Cargar_Colombia() {
                 $(this).addClass("disabled");
             }
             if (urlDpto != undefined) {
-                if (urlDpto.toLowerCase() == $(this).attr('url')?.toLowerCase()) {
+                if (urlDpto.toLowerCase() == $(this).attr('url')?.toLowerCase() && $(this).attr('no')?.toLowerCase() != "yes") {
                     fclick = $(this);
                 }
             }
@@ -615,7 +620,7 @@ function Cargar_Departamento(ele) {
     }
     actual = "departamentos";
     $('#idTituloMapa').show();
-    $('#changeTitleDpto').html(nameDpto);
+    $('#changeTitleDpto').html(nameDpto1.toUpperCase());
     var div_id = `dep_${departamento}`;
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${departamento}.svg`, function (data) {

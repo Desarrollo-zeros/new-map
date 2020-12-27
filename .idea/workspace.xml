@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/img/departamentos/bolivar.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prueba.html" beforeDir="false" afterPath="$PROJECT_DIR$/prueba.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/quindio.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +54,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img/departamentos" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,15 +65,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\new-map\css" />
-      <recent name="C:\xampp\htdocs\new-map\js" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\img\departamentos" />
       <recent name="C:\xampp\htdocs\new-map" />
       <recent name="C:\xampp\htdocs\new-map\img" />
-      <recent name="C:\xampp\htdocs\new-map\img\departamentos" />
       <recent name="C:\xampp\htdocs\new-map\img\iconos" />
+      <recent name="C:\xampp\htdocs\new-map\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\new-map\css" />
       <recent name="C:\xampp\htdocs\new-map\js" />
     </key>
   </component>
@@ -95,7 +96,8 @@
       <workItem from="1608752193926" duration="5898000" />
       <workItem from="1608781161033" duration="1198000" />
       <workItem from="1608787303605" duration="234000" />
-      <workItem from="1608826313933" duration="19176000" />
+      <workItem from="1608826313933" duration="19748000" />
+      <workItem from="1609034875298" duration="5978000" />
     </task>
     <servers />
   </component>
@@ -144,12 +146,12 @@
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607974407686" />
     <state x="1754" y="97" width="584" height="535" key="find.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608750378795" />
     <state x="457" y="115" width="686" height="631" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1607982211159" />
-    <state x="395" y="191" key="run.anything.popup" timestamp="1608834483495">
+    <state x="395" y="191" key="run.anything.popup" timestamp="1609038186813">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="337" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1608690724977" />
     <state x="1702" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608692056522" />
-    <state x="395" y="191" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1608834483495" />
+    <state x="395" y="191" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609038186813" />
     <state x="1710" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1608699267299">
       <screen x="1366" y="0" width="1360" height="728" />
     </state>
