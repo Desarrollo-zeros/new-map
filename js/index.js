@@ -80,10 +80,20 @@ function loaderProyectos() {
     api.post("get_data_nfc", data, function (response) {
         console.log(response);
 
+        if(response.length==0){
+            $("#divProyectoNoticia").hide();
+            return;
+        }else{
+            $("#divProyectoNoticia").show();
+        }
         let str = "";
 
+        let index = 1;
+        $("#proyectosDiv").html("");
         for (var i in response) {
-            str += "<h3 style=\"font-size: 12px\"><span style=\"font-weight: bold;\">" + response[i].nombre_proyecto + "</span></h3>";
+
+            str += `<h3 style="font-size: 12px"><span>${index}. </span><span style="font-weight: bold;">${response[i].nombre_proyecto}</span></h3>`;
+            index++;
         }
 
         $("#proyectosDiv").append(str);
@@ -101,15 +111,30 @@ function loaderIndicativo() {
     data.municipio = nameMunicipio;
     api.post("get_data_nfc", data, function (data) {
         let str = "";
+
+        if(data.length == 0 || nameMunicipio != undefined){
+            $("#indicadoresDiv").hide();
+        }else{
+            $("#indicadoresDiv").show();
+        }
+
+        data.forEach(x => {
+           x.indicador_nu = x.indicador_nu.replaceAll(",",".");
+        });
+
+        data = data.sort(function(a,b){return parseFloat(b.indicador_nu.replaceAll(".","")) - parseFloat(a.indicador_nu.replaceAll(".",""))});
+
+        $("#scrollerIndicativo").html("");
+
         for (var i in data) {
-            if (data[i].indicador_nu.replace('.00', '') != "0") {
+            if (data[i].indicador_nu.replace('.00', '') != "0" && data[i].indicador_nu.replace(',00', '') != "0") {
                 $("#scrollerIndicativo").append(
                     $("<h3>", { style: "font-size: 12px" }).append(
                         $("<div>", { class: "row" }).append(
-                            $("<div>", { class: "col-3" }).append(
-                                $("<span>", { style: "font-weight: bold;" }).html(data[i].indicador_nu.replace('.00', ''))
+                            $("<div>", { class: "col-5" }).append(
+                                $("<span>", { style: "font-weight: bold;" }).html(data[i].indicador_nu)
                             ),
-                            $("<div>", { class: "col-9" }).append(
+                            $("<div>", { class: "col-7" }).append(
                                 $("<span>", { style: "font-weight: bold;" }).html(data[i].indicador)
                             )
                         )
@@ -121,10 +146,15 @@ function loaderIndicativo() {
 }
 function loaderInversion() {
     api.getInversion({}, function (data) {
+        $("[data-name='inversion']").show();
         if (data && data[0] != undefined) {
             data = data[0];
         }
         if (data && data.ano_carge) {
+            if(parseInt(data.total_ejecucion) == 0){
+                $("[data-name='inversion']").hide();
+                return;
+            }
             api.dataInversion = {
                 "total_ejecucion": data.total_ejecucion,
                 "rp": data.rp,
@@ -139,24 +169,28 @@ function loaderInversion() {
                 $("#inversionTotal").html(format(api.dataInversion.total_ejecucion, 1000000, "$") + " M");
             }
 
+
+
+
             if (api.dataInversion.fonc.toString().replaceAll(".00", "").length > 9) {
-                $("#fonc").html(format(api.dataInversion.fonc, 1000000, "$") + " MM")
+                $("#fonc").html($("<span>", vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " MM"))
             } else {
-                $("#fonc").html(format(api.dataInversion.fonc, 1000000, "$") + " M")
+                $("#fonc").html($("<span>", vconf).html(format(api.dataInversion.fonc, 1000000, "$") + " M"))
             }
 
             if (api.dataInversion.tercero.toString().replaceAll(".00", "").length > 9) {
-                $("#terceros").html(format(api.dataInversion.tercero, 1000000, "$") + " MM");
+                $("#terceros").html($("<span>", vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " MM"));
             } else {
-                $("#terceros").html(format(api.dataInversion.tercero, 1000000, "$") + " M");
+                $("#terceros").html($("<span>", vconf).html(format(api.dataInversion.tercero, 1000000, "$") + " M"));
 
             }
 
             if (api.dataInversion.rp.toString().replaceAll(".00", "").length > 9) {
-                $("#rp").html(format(api.dataInversion.rp, 1000000, "$") + " MM");
+                $("#rp").html($("<span>", vconf).html(format(api.dataInversion.rp, 1000000, "$") + " MM"));
             } else {
-                $("#rp").html(format(api.dataInversion.rp, 1000000, "$") + " M");
+                $("#rp").html($("<span>", vconf).html(format(api.dataInversion.rp, 1000000, "$") + " M"));
             }
+
 
             if (parseInt(api.dataInversion.fonc) == 0) $("#fonc").parent().hide(); else $("#fonc").parent().show();
             if (parseInt(api.dataInversion.tercero) == 0) $("#terceros").parent().hide(); else $("#terceros").parent().show();
@@ -211,7 +245,11 @@ function loaderApalancamiento() {
         var str = "";
         var total = 0;
 
+
+
         if (data && data[0] && data.length > 0) {
+
+            data =  data.sort(function (a, b) { return b.total - a.total; })
             if (data[0].dpto != undefined) {
                 for (var i in data) {
                     let t = parseFloat(data[i].total_total).toFixed(2);
@@ -254,6 +292,16 @@ function loaderApalancamiento() {
                 let proyectosRows = $("#apalancamiento-table tbody");
                 proyectosRows.html("");
                 let dependencia = data[0].dependencia;
+
+                sum = sum.replaceAll(" ","");
+                if (sum.split(",").length == 1) {
+                    sum = sum + ",0";
+                }else{
+                    if(sum.length == 3){
+                        sum = sum+"0";
+                    }
+                }
+
                 proyectosRows.append(
                     $("<tr>").append(
                         $("<td>", { style: "position: absolute;padding-right: 10%;" }).html(dependencia),
@@ -285,6 +333,16 @@ function loaderApalancamiento() {
                                 }
                             }
                             let dependencia = data[i].dependencia;
+
+                            sum = sum.replaceAll(" ","");
+                            if (sum.split(",").length == 1) {
+                                sum = sum + ",0";
+                            }else{
+                                if(sum.length == 3){
+                                    sum = sum+"0";
+                                }
+                            }
+
                             proyectosRows.append(
                                 $("<tr>").append(
                                     $("<td>").html(dependencia),
@@ -313,6 +371,7 @@ function loaderApalancamiento() {
 function loaderProyecto() {
     api.getVectores({}, function (data) {
 
+        $("[data-name='proyectos']").show();
         var proyectosRows = $("#proyectosRows tbody");
         proyectosRows.html("");
         proyectosRows.find("tr").remove();
@@ -329,13 +388,36 @@ function loaderProyecto() {
                 vectores: data["vectores"]
             }
             let total = 0;
+
+
+
             data["vectores"].forEach(x => {
                 total += parseFloat(x.total);
             });
 
 
 
-            $("#total_proyecto").html(format(data["proyectos"][0].total, 1, ""));
+            if(nameMunicipio != undefined && circle == null){
+                total = 0;
+                if(data["proyectos"][0].total != undefined){
+                    var d = data["proyectos"].filter(x => x.total ===  data["proyectos"][0].total);
+                    if(d.length == data["proyectos"].length){
+                        total = data["proyectos"][0].total;
+                    }
+                }
+                if(total == 0){
+                    data["proyectos"].forEach(x => {
+                        total += parseFloat(x.total);
+                    });
+                }
+            }else{
+
+                if(data["proyectos"][0].total !=undefined){
+                    total = data["proyectos"][0].total;
+                }
+            }
+            
+            $("#total_proyecto").html(format(total, 1, ""));
 
 
             api.dataVectores.vectores.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
@@ -365,13 +447,13 @@ function loaderProyecto() {
                 }
             })
         } else {
-            if(data["proyectos"] && data["proyectos"].length>0){
-                $("#total_proyecto").html(format(data["proyectos"].length, 1, ""));
 
+            if(data["proyectos"] && data["proyectos"].length>0 && data["vectores"] && data["vectores"].length>0){
 
-
+                $("#total_proyecto").html(format(data["proyectos"][0].total, 1, ""));
             }else{
-                if(data){
+
+                if(data && !data["proyectos"]){
                     data.sort(function (a, b) { return b.total - a.total; }).forEach(x => {
                         if (nameDpto != undefined) {
                             if (api.dataVectores.vectores.length == 1) {
@@ -398,7 +480,16 @@ function loaderProyecto() {
                             )
                         }
                     });
+
                     $("#total_proyecto").html(format(data[0].totalProyectos, 1, ""));
+                }else{
+
+                    if(data["proyectos"] && data["proyectos"].length > 0){
+                        $("#total_proyecto").html(format(data["proyectos"].length, 1, ""));
+                    }else{
+                        $("[data-name='proyectos']").hide();
+                    }
+
                 }
             }
 
@@ -453,7 +544,12 @@ function detalles_menu() {
         $("#ttdetalles_info .mostrar").removeClass("mostrar");
         switch ($(this).data("name")) {
             case "inversion":
-                $("#ttdetalles_info .inversion").addClass("mostrar").css({ top: p.top });
+                if(nameMunicipio != undefined && !circle){
+                    $("#ttdetalles_info .inversion").removeClass("mostrar");
+                    $("[data-name='inversion']").removeClass("active");
+                }else{
+                    $("#ttdetalles_info .inversion").addClass("mostrar").css({ top: p.top });
+                }
                 break;
             case "dependencia":
                 $("#ttdetalles_info .dependencia").addClass("mostrar").css({ top: p.top });
@@ -508,14 +604,15 @@ function btn_atras() {
             var p = getUrlParams()
             let d = p['dpto'];
             if (d != null) {
-                window.open("https://federaciondecafeteros.org/mapa-de-proyectos/");
+                window.open("https://federaciondecafeteros.org/mapa-de-proyectos/", "_parent" );
+                return;
             }
             actual = "pais";
             nameDpto = null;
             nameDpto1 = null;
             $("#departamentos, .div_departamentos, #indicadoresDiv, #departamentos > .div_departamentos, #idTituloMapa").hide();
             $("#colombia").show();
-
+            $("#divNoticia").show();
             break;
         }
 
@@ -526,6 +623,7 @@ function btn_atras() {
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#departamentos, #indicadoresDiv").show();
             $("#divProyectoNoticia").hide();
+            $("#divNoticia").hide();
             break;
 
         case 'Municipio 2':
@@ -539,6 +637,7 @@ function btn_atras() {
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#municipio, #separadorCiudad, #idTituloMapa").hide();
             $("#divProyectoNoticia").removeClass("divProyectosN");
+            $("#divNoticia").show();
             break;
         default:
 
@@ -591,9 +690,10 @@ function Cargar_Colombia() {
         getParticipacionAportante();
         loaderIndicativo();
     }
+    $("#divNoticia").show();
 }
 function Colombia_a_Departamento() {
-
+    $("#divNoticia").hide();
     if ($(this).hasClass("disabled")) return;
     actual_departamento = $(this).attr("url").toString().toLowerCase();
 
@@ -608,6 +708,7 @@ function Colombia_a_Departamento() {
     Cargar_Departamento(this);
 }
 function Cargar_Departamento(ele) {
+
     clickDpto = true;
     $selectorDpto = ele;
     $('#ttdetalles_info .mostrar').removeClass('mostrar');
@@ -664,7 +765,7 @@ function Cargar_Departamento(ele) {
     $("#btnAtras").show();
 }
 function Departamento_a_municipio() {
-
+    $("#divNoticia").hide();
     if ($(this).hasClass("disabled")) return;
     actual_municipio = $(this).attr("name");
     nameMunicipio = $(this).attr("name");
@@ -675,7 +776,7 @@ function Cargar_Municipio(ele) {
     $('#ttdetalles_menu li.active').removeClass('active');
     var div = $(ele).closest("svg")
     $("#separadorCiudad").show();
-    $("#nameCiudad").html(actual_municipio);
+    $("#nameCiudad").html(actual_municipio.toUpperCase());
     $("#viewPrueba").html($(ele).clone().attr('id', 'vistaMunicipio'));
     $("#departamentos, #indicadoresDiv").hide();
     $("#municipio, #divProyectoNoticia").show();
@@ -700,16 +801,18 @@ function Cargar_Municipio(ele) {
 }
 
 
+var circle = null;
 
 function Colombia_a_departamento_circle() {
-
+    $("#divNoticia").hide();
+    circle = true;
     let ele = this;
     nameDpto = $(ele).data("dpto");
     nameDpto1 = $(ele).data("dpto");
     actual_departamento = nameDpto;
     var div_id = `dep_${actual_departamento}`;
     $('#idTituloMapa').show();
-    $('#changeTitleDpto').html($(ele).data('municipio'));
+    $('#changeTitleDpto').html($(ele).data('municipio').toUpperCase());
 
     if ($(`#${div_id}`).length == 0) {
         var div = $("<div>", { id: div_id, class: "div_departamentos" }).load(`img/departamentos/${actual_departamento}.svg`, function (data) {
@@ -873,7 +976,7 @@ function formatCurrency(locales, currency, number, fractionDigits = 0, mm = 0) {
 
 
 function format(value, div = 1, signo = "") {
-    if (div === 1) {
+    if (div == 1) {
         var v = value
     } else {
         var v = Math.round(value / div)
@@ -903,4 +1006,42 @@ function getUrlParams() {
             params[key] = value;
         });
     return params;
+}
+
+function Decimales(strValue, Decimales) {
+    var aTag = document.getElementById(strValue);
+
+    if (aTag !== null)
+        strValue = aTag.value;
+    if (strValue === "")
+        strValue = "0";
+
+    pot = Math.pow(10, Decimales);
+    num = parseInt(strValue * pot) / pot;
+
+    if (num.toString().indexOf('.'))
+        nume = num.toString().split('.');
+    else if (num.toString().indexOf(','))
+        nume = num.toString().split(',');
+
+    entero = nume[0];
+    decima = nume[1];
+
+    if (decima !== undefined) {
+        fin = Decimales - decima.length;
+    }
+    else {
+        decima = '';
+        fin = Decimales;
+    }
+
+    for (i = 0; i < fin; i++)
+        decima += String.fromCharCode(48);
+
+    num = entero + '.' + decima;
+
+    if (aTag != null)
+        aTag.value = num;
+
+    return num;
 }

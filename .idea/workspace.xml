@@ -20,11 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/departamentos/bolivar.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/app_modules/maps/ModelEntities/Maps.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/app_modules/maps/ModelEntities/Maps.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/quindio.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/antioquia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/antioquia.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/bolivar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/bolivar.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/quindio.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/quindio.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/valle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/valle.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chartApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prueba2.html" beforeDir="false" afterPath="$PROJECT_DIR$/prueba2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +60,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/img/departamentos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -97,7 +103,15 @@
       <workItem from="1608781161033" duration="1198000" />
       <workItem from="1608787303605" duration="234000" />
       <workItem from="1608826313933" duration="19748000" />
-      <workItem from="1609034875298" duration="5978000" />
+      <workItem from="1609034875298" duration="9878000" />
+      <workItem from="1609150112527" duration="2414000" />
+      <workItem from="1609188370751" duration="14041000" />
+      <workItem from="1609251618007" duration="823000" />
+      <workItem from="1609265626391" duration="2960000" />
+      <workItem from="1609272034308" duration="2024000" />
+      <workItem from="1609290938915" duration="5545000" />
+      <workItem from="1609355391425" duration="2591000" />
+      <workItem from="1609381648097" duration="952000" />
     </task>
     <servers />
   </component>
@@ -126,12 +140,12 @@
       <screen x="1366" y="0" width="1360" height="728" />
     </state>
     <state x="1883" y="76" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608740859534" />
-    <state x="542" y="141" key="FileChooserDialogImpl" timestamp="1608782368426">
+    <state x="542" y="141" key="FileChooserDialogImpl" timestamp="1609335368562">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890810096" />
     <state x="1827" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608755082092" />
-    <state x="542" y="141" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1608782368426" />
+    <state x="542" y="141" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1609335368562" />
     <state x="1880" y="287" key="NewPhpFileDialog" timestamp="1608736965859">
       <screen x="1366" y="0" width="1360" height="728" />
     </state>
@@ -140,12 +154,12 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="554" y="98" width="988" height="488" key="dock-window-1/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607966939345" />
-    <state x="1754" y="97" width="584" height="535" key="find.popup" timestamp="1608750378795">
-      <screen x="1366" y="0" width="1360" height="728" />
+    <state x="457" y="115" width="686" height="631" key="find.popup" timestamp="1609296881677">
+      <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607974407686" />
     <state x="1754" y="97" width="584" height="535" key="find.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608750378795" />
-    <state x="457" y="115" width="686" height="631" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1607982211159" />
+    <state x="457" y="115" width="686" height="631" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1609296881677" />
     <state x="395" y="191" key="run.anything.popup" timestamp="1609038186813">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -157,16 +171,5 @@
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890400003" />
     <state x="1710" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608699267299" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/js/Api.js</url>
-          <line>328</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
