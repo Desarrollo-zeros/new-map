@@ -28,6 +28,28 @@ $typeOffice = 0;
 $municipios = [];
 var fload = false;
 
+
+function getUrl(){
+    var s = [];
+    var arr = Array.prototype.slice.call( $("svg#view_colombia_svg path"));
+
+    for(var i in arr){
+        if($(arr[i]).data("url")){
+            let url = $(arr[i]).data("url").split("mapa-de-proyectos");
+            let data = {
+                "ambiental" : url[0]+"sostenibilidad/eje-ambiental/",
+                "economico" : url[0]+"sostenibilidad/eje-economico/",
+                "social" : url[0]+"sostenibilidad/eje-social/",
+                "gobernanza" : url[0]+"sostenibilidad/eje-gobernanza/",
+            }
+            s.push(
+                {section: $(arr[i]).attr("url"), url : url[0], data}
+            );
+        }
+    }
+    return s;
+}
+
 $(document).ready(function () {
     $("#selectAnoCargue").val("2019");
 
@@ -612,7 +634,7 @@ function btn_atras() {
             nameDpto1 = null;
             $("#departamentos, .div_departamentos, #indicadoresDiv, #departamentos > .div_departamentos, #idTituloMapa").hide();
             $("#colombia").show();
-            $("#divNoticia").show();
+            $("#divNoticia").addClass("addNoticias").show();
             break;
         }
 
@@ -623,7 +645,7 @@ function btn_atras() {
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#departamentos, #indicadoresDiv").show();
             $("#divProyectoNoticia").hide();
-            $("#divNoticia").hide();
+            $("#divNoticia").addClass("addNoticias").show();
             break;
 
         case 'Municipio 2':
@@ -637,7 +659,7 @@ function btn_atras() {
             $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
             $("#municipio, #separadorCiudad, #idTituloMapa").hide();
             $("#divProyectoNoticia").removeClass("divProyectosN");
-            $("#divNoticia").show();
+            $("#divNoticia").addClass("addNoticias").show();
             break;
         default:
 
@@ -763,6 +785,7 @@ function Cargar_Departamento(ele) {
 
     $("#indicadoresDiv").show();
     $("#btnAtras").show();
+    $("#divNoticia").addClass("addNoticias").show();
 }
 function Departamento_a_municipio() {
     $("#divNoticia").hide();

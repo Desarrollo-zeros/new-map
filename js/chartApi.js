@@ -5,6 +5,13 @@ Chart.defaults.global.animation.duration = 3000;
 
 
 
+var sites = [
+    ""
+];
+
+
+
+
 Chart.plugins.register({
     beforeUpdate: function(chart) {
 
@@ -590,23 +597,47 @@ function getParticipacionEje(){
                                 var innerHtml = '<thead>';
                                 let url = "";
                                 let textUrl = "";
-                                titleLines.forEach(function(title) {
 
+                                var p = getUrlParams()
+                                let d = p['dpto'];
+
+
+                                var section = getUrl().find(x => x.section == d)
+
+
+                                titleLines.forEach(function(title) {
                                     innerHtml += '<tr><th>' + title + '</th></tr>';
                                     if(title.toLowerCase().includes("económico")){
                                         textUrl = "Contribuimos a la rentabilidad del caficultor";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-economico/";
+                                        if(section){
+                                            url = section.data["economico"];
+                                        }else{
+                                            url =  "https://federaciondecafeteros.org/sostenibilidad/eje-economico/";
+                                        }
                                     }else if(title.toLowerCase().includes("social")){
                                         textUrl =" Procuramos el desarrollo y la inclusión social y productiva de las familias y comunidades cafeteras";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-social/";
+                                        if(section){
+                                            url = section.data["social"];
+                                        }else{
+                                            url = "https://federaciondecafeteros.org/sostenibilidad/eje-social/";
+                                        }
                                     }
                                     else if(title.toLowerCase().includes("gobernanza")){
                                         textUrl ="Trabajamos por fortalecer la unión gremial cafetera";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-gobernaza/";
+                                        if(section){
+                                            url = section.data["gobernanza"];
+                                        }
+                                        else{
+                                            url = "https://federaciondecafeteros.org/sostenibilidad/eje-gobernaza/";
+                                        }
                                     }
                                     else if(title.toLowerCase().includes("ambiental")){
                                         textUrl ="Promovemos la sostenibilidad ambiental en la cadena de producción de café";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-ambiental/";
+                                        if(section){
+                                            url = section.data["ambiental"];
+                                        }else{
+                                            url = "https://federaciondecafeteros.org/sostenibilidad/eje-ambiental/";
+                                        }
                                     }
                                 });
                                 innerHtml += '</thead><tbody>';

@@ -21,16 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/app_modules/maps/ModelEntities/Maps.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/app_modules/maps/ModelEntities/Maps.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/antioquia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/antioquia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/bolivar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/bolivar.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/quindio.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/quindio.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/valle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/valle.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chartApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prueba2.html" beforeDir="false" afterPath="$PROJECT_DIR$/prueba2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +105,9 @@
       <workItem from="1609272034308" duration="2024000" />
       <workItem from="1609290938915" duration="5545000" />
       <workItem from="1609355391425" duration="2591000" />
-      <workItem from="1609381648097" duration="952000" />
+      <workItem from="1609381648097" duration="1680000" />
+      <workItem from="1609422667646" duration="95000" />
+      <workItem from="1610903065673" duration="2088000" />
     </task>
     <servers />
   </component>
@@ -140,12 +136,12 @@
       <screen x="1366" y="0" width="1360" height="728" />
     </state>
     <state x="1883" y="76" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608740859534" />
-    <state x="542" y="141" key="FileChooserDialogImpl" timestamp="1609335368562">
+    <state x="542" y="141" key="FileChooserDialogImpl" timestamp="1609422761468">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890810096" />
     <state x="1827" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608755082092" />
-    <state x="542" y="141" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1609335368562" />
+    <state x="542" y="141" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1609422761468" />
     <state x="1880" y="287" key="NewPhpFileDialog" timestamp="1608736965859">
       <screen x="1366" y="0" width="1360" height="728" />
     </state>
@@ -171,5 +167,17 @@
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1607890400003" />
     <state x="1710" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1360.728@1366.0.1360.728" timestamp="1608699267299" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/index.js</url>
+          <line>375</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
