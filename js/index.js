@@ -764,10 +764,12 @@ function Cargar_Departamento(ele) {
                     var ele = this;
                     var name = $(ele).attr("name") == undefined ? "" : $(ele).attr("name");
                     if(!name.toLowerCase().includes("xxx")){
-                        var newName = $municipios.find(x => removeAccents(x.municipio) == (removeAccents(name)));
+                        var newName = $municipios.find(x => removeAccents(x.municipio.toLowerCase()).includes(removeAccents(name.toLowerCase())));
                         if(newName){
                             $(ele).attr("name",newName.municipio.toUpperCase());
                         }
+                    }else{
+                        $(ele).attr("name",name.toUpperCase());
                     }
                     var dis = $(ele).attr('disabled');
                     if (name.toLowerCase().includes("xxx") || dis != undefined) {
@@ -1028,7 +1030,7 @@ function format(value, div = 1, signo = "") {
 }
 
 const removeAccents = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toString();
 }
 
 

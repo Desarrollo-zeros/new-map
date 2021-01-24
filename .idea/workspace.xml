@@ -20,29 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/img/departamentos/narino.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/departamentos/nortesantander.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/departamentos/valle.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/new-map/img/departamentos/narino.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/new-map/img/departamentos/nortesantander.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/new-map/img/departamentos/valle.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/new-map/prueba2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prueba2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/app_modules/maps/API/maps/maps.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/app_modules/maps/API/maps/maps.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/app_modules/maps/ModelEntities/Maps.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/Api/app_modules/maps/ModelEntities/Maps.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/Colombia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/Colombia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Antioquia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/antioquia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Nariño.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/NortedeSantander.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/ValledelCauca.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chartApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new-map" beforeDir="false" afterPath="$PROJECT_DIR$/new-map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new-map/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/new-map/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new-map/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/new-map/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new-map/Api/app_modules/maps/API/maps/maps.php" beforeDir="false" afterPath="$PROJECT_DIR$/new-map/Api/app_modules/maps/API/maps/maps.php" afterDir="false" />
@@ -58,7 +42,6 @@
       <change beforePath="$PROJECT_DIR$/new-map/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/new-map/js/chartApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new-map/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/new-map/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/new-map/prueba1.html" beforeDir="false" afterPath="$PROJECT_DIR$/new-map/prueba1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prueba1.html" beforeDir="false" afterPath="$PROJECT_DIR$/prueba1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +124,7 @@
       <workItem from="1608781161033" duration="1198000" />
       <workItem from="1608787303605" duration="234000" />
       <workItem from="1608826313933" duration="9168000" />
-      <workItem from="1611459731497" duration="3773000" />
+      <workItem from="1611459731497" duration="4942000" />
     </task>
     <servers />
   </component>
