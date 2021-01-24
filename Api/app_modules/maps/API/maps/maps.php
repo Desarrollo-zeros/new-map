@@ -126,15 +126,15 @@
             case 2:{
                 if(empty($dpto)) {
                     $vectores = $obj->conn->get_result_from_query("select * from vectores where ano_carge = '".$_POST["anio"]."' ");
-                    $proyectos = $obj->conn->get_result_from_query("select * from view_proyecto where ano_carge = '".$_POST["anio"]."'")[0];
+                    $proyectos = $obj->conn->get_result_from_query("select * from view_proyecto where ano_carge = '".$_POST["anio"]."'");
                     $result = ["vectores" => $vectores, "proyectos" => $proyectos];
                 }else if(empty($municipio)){
                     $vectores = $obj->conn->get_result_from_query("select * from vectores_dpta where ano_carge = '".$_POST["anio"]."' and lower(dpto) =  '".strtolower($dpto)."' ");
-                    $proyectos = $obj->conn->get_result_from_query("select * from view_proyecto_dpta where ano_carge = '".$_POST["anio"]."' and lower(dpto) =  '".strtolower($dpto)."' ")[0];
+                    $proyectos = $obj->conn->get_result_from_query("select * from view_proyecto_dpta where ano_carge = '".$_POST["anio"]."' and lower(dpto) =  '".strtolower($dpto)."' ");
                     $result = ["vectores" => $vectores, "proyectos" => $proyectos];
                 }else{
                     $vectores = $obj->conn->get_result_from_query("select * from vectores_dpta_municipio where ano_carge = '".$_POST["anio"]."' and lower(dpto) =  '".strtolower($dpto)."' and  lower(municipio) = '".strtolower($municipio)."' ");
-                    $proyectos = $obj->conn->get_result_from_query("select * from view_proyecto_dpta_municipio where ano_carge = '".$_POST["anio"]."' and lower(dpto) =  '".strtolower($dpto)."' and lower(municipio) = '".strtolower($municipio)."' ")[0];
+                    $proyectos = $obj->conn->get_result_from_query("select * from view_proyecto_dpta_municipio where ano_carge = '".$_POST["anio"]."' and lower(dpto) =  '".strtolower($dpto)."' and lower(municipio) = '".strtolower($municipio)."' ");
                     $result = ["vectores" => $vectores, "proyectos" => $proyectos];
                 }
                 break;

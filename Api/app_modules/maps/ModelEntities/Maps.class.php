@@ -62,7 +62,7 @@
                    	 $this->CheckYear($year);
                    	 $status = $this->CleanTmps($year);
                    }
-                   $this->conn->execute_single_query("update localizacion l set l.municipio_id = (select id from municipios where lower(l.municipio_sap) = lower(nombre) limit 1)");
+                   $this->conn->execute_single_query("UPDATE localizacion l  SET l.municipio_id = ( SELECT id  FROM municipios mm  WHERE lower( l.municipio_sap ) = lower( mm.nombre )  AND l.departamento_id = mm.departamento_id  LIMIT 1)");
             	}
 
             }
@@ -138,57 +138,64 @@
 	    	$i = 0;
 	    	foreach ($sheet->getRowIterator() as $row) {
 	    		$j = 0;
-	    		// omite las 2 primeras filas de la hoja 
+	    		// omite las 2 primeras filas de la hoja
 	    		if($i >= 2):
 	    			$query_tmp = "(NULL,";
-		    		foreach ($row->getCellIterator() as $cell):
-		    			$data[$i][$j] = ($j==30) ? $cell->getCalculatedValue() : ($j==15) ? $cell->getFormattedValue() : $cell->getValue();
-                        // validar que solo ingrese en indices necesarios
+		    		foreach ($row->getCellIterator() as $cell){
+                        //$data[$i][$j] =  ($j==30) ? $cell->getCalculatedValue() : ($j==15) ? $cell->getFormattedValue() : $cell->getValue();
+                        // validar que solo ingrese en indices necesarios   
+                        if($j==30){
+                            $data[$i][$j] = $cell->getCalculatedValue();
+                        }else{
+                            if($j==15){
+                                $data[$i][$j] = $cell->getFormattedValue();
+                            }else{
+                                $data[$i][$j] =$cell->getValue();
+                            }
+                        }
+
+
                         if($j != 1 && $j != 9 && $j < 20):
-			    			switch ($j) {
-		                    	case 0:
-							        $query_tmp .= "(SELECT id FROM dependencias WHERE TRIM(LOWER(dependencia)) = TRIM(LOWER('".$cell->getValue()."')) LIMIT 1),";
-							        break;
-							    case 2:
-							        $query_tmp .= "(SELECT id FROM departamentos WHERE TRIM(LOWER(nombre)) = TRIM(LOWER('".$cell->getValue()."')) LIMIT 1),";
-							        break;
-							    case 8:
-							        $query_tmp .= "(SELECT id FROM proyectos_tmp WHERE CONCAT(codigo_proyecto,'-',departamento_id,'-',dependencia_id) = CONCAT( TRIM(LOWER('".$cell->getValue()."')),'-',(SELECT id FROM departamentos WHERE TRIM(LOWER(nombre)) = TRIM(LOWER('".$data[$i][2]."')) LIMIT 1),'-',(SELECT id FROM dependencias WHERE TRIM(LOWER(dependencia)) = TRIM(LOWER('".$data[$i][0]."')) LIMIT 1)) LIMIT 1),";
-							        break;
-							    case 12:
-							        $desc = str_replace(",",'.', $cell->getValue());
-							        $query_tmp .="'".$desc."',";
-							        break;
-							    case 15:
-							        $query_tmp .="'".$cell->getFormattedValue()."',"; // fecha
-							        break;
-							    case 16:
-							        $query_tmp .="'".$cell->getFormattedValue()."',"; // fecha
-							        break;
-							    case 17:
-							        $query_tmp .="'".$cell->getFormattedValue()."',"; // fecha
-							        break;    
-							    default:
-							        $desc = str_replace("'", '"', $cell->getValue());
-							        $desc = str_replace(",",'', $desc);
-							        $query_tmp .="'".$desc."',";
-							        break;
-		                    } // cierra swicth
-		                endif; // fin validacion de indices de columnas necesarios
-		                # validacion de enteros y formulas si la formula no realiza la operacion se coloca 0
-		                # de lo contrario se asigna el valor de la formula
-		                if($j >= 20 && $j <=30){
-		                	#$ttl_str = $cell->getCalculatedValue(); 
-		                	$ttl_str = $cell->getValue(); 
-							$ttl = ( strrpos($ttl_str, ":") !== false ) ? 0 : trim( str_replace(",",'', $ttl_str) ); 
-							$query_tmp .= (int)$ttl.",";
-		                }
-		    			// break en caso de superar 31 columnas 
-	                    if($j == 30){
-	                    	break;
-	                    }
-		    			$j++;
-		    		endforeach;
+                            switch ($j) {
+                                case 0:
+                                    $query_tmp .= "(SELECT id FROM dependencias WHERE TRIM(LOWER(dependencia)) = TRIM(LOWER('".$cell->getValue()."')) LIMIT 1),";
+                                    break;
+                                case 2:
+                                    $query_tmp .= "(SELECT id FROM departamentos WHERE TRIM(LOWER(nombre)) = TRIM(LOWER('".$cell->getValue()."')) LIMIT 1),";
+                                    break;
+                                case 8:
+                                    $query_tmp .= "(SELECT id FROM proyectos_tmp WHERE CONCAT(codigo_proyecto,'-',departamento_id,'-',dependencia_id) = CONCAT( TRIM(LOWER('".$cell->getValue()."')),'-',(SELECT id FROM departamentos WHERE TRIM(LOWER(nombre)) = TRIM(LOWER('".$data[$i][2]."')) LIMIT 1),'-',(SELECT id FROM dependencias WHERE TRIM(LOWER(dependencia)) = TRIM(LOWER('".$data[$i][0]."')) LIMIT 1)) LIMIT 1),";
+                                    break;
+                                case 12:
+                                    $desc = str_replace(",",'.', $cell->getValue());
+                                    $query_tmp .="'".$desc."',";
+                                    break;
+                                case 16:
+                                case 17:
+                                case 15:
+                                    $query_tmp .="'".$cell->getFormattedValue()."',"; // fecha
+                                    break;
+                                default:
+                                    $desc = str_replace("'", '"', $cell->getValue());
+                                    $desc = str_replace(",",'', $desc);
+                                    $query_tmp .="'".$desc."',";
+                                    break;
+                            } // cierra swicth
+                        endif; // fin validacion de indices de columnas necesarios
+                        # validacion de enteros y formulas si la formula no realiza la operacion se coloca 0
+                        # de lo contrario se asigna el valor de la formula
+                        if($j >= 20 && $j <=30){
+                            #$ttl_str = $cell->getCalculatedValue();
+                            $ttl_str = $cell->getValue();
+                            $ttl = ( strrpos($ttl_str, ":") !== false ) ? 0 : trim( str_replace(",",'', $ttl_str) );
+                            $query_tmp .= (int)$ttl.",";
+                        }
+                        // break en caso de superar 31 columnas
+                        if($j == 30){
+                            break;
+                        }
+                        $j++;
+                    }
 		    		$query_tmp .= "'$year'),";
 		    		
 		    		# validar que la dependencia no sea null

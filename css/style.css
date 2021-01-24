@@ -1,3 +1,18 @@
+.elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: 120%!important;
+  width: 115%!important;
+}
+.elementor-container.elementor-column-gap-default{
+  max-width: 120%!important;
+  width: 115%!important;
+}
+.elementor-container, .elementor-section-boxed{
+  max-width: 120%!important;
+  width: 115%!important;
+}
+
+
+
 *{
   font-family: "Avenir Black", sans-serif!important;
 }
@@ -530,24 +545,26 @@ div.verticalLine {
 }
 
 .uno {
-
   height: 200px!important;
   overflow: auto!important;
   direction: rtl!important;
 }
 
 .uno div {
-
   width: auto !important;
   height: 300% !important;
   direction: ltr !important;
-
   padding: .5rem !important;
 }
 .scroller {
-  overflow: auto;
-  height: 100px;
+  overflow: hidden auto;
   z-index: 99;
+  height: 100px;
+}
+
+
+#divProyectoNoticia{
+  margin-top: -30%;
 }
 
 @media only screen and (min-width: 600px) {
@@ -571,7 +588,7 @@ div.verticalLine {
 
 @media only screen and (min-width: 1000px) {
   #divProyectoNoticia{
-    margin-top: -58%;
+    margin-top: -30%;
   }
   .clsmargin{
     position: absolute;right: -50%;margin-top: 2%
@@ -779,5 +796,69 @@ loader {
 }
 
 .scrollerY{
-  overflow-y:scroll
+  overflow-y:scroll;
+  scrollbar-color: #b30000 #fffefe;
+
+}
+
+div{
+  scrollbar-color: #b30000 #fffefe;
+}
+
+html {
+  scrollbar-color: #b30000 #fffefe!important;
+}
+
+/* width */
+.scrollerY::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.scrollerY::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+.scrollerY::-webkit-scrollbar-thumb {
+  background: #b30000;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.scrollerY::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+
+
+
+
+
+
+/* width */
+div::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+div::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+div::-webkit-scrollbar-thumb {
+  background: #b30000;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+div::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+div::-webkit-scrollbar-track {
+  background: #fffefe;
 }

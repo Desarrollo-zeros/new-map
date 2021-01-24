@@ -5,6 +5,13 @@ Chart.defaults.global.animation.duration = 3000;
 
 
 
+var sites = [
+    ""
+];
+
+
+
+
 Chart.plugins.register({
     beforeUpdate: function(chart) {
 
@@ -38,9 +45,15 @@ Chart.plugins.register({
 
 
 
+$dataCircle = null;
 
 function getParticipacionAportante(){
     api.getVieEjeIndicativo({}, function (data){
+
+        if(data && data.ano_carge && !data && data[0] == undefined){
+            $("#divCircular").hide();
+            return;
+        }
 
         if(data && data[0] != undefined){
             data = data[0];
@@ -58,11 +71,10 @@ function getParticipacionAportante(){
             $total += parseInt(data.fonc);
             $total += parseInt(data.especiales)
 
-
-
-
-
-
+            if($total == 0){
+                $("#divCircular").hide();
+                return;
+            }
             var $dataAPortante = {
                 "gob": getPorcentaje(data.gob,$total, 100),
                 "inter": getPorcentaje(data.inter,$total, 100),
@@ -75,72 +87,232 @@ function getParticipacionAportante(){
                 "especiales" : getPorcentaje(data.especiales,$total, 100),
             };
 
-            $("#comunidad").html($dataAPortante.comunidad+"%");
-            $("#gob").html($dataAPortante.gob+"%");
-            $("#inter").html($dataAPortante.inter+"%");
-            $("#mun").html($dataAPortante.mun+"%");
-            $("#privado").html($dataAPortante.privado+"%");
-            $("#rpp").html($dataAPortante.rp+"%");
-            $("#foncc").html($dataAPortante.fonc+"%");
-            $("#publica").html($dataAPortante.publica+"%");
-            $("#especiales").html($dataAPortante.especiales+"%");
 
-            if($dataAPortante.comunidad == 0 || $dataAPortante.comunidad =="NaN"){
+
+
+            $dataCircle = $dataAPortante;
+
+            let d = [
+                $dataAPortante.gob+";gob;Gobernaciones",
+                $dataAPortante.inter+";inter;Entidades Internacionales",
+                $dataAPortante.privado+";privado;Org. N. Privadas'",
+                $dataAPortante.publica+";publica;Org. N. públicas",
+                $dataAPortante.mun+";mun;Municipios",
+                $dataAPortante.fonc+";fonc;FoNC",
+                $dataAPortante.comunidad+";comunidad;Comunidad",
+                $dataAPortante.rp+";rp;Recursos Propios",
+                $dataAPortante.especiales+";especiales;Especie",
+
+            ];
+
+            let color = [
+                '#f36868',
+                '#d74747',
+                '#c43535',
+                '#ae1e1e',
+                '#ac1212',
+                '#9d1111',
+                '#990a0a',
+                '#8d0505',
+                '#700000',
+            ];
+
+
+            d = d.sort(function(a, b) {
+                return  parseFloat(a.split(";")[0])  - parseFloat(b.split(";")[0]);
+            });
+
+
+
+            let indice = 1;
+            let html = "";
+            let dataCircle = [];
+            let labelCircle = [];
+            for(let i in d){
+                if(parseFloat(d[i].split(";")[0])  == 0){
+                    continue;
+                }
+                dataCircle.push(d[i].split(";")[0]);
+                labelCircle.push(d[i].split(";")[2])
+                if(indice == 1){
+                    html += "<div>";
+                }
+                if(indice == 6){
+                    html += "</div><div>";
+                }
+                switch (d[i].split(";")[1]){
+                    case "gob" :{
+                            html +=  `<div  class="" style="text-align: left;font-weight: bold;">
+                                            <li style="border-left: thick solid ${color[i]};">
+                                                <span style="color:  #717171;">Gobernaciones</span>
+                                             <br>
+                                             <span style="color:  #717171;" id="gob">${d[i].split(";")[0]}%</span>
+                                        </li>
+                                   </div>`;
+                        break;
+                    }
+                    case "inter" :{
+                        html += `<div  class="" style="text-align: left;font-weight: bold;">
+                            <li style="border-left: thick solid  ${color[i]};">
+                                <span style="color: #717171">Entidades</span>
+                                    <br>
+                                    <span style="color: #717171">Internacionales</span>
+                                    <br>
+                                    <span style="color: #717171" id="inter">${d[i].split(";")[0]}%</span>
+                            </li>
+                        </div>`;
+                        break;
+                    }
+                    case "privado":{
+                        html += `<div class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid ${color[i]};">
+                                                        <span style="color: #717171">Organizaciones</span>
+                                                        <br>
+                                                        <span style="color: #717171">Nacionales</span>
+                                                        <br>
+                                                        <span style="color: #717171">Privada</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="privado">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                    case "publica":{
+                        html += `<div class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid  ${color[i]};">
+                                                        <span style="color: #717171">Organizaciones</span>
+                                                        <br>
+                                                        <span style="color: #717171">Nacionales</span>
+                                                        <br>
+                                                        <span style="color: #717171">Públicas</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="publica">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                    case "mun":{
+                        html += `<div class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid  ${color[i]};">
+                                                        <span style="color: #717171">Municipios</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="mun">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                    case "fonc":{
+                        html += `<div class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid  ${color[i]};">
+                                                        <span style="color: #717171">FoNC</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="foncc">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                    case "comunidad":{
+                        html += `<div  class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid  ${color[i]};">
+                                                        <span style="color: #717171">Comunidad</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="comunidad">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                    case "rp":{
+                        html += `<div class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid ${color[i]};">
+                                                        <span style="color: #717171">Recursos </span>
+                                                        <br>
+                                                        <span style="color: #717171">Propios</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="rpp">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                    case "especiales":{
+                        html += `<div  class="" style="text-align: left;font-weight: bold;">
+                                                    <li style="border-left: thick solid  ${color[i]};">
+                                                        <span style="color: #717171">Especie</span>
+                                                        <br>
+                                                        <span style="color: #717171" id="especiales">${d[i].split(";")[0]}%</span>
+                                                    </li>
+                                                </div>`;
+                        break;
+                    }
+                }
+                indice++;
+
+            }
+
+
+
+
+
+            $("#legend-div-circular").html(html);
+
+
+
+            if(parseFloat($dataAPortante.comunidad) == 0 || $dataAPortante.comunidad =="NaN"){
                 $("#comunidad").parent().parent().hide();
             }else{
                 $("#comunidad").parent().parent().show();
             }
 
-            if($dataAPortante.gob == 0 || $dataAPortante.gob =="NaN"){
+            if(parseFloat($dataAPortante.gob) == 0 || $dataAPortante.gob =="NaN"){
                 $("#gob").parent().parent().hide();
             }else{
                 $("#gob").parent().parent().show();
             }
 
-            if($dataAPortante.inter == 0 || $dataAPortante.inter =="NaN"){
+            if(parseFloat($dataAPortante.inter) == 0 || $dataAPortante.inter =="NaN"){
                 $("#inter").parent().parent().hide();
             }else{
                 $("#inter").parent().parent().show();
             }
 
 
-            if($dataAPortante.mun == 0 || $dataAPortante.mun =="NaN"){
+
+            if(parseFloat($dataAPortante.mun) == 0 || $dataAPortante.mun =="NaN"){
                 $("#mun").parent().parent().hide();
             }else{
                 $("#mun").parent().parent().show();
             }
 
-            if($dataAPortante.privado == 0 || $dataAPortante.privado =="NaN" ){
+            if(parseFloat($dataAPortante.privado) == 0 || $dataAPortante.privado =="NaN" ){
                 $("#privado").parent().parent().hide();
             }else{
                 $("#privado").parent().parent().show();
             }
 
-            if($dataAPortante.rp == 0 || $dataAPortante.rp =="NaN"){
+            if(parseFloat($dataAPortante.rp) == 0 || $dataAPortante.rp =="NaN"){
                 $("#rpp").parent().parent().hide();
             }else{
                 $("#rpp").parent().parent().show();
             }
 
-            if($dataAPortante.fonc == 0 || $dataAPortante.fonc =="NaN"){
+            if(parseFloat($dataAPortante.fonc) == 0 || $dataAPortante.fonc =="NaN"){
                 $("#foncc").parent().parent().hide();
             }else{
                 $("#foncc").parent().parent().show();
             }
 
-            if($dataAPortante.publica == 0 || $dataAPortante.publica =="NaN"){
+            if(parseFloat($dataAPortante.publica) == 0 || $dataAPortante.publica =="NaN"){
                 $("#publica").parent().parent().hide();
             }else{
                 $("#publica").parent().parent().show();
             }
 
-            if($dataAPortante.comunidad == 0|| $dataAPortante.comunidad =="NaN" ){
+            if(parseFloat($dataAPortante.comunidad) == 0|| $dataAPortante.comunidad =="NaN" ){
                 $("#especiales").parent().parent().hide();
             }else{
                 $("#especiales").parent().parent().show();
             }
 
-            if($dataAPortante.especiales == 0 || $dataAPortante.especiales =="NaN"){
+            if(parseFloat($dataAPortante.especiales) == 0 || $dataAPortante.especiales =="NaN"){
                 $("#especiales").parent().parent().hide();
             }else{
                 $("#especiales").parent().parent().show();
@@ -154,43 +326,12 @@ function getParticipacionAportante(){
             ChartApi["participacion-inversion-por-aportante"]  = new Chart(document.getElementById("participacion-inversion-por-aportante"), {
                 type: "doughnut",
                 data: {
-                    labels: [
-                        'Comunidad',
-                        'Gobernaciones',
-                        'Entidadad Internacional',
-                        'Municipios',
-                        'Recursos Propios',
-                        'FoNC',
-                        'Especiales',
-                        'organizaciones Nacionales públicas',
-                        'Organizaciones Nacionales Privadas'
-
-                    ],
+                    labels: labelCircle,
                     datasets: [
                         {
                             label: "label",
-                            data: [
-                                $dataAPortante.comunidad,
-                                $dataAPortante.gob,
-                                $dataAPortante.inter,
-                                $dataAPortante.mun,
-                                $dataAPortante.tercero,
-                                $dataAPortante.fonc,
-                                $dataAPortante.especiales,
-                                $dataAPortante.publica,
-                                $dataAPortante.privado,
-                            ],
-                            backgroundColor: [
-                                '#f36868',
-                                '#d74747',
-                                '#c43535',
-                                '#ae1e1e',
-                                '#ac1212',
-                                '#990a0a',
-                                '#8d0505',
-                                '#700000',
-                                '#9d1111',
-                            ]
+                            data: dataCircle,
+                            backgroundColor: color
                         }
                     ]
                 },
@@ -198,12 +339,7 @@ function getParticipacionAportante(){
                     tooltips:{
                         callbacks: {
                             label: function(tooltipItem, data) {
-                                if(tooltipItem['index'] == 7){
-                                    return "Org. N. Públicas" +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%"
-
-                                }else{
-                                    return (data["labels"][tooltipItem['index']] +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%")
-                                }
+                                return (data["labels"][tooltipItem['index']] +" "+ data['datasets'][0]['data'][tooltipItem['index']] + "%")
                             },
                         },
                     },
@@ -229,14 +365,23 @@ function getParticipacionAportante(){
             });
 
 
+        }else{
+            $("#divCircular").hide();
         }
 
+    },function (){
+        $("#divCircular").hide();
     });
 }
 
 function getParticipacionEje(){
     api.getVieEjeIndicativo1({}, function (data){
 
+
+        if(data.length == 0){
+            $("#divBarra").hide();
+            return;
+        }
 
         var AMBIENTAL = data.find(x => removeAccents(x.eje) === "AMBIENTAL");
         var GOBERNANZA =  data.find(x => removeAccents(x.eje) === "GOBERNANZA");
@@ -275,6 +420,7 @@ function getParticipacionEje(){
             $total += parseInt(api.dataEjeInidicativo1["GOBERNANZA"].total);
             $total += parseInt(api.dataEjeInidicativo1["ECONOMICO"].total);
             $total += parseInt(api.dataEjeInidicativo1["SOCIAL"].total);
+
 
 
 
@@ -451,23 +597,47 @@ function getParticipacionEje(){
                                 var innerHtml = '<thead>';
                                 let url = "";
                                 let textUrl = "";
-                                titleLines.forEach(function(title) {
 
+                                var p = getUrlParams()
+                                let d = p['dpto'];
+
+                                var section = null;
+                                if(d != undefined){
+                                    section = getUrl().find(x => removeAccents(x.section.toLowerCase()) === removeAccents(d.toLowerCase()))
+                                }
+                                titleLines.forEach(function(title) {
                                     innerHtml += '<tr><th>' + title + '</th></tr>';
                                     if(title.toLowerCase().includes("económico")){
                                         textUrl = "Contribuimos a la rentabilidad del caficultor";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-economico/";
+                                        if(section){
+                                            url = section.data["economico"];
+                                        }else{
+                                            url =  "https://federaciondecafeteros.org/sostenibilidad/eje-economico/";
+                                        }
                                     }else if(title.toLowerCase().includes("social")){
                                         textUrl =" Procuramos el desarrollo y la inclusión social y productiva de las familias y comunidades cafeteras";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-social/";
+                                        if(section){
+                                            url = section.data["social"];
+                                        }else{
+                                            url = "https://federaciondecafeteros.org/sostenibilidad/eje-social/";
+                                        }
                                     }
                                     else if(title.toLowerCase().includes("gobernanza")){
                                         textUrl ="Trabajamos por fortalecer la unión gremial cafetera";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-gobernaza/";
+                                        if(section){
+                                            url = section.data["gobernanza"];
+                                        }
+                                        else{
+                                            url = "https://federaciondecafeteros.org/sostenibilidad/eje-gobernaza/";
+                                        }
                                     }
                                     else if(title.toLowerCase().includes("ambiental")){
                                         textUrl ="Promovemos la sostenibilidad ambiental en la cadena de producción de café";
-                                        url = "https://federaciondecafeteros.org/sostenibilidad/eje-ambiental/";
+                                        if(section){
+                                            url = section.data["ambiental"];
+                                        }else{
+                                            url = "https://federaciondecafeteros.org/sostenibilidad/eje-ambiental/";
+                                        }
                                     }
                                 });
                                 innerHtml += '</thead><tbody>';
@@ -512,7 +682,11 @@ function getParticipacionEje(){
                     },
                 }
             });
+        }else{
+            $("#divBarra").hide();
         }
+    },function (){
+        $("#divBarra").hide();
     });
 }
 
