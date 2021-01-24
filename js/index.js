@@ -398,6 +398,8 @@ function loaderApalancamiento() {
             $("[data-name='apalancamiento']").hide();
         });
 }
+
+
 function loaderProyecto() {
     api.getVectores({}, function (data) {
 
