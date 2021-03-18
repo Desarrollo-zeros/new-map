@@ -594,7 +594,9 @@ function detalles_menu() {
                 if($("#proyectosRows tbody tr").length == 0){
                     return;
                 }
-                $("#ttdetalles_info .proyectos").addClass("mostrar").css({ top: p.top });
+                if(actual != "municipios"){
+                    $("#ttdetalles_info .proyectos").addClass("mostrar").css({ top: p.top });
+                }
                 break;
             case "beneficiarios":
                 $("#ttdetalles_info .beneficiarios").addClass("mostrar").css({ top: p.top });
@@ -673,6 +675,7 @@ function btn_atras() {
             $("#municipio, #separadorCiudad, #idTituloMapa").hide();
             $("#divProyectoNoticia").removeClass("divProyectosN");
             $("#divNoticia").addClass("addNoticias").show();
+            $("#divProyectoNoticia").hide();
             break;
         default:
 
@@ -794,7 +797,6 @@ function Cargar_Departamento(ele) {
     let d = p['dpto'];
     if (d != null) {
         //loaderApalancamiento();
-
     }
 
 
@@ -810,6 +812,7 @@ function Cargar_Departamento(ele) {
     $("#indicadoresDiv").show();
     $("#btnAtras").show();
     $("#divNoticia").addClass("addNoticias").show();
+    $("#divProyectoNoticia").hide();
 }
 function Departamento_a_municipio() {
     $("#divNoticia").hide();

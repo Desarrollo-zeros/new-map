@@ -1,0 +1,1713 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>
+		<table border="1" cellpadding="0" cellspacing="0" style="width: 100%;">
+			<tbody><tr>
+				<td>
+					<table style="border-bottom: 1px solid #808080; width: 100%;">
+			<tbody><tr>
+				<td><center><img src="data:image/png;base64,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"></center></td>
+				<td>
+					<center>
+						<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 0px;"><b>ESTIMATIVO DE VALOR DE INDEMNIZACION</b></h4>
+							<center>
+								<table>
+									<tbody><tr>
+										<td>
+											<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex;"><b style="padding-top: 6px; margin-right: 5px;">PROYECTO</b>
+											</h4>
+										</td>
+										<td>
+											<table border="1" cellpadding="0" cellspacing="0" style="width: 80px; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+										</td>
+									</tr>
+								</tbody></table>
+							</center>
+						<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin-top: 0px;"><b>GEB-GT-F-06</b></h4>
+					</center>
+				</td>
+				<td>
+					<div style="margin-left: 25px; ">
+						<center><h4 style="font-size: 9px; font-family: Arial, Helvetica, sans-serif; "><b>ID PREDIO: </b> <input class="input" type="text" readonly="" id="doc_id_predio" style="margin-left: 5px; font-size: 8px; height: 7px;"></h4></center>
+						<center><p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;">CODIGOS ADICIONALES</p></center>
+						<center><input type="text" name="" style="margin-left: 5px; font-size: 8px; height: 7px;"> <input type="text" name="" style="margin-left: 5px; font-size: 8px; height: 7px;"></center>
+						<center><input type="text" name="" style="margin-left: 5px; font-size: 8px; height: 7px;"> <input type="text" name="" style="margin-left: 5px; font-size: 8px; height: 7px;"></center>
+					</div>
+					
+				</td>
+			</tr>
+		</tbody></table>
+		<br>
+		<center></center>
+			<table style="width: 80%;">
+				<tbody><tr>
+					<td></td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							DEP</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							MUN</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							AVA</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							SEC</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							COM</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							BAR</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VER</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							PRE</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							PRO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							CON</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td><center><p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>CODIGO CATASTRAL</b></p></center></td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 25px; height: 8px;"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td><center><p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>FOLIO DE MATRICULA INMOBILIARIA</b></p></center></td>
+					<td colspan="11"><center><table border="1" cellpadding="0" cellspacing="0" style="width:  100%"><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table></center></td>
+				</tr>
+			</tbody></table>
+			<br>
+			<center>
+				<table bgcolor="#808080" style="width: 97%; background: #808080 !important;">
+					<tbody><tr>
+						<td>
+							<center><h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; "><b>INFORMACION GENERAL</b></h4></center></td>
+					</tr>
+				</tbody></table>
+			</center>
+			<br>
+			<center>
+				<table style="width: 90%;">
+					<tbody><tr>
+						<td colspan="2">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; "><b>IDENTIFICACION DEL PREDIO</b></h4>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<center>
+								<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+								DEPARTAMENTO</b></p>
+							</center>
+						</td>
+						<td>
+							<center>
+								<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+								MUNICIPIO</b></p>
+							</center>
+						</td>
+						<td>
+							<center>
+								<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+								BARRIO - VEREDA</b></p>
+							</center>
+						</td>
+						<td>
+							<center>
+								<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+								NOMBRE PREDIO</b></p>
+							</center>
+						</td>
+						<td>
+							<center>
+								<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+								TIPO PREDIO</b></p>
+							</center>
+						</td>
+						<td>
+							<center>
+								<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+								AREA m2</b></p>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FOLIO DE MATRICULA</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>DOCUMENDO DE ADQUISICION </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>CATASTRO / DOC ORD. TERRITORIAL </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+				</tbody></table>
+			</center>
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 20px; "><b>DATOS DE SERVIDUMBRE</b></h4>	
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 20px;"><b>PROYECTO / LINEA</b></h4>
+			<table border="1" cellpadding="0" cellspacing="0" style=" margin-left: 20px; width: 40%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+
+			<center>
+				<table style="width: 95%; ">
+					<tbody><tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>VANOS</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px; text-align: right;">4</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>TORRES</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA SERVIDUMBRE CARTOGRAFIA (m2) </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>NUMERO DE TORRES</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA SERVIDUMBRE DOCUMENTO (m2)</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA TORRES (m2)</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>	
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA SERVIDUMBRE TOTAL (m2)</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>PORCENTAJE AFECTACION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>LONGITUD SOBRE EL EJE DE LA LINEA (m) </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA SERVIDUMBRE JURIDICA </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>NUMERO DE GESTIONES </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>		
+				</tbody></table>
+			</center>
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 20px; "><b>TRAMO CONSTRUCTIVO</b></h4>
+
+			<table style="width: 80%; margin-left: 20px;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TRAMO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							AREA TRAMO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							ANCHO</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+				<tr>
+					<td>
+						<center>
+							<table style="width: 100%;">
+									<tbody><tr>
+										<td style="width: 35%;">
+											<center>
+												<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; display: inline-flex;"><b style="padding-top: 6px; margin-right: 5px;"><b>TOTAL TRAMOS</b></b>
+											</p>
+											</center>
+										</td>
+										<td>
+											<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+										</td>
+									</tr>
+								</tbody></table>
+							 
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					
+				</tr>
+			</tbody></table>
+		
+
+		<br>
+			<center>
+				<table bgcolor="#808080" style="width: 97%; background: #808080 !important;">
+					<tbody><tr>
+						<td>
+							<center><h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; "><b>CONSIDERACIONES</b></h4></center></td>
+					</tr>
+				</tbody></table>
+			</center>
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 10px; "><b>OBSERVACIONES INVENTARIO PREDIAL</b></h4>
+			<br>
+			<h4 style="font-size: 9px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 20px;margin-right: 20px; ">Estimativo de Valor de Indemnización realizado con base en el Inventario Predial de Daños realizado el miércoles, 27 de agosto de 2014 elaborado por Johana Lopez</h4>
+			<center>
+				<table style="width: 97%;">
+					<tbody><tr>
+						<td>
+							<hr style="color: #000000">
+					</td></tr>
+				</tbody></table>
+			</center>
+			
+			<br>
+			<!-- ENCABEZADO -->
+		<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 10px; margin-top: 10px; "><b>METODOLOGIA UTILIZADA</b></h4>
+			<center>
+				<table border="1" cellpadding="0" cellspacing="0" style=" width: 97%; "><tbody><tr><td style="font-size: 10px; padding: 4px 3px 4px 9px; vertical-align: top !important; height: auto;">La valoración de la servidumbre se realiza teniendo como base principal la metodología propuesta ante el Instituto Geográfico Agustín Codazzi por la
+Asociación Nacional de Empresas de Servicios Públicos y Comunicaciones (ANDESCO). Como marco general, la servidumbre genera limitación al dominio,
+pero no la pérdida de este, por lo tanto, la indemnización debe enfocarse en cuantificar la limitación que se genera, expresada en porcentaje respecto a
+partir de los valores comerciales de terreno, coberturas, cultivos y construcciones que se vean intervenidos, en función de los tres factores denominados
+Intervención, Productividad y Trazado.
+FACTOR INTERVENCIÓN: Contempla el efecto del proyecto sobre el predio, teniendo como principal elemento el área afectada en el mismo, el cual se
+parametrizado de la siguiente manera:
+BAJO: Menos de 20% Área Afectada = 12,78%
+MEDIO: Entre 20 y 50% Área Afectada = 17,58%
+ALTO: Mayor a 50% Área Afectada = 22,37%
+ FACTOR PRODUCTIVIDAD: Contemplan los efectos del proyecto sobre las actividades económicas del predio, teniendo en cuenta la potencialidad
+normativa del mismo, su mayor y mejor uso y las restricciones de explotación que genera la constitución de la servidumbre y se ha categorizado así:
+BAJO: Usos Normativos forestal protector, conservación – protección, tierras improductivas, espacio público = 22,34%
+MEDIO: Usos Normativos agrícola, agropecuario, pecuario, forestal productor, forestal protector productor = 30,71%</td></tr></tbody></table>
+			</center>	
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 10px; "><b>DETERMINACION DEL VALOR</b></h4>
+			<center>
+				<table border="1" cellpadding="0" cellspacing="0" style=" width: 97%; "><tbody><tr><td style="font-size: 10px; padding: 4px 3px 4px 9px; vertical-align: top !important; height: auto;">De acuerdo con la metodología de indemnización para la constitución de servidumbres adoptada por el GEB, el estimativo de valor se ha calculado a partir
+del valor comercial de terreno, coberturas vegetales, cultivos maderables tomado del estudio de Zonas Homogéneas Físicas y Geoeconómicas realizado
+para el proyecto anteriormente mencionado</td></tr></tbody></table>
+			</center>
+
+
+			<br>
+			<center>
+				<table bgcolor="#808080" style="width: 97%; background: #808080 !important;">
+					<tbody><tr>
+						<td>
+							<center><h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; "><b>VALORACION SERVIDUMBRE</b></h4></center></td>
+					</tr>
+				</tbody></table>
+			</center>
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 10px; "><b>ZONAS HOMOGENEAS GEOECONOMICAS</b></h4>
+
+			<br>
+			<center>
+				<table style="width: 95%; ">
+					<tbody><tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>CODIGO ZHG</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px; text-alig<b>n: right;"><center><b>10 SUESCA-SUESCA</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>VALOR m2</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>$ 7.500</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>PORCENTAJE AFECTACION </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>2,67%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FACTOR INTERVENCION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>12,78%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>TIPO AFECTACION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>SEMI BORDE</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FACTOR TRAZADO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>6,71%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>	
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>ZHG USO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>AGRICOLA</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FACTOR USO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><center><b>30,71%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>INDICE OCUPACION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>CLASIFICACION SUELO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>RURAL</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<center>
+							<table style="width: 100%;">
+								<tbody><tr>
+									<td>
+										<hr style="color: #000000">
+								</td></tr>
+							</tbody></table>
+						</center>
+						</td>
+					</tr>
+					
+
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA SERVIDUMBRE</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table style="width: 100%">
+									<tbody><tr>
+										<td><table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table></td>
+										<td><table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table></td>
+										<td><table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table></td>
+									</tr>
+								</tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>VALOR SERVIDUMBRE</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>$ 59.985.493</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>NORMATIVIDAD:</b></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<center>
+							<table style="width: 100%;">
+								<tbody><tr>
+									<td>
+										<hr style="color: #000000">
+								</td></tr>
+							</tbody></table>
+						</center>
+						</td>
+					</tr>		
+				</tbody></table>
+
+				<br>
+			<center>
+				<table style="width: 95%; ">
+					<tbody><tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>CODIGO ZHG</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px; text-alig<b>n: right;"><center><b>10 SUESCA-SUESCA</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>VALOR m2</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>$ 7.500</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>PORCENTAJE AFECTACION </b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>2,67%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FACTOR INTERVENCION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>12,78%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>TIPO AFECTACION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>SEMI BORDE</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FACTOR TRAZADO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>6,71%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>	
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>ZHG USO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>AGRICOLA</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>FACTOR USO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><center><b>30,71%</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>INDICE OCUPACION</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>CLASIFICACION SUELO</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>RURAL</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<center>
+							<table style="width: 100%;">
+								<tbody><tr>
+									<td>
+										<hr style="color: #000000">
+								</td></tr>
+							</tbody></table>
+						</center>
+						</td>
+					</tr>
+					
+
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>AREA SERVIDUMBRE</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table style="width: 100%">
+									<tbody><tr>
+										<td><table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table></td>
+										<td><table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table></td>
+										<td><table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>&nbsp;</b></center></td></tr></tbody></table></td>
+									</tr>
+								</tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>VALOR SERVIDUMBRE</b></td></tr></tbody></table>
+							</center>
+						</td>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;"><center><b>$ 10.611.947</b></center></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<center>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><b>NORMATIVIDAD:</b></td></tr></tbody></table>
+							</center>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<center>
+							<table style="width: 100%;">
+								<tbody><tr>
+									<td>
+										<hr style="color: #000000">
+								</td></tr>
+							</tbody></table>
+						</center>
+						</td>
+					</tr>		
+				</tbody></table>
+			</center>
+
+			</center>
+
+			<center>
+				<table style="width: 90%;">
+						<tbody><tr>
+							<td style="width: 70%;">
+								<center>
+
+									<p style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex;"><b style="padding-top: 6px; margin-right: 5px;"><b>VALOR TOTAL SERVIDUMBRE</b></b>
+								</p>
+								</center>
+							</td>
+							<td>
+								<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 10px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><center><b>$ 70.597.440</b></center></td></tr></tbody></table>
+							</td>
+						</tr>
+					</tbody></table>
+				 
+			</center>
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; margin-left: 20px; "><b>VALORACION SITIOS DE TORRE</b></h4>
+
+			<table style="width: 80%; margin-left: 20px;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TORRE</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							AREA TORRE</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VALOR M2</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VALOR TOTAL</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+			</tbody></table>
+
+			<br>
+			<center>
+				<table bgcolor="#808080" style="width: 97%; background: #808080 !important;">
+					<tbody><tr>
+						<td>
+							<center><h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; "><b>COBERTURAS</b></h4></center></td>
+					</tr>
+				</tbody></table>
+			</center>
+			<br>
+
+			<table style="width: 90%; margin-left: 20px;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							COBERTURA</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO INTERVENCION</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							AREA REQUERIDA</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VR UNITARIO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VR TOTAL</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><center><b>CUERPO DE AGUA</b></center></td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><center><b>PASTO</b></center></td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;"><center><b>INFRAESTRUCTURA</b></center></td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+			</tbody></table>	
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; margin-left: 18px;"><b>CULTIVOS</b></h4>
+			<br>
+			<center>
+			<table style="width: 90%;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							NOMBRE</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							DESTINO ECONOMICO</b></p>
+						</center>
+					</td>
+
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							UNIDADES</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO DE INTERVENCION</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							NUM PLANTAS</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							AREA (m2)</b></p>
+						</center>
+					</td>
+				
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							 VR UNITARIO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VR TOTAL</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+			</tbody></table>
+			</center>
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; margin-left: 18px;"><b>ARBOLES AISLADOS</b></h4>
+			<center>
+				<table style="width: 90%;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							DESCRIPCION</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							ESTADO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							DAP</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							CAP</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							CANTIDAD</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							 VR UNITARIO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VR TOTAL</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+			</tbody></table>
+			</center>
+
+
+			<br>
+			<center>
+				<table bgcolor="#808080" style="width: 97%; background: #808080 !important;">
+					<tbody><tr>
+						<td>
+							<center><h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; "><b>CONSTRUCCIONES Y MEJORAS</b></h4></center></td>
+					</tr>
+				</tbody></table>
+			</center>
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; margin-left: 18px;"><b>CONSTRUCCIONES</b></h4>
+			<center>
+				<table style="width: 90%;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							DESTINO ECONOMICO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO EDIFICACION</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO ESTRUCTURA</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPOLOGIA</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							AREA</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							 VR UNITARIO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VR TOTAL</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+			</tbody></table>
+			</center>
+
+
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; margin-left: 18px;"><b>MEJORAS</b></h4>
+			<center>
+				<table style="width: 90%;">
+				<tbody><tr>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							TIPO UNIDAD</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							CANTIDAD</b></p>
+						</center>
+					</td>
+				
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							 VR UNITARIO</b></p>
+						</center>
+					</td>
+					<td>
+						<center>
+							<p style="font-size: 8px; font-family: Arial, Helvetica, sans-serif; margin-bottom: 3px;"><b>
+							VR TOTAL</b></p>
+						</center>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 3px 4px 9px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+					<td>
+						<center>
+							<table border="1" cellpadding="0" cellspacing="0" style=" width: 100%; height: 8px;"><tbody><tr><td style="font-size: 8px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</center>
+					</td>
+				</tr>	
+			</tbody></table>
+			</center>
+
+			<br>
+			<center>
+				<table bgcolor="#808080" style="width: 97%; background: #808080 !important;">
+					<tbody><tr>
+						<td>
+							<center><h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; "><b>CALCULO DE INDEMNIZACION</b></h4></center></td>
+					</tr>
+				</tbody></table>
+			</center>
+
+			<center>
+				<table style="width: 60%">
+					<tbody><tr>
+						<td style="width: 40%;">&nbsp;</td>
+						<td style="text-align: center;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALORES CALCULADOS</b>
+							</h4>
+						</td>
+						
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR SERVIDUMBRE</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR TORRES</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR COBERTURAS</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR CULTIVOS</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR ARBOLES AISLADOS</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR CONSTRUCCIONES</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR MEJORAS</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 40%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">VALOR TOTAL INDEMNIZACION</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+					</tr>
+				</tbody></table>
+			</center>
+
+			<br>
+			<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; margin: 0; padding-top: 5px;padding-bottom: 5px; margin-left: 18px;"><b>REGISTRO MODIFICACION DE VALORES</b></h4>
+
+			<center>
+				<table style="width: 90%">
+					<tbody><tr>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">ELABORO</b>
+							</h4>
+						</td>
+						<td style="width:20%;">
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">Diego Vargas Triana</td></tr></tbody></table>
+						</td>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">RAA</b>
+							</h4>
+						</td>
+						<td style="width:20%;">
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">RAA00002</td></tr></tbody></table>
+						</td>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">FECHA</b>
+							</h4>
+						</td>
+						<td style="width:20%;">
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">14-feb-18</td></tr></tbody></table>
+						</td>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">FIRMA</b>
+							</h4>
+						</td>
+						<td style="width:20%;">
+							<table style="width: 100%; height: 8px; border-bottom: 1px solid #808080 "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px; bor"></td></tr></tbody></table>
+						</td>
+					</tr>
+					
+					<tr>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">APROBO</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">Carlos Mario Latorre</td></tr></tbody></table>
+						</td>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">RAA</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">RAA00001</td></tr></tbody></table>
+						</td>
+						<td style="width: 5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">FECHA</b>
+							</h4>
+						</td>
+						<td>
+							<table border="1" cellpadding="0" cellspacing="0" style="width: 100%; height: 8px; "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px;">&nbsp;</td></tr></tbody></table>
+						</td>
+						<td style="width:5%;">
+							<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif; display: inline-flex; margin: 0;"><b style="padding-top: 6px; margin-right: 5px;">FIRMA</b>
+							</h4>
+						</td>
+						<td style="width:10%;">
+							<table style="width: 100%; height: 8px; border-bottom: 1px solid #808080 "><tbody><tr><td style="font-size: 10px; padding: 4px 0px 4px 0px; bor"></td></tr></tbody></table>
+						</td>
+					</tr>
+				</tbody></table>
+
+				<h4 style="font-size: 10px; font-family: Arial, Helvetica, sans-serif;"><b>Lo anterior de conformidad a la Ley 56 de 1981 y el Decreto 2580 de 1985</b></h4>
+				
+			</center>
+			<center>
+				<table style="width: 90%;"><tbody><tr><td style="text-align: right;"><h4 style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;"><b>Impreso 14/07/2020</b></h4></td></tr></tbody></table>
+			</center>
+			<br>
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAARCAYAAAAG9rPwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA+LSURBVHhe7VkJUyLJ1n1/85t/JgWioLbsmyzF8mRVAREBEW2kXRFUlgZEBArOu1lVKCr0MjNOTHzB6TBCa8m8efPck+dW/+ePP/7AAgsssMBnYCEwCyywwKdhITALLLDAp2EhMAsssMCn4VVgBnWcJfxwmPTQGW3gd05w/yzd+lshVHDo5xE5acoX/ioEVA794CMnaI7kS+8xesBRkEfw6EG+MBtC5RB+PoKTuQP9+zBsV1D5/mfjHeHhKAiP2w23xwMP70UgksJZvS/fZ+ijXkwgsGWGQWeAeeu/SJYaGMh3GQb1MyT8Dpj0OhhtPHZO7vG71BFal0gHXbAYdNAZrHCHMyh3//l9GNXyCHooHywnLz88dkuPGMvPfA5GqGfc0Dt2cdn9+UzTcXpo73hvAKHkVzxMb93fiWEblcp3ivIVw9sEbAY3DirzJ5UEZtTEkXMVCk4Lqz+MiN8CDafAqqeA9t+9x8MS/GoOut2qfOGvYoiSXw1Ot4uqIF96D+EKoTUOa6Er+cJsDEt+qDkdducO9O/CqJGBXa2GrzSUr/wuBFyF1sR9N7FCctqwuaLAktqBTJ3lYIRGbgurCg4asw+RWAQ+ixacYhVbuYZItlHzCM5VBTitFf5wBH6LRrzvKbTFGX4F404R/nUOihUD+FAMkYAVWm4JKlMSd//wVgg3EazTerWmf1hgqAZPImHkH6alez6kOBUvcboceqywv7fPf1vcf4pRAxm7GmpfiaptgiHuskHsFJvEovkQBWZ4FcKaQgV7pikr1ACVFA+nP43bvuwQdg6QCthgDRzT/T7uj8Nwmg0w2X1IXrQlsrXPEedtMOr1MNno+mVHGq//gELEBavZDn8yhq3lV4EZPd7gMOiExWiE1RNFgWzTeOJK3sw5jT4eChG4rGbY/UnEtpZfBKZ/f4ywk05bkx2+5IUkkD8QmP5DARGXFWa7H8nYFpZfBGaEx5tDBJ0WGI1WeKIFcnQSxYbNM8S9tE6DCXZfEhcdmkS4QzbAI3RcF9fcv0qC53dRotNoeJOi35M4LsTgtppgC2RwXT6meS2Uv/8iW5VOgNmx3yO3zSOWKyDB5jQ5yIndoU+ELAR0WF6idVHxH1aEOblkY1SRIdcYJtco7scLZIFReVGUmSM00rCpiKjBS6LBObY1CqisBxD1RnygjrRVBYV2GxeDofy+HZmJ6xtUkOKd8Kdvpb9/CtrrnU0SORMSdxP6CqhlfHB44zjvEBtEZ7mDg1QANmsAx7XKnFwPUc0EiDdZ5Hc9sJhs8Ca+oSXHPjc/U5AKVwXvJCFTEO5z2OZjyBUS8NqMMDmCOLqTT+/+PY7DTpgnnJA27yOPWS1E3VJsyRwOQjyip98puFeXPaJ/7fM4eJpDrye+0HiXjGNTkOJUgv8qxzn6jrSFA2c9RIs9OnrEzWEQTosRRqsH0QK5SnmxjPNRN3HP5kUyd4AQH8Wp6IJncV5AsxCAbnkJ3JoZvsMKhFEb53EeNqMeelqHL3mJd+G9gATm/9BImcHRBu/XZz1FDsGnxhIRWaO3wB4jhbwIYo1bgTWaQXrbANWyDYfNHi7Cm1jR+XBwnEPYTEWvj+NuNMB1eB0KpQ6+/Rz2vZtQLikkgRFqSFlU4NbdiGcPEbGRi1rlcdIZfJhzGoPrsJhcnW8fuX0vNpVLUDCB6V4gSEKyYo0ik96GQbUM2yEV1TyBGVwjvK6AkmLez+3Du6nEkkISGKGWgkXFYd0dR/YwAhud0qv8CTrDCvb0HFT6AA5yKXi/cFA78+iwYlzl8CV2S7QCnvJOyqkFadq4/okbHK1l3RVHJuGCVsE2awu7h3E4tVTA9H63Nyf24SWC9IxixYxgOoOYbYVy6US+08bFnk10F3pvAsWH+zm5JFYJ19g16+FKM/JO46PAYFRH0kRENaWI8wkYOA6W9LQwjdA8sNDaDCQItH9m9uw+ZlLnV8AKw0pjGJJ4YGOMe2jRWu7v2c8DWj0S6JIP6iXKmUYPiz2G8+68XPfxLbBCe7gCSyiN7J6Tcq2C5aD+A669lZiZDoYK8CtV7fAySOMpsGIOIp2JwUZuT8n2bvyMi+AauBUropk0tg0qLNsOqWV/XztFXEc2wKmoFlJSLajonj5+RxO/clToXyC8uUL8PsBxLgwzHcjsmekUf3Awdqq9ZT1C35jTIoFOWaDi1uGOZ3EYYTxZBX/SETkf2SD+EudTIudVWOL0iN+N5nC+gOr5nvg7p/ciUayjdxEmp0trODhGLmymQ1l6fxZEgakljaLApH4kMGofiqJYD3EZ1Iqbk6sSCcr7sBEJ7dk2xkIXd6UcklEfrOtKOuVCuOxXsaejBXlOJev2dAynUhIY4W4POk4Fd+GJ3SFuJ2GisRy57+/mnIaA6p6ONsmDU2lAHDtpLhKY8jdGAEpkrkrkLGPfRsS1Z9EezhYYoSrN75EGotCcUIoC08edOIcbUmjUHydNlCMHspd70HNKuAo98Z1Bt41HUvnx8CcCQ+PuiRbrBG5qPzd36CSgjBTcUoHen8+JfSAJzGrgm2hPexTj5DCQ8ie1SPNz+Sj+PRuzBKYpnYSGhJQfKjZ7tjN10o/RzthoPZvYLd8haWTxp34uMIMmrounOD09xdfL2stpygRtXxY0cYzBKTzUHi2RoCwtqcQTWhIYWueEDHNzLQkM490Vu0HWXhRAR+6X8/NzgVlF4Ju4E8Q7FjeJa1/eIz6HKgljeZ/yw9mRbcsH5YTH5CR3p2uhR1yggv4gMOzR7h1KuSSiPivWqV60oUvx+gQfBMZhhFalwhf/Kb4P7qSacxeoOgiTQ4Plobr7hvM94qZKFIjBXM7nWlINv7ZIArp3JeSSUfis61QzWoQup6N7hdgi9Yu0gQo1+NMnmUhDVPas0G8lcfUsCQy3uQNy4eK9M5Y01RfYJhtAPWr09BYFnvpv6qM9oT1EHNSrs43u3yL2RYFl35kU3KAInpIqCkw5ig2aNyB/Qxi3M7CLJ+bDuzmnIeA29gWKZR/OpAFR5OlkIoG5+cqISEm2TeJyg49+RWswR2BuY/iiWIZPGohC4ynZksCUoxtQqAOQQmNFZRdJnPoapXcY8d/1yjLpN6JlinCMx5xDJr0sMBMBH7IC4mBK1mgLBzj1SCS9Y3swK3aRvHSqRG5Egg1OPeJYHwRmbi5/9DF9hsDIgsbIOe7m4aR2SRMoTfX1zygFNPQOuajuM4q0Two1j9MnWTGYw7PqsZV8m+txJ0vxSMLBmZKovQgSFWGA3ISaiM0+bsoOppr3QiPmWRYYbhM7EzLMzbUkMNyXGMrs0XEHWQfl15r+5fxIhTu7RRIFhlxB5EbciZe9q/fP4FMvQfXF9rJ3kij13/JYkGvBW6S3CX2qBdmdTAvMsH0CXkNu1uBBaC8CB+2/VhaeCaQ4p1okYtN9wkB5MCJZvUZ0QwE17Zt4d9xGxk6xWigPMue9RYm/feK85EAGczmfppb0VWDo+gkPDXUwBk8IexEH5YQERlT0j5A+8g5usasnF7BqQejgiJSJx6ZqCWpH9sXmcbo9+YMbWeS0BUqlGfHbLro3CbisPNLlktiva3xFdDoV7NuJeNogLoddnHjo9zUfCo0u6nletJlMYMZPRXjJemk9R6g9PaKcsMjfQIjEb+acxhjdEw8J4hp8hQa69Tx41kKQwFRqaViUSpjjt+h2b5BwWcGnqxjOaZHG3RN41Aqs+QpodOvI8+TMRAczxFPRS7ZSC89RDU+PZSQs0neeSucUPL2j9RbQ7DVxzK9h1ZrC/aCMCLVby84cmuJYVIS/ITC1+pzYxRZptsCM7uPkptip/Ih+e14u6S06wYr71J5dSt/KXiELjNKCWIHcxckRkl4dVLRu/xkdY+MnnAUoJ0SgrfgprspXOI1T20EOTEvkZZoyuN2Fnk7YVUsIB0fkXnlm+9VwZH/9fwkH5R0SSuKOfRcnV7con+ex51yntnJaYMgBTsggzMu13CKRGAW/tfD0kMEW21/a9/lce0uwSeFaYgXRbUk/X1GqUo7nCcyQuT4llOY4brtd3FAbbOXTqA7f106PDmcS0xUHEqVrFHetdKh8FJjni20SVw05tg46lX3YGd+CsxwMB3NEjrNArZlxGUvLLhx3uih6aR6tB0e1JzyWE7BMvnv2SAwpDyuOBErXRexaySyIAiPM5Xx1cI84+yxAh87joIeLbcq3hlxZp4PKvp1qUYvgjxwMg9A6R4JnNouSptKQOk0+LL1PEuH5FinmUGQbu8HnKck0cYTIya5xG3C6jFApyV5RjzusHYFf5+hZWpjJBRsVjLhYonu7FIWFTiPREivX4UpX6IycMec0hjUc8YyAS7RZJrhsFAtLhPCM2xRTVOmkVG3wyLOvk3MEhq2tdsRjnT1PfbvJZaN3J0XZRilqwao8lnLdhXSFneMCGgWfKMBizNT3BouscOkEiJuwzK5RQTrcZiqKXxeY+mhO7D8QGDx/wzaJK+vxncePc3LJlllCQM1hc5e1ZdOQBYY9L/5wWF6zIJCtoCcbknGvgoxPTySSn2Enly+L6kuPI6B1ngBv1JL7IxJqyMH+4KPfbAzRLMbgWFfJcZDLoR7ftXOKGrUWHwRmbq7lFmnVCCv7tkD3lw0hlMQPrvO49hZS4cprnfrRbF+gN09g2FbcpkSnIT6v2gCfr1NmPvJ41DpD2KyhA3oVRr8PVip8Q+L+DUeHvQtEdFL83IYTLqMKSmpvpj8XvY9TQblXr5mxXajTrIy+JUQtq3KNKrHuSkOkL+WhdRaGWUOCSHnyUwu2zL6n3dMi5nL+Gd+26aBh8TjzaF5EoBP5Ty7S6YJRpaRWc7qNfsWLwPw+BPRaDTTaz1OkJRVsNdF+nsEuKv5O+2nq2SkIZIsbjdnvzYWA504bTzMGFHotNBptPM+c7COE5w7aswYivIz1LrRRv4NGvUmKPp3WEZ7bDXzvfrTXv4rfjX08eERzOr4/lcufg8VVr9O4vV8M7M9gTM6ROFVvklv4afizcj2UWiTWkgyJb61HvNkehk/Kj4iXseflaICb9DZCsTy5Alru4xEcSg62zIz/0hee0Gp+5N3v4bVGX4YZ3CC9HUIsX6VoqL08ckDJ2ZBpvyZqJufHAzw2X/MmPLXQnB53Dv6CwCywwL8NUwLziTr45zFCM++m9kdBTm8Da+QqOY0bx+Ry/zGMmsi7qcVRqKDZWCPnx0HjPsZnhbAQmAX+H2GM51YN93VyLvKVfx9G6DXKOD8r4uy8jGbvHxSXCUY9NMrnOCue4bzcxGeGsBCYBRZY4NOwEJgFFljgkwD8D+AZ8imeEL9SAAAAAElFTkSuQmCC">
+			
+				</td>
+			</tr>
+			
+		</tbody></table>
+		
+	</body></html>

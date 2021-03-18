@@ -1,4 +1,5 @@
-<?php 
+<?php
+        session_start();
      /*
 	    Controlador WEB SERVICES CREADO POR
 	    Steven Moreno Correa
@@ -42,7 +43,8 @@
 	  /**Arreglo para el registro de los metodos**/
 	  $metodos = array(
 	                     'upl_excel'=>"UploadXlsxMapsAsync",
-                         'get_data_nfc' => 'GetDataNfc'
+                         'get_data_nfc' => 'GetDataNfc',
+                          'login' => 'login'
 	                  );
 
 
@@ -67,6 +69,38 @@
 
 			 return $RSP_REST;
 	}
+
+
+     function encryptAccount($username, $password)
+    {
+        if(!is_string($username)) { $username = ""; }
+        if(!is_string($password)) { $password = ""; }
+        $sha_pass_hash = sha1(strtoupper($username).':'.strtoupper($password));
+
+        return strtoupper($sha_pass_hash);
+    }
+
+    #@Path('maps/login')
+    # Load login
+	function login(){
+        $usuario = $_POST["username"];
+        $password = $_POST["password"];
+
+        $u = "mapasfnc";
+        $p = "@dm1nM4p4s";
+
+        $result = [
+            "success" => false,
+        ];
+
+        if("D78FAB4CF8E2EFDE636A7A8216945C306B82E87F" == encryptAccount($usuario,$password)){
+            $result = [
+              "success" => true,
+            ];
+        }
+        $_SESSION["login"] = $result;
+        return $result;
+    }
 
     #@Path('maps/get_data_nfc')
     # Load data
