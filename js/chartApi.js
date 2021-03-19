@@ -95,8 +95,8 @@ function getParticipacionAportante(){
             let d = [
                 $dataAPortante.gob+";gob;Gobernaciones",
                 $dataAPortante.inter+";inter;Entidades Internacionales",
-                $dataAPortante.privado+";privado;Org. N. Privadas'",
-                $dataAPortante.publica+";publica;Org. N. públicas",
+                $dataAPortante.privado+";privado;Org. Nacionales Privadas",
+                $dataAPortante.publica+";publica;Org. Nacionales Públicas",
                 $dataAPortante.mun+";mun;Municipios",
                 $dataAPortante.fonc+";fonc;FoNC",
                 $dataAPortante.comunidad+";comunidad;Comunidad",
@@ -170,7 +170,7 @@ function getParticipacionAportante(){
                                                         <br>
                                                         <span style="color: #717171">Nacionales</span>
                                                         <br>
-                                                        <span style="color: #717171">Privada</span>
+                                                        <span style="color: #717171">Privadas</span>
                                                         <br>
                                                         <span style="color: #717171" id="privado">${d[i].split(";")[0]}%</span>
                                                     </li>
