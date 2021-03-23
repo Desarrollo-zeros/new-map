@@ -21,29 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="90d08152-6c8d-4325-a347-9918ceaf7afc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Boyaca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Boyaca.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Caldas.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Caldas.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Caqueta.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Caqueta.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Casanare.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Casanare.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/Cauca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cauca.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Cesar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cesar.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Cundinamarca.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Guajira.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Guajira.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Huila.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Huila.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Magdalena.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Magdalena.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Meta.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Meta.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Putumayo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Putumayo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Risaralda.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Risaralda.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Santander.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Santander.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Tolima.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Tolima.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/Vichada.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Vichada.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/antioquia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/antioquia.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/bolivar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/bolivar.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/narino.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/narino.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/nortesantander.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/nortesantander.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/quindio.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/quindio.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departamentos/valle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/valle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +117,7 @@
       <workItem from="1616123511094" duration="2511000" />
       <workItem from="1616126333079" duration="9796000" />
       <workItem from="1616338499210" duration="31091000" />
-      <workItem from="1616427292219" duration="31767000" />
+      <workItem from="1616427292219" duration="35675000" />
     </task>
     <servers />
   </component>
