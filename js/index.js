@@ -769,7 +769,7 @@ function Cargar_Departamento(ele) {
                     var ele = this;
                     var name = $(ele).attr("name") == undefined ? "" : $(ele).attr("name");
                     if(!name.toLowerCase().includes("xxx")){
-                        var newName = $municipios.find(x => removeAccents(x.municipio.toLowerCase()).includes(removeAccents(name.toLowerCase())));
+                        var newName = $municipios.find(x => removeAccents(x.municipio.toLowerCase()) == (removeAccents(name.toLowerCase())));
                         if(newName){
                             $(ele).attr("name",newName.municipio.toUpperCase());
                         }

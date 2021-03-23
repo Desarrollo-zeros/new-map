@@ -33,15 +33,17 @@
       <change beforePath="$PROJECT_DIR$/img/departamentos/Magdalena.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Magdalena.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/Meta.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Meta.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/Putumayo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Putumayo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Risaralda.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Risaralda.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/Santander.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Santander.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/Tolima.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Tolima.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/Vichada.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/Vichada.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/antioquia.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/antioquia.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/bolivar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/bolivar.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/narino.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/narino.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/nortesantander.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/nortesantander.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departamentos/quindio.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/quindio.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/img/departamentos/valle.svg" beforeDir="false" afterPath="$PROJECT_DIR$/img/departamentos/valle.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/chartApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chartApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/tooltip.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/tooltip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +135,9 @@
       <workItem from="1616083519624" duration="2472000" />
       <workItem from="1616111481778" duration="953000" />
       <workItem from="1616123511094" duration="2511000" />
+      <workItem from="1616126333079" duration="9796000" />
+      <workItem from="1616338499210" duration="31091000" />
+      <workItem from="1616427292219" duration="31767000" />
     </task>
     <servers />
   </component>
@@ -151,12 +156,18 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1616357829182">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728/1366.0.1360.728@0.0.1366.728" timestamp="1616357829182" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/index.js</url>
-          <line>375</line>
+          <line>198</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
