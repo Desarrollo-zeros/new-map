@@ -4,7 +4,18 @@
   <meta http-equiv="content-type" content="text/html" charset="UTF-8">
   <title>Maps</title>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+    <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+    <style>
+        table tr:not(:last-child) td:first-child::first-letter {
+            text-transform: uppercase;
+        }
+    </style>
+
 </head>
 <body>
   
@@ -37,11 +48,14 @@
                                 </div>
                             </div>
                             <div class="row justify-content-end">
-                                <div class="col-2">
+                                <div class="col-1">
                                     <button class="btn btn-light btn-sm" type="reset">Cancelar</button>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <button class="btn btn-success btn-sm" type="submit" id="btnprocessfile">Cargar</button>
+                                </div>
+                                <div class="col-4">
+                                    <a href="municipios.xlsx" target="_blank" class="btn btn-success btn-sm" type="btn btn-sm btn-success" id="Descagar Excel municipios">Descagar Excel municipios</a>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +65,31 @@
         </div>
         </form>
         <div class="row">
-            <div class="col">
-            <h5>Log de carga</h5>
-            <div class="" id="dvExcel" style="height:40vh;overflow-y:scroll;padding-left:5%;">
+            <div class="col-md-12">
+                <h5>Log de carga</h5>
+                <div class="" id="dvExcel" style="height:auto;overflow-y:scroll;padding-left:5%;">
+                </div>
             </div>
+            <div class="col-md-12">
+                <br><br>
+                <table class="table table-responsive table-striped table-bordered table-hover nowrap" id="table-noload">
+                    <thead bgcolor="#59b958">
+                    <tr>
+                        <th></th>
+                        <th>DEPENDENCIA</th>
+                        <th>CODIGO PROYECTO SAP</th>
+                        <th>NOMBRE PROYECTO</th>
+                        <th>PAÍS</th>
+                        <th>DEPARTAMENTO</th>
+                        <th>MUNICIPIO</th>
+                        <th>VALOR EJECUCIÓN</th>
+                        <th>COBERTURA</th>
+                        <th>NOVEDAD</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
             
 
@@ -79,6 +114,29 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="main.js"></script>
+    <script src="js/Api.js"></script>
+
+
+
     <script>reenderComboBox();</script>
+
+      <script>
+          $(document).ready(function (){
+              if(!localStorage.success){
+                  window.location.href = "login.php";
+              }
+          })
+      </script>
+
+
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
 </body>
 </html>

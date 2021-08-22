@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="es">
 
@@ -12,7 +15,7 @@
     <link rel="stylesheet" href="css/zoom-svg.css">
     <title>FNC</title>
     <script src="js/jquery.js"></script>
-
+    <link rel="stylesheet" href="loading/css/jquery.loadingModal.css">
 </head>
 
 <body>
@@ -36,8 +39,8 @@
                                         <div class="col-md-5 text-noticia" style="z-index: 99; display: inline">
 
                                             <label>Año de información</label>
-                                            <select value="2019" class="form-control" id="selectAnoCargue">
-                                                <option value="2019">2019</option>
+                                            <select class="form-control" id="selectAnoCargue">
+                                                
                                             </select>
 
                                         </div>
@@ -135,7 +138,7 @@
                                     <span class="close">X</span>
                                     <table id="apalancamiento-table" style="color:#960303!important; ">
                                         <thead>
-                                            <tr style="display:table;width:100%;table-layout:fixed;">
+                                            <tr style="display:table;width:100%;table-layout:fixed; border-bottom: 2px solid #000;">
                                                 <th scope="col">DEPENDENCIAS</th>
                                                 <th scope="col" style="position: absolute;left: 70%;">TOTAL</th>
                                             </tr>
@@ -148,7 +151,7 @@
                                     <span class="close">X</span>
                                     <table id="proyectosRows" style="color:#960303!important; ">
                                         <thead>
-                                            <tr style="display:table;width:100%;table-layout:fixed;">
+                                            <tr style="display:table;width:100%;table-layout:fixed;border-bottom: 2px solid #000;">
                                                 <th>PROYECTOS</th>
                                                 <th style="position: absolute;left: 70%;">TOTAL</th>
                                             </tr>
@@ -176,7 +179,7 @@
                                         <li>
                                             <div class="img"><img src="img/Iconos_Beneficiarios/indigena.svg"></div>
                                             <div class="txt">
-                                                <span>Indígena</span><br>
+                                                <span>Indígenas</span><br>
                                                 <span id="indigenasValue"></span>
                                             </div>
                                         </li>
@@ -230,7 +233,7 @@
                                         <table></table>
                                     </div>
                                 </div>
-                                <canvas height="200" width="600" style="width: 600px!important;"
+                                <canvas  width="600" height="300" style="width: 600px!important; height: 300px!important;"
                                     id="participacion-inversion-por-eje"></canvas>
                             </div>
                         </div>
@@ -241,7 +244,7 @@
             <div class="row">
                 <div class="col-5">
                     <div class="row">
-                        <div id="indicadoresDiv" class="card shadow noticia" style="display: none; height: 100%; z-index: 99">
+                        <div id="indicadoresDiv" class="card shadow noticia" style="display: none; height: 100%; z-index: 99; width: 500px; max-width: 500px">
                             <div class="card-body">
                                 <div class="col-12">
                                     <h2><b><span id="text-noticia" class="text-noticia">Indicadores</span></b></h2>
@@ -269,23 +272,17 @@
                             <div class="col-12">
                                 <div id="chartjs-legend" class="col noselect" style="font-size: 12px">
                                     <ul class="1-legend">
-                                        <div class="row">
-                                            <div class="col offset-5">
-                                                <div class="" style="text-align: left;font-weight: bold;">
+                                        <div class="row" id="legend-div-circular" style="position: absolute;left: 380px;">
+                                            <!--<div>
+                                                <div  class="" style="text-align: left;font-weight: bold;">
                                                     <li style="border-left: thick solid  #f36868;">
                                                         <span style="color: #717171">Comunidad</span>
                                                         <br>
                                                         <span style="color: #717171" id="comunidad"></span>
                                                     </li>
                                                 </div>
-                                                <div class="" style="text-align: left;font-weight: bold;">
-                                                    <li style="border-left: thick solid  #d74747;">
-                                                        <span style="color: #717171">Gobernaciones</span>
-                                                        <br>
-                                                        <span style="color: #717171" id="gob"></span>
-                                                    </li>
-                                                </div>
-                                                <div class="" style="text-align: left;font-weight: bold;">
+
+                                                <div  class="" style="text-align: left;font-weight: bold;">
                                                     <li style="border-left: thick solid  #c43535;">
                                                         <span style="color: #717171">Entidades</span>
                                                         <br>
@@ -301,7 +298,7 @@
                                                         <span style="color: #717171" id="mun"></span>
                                                     </li>
                                                 </div>
-                                                <div class="" style="text-align: left;font-weight: bold;">
+                                                <div  class="" style="text-align: left;font-weight: bold;">
                                                     <li style="border-left: thick solid  #9d1111;">
                                                         <span style="color: #717171">Especiales</span>
                                                         <br>
@@ -309,7 +306,7 @@
                                                     </li>
                                                 </div>
                                             </div>
-                                            <div class="col">
+                                            <div>
                                                 <div class="" style="text-align: left;font-weight: bold;">
                                                     <li style="border-left: thick solid  #ac1212;">
                                                         <span style="color: #717171">Organizaciones</span>
@@ -348,7 +345,7 @@
                                                         <span style="color: #717171" id="publica"></span>
                                                     </li>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </ul>
                                 </div>
@@ -362,8 +359,8 @@
             </div>
 
             <div class="row">
-                <div id="divNoticia" class="col-12">
-                    <br> <br>
+                <div id="divNoticia" class="col-12" style="display: block;">
+                    <br> <br><br><br>
                     <div id="noticiasDiv" style="display: block">
                         <div class="row">
                             <div class="col-4 d-inline ">
@@ -441,7 +438,37 @@
 
     <script src="js/index.js"></script>
     <script src="js/tooltip.js"></script>
+    <script src="loading/js/jquery.loadingModal.js"></script>
+
+
+<script>
+
+    function createLoading(){
+        $('body').loadingModal({
+            position: 'auto',
+            text: '',
+            color: '#fff',
+            opacity: '0.7',
+            backgroundColor: 'rgb(0,0,0)',
+            animation: 'doubleBounce'
+        });
+
+        setTimeout(function (){
+            closeLoading();
+        },12000);
+
+    }
+
+    function closeLoading(){
+        $('body').loadingModal('destroy');
+    }
+
+</script>
 
 </body>
 
+
+
 </html>
+
+
