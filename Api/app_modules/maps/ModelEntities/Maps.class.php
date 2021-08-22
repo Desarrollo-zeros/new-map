@@ -62,6 +62,7 @@
                    	 $this->CheckYear($year);
                    	 $status = $this->CleanTmps($year);
                    }
+                   $this->conn->execute_single_query("UPDATE localizacion l  SET l.municipio_id = ( SELECT id  FROM municipios mm  WHERE lower( l.municipio_sap ) = lower( mm.nombre )  AND l.departamento_id = mm.departamento_id  LIMIT 1)");
             	}
 
             }
