@@ -38,13 +38,8 @@ class Api{
             timeout: 30000,
             dataType: 'json',
             cache: false,
-            success : function (data){
-                closeLoading();
-                sucessCallBack(data);
-            },
-            error : function (data){
-                falloCallback(data);
-            }
+            success : sucessCallBack,
+            error : falloCallback
         });
     }
 
