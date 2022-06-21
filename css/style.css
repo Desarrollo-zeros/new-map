@@ -96,6 +96,7 @@ body{
 }
 #ttdetalles_info .scrollerY{
   max-height: 354px;
+  min-height: 20px;
 }
 #ttdetalles_menu{
   display: flex;
@@ -564,7 +565,7 @@ div.verticalLine {
 
 
 #divProyectoNoticia{
-  margin-top: -30%;
+  margin-top: -27%;
 }
 
 @media only screen and (min-width: 600px) {
@@ -588,7 +589,7 @@ div.verticalLine {
 
 @media only screen and (min-width: 1000px) {
   #divProyectoNoticia{
-    margin-top: -30%;
+    margin-top: -25%;
   }
   .clsmargin{
     position: absolute;right: -50%;margin-top: 2%
@@ -604,7 +605,7 @@ div.verticalLine {
 
 @media only screen and (min-width: 1300px) {
   #divProyectoNoticia{
-    margin-top: -28%;
+    margin-top: -25%;
   }
   .clsmargin{
     position: absolute;right: -54%;margin-top: 2%
@@ -862,3 +863,4 @@ div::-webkit-scrollbar-thumb:hover {
 div::-webkit-scrollbar-track {
   background: #fffefe;
 }
+

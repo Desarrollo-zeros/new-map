@@ -2,8 +2,7 @@ var ChartApi ={};
 var helpers = Chart.helpers;
 
 Chart.defaults.global.animation.duration = 3000;
-
-
+Chart.defaults.global.defaultFontStyle = 'Bold'
 
 var sites = [
     ""
@@ -503,6 +502,12 @@ function getParticipacionEje(){
 
 
 
+			let maxBar = 
+			(getPorcentaje(api.dataEjeInidicativo1["AMBIENTAL"].total, $total,100) > 89 || 
+			getPorcentaje(api.dataEjeInidicativo1["GOBERNANZA"].total, $total,100) > 89 || 
+			getPorcentaje(api.dataEjeInidicativo1["ECONOMICO"].total, $total,100) > 89 ||
+			getPorcentaje(api.dataEjeInidicativo1["SOCIAL"].total, $total,100) > 89 ) ? 110 : 100;
+
             let indexValue = 0;
             dataValue.forEach(x => {
                if(x > 0){
@@ -549,16 +554,28 @@ function getParticipacionEje(){
                                     return  args.value + '%';
                                 },
                                 arc: true,
-                                precision: 2
+                                precision: 2,
+                                fontStyle: 'bold',    // X-Axis font style,
+                                fontSize: 11,
+                                padding: 0,
+                                fontColor: '#000',
+                                fontFamily: "Verdana",
                             }
+
                         ],
 
                     },
                     legend: {
                         display: false,
                         labels: {
-                            fontColor: 'rgb(2,2,2)',
-                            strokeStyle : 'rgb(2,2,2)',
+                            fontStyle: 'bold',    // X-Axis font style,
+                            fontSize: 11,
+                            padding: 0,
+                            fontColor: '#000',
+                            fontFamily: "Verdana",
+                        },
+                        "maxSize" : {
+                            "height" : 220
                         },
                         position: 'top',
                     },
@@ -566,9 +583,14 @@ function getParticipacionEje(){
                         yAxes: [
                             {
                                 ticks: {
-                                    stepSize: 35,
-                                    beginAtZero: true
-
+                                    fontStyle: 'bold',    // X-Axis font style,
+                                    fontSize: 11,
+                                    padding: 0,
+                                    fontColor: '#000',
+                                    fontFamily: "Verdana",
+                                    min:0,
+                                    max:maxBar,
+                                    stepSize : 10,
                                 },
                                 gridLines: {
                                     color: "rgba(0, 0, 0, 0)",
@@ -576,6 +598,13 @@ function getParticipacionEje(){
                             }
                         ],
                         xAxes: [{
+                            ticks: {
+                                fontStyle: 'bold',    // X-Axis font style,
+                                fontSize: 11,
+                                padding: 0,
+                                fontColor: '#000',
+                                fontFamily: "Verdana",
+                            },
                             gridLines: {
                                 color: "rgba(0, 0, 0, 0)",
                             }
@@ -693,6 +722,9 @@ function getParticipacionEje(){
         $("#divBarra").hide();
     });
 }
+
+
+
 
 
 
