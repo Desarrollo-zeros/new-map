@@ -68,23 +68,23 @@ $(document).ready(function () {
         loaderBeneficio();
         getParticipacionAportante();
         getParticipacionEje();
-		
-		
-		
-		if(actual == "municipios"){
-			
-			setTimeout(function () {
-				createLoading();		
-				}, 2000)
-			
-			setTimeout(function () {
-				$("[data-name='beneficiarios']").hide();
-				$("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
-			}, 5000)
-		}
-		
-	
-		
+
+
+
+        if(actual == "municipios"){
+
+            setTimeout(function () {
+                createLoading();
+            }, 2000)
+
+            setTimeout(function () {
+                $("[data-name='beneficiarios']").hide();
+                $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
+            }, 5000)
+        }
+
+
+
     });
 
 
@@ -924,6 +924,7 @@ function Cargar_Municipio(ele) {
     $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
     createLoading();
 
+    console.log("este click es de circulo", clickcircle)
     if (!clickcircle) {
         loaderInversion();
         loaderProyecto();
@@ -931,20 +932,20 @@ function Cargar_Municipio(ele) {
         loaderProyectos();
         loaderApalancamiento();
         loaderIndicativo();
-		
-		setTimeout(function () {
-			$("[data-name='beneficiarios']").hide();
-			closeLoading();
-		}, 5000)
-		
+
+        setTimeout(function () {
+            $("[data-name='beneficiarios']").hide();
+            closeLoading();
+        }, 5000)
+
     } else {
         clickcircle = false;
-		setTimeout(function () {
-			//$("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").hide();
-			$("[data-name='beneficiarios']").hide();
-			closeLoading();
-		}, 5000)
-		
+        setTimeout(function () {
+            $("#ttdetalles_menu [data-name='dependencia'], #ttdetalles_menu [data-name='apalancamiento'], #divBarra, #indicadoresDiv, #divCircular").show();
+            $("[data-name='beneficiarios']").hide();
+            closeLoading();
+        }, 5000)
+
     }
 }
 
